@@ -1,6 +1,6 @@
 var Dark = function()
 {
-    document.getElementsByClassName("dark_stylesheet_link")[0].href="css_dir_link/dark.css";
+    document.getElementsByClassName("dark_stylesheet_link")[0].href="css/dark.css";
 
 
 };
