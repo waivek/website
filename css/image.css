@@ -1,0 +1,11 @@
+img.preview {
+    width: 300px;
+    outline-style: solid;
+    outline-width: thin;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.imgcontainer {
+    text-align: center;
+}

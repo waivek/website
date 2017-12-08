@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'icons';
+  src: url('oldIcoMoon.woff') format('woff'); 
+}
+[data-icon]:before {
+    font-family: icons; /* BYO icon font, mapped smartly */ 
+    content: attr(data-icon); 
+    speak: none; /* Not to be trusted, but hey. */ 
+}
+
+.headericon {
+    cursor: pointer;
+    background: lightgray;
+    display: contents;
+}
+
+.headerdiv {
+    text-align: center;
+}
