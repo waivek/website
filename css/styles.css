@@ -59,22 +59,16 @@ p:hover a[href^="#para"]:hover{
 }
 
 @media screen and (max-width: 768px) {
-    .c1 {
-        text-align: justify;
+
+    body {
+        background: blue;
     }
 }
 
 @media screen and (min-width:768px) {
-    .c1 {
-        width: 70%;
-        float: left;
+    body {
+        background: green;
     }
-
-    .c2 {
-        width: 30%;
-        float: right;
-    }
-
 }
 
 /* Bootstrap {{{ */
