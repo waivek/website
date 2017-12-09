@@ -28,7 +28,7 @@
         <p>The Alchemist asked if I wanted a drink. I did, but no amount of staring could make my eyes settle on the color of the liquid in the flask. And the gold the alchemists paid the taxmen smelled funny and made crackling noises. I declined. </p>
         <p>I took the summons and set it on the table between us. The King&#8217;s son was dying. The doctors, astrologers, witches, and other assorted wise people of the kingdom could not save him. The King had asked for an alchemist, and been given one. He, too, had failed. But he had let on that there were other alchemists in the guild, greater alchemists, who knew far more than he. So the king had demanded that all the guild&#8217;s top alchemists come to the palace and try to save his son&#8217;s life. And the alchemists&#8217; guild had refused, saying their studies could not be interrupted.</p>
         <p>So here I was, come to make the request again, more formally but less politely.</p>
-        <pre>
+<pre>
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -51,48 +51,33 @@ void processInput(GLFWwindow* window)
 int main()
 {
     // Initialization {{{1
-    glfwInit();
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwInit(); glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(800, 600, "Coordinate Systems", NULL, NULL);
-    if (window == NULL)
-    {
-        std::cout << "GLFW failed to create window" << std::endl;
-        glfwTerminate();
-        return -1;
-    }
+    GLFWwindow* window = glfwCreateWindow(800, 600, "Coordinate Systems",
+            NULL, NULL); if (window == NULL) { std::cout << "GLFW failed to
+        create window" << std::endl; glfwTerminate(); return -1; }
     glfwMakeContextCurrent(window);
 
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
-        std::cout << "Failed to initialize GLAD" << std::endl;
-        return -1;
-    }
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) { std::cout <<
+        "Failed to initialize GLAD" << std::endl; return -1; }
     // }}}1
     glViewport(0, 0, 800, 600);
     // Binding & Texturing {{{
-    int indices[] = {
-        0, 1, 2,
-        0, 2, 3
-    };
-    unsigned int VAO;
-    glGenVertexArrays(1, &VAO);
-    glBindVertexArray(VAO);
+    int indices[] = { 0, 1, 2, 0, 2, 3 }; unsigned int VAO;
+    glGenVertexArrays(1, &VAO); glBindVertexArray(VAO);
 
-    unsigned int VBO;
-    glGenBuffers(1, &VBO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    unsigned int VBO; glGenBuffers(1, &VBO); glBindBuffer(GL_ARRAY_BUFFER,
+            VBO); glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices,
+                GL_STATIC_DRAW);
 
-    unsigned int EBO;
-    glGenBuffers(1, &EBO);
+    unsigned int EBO; glGenBuffers(1, &EBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
+            GL_STATIC_DRAW);
 
-    unsigned int texture;
-    glGenTextures(1, &texture);
+    unsigned int texture; glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -100,30 +85,25 @@ int main()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    stbi_set_flip_vertically_on_load(true);
-    int height, width, nrChannels;
-    unsigned char* data = stbi_load("C:\\Users\\Toshiba PC\\Desktop\\opengl\\img\\textures\\square.jpg", &width, &height, &nrChannels, 0 );
-    if (data)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else 
-    {
-        std::cout << "Failed to load image" << std::endl;
-    }
-    stbi_image_free(data);
+    stbi_set_flip_vertically_on_load(true); int height, width, nrChannels;
+    unsigned char* data = stbi_load("C:\\Users\\Toshiba
+            PC\\Desktop\\opengl\\img\\textures\\square.jpg", &width, &height,
+            &nrChannels, 0 ); if (data) { glTexImage2D(GL_TEXTURE_2D, 0,
+                GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+            glGenerateMipmap(GL_TEXTURE_2D); } else { std::cout << "Failed to
+                load image" << std::endl; } stbi_image_free(data);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*) 0);
-    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)
+            0); glEnableVertexAttribArray(0);
 
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*) (3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)
+            (3 * sizeof(float))); glEnableVertexAttribArray(1);
 
     glBindVertexArray(0);
 
-    Shader shader = Shader("C:\\Users\\Toshiba PC\\Desktop\\opengl\\Basics\\shader.vs", "C:\\Users\\Toshiba PC\\Desktop\\opengl\\Basics\\shader.fs");
-    glEnable(GL_DEPTH_TEST);
+    Shader shader = Shader("C:\\Users\\Toshiba
+            PC\\Desktop\\opengl\\Basics\\shader.vs", "C:\\Users\\Toshiba
+            PC\\Desktop\\opengl\\Basics\\shader.fs"); glEnable(GL_DEPTH_TEST);
     // }}}
     glm::vec3 cubePositions[] = {
         glm::vec3( 0.0f,  0.0f,  0.0f), 
@@ -149,12 +129,15 @@ int main()
         shader.use();
         glm::mat4 view;
         view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-        glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH/(float)SCR_HEIGHT, 0.1f, 100.0f);
+        glm::mat4 projection = glm::perspective(glm::radians(45.0f),
+                (float)SCR_WIDTH/(float)SCR_HEIGHT, 0.1f, 100.0f);
 
         unsigned int viewLoc = glGetUniformLocation(shader.ID, "view");
         glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-        unsigned int projectionLoc = glGetUniformLocation(shader.ID, "projection");
-        glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
+        unsigned int projectionLoc = glGetUniformLocation(shader.ID,
+                "projection");
+        glUniformMatrix4fv(projectionLoc, 1, GL_FALSE,
+                glm::value_ptr(projection));
 
         glBindVertexArray(VAO);
         for (unsigned int i = 0; i < 1; i++)
@@ -165,11 +148,13 @@ int main()
             float angle = 20.0f ;
             if (i % 3 == 0)
             {
-                model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.5f, 1.0f, 0.0f));
+                model = glm::rotate(model, (float)glfwGetTime() *
+                        glm::radians(angle), glm::vec3(0.5f, 1.0f, 0.0f));
             }
             else
             {
-                model = glm::rotate(model, glm::radians(angle), glm::vec3(0.5f, 1.0f, 0.0f));
+                model = glm::rotate(model, glm::radians(angle),
+                        glm::vec3(0.5f, 1.0f, 0.0f));
             }
             unsigned int modelLoc = glGetUniformLocation(shader.ID, "model");
             glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
