@@ -26,4 +26,4 @@ var LoadStylesheet = function() {
 
 };
 
-// LoadStylesheet();
+LoadStylesheet();
