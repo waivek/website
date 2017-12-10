@@ -12,9 +12,7 @@ body {
     background: white;
 }
 
-/* .c1 { */
-/*     text-align: justify; */
-/* } */
+
 p:target { 
      background-color: #e3e3e3;
 }
@@ -31,27 +29,6 @@ a:hover {
 
 
 
-li:hover a[href^="#fnref"],
-p:hover a[href^="#para"]{
-    padding: 0 4px 0 4px;
-    color: #c60f0f;
-    opacity: 1;
-    border-bottom: none;
-}
-
-li:hover a[href^="#fnref"]:hover,
-p:hover a[href^="#para"]:hover{
-    color: white;
-    background: #c60f0f;
-    border-bottom: none;
-}
-
-@media screen and (max-width: 768px) {
-
-}
-
-@media screen and (min-width:768px) {
-}
 
 pre {
     display: inline-block;
