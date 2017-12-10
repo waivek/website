@@ -8,8 +8,13 @@ body {
     font-size: 20px;
 
     text-align: justify;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
 
     background: white;
+
 }
 
 
@@ -28,6 +33,15 @@ a:hover {
 }
 
 
+blockquote {
+    /* border-left-style: solid; */
+    /* border-left-color: inherit; */
+    /* border-left-width: 4px; */
+    padding-left: 2em;
+    padding-right: 2em;
+    font-size: 85%;
+    line-height: 1.4;
+}
 
 
 pre {
