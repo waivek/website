@@ -20,7 +20,7 @@ var LoadStylesheet = function() {
     var httpRequest;
     httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange =  DarkStylesheetRequestCompleted;
-    httpRequest.open('GET', '/css/dark.css');
+    httpRequest.open('GET', 'css/dark.css');
     httpRequest.send();
 
 
