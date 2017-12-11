@@ -1,11 +1,11 @@
 body {
     margin: 0 auto;
     font-family: "sitka text","Bookman Old Style", "palatino linotype", "century schoolbook",  "Georgia", "Times New Roman";
-    max-width: 35em;
+    max-width: 30em;
     line-height: 1.5;
     padding: 0em 1em;
 
-    font-size: 20px;
+    font-size: 24px;
 
     /* text-align: justify; */
     /* -webkit-hyphens: auto; */
@@ -34,9 +34,6 @@ a:hover {
 
 
 blockquote {
-    /* border-left-style: solid; */
-    /* border-left-color: inherit; */
-    /* border-left-width: 4px; */
     padding-left: 2em;
     padding-right: 2em;
     font-size: 85%;
@@ -46,17 +43,14 @@ blockquote {
 
 pre {
     white-space: pre-wrap;
-    padding-left: 2em;
-    line-height: 1.4;
-    /* display: inline-block; */
-    /* font-size: 9px; */
-    /* overflow-x: scroll; */
-    /* max-width: 100%; */
-    /* max-height: 600px; */
-    /* outline-style: double; */
+    padding-top: 1em;
+    line-height: 1.5;
+    font-size: 75%;
 }
+
 body.dark
 {
     background-color: #444;
     color: #e6e6e6;
 }
+
