@@ -7,11 +7,11 @@ body {
 
     font-size: 20px;
 
-    text-align: justify;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto;
+    /* text-align: justify; */
+    /* -webkit-hyphens: auto; */
+    /* -moz-hyphens: auto; */
+    /* -ms-hyphens: auto; */
+    /* hyphens: auto; */
 
     background: white;
 
@@ -45,12 +45,15 @@ blockquote {
 
 
 pre {
-    display: inline-block;
-    font-size: 9px;
-    overflow-x: scroll;
-    max-width: 100%;
-    max-height: 600px;
-    outline-style: double;
+    white-space: pre-wrap;
+    padding-left: 2em;
+    line-height: 1.4;
+    /* display: inline-block; */
+    /* font-size: 9px; */
+    /* overflow-x: scroll; */
+    /* max-width: 100%; */
+    /* max-height: 600px; */
+    /* outline-style: double; */
 }
 body.dark
 {
