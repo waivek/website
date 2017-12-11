@@ -1,9 +1,10 @@
 img.preview {
-    width: 300px;
+    width: 40%;
     outline-style: solid;
     outline-width: thin;
-    margin: 20px;
     cursor: pointer;
+    margin-top: 1em;
+    margin-right: 1em;
 }
 
 .imgcontainer {
