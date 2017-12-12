@@ -4,53 +4,31 @@ body {
     max-width: 30em;
     line-height: 1.5;
     padding: 0em 1em;
-
     font-size: 24px;
-
-    /* text-align: justify; */
-    /* -webkit-hyphens: auto; */
-    /* -moz-hyphens: auto; */
-    /* -ms-hyphens: auto; */
-    /* hyphens: auto; */
-
     background: white;
-
 }
-
-
-p:target { 
-     background-color: #e3e3e3;
-}
-
 a:link, a:visited {
     color: inherit;
     text-decoration:none;
 }
-
 a:hover {
     border-bottom: solid medium ;
     border-bottom-color: inherit;
 }
-
-
 blockquote {
     padding-left: 2em;
     padding-right: 2em;
     font-size: 85%;
     line-height: 1.4;
 }
-
-
 pre {
     white-space: pre-wrap;
     padding-top: 1em;
     line-height: 1.5;
     font-size: 75%;
 }
-
 body.dark
 {
     background-color: #444;
     color: #e6e6e6;
 }
-

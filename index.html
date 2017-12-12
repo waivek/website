@@ -10,54 +10,16 @@
         <link rel="stylesheet" href="css/image.css" type="text/css">
         <script src="js/background.js" type="text/javascript"></script>
     </head>
-    <body>
+    <body onload="LoadPreviewImages()">
 
-        <div class="imgcontainer">
-            <img class="preview" src="Light.png" onclick="Light()" alt="Click for a light theme" />
-            <img class="preview" src="Dark.png" onclick="Dark()" alt="Click for a dark theme"/>
-
-        </div>
 
         <h1 class="pjgm-posttitle">Ars Longa, Vita Brevis</h1>
 
         <p>The Alchemist</a> asked if I wanted a drink. I did, but no amount of staring could make my eyes settle on the color of the liquid in the flask. And the gold the alchemists paid the taxmen smelled funny and made crackling noises. I declined. </p>
         <p>I took the summons and set it on the table between us. The King&#8217;s son was dying. The doctors, astrologers, witches, and other assorted wise people of the kingdom could not save him. The King had asked for an alchemist, and been given one. He, too, had failed. But he had let on that there were other alchemists in the guild, greater alchemists, who knew far more than he. So the king had demanded that all the guild&#8217;s top alchemists come to the palace and try to save his son&#8217;s life. And the alchemists&#8217; guild had refused, saying their studies could not be interrupted.</p>
+
         <p>So here I was, come to make the request again, more formally but less politely.</p>
 
-    <pre>
-int main()
-{
-    glViewport(0, 0, 800, 600);
-
-    unsigned char* data = stbi_load("C:\\Users\\Toshiba PC\\Desktop\\opengl\\img\\textures\\square.jpg", &width, &height, &nrChannels, 0 );
-    if (data)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }
-
-    Shader shader = Shader("C:\\Users\\Toshiba PC\\Desktop\\opengl\\Basics\\shader.vs", "C:\\Users\\Toshiba PC\\Desktop\\opengl\\Basics\\shader.fs");
-
-    while (!glfwWindowShouldClose(window))
-    {
-        
-        glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH/(float)SCR_HEIGHT, 0.1f, 100.0f);
-        for (unsigned int i = 0; i < 1; i++)
-        {
-            model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.5f, 1.0f, 0.0f));
-        }
-
-
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
-    return -1;
-
-} 
-
-
-&lt;p&gt;To make sure that code blocks look their best, I set the monospace typeface to be proportional to the rest of the typography on my site &mdash; around .8125em for a site based on a 1rem scale. This proportion works slightly differently depending on the typeface and weight chosen.&lt;/p&gt;
-        </pre>
 
         <p>The Alchemist pretended to read the parchment. I could tell he was faking; his eyes stayed still the whole time. Finally he gave me the same answer he had given the king&#8217;s courier: the alchemists&#8217; studies could not be interrupted.</p>
         <p>&#8220;Why is a few weeks subtracted from your studies more important than the prince&#8217;s life?&#8221; I demanded, staring straight into his creepy too-still eyes.</p>
@@ -139,14 +101,7 @@ int main()
         <p>&#8220;Then you will have to teach him,&#8221; said the Alchemist, &#8220;as I taught you, and my tutors taught me, and as their tutors taught them, all the way back to the first philosophers of Egypt.&#8221; </p>
         <p>He stared at me as he spoke, and the blackness in his too-still pupils was the depth of Time.</p>
 
-
-        <!--     <div class="headerdiv"> -->
-        <!-- <h1 class="headericon" aria&#45;hidden="true" data&#45;icon="&#38;#x2709;" alt="Home"></h1> -->
-        <!--     </div> -->
-
-        <!-- <noscript> -->
-        <!--     <img src="svg\home.svg"> -->
-        <!-- </noscript> -->
+        <div class="imgcontainer" > </div>
 
     </body>
 
