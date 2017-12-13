@@ -1,0 +1,28 @@
+body {
+    /* margin      : 0 auto; */
+    font-family : "sitka text","Bookman Old Style", "palatino linotype", "century schoolbook",  "Georgia", "Times New Roman";
+    /* max-width   : 30em; */
+    line-height : 1.5;
+/*     padding     : 0em 1em; */
+    font-size   : 15px;
+    background  : white;
+}
+a:link, a:visited {
+    color           : inherit;
+    text-decoration : none;
+}
+a:hover {
+    border-bottom       : solid medium ;
+    border-bottom-color : inherit;
+}
+blockquote {
+/*     padding-left  : 2em; */
+/*     padding-right : 2em; */
+    font-size     : 85%;
+    line-height   : 1.4;
+}
+body.dark
+{
+    background-color : #444;
+    color            : #e6e6e6;
+}
