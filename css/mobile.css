@@ -1,11 +1,12 @@
+
 body {
-    /* margin      : 0 auto; */
-    font-family : "sitka text","Bookman Old Style", "palatino linotype", "century schoolbook",  "Georgia", "Times New Roman";
-    /* max-width   : 30em; */
+    margin-left: 1em;
+    margin-right: 1em;
     line-height : 1.5;
-/*     padding     : 0em 1em; */
-    font-size   : 15px;
+    font-size   : 12px;
     background  : white;
+
+    font-family: "Karla", "Comic Sans MS";
 }
 a:link, a:visited {
     color           : inherit;
@@ -16,9 +17,7 @@ a:hover {
     border-bottom-color : inherit;
 }
 blockquote {
-/*     padding-left  : 2em; */
-/*     padding-right : 2em; */
-    font-size     : 85%;
+
     line-height   : 1.4;
 }
 body.dark
