@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/Karla.woff) format('woff');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215;
+}
 
 body {
     margin-left: 1em;
@@ -6,7 +13,7 @@ body {
     font-size   : 12px;
     background  : white;
 
-    font-family: "Karla", "Comic Sans MS";
+    font-family: "Karla";
 }
 a:link, a:visited {
     color           : inherit;
@@ -24,4 +31,18 @@ body.dark
 {
     background-color : #444;
     color            : #e6e6e6;
+}
+
+@media screen and (min-width: 600px) {
+    body {
+        margin      : 0 auto;
+        max-width   : 30em;
+        font-size   : 24px;
+    }
+
+    blockquote {
+        padding-left  : 2em;
+        padding-right : 2em;
+        font-size     : 90%;
+    }
 }
