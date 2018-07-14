@@ -46,3 +46,17 @@ body.dark
         font-size     : 90%;
     }
 }
+
+.stripes {
+	height: .3em;
+    width: 15%;
+    margin: 0 auto;
+}
+
+.black {
+    background: black;
+}
+
+.white {
+    background: white;
+}
