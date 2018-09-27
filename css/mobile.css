@@ -1,11 +1,11 @@
 @font-face {
-  font-family: 'Habibi';
-  src: url(../fonts/Habibi.ttf);
+  font-family: 'Karla';
+  src: url(../fonts/Karla.ttf);
 }
 
 body {
     background  : white;
-    font-family : "Habibi";
+    font-family : "Lato";
     font-size   : 20px;
     line-height : 1.5;
     max-width   : 40em;
@@ -42,12 +42,9 @@ img.preview {
 }
 
 
-li.toc {
-    list-style: none;
-    margin: 0.5em 0;
-}
 h1 {
     font-size: 1.5em;
+    font-family: "Lora";
 }
 
 @media screen and (min-width: 600px) {
@@ -63,9 +60,6 @@ h1 {
         padding-left  : 1em;
         padding-right : 1em;
         font-size     : 90%;
-    }
-    div.toc {
-        column-count: 2;
     }
 }
 

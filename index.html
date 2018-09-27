@@ -10,6 +10,31 @@
         <link rel="stylesheet" href="css/mobile.css" type="text/css">
         <script src="js/scripts.js" type="text/javascript"></script>
 
+<style>
+
+li.toc {
+    list-style: none;
+    margin: 0.5em 0;
+    font-style: small-caps;
+    border-radius: 8px;
+}
+li.toc:hover {
+    background: #0088a01f;
+}
+li.toc > a {
+    display: block;
+    padding: 0.3em;
+}
+li.toc > a:hover {
+    border-bottom: none;
+}
+@media screen and (min-width: 600px) {
+       div.toc {
+        column-count: 2;
+    }
+}
+
+</style>
     </head>
     <body onload="LoadPreviewImages()">
 
@@ -24,6 +49,7 @@
 		<li class="toc"><a href="ars_longa.html">Ars Longa, Vita Brevis</a></li>
 		<li class="toc"><a href="ars_longa_v2.html">Ars Longa, Vita Brevis Version 2</a></li>
 		<li class="toc"><a href="miyamoto.html">Shigeru Miyamoto Interview</a></li>
+		<li class="toc"><a href="websites.html">List of Websites with interesting CSS</a></li>
 		<li class="toc"><a href="bgnet.html">Beej's Guide to Network Programming</a></li>
 		<li class="toc"><a href="tooltip.html">Tooltip</a></li>
 		<li class="toc"><a href="two-columns.html">Two Column Layout</a></li>
