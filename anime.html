@@ -4,42 +4,53 @@
 	<meta charset="UTF-8" />
 	<title>Anime</title>
 
-	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<!-- <link rel="stylesheet" href="css/mobile.css" type="text/css"> -->
-	<script src="js/scripts.js" type="text/javascript"></script>
 
-	<style>
-	div#content {
-		max-width: 50em;
-		margin: 0 auto;
-	}
-	
-	
-	div.row {
-	    flex-direction: row;
-	}
-	.poster {		
-		
-	}
-	
-	</style>
+  <style>
+            body {
+                max-width: 935px;
+                margin: 1em auto;
+            }
+            .row {
+                flex-direction: row
+            }
+
+            .row > * {
+                flex: 1 0 0%
+            }
+            .div {
+                padding-bottom: 100%
+            }
+            .img {
+                position: absolute;
+                height: 100%;
+            }
+            div {
+                display: flex;
+                position: relative
+            }
+            a { 
+                margin: 0.5em;
+            }
+            @media screen and (max-width: 735px) {
+                a {
+                    margin: 1px;
+                }
+            }
+        </style>
 </head>
-<body onload="LoadPreviewImages()">
-	<div id="content" >
-		<h1 class="pjgm-posttitle">Anime</h1>
+<body>
 		
 		<div class="row">
-			<img class="poster" src="images/Attack on Titan.jpg" >
-			<img class="poster" src="images/Ping Pong The Animation.jpg">
-			<img class="poster" src="images/Boku No Hero Academia.jpg">
+            <a href="index.html"><div class="div"><img class="img" src="images/Attack on Titan.jpg" ></div></a>
+            <a href="index.html"><div class="div"><img class="img" src="images/Ping Pong The Animation.jpg"></div></a>
+            <a href="index.html"><div class="div"><img class="img" src="images/Boku No Hero Academia.jpg"></div></a>
 		</div>
 
 		<div class="row">
-			<img class="poster" src="images/Slam Dunk.jpg">
-			<img class="poster" src="images/Fullmetal Alchemist.jpg">
-			<img class="poster" src="images/Whisper of the Heart.jpg">	
+            <a href="index.html"><div class="div"><img class="img" src="images/Slam Dunk.jpg"></div></a>
+            <a href="index.html"><div class="div"><img class="img" src="images/Fullmetal Alchemist.jpg"></div></a>
+            <a href="index.html"><div class="div"><img class="img" src="images/Whisper of the Heart.jpg"></div></a>
 		</div>
 		
-	</div>
 </body>
 </html>
