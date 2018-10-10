@@ -2,77 +2,131 @@
 <html>
     <head>
         <meta charset="UTF8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-        <style>
-#content {
-    max-width: 993px;
-    padding: 0 3em;
+        <title>Kaizen - Wikipedia</title>
+        <link rel="stylesheet" href="css/wikipedia.css" type="text/css">
+        <link rel="icon" href="favicon/wikipedia.ico"  >
+    <script>
+
+        function ToggleContent(parent,id)
+        {
+            content_div = document.querySelector(id);
+            content_div.classList.toggle("hidden");
+            up_arrow = parent.querySelector(".up_arrow").classList.toggle("hidden");
+            down_arrow = parent.querySelector(".down_arrow").classList.toggle("hidden");
+        }
+    </script>
+<style>
+#menubar {
+    padding: 0.5em 0;
     font-family: "Arial";
-    line-height: 1.65;
-    margin: 0 auto;
+    position: sticky;
+    top: 0em;
+    text-align: center;
+    background-color: white;
 }
-        h1, h2 {
-            font-family: "Lora";
-            padding-bottom: 6px;
-            border-bottom: solid 1px #eee;
+#menubar a {
+    color: #ccc;
+    margin-right: 1em;
+}
+
+body.dark, body.dark #menubar
+{
+    background-color : #444;
+    color            : #e6e6e6;
+}
+body.dark .up_arrow, body.dark .down_arrow {
+    stroke: #e6e6e6;
+    fill: #e6e6e6;
+}
+body.dark a
+{
+    color: lightsalmon;
+}
+body {
+    margin-top: 0;
+}
+#theme {
+    cursor: pointer;
+}
+</style>
+    <script>
+        function ToggleDark(ele) {
+            document.body.classList.toggle("dark");
+            if (document.body.classList.contains("dark")) {
+                ele.innerText = "light";
+            } else {
+                ele.innerText = "dark";
+            }
         }
-        h2:hover {
-            cursor: pointer;
-        }
-        a {
-            color: #36c;
-            text-decoration: none;
-            padding-bottom: 4px;
-        }
-        a:hover {
-            border-bottom: 1.5px solid #36c;
-        }
-        ul {
-            list-style-type: square;
-        }
-        .hidden {
-            display: none;
-        }
-        </style>
+    </script>
     </head>
     <body>
         <div id="content">
+            <div id="menubar">
+                <a href="about.html">about</a>  
+                <a href="work.html">work</a> 
+                <a  href="blog.html">blog</a>
+                <a onclick="ToggleDark(this)" id="theme">dark</a>
+            </div>
             <h1> <i>Kaizen</i> </h1>
-            <p> <i> <b>Kaizen</b> </i> <span> (<span>改善</span>) </span> is the <a href="/wiki/Japanese_language">Japanese</a> word for "improvement". In business, kaizen refers to activities that <a href="/wiki/Continual_improvement_process">continuously improve</a> all functions and involve all employees from the <a href="/wiki/CEO">CEO</a> to the <a href="/wiki/Assembly_line">assembly line</a> workers. It also applies to processes, such as purchasing and <a href="/wiki/Logistics">logistics</a> , that cross organizational boundaries into the <a href="/wiki/Supply_chain">supply chain</a> .  <sup> <a href="#cite_note-ImaiMasaaki-1">[1]</a> </sup> It has been applied in healthcare, <sup> <a href="#cite_note-2">[2]</a> </sup> <a href="/wiki/Psychotherapy">psychotherapy</a> , <sup> <a href="#cite_note-3">[3]</a> </sup> <a href="/wiki/Life-coaching">life-coaching</a> , government, and banking.  </p>
-            <p> By improving standardized programmes and processes, kaizen aims to eliminate waste (see <a href="/wiki/Lean_manufacturing">lean manufacturing</a>). Kaizen was first practiced in <a href="/wiki/Economy_of_Japan">Japanese businesses</a> after <a href="/wiki/World_War_II">World War II</a> , influenced in part by American business and quality-management teachers, and most notably as part of <a href="/wiki/The_Toyota_Way">The Toyota Way</a> . It has since spread throughout the world and has been applied to environments outside business and productivity.  <sup> <a href="#cite_note-4">[4]</a> </sup> </p>
+             <div id="path">
+                 <a href="index.html">home</a> / 
+                 <a href="essays.html">essays</a> / 
+                 <a href="">kaizen</a>
+             </div>
+            <p> <i> <b>Kaizen</b> </i> <span> (<span>改善</span>) </span> is the <a href="https://en.m.wikipedia.org/wiki/Japanese_language">Japanese</a> word for "improvement". In business, kaizen refers to activities that <a href="https://en.m.wikipedia.org/wiki/Continual_improvement_process">continuously improve</a> all functions and involve all employees from the <a href="https://en.m.wikipedia.org/wiki/CEO">CEO</a> to the <a href="https://en.m.wikipedia.org/wiki/Assembly_line">assembly line</a> workers. It also applies to processes, such as purchasing and <a href="https://en.m.wikipedia.org/wiki/Logistics">logistics</a> , that cross organizational boundaries into the <a href="https://en.m.wikipedia.org/wiki/Supply_chain">supply chain</a> .  <sup> <a href="#cite_note-ImaiMasaaki-1">[1]</a> </sup> It has been applied in healthcare, <sup> <a href="#cite_note-2">[2]</a> </sup> <a href="https://en.m.wikipedia.org/wiki/Psychotherapy">psychotherapy</a> , <sup> <a href="#cite_note-3">[3]</a> </sup> <a href="https://en.m.wikipedia.org/wiki/Life-coaching">life-coaching</a> , government, and banking.  </p>
+            <p> By improving standardized programmes and processes, kaizen aims to eliminate waste (see <a href="https://en.m.wikipedia.org/wiki/Lean_manufacturing">lean manufacturing</a>). Kaizen was first practiced in <a href="https://en.m.wikipedia.org/wiki/Economy_of_Japan">Japanese businesses</a> after <a href="https://en.m.wikipedia.org/wiki/World_War_II">World War II</a> , influenced in part by American business and quality-management teachers, and most notably as part of <a href="https://en.m.wikipedia.org/wiki/The_Toyota_Way">The Toyota Way</a> . It has since spread throughout the world and has been applied to environments outside business and productivity.  <sup> <a href="#cite_note-4">[4]</a> </sup> </p>
+
+
             <div>
-                <h2 onclick="this.parentElement.querySelector('div').classList.toggle('hidden')"> <span>Overview</span>  </h2>
-                <div>
-                    <p> The Japanese word <i>kaizen</i> means "change for better", with inherent meaning of either "continuous" or "philosophy" in Japanese dictionaries and in everyday use. The word refers to any improvement, one-time or continuous, large or small, in the same sense as the English word "<a href="/wiki/Improvement">improvement</a> ".  <sup> <a href="#cite_note-whatiskaizen-5">[5]</a> </sup> However, given the common practice in Japan of labeling industrial or business improvement techniques with the word "kaizen", particularly the practices spearheaded by Toyota, the word "kaizen" in English is typically applied to measures for implementing <a href="/wiki/Continual_improvement_process"> <i>continuous</i> improvement </a> , especially those with a "Japanese philosophy". The discussion below focuses on such interpretations of the word, as frequently used in the context of modern management discussions. Two kaizen approaches have been distinguished: <sup> <a href="#cite_note-:0-6">[6]</a> </sup> </p>
+                <h2 onclick="ToggleContent(this,'#content-1')"> 
+                    <svg class="up_arrow" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" transform="translate(6.029200, 6.044700) scale(1, -1) translate(-6.029200, -6.044700)" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                    <svg class="down_arrow hidden" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                    <span>Overview</span>  
+                </h2>
+                <div id="content-1">
+                    <p> The Japanese word <i>kaizen</i> means "change for better", with inherent meaning of either "continuous" or "philosophy" in Japanese dictionaries and in everyday use. The word refers to any improvement, one-time or continuous, large or small, in the same sense as the English word "<a href="https://en.m.wikipedia.org/wiki/Improvement">improvement</a> ".  <sup> <a href="#cite_note-whatiskaizen-5">[5]</a> </sup> However, given the common practice in Japan of labeling industrial or business improvement techniques with the word "kaizen", particularly the practices spearheaded by Toyota, the word "kaizen" in English is typically applied to measures for implementing <a href="https://en.m.wikipedia.org/wiki/Continual_improvement_process"> <i>continuous</i> improvement </a> , especially those with a "Japanese philosophy". The discussion below focuses on such interpretations of the word, as frequently used in the context of modern management discussions. Two kaizen approaches have been distinguished: <sup> <a href="#cite_note-:0-6">[6]</a> </sup> </p>
                     <ul>
                         <li>Flow kaizen</li>
                         <li>Process kaizen</li>
                     </ul>
-                    <p> The former is oriented towards the flow of materials and information, and is often identified with the reorganization of an entire <a href="/wiki/Production_(economics)">production</a> area, even a company. The latter means the improvement of individual workstands. Therefore, improving the way production workers do their job is a part of a process kaizen. The use of the kaizen model for continuous improvement demands that both flow and process kaizens are used, although process kaizens are used more often to focus workers on continuous small improvements. In this model, operators mostly look for small <a href="/wiki/Idea">ideas</a> which, if possible, can be implemented on the same day. This is in contrast to traditional models of work improvement, which generally have a long lag between concept development and project implementation.  </p>
-                    <p> Kaizen is a daily process, the purpose of which goes beyond simple productivity improvement. It is also a process that, when done correctly, humanizes the workplace, eliminates overly hard work ( <a href="/wiki/Muri_(Japanese_term)"> <i>muri</i> </a>), and teaches people how to perform experiments on their work using the <a href="/wiki/Scientific_method">scientific method</a> and how to learn to spot and eliminate waste in business processes. In all, the process suggests a humanized approach to workers and to increasing productivity: "The idea is to nurture the company's people as much as it is to praise and encourage participation in kaizen activities." <sup> <a href="#cite_note-7">[7]</a> </sup> Successful implementation requires "the participation of workers in the improvement." <sup> <a href="#cite_note-8">[8]</a> </sup> People at all levels of an organization participate in kaizen, from the CEO down to janitorial staff, as well as external stakeholders when applicable. Kaizen is most commonly associated with manufacturing operations, as at Toyota, but has also been used in non-manufacturing environments.  <sup> <a href="#cite_note-9">[9]</a> </sup> The format for kaizen can be individual, suggestion system, small group, or large group. At Toyota, it is usually a local improvement within a workstation or local area and involves a small group in improving their own work environment and productivity. This group is often guided through the kaizen process by a line supervisor; sometimes this is the line supervisor's key role.  Kaizen on a broad, cross-departmental scale in companies, generates <a href="/wiki/Total_quality_management">total quality management</a> , and frees human efforts through improving productivity using machines and computing power.  <sup> [ <i> <a href="/wiki/Wikipedia:Citation_needed"> <span>citation needed</span> </a> </i> ] </sup> </p>
-                    <p> While kaizen (at Toyota) usually delivers small improvements, the culture of continual aligned small improvements and standardization yields large results in terms of overall improvement in productivity. This philosophy differs from the "<a href="/wiki/Command_and_control_(management)">command and control</a> " improvement programs (e.g., Business Process Improvement) of the mid-20th century.  Kaizen methodology includes making changes and monitoring results, then adjusting.  Large-scale pre-planning and extensive project scheduling are replaced by smaller experiments, which can be rapidly adapted as new improvements are suggested.  <sup> [ <i> <a href="/wiki/Wikipedia:Citation_needed"> <span>citation needed</span> </a> </i> ] </sup> </p>
-                    <p> In modern usage, it is designed to address a particular issue over the course of a week and is referred to as a "kaizen blitz" or "kaizen event".  <sup> <a href="#cite_note-Kaizen_Event_Fieldbook:_Foundation,_Framework,_and_Standard_Work_for_Effective_Events-10">[10]</a> </sup> <sup> <a href="#cite_note-11">[11]</a> </sup> These are limited in scope, and issues that arise from them are typically used in later blitzes.  <sup> [ <i> <a href="/wiki/Wikipedia:Citation_needed"> <span>citation needed</span> </a> </i> ] </sup> A person who makes a large contribution in the successful implementation of kaizen during kaizen events is awarded the title of "Zenkai".  </p>
+                    <p> The former is oriented towards the flow of materials and information, and is often identified with the reorganization of an entire <a href="https://en.m.wikipedia.org/wiki/Production_(economics)">production</a> area, even a company. The latter means the improvement of individual workstands. Therefore, improving the way production workers do their job is a part of a process kaizen. The use of the kaizen model for continuous improvement demands that both flow and process kaizens are used, although process kaizens are used more often to focus workers on continuous small improvements. In this model, operators mostly look for small <a href="https://en.m.wikipedia.org/wiki/Idea">ideas</a> which, if possible, can be implemented on the same day. This is in contrast to traditional models of work improvement, which generally have a long lag between concept development and project implementation.  </p>
+                    <p> Kaizen is a daily process, the purpose of which goes beyond simple productivity improvement. It is also a process that, when done correctly, humanizes the workplace, eliminates overly hard work ( <a href="https://en.m.wikipedia.org/wiki/Muri_(Japanese_term)"> <i>muri</i> </a>), and teaches people how to perform experiments on their work using the <a href="https://en.m.wikipedia.org/wiki/Scientific_method">scientific method</a> and how to learn to spot and eliminate waste in business processes. In all, the process suggests a humanized approach to workers and to increasing productivity: "The idea is to nurture the company's people as much as it is to praise and encourage participation in kaizen activities." <sup> <a href="#cite_note-7">[7]</a> </sup> Successful implementation requires "the participation of workers in the improvement." <sup> <a href="#cite_note-8">[8]</a> </sup> People at all levels of an organization participate in kaizen, from the CEO down to janitorial staff, as well as external stakeholders when applicable. Kaizen is most commonly associated with manufacturing operations, as at Toyota, but has also been used in non-manufacturing environments.  <sup> <a href="#cite_note-9">[9]</a> </sup> The format for kaizen can be individual, suggestion system, small group, or large group. At Toyota, it is usually a local improvement within a workstation or local area and involves a small group in improving their own work environment and productivity. This group is often guided through the kaizen process by a line supervisor; sometimes this is the line supervisor's key role.  Kaizen on a broad, cross-departmental scale in companies, generates <a href="https://en.m.wikipedia.org/wiki/Total_quality_management">total quality management</a> , and frees human efforts through improving productivity using machines and computing power.  <sup> [ <i> <a href="https://en.m.wikipedia.org/wiki/Wikipedia:Citation_needed"> <span>citation needed</span> </a> </i> ] </sup> </p>
+                    <p> While kaizen (at Toyota) usually delivers small improvements, the culture of continual aligned small improvements and standardization yields large results in terms of overall improvement in productivity. This philosophy differs from the "<a href="https://en.m.wikipedia.org/wiki/Command_and_control_(management)">command and control</a> " improvement programs (e.g., Business Process Improvement) of the mid-20th century.  Kaizen methodology includes making changes and monitoring results, then adjusting.  Large-scale pre-planning and extensive project scheduling are replaced by smaller experiments, which can be rapidly adapted as new improvements are suggested.  <sup> [ <i> <a href="https://en.m.wikipedia.org/wiki/Wikipedia:Citation_needed"> <span>citation needed</span> </a> </i> ] </sup> </p>
+                    <p> In modern usage, it is designed to address a particular issue over the course of a week and is referred to as a "kaizen blitz" or "kaizen event".  <sup> <a href="#cite_note-Kaizen_Event_Fieldbook:_Foundation,_Framework,_and_Standard_Work_for_Effective_Events-10">[10]</a> </sup> <sup> <a href="#cite_note-11">[11]</a> </sup> These are limited in scope, and issues that arise from them are typically used in later blitzes.  <sup> [ <i> <a href="https://en.m.wikipedia.org/wiki/Wikipedia:Citation_needed"> <span>citation needed</span> </a> </i> ] </sup> A person who makes a large contribution in the successful implementation of kaizen during kaizen events is awarded the title of "Zenkai".  </p>
                 </div>
             </div>
+
+
             <div>
-                <h2 onclick="this.parentElement.querySelector('div').classList.toggle('hidden')">  <span>History</span> </h2>
-                <div>
+                <h2 onclick="ToggleContent(this,'#content-2')">  
+                    <svg class="up_arrow" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" transform="translate(6.029200, 6.044700) scale(1, -1) translate(-6.029200, -6.044700)" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                    <svg class="down_arrow hidden" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                    <span>History</span>
+                </h2>
+                <div id="content-2">
                     <div>
-                        Main article: <a href="/wiki/Industrial_change_in_occupied_Japan">Industrial change in occupied Japan</a>
+                        Main article: <a href="https://en.m.wikipedia.org/wiki/Industrial_change_in_occupied_Japan">Industrial change in occupied Japan</a>
                     </div>
-                    <p> The small-step work improvement approach was developed in the USA under <a href="/wiki/Training_Within_Industry">Training Within Industry</a> program (TWI Job Methods).  <sup> <a href="#cite_note-12">[12]</a> </sup> Instead of encouraging large, radical changes to achieve desired goals, these methods recommended that organizations introduce small improvements, preferably ones that could be implemented on the same day. The major reason was that during WWII there was neither time nor resources for large and innovative changes in the production of war equipment.  <sup> <a href="#cite_note-:0-6">[6]</a> </sup> The essence of the approach came down to improving the use of the existing workforce and technologies.  </p>
-                    <p> As part of the <a href="/wiki/Marshall_Plan#Aid_to_Asia">Marshall Plan</a> after <a href="/wiki/World_War_II">World War II</a> ,  American occupation forces brought in experts to help with the rebuilding of Japanese industry while the Civil Communications Section (CCS) developed a management training program that taught statistical control methods as part of the overall material. <a href="/wiki/Homer_Sarasohn">Homer Sarasohn</a> and <a href="/w/index.php?title=Charles_Protzman&amp;action=edit&amp;redlink=1">Charles Protzman</a> developed and taught this course in 1949-1950. Sarasohn recommended <a href="/wiki/W._Edwards_Deming">W. Edwards Deming</a> for further training in statistical methods.  </p>
-                    <p> The Economic and Scientific Section (ESS) group was also tasked with improving Japanese management skills and Edgar McVoy was instrumental in bringing <a href="/w/index.php?title=Lowell_Mellen&amp;action=edit&amp;redlink=1">Lowell Mellen</a> to Japan to properly install the <a href="/wiki/Training_Within_Industry">Training Within Industry</a> (TWI) programs in 1951.  The ESS group had a training film to introduce TWI's three "J" programs: Job Instruction, Job Methods and Job Relations.  Titled "Improvement in Four Steps" (<i>Kaizen eno Yon Dankai</i>) it thus introduced kaizen to Japan.  </p>
-                    <p> For the pioneering, introduction, and implementation of kaizen in Japan, the <a href="/wiki/Emperor_of_Japan">Emperor of Japan</a> awarded the <a href="/wiki/Order_of_the_Sacred_Treasure">Order of the Sacred Treasure</a> to Dr. Deming in 1960. Subsequently, the <a href="/wiki/Japanese_Union_of_Scientists_and_Engineers">Japanese Union of Scientists and Engineers</a> (JUSE) instituted the annual <a href="/wiki/Deming_Prize">Deming Prizes</a> for achievement in quality and dependability of products.  On October 18, 1989, JUSE awarded the <a href="/wiki/Deming_Prize">Deming Prize</a> to <a href="/wiki/Florida_Power_%26_Light">Florida Power &amp;Light</a> Co. (FPL), based in the US, for its exceptional accomplishments in process and quality-control management, making it the first company outside Japan to win the Deming Prize.  <sup> <a href="#cite_note-13">[13]</a> </sup> </p>
+                    <p> The small-step work improvement approach was developed in the USA under <a href="https://en.m.wikipedia.org/wiki/Training_Within_Industry">Training Within Industry</a> program (TWI Job Methods).  <sup> <a href="#cite_note-12">[12]</a> </sup> Instead of encouraging large, radical changes to achieve desired goals, these methods recommended that organizations introduce small improvements, preferably ones that could be implemented on the same day. The major reason was that during WWII there was neither time nor resources for large and innovative changes in the production of war equipment.  <sup> <a href="#cite_note-:0-6">[6]</a> </sup> The essence of the approach came down to improving the use of the existing workforce and technologies.  </p>
+                    <p> As part of the <a href="https://en.m.wikipedia.org/wiki/Marshall_Plan#Aid_to_Asia">Marshall Plan</a> after <a href="https://en.m.wikipedia.org/wiki/World_War_II">World War II</a> ,  American occupation forces brought in experts to help with the rebuilding of Japanese industry while the Civil Communications Section (CCS) developed a management training program that taught statistical control methods as part of the overall material. <a href="https://en.m.wikipedia.org/wiki/Homer_Sarasohn">Homer Sarasohn</a> and <a href="/w/index.php?title=Charles_Protzman&amp;action=edit&amp;redlink=1">Charles Protzman</a> developed and taught this course in 1949-1950. Sarasohn recommended <a href="https://en.m.wikipedia.org/wiki/W._Edwards_Deming">W. Edwards Deming</a> for further training in statistical methods.  </p>
+                    <p> The Economic and Scientific Section (ESS) group was also tasked with improving Japanese management skills and Edgar McVoy was instrumental in bringing <a href="/w/index.php?title=Lowell_Mellen&amp;action=edit&amp;redlink=1">Lowell Mellen</a> to Japan to properly install the <a href="https://en.m.wikipedia.org/wiki/Training_Within_Industry">Training Within Industry</a> (TWI) programs in 1951.  The ESS group had a training film to introduce TWI's three "J" programs: Job Instruction, Job Methods and Job Relations.  Titled "Improvement in Four Steps" (<i>Kaizen eno Yon Dankai</i>) it thus introduced kaizen to Japan.  </p>
+                    <p> For the pioneering, introduction, and implementation of kaizen in Japan, the <a href="https://en.m.wikipedia.org/wiki/Emperor_of_Japan">Emperor of Japan</a> awarded the <a href="https://en.m.wikipedia.org/wiki/Order_of_the_Sacred_Treasure">Order of the Sacred Treasure</a> to Dr. Deming in 1960. Subsequently, the <a href="https://en.m.wikipedia.org/wiki/Japanese_Union_of_Scientists_and_Engineers">Japanese Union of Scientists and Engineers</a> (JUSE) instituted the annual <a href="https://en.m.wikipedia.org/wiki/Deming_Prize">Deming Prizes</a> for achievement in quality and dependability of products.  On October 18, 1989, JUSE awarded the <a href="https://en.m.wikipedia.org/wiki/Deming_Prize">Deming Prize</a> to <a href="https://en.m.wikipedia.org/wiki/Florida_Power_%26_Light">Florida Power &amp;Light</a> Co. (FPL), based in the US, for its exceptional accomplishments in process and quality-control management, making it the first company outside Japan to win the Deming Prize.  <sup> <a href="#cite_note-13">[13]</a> </sup> </p>
                 </div>
             </div>
             <div>
-                <h2 onclick="this.parentElement.querySelector('div').classList.toggle('hidden')">  <span>Implementation</span> </h2>
-                <div>
-                <p> The <a href="/wiki/Toyota_Production_System">Toyota Production System</a> is known for kaizen, where all line personnel are expected to stop their moving production line in case of any abnormality and, along with their supervisor, suggest an improvement to resolve the abnormality which may initiate a kaizen.  </p>
+                <h2 onclick="ToggleContent(this,'#content-3')">  
+                    <svg class="up_arrow" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" transform="translate(6.029200, 6.044700) scale(1, -1) translate(-6.029200, -6.044700)" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                    <svg class="down_arrow hidden" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                    <span>Implementation</span> 
+                </h2>
+                <div id="content-3">
+                <p> The <a href="https://en.m.wikipedia.org/wiki/Toyota_Production_System">Toyota Production System</a> is known for kaizen, where all line personnel are expected to stop their moving production line in case of any abnormality and, along with their supervisor, suggest an improvement to resolve the abnormality which may initiate a kaizen.  </p>
                 <div>
                     <div>
-                        <a href="/wiki/File:PDCA-Two-Cycles.svg">
+                        <a href="https://en.m.wikipedia.org/wiki/File:PDCA-Two-Cycles.svg">
                             <noscript>
                                 <img alt="" height="191" data-file- data-file-height="356">
                             </noscript>
@@ -80,7 +134,7 @@
                         </a>
                         <div>
                             <div>
-                                <a href="/wiki/File:PDCA-Two-Cycles.svg"></a>
+                                <a href="https://en.m.wikipedia.org/wiki/File:PDCA-Two-Cycles.svg"></a>
                             </div>
                             The PDCA cycles
                             <sup>
@@ -89,10 +143,10 @@
                         </div>
                     </div>
                 </div>
-                <p> The cycle of kaizen activity can be defined as: "Plan → Do → Check → Act".  This is also known as the <a href="/wiki/Shewhart_cycle">Shewhart cycle</a> , Deming cycle, or <a href="/wiki/PDCA">PDCA</a> .  </p>
-                <p> Another technique used in conjunction with PDCA is the <a href="/wiki/5_Whys">5 Whys</a> , which is a form of <a href="/wiki/Root_cause_analysis">root cause analysis</a> in which the user asks a series of five "why" questions about a failure that has occurred, basing each subsequent question on the answer to the previous.  <sup> <a href="#cite_note-15">[15]</a> </sup> <sup> <a href="#cite_note-16">[16]</a> </sup> There are normally a series of causes stemming from one root cause, <sup> <a href="#cite_note-17">[17]</a> </sup> and they can be visualized using <a href="/wiki/Ishikawa_diagram">fishbone diagrams</a> or tables. The Five Whys can be used as a foundational tool in personal improvement, <sup> <a href="#cite_note-18">[18]</a> </sup> or as a means to create wealth.  <sup> <a href="#cite_note-19">[19]</a> </sup> </p>
-                <p> <a href="/wiki/Masaaki_Imai">Masaaki Imai</a> made the term famous in his book <i>Kaizen: The Key to Japan's Competitive Success</i> .  <sup> <a href="#cite_note-ImaiMasaaki-1">[1]</a> </sup> </p>
-                <p> In the <i>Toyota Way Fieldbook</i> , Liker and Meier discuss the kaizen blitz and kaizen burst (or kaizen event) approaches to continuous improvement. A kaizen blitz, or rapid improvement, is a focused activity on a particular process or activity. The basic concept is to identify and quickly remove waste. Another approach is that of the kaizen burst, a specific kaizen activity on a particular process in the <a href="/wiki/Value_stream_mapping">value stream</a> .  <sup> <a href="#cite_note-20">[20]</a> </sup> Kaizen facilitators generally <sup> [ <i> <a href="/wiki/Wikipedia:Avoid_weasel_words"> <span>weasel words</span> </a> </i> ] </sup> go through training and certification before attempting a Kaizen project.  <sup> [ <i> <a href="/wiki/Wikipedia:Citation_needed"> <span>citation needed</span> </a> </i> ] </sup> </p>
+                <p> The cycle of kaizen activity can be defined as: "Plan → Do → Check → Act".  This is also known as the <a href="https://en.m.wikipedia.org/wiki/Shewhart_cycle">Shewhart cycle</a> , Deming cycle, or <a href="https://en.m.wikipedia.org/wiki/PDCA">PDCA</a> .  </p>
+                <p> Another technique used in conjunction with PDCA is the <a href="https://en.m.wikipedia.org/wiki/5_Whys">5 Whys</a> , which is a form of <a href="https://en.m.wikipedia.org/wiki/Root_cause_analysis">root cause analysis</a> in which the user asks a series of five "why" questions about a failure that has occurred, basing each subsequent question on the answer to the previous.  <sup> <a href="#cite_note-15">[15]</a> </sup> <sup> <a href="#cite_note-16">[16]</a> </sup> There are normally a series of causes stemming from one root cause, <sup> <a href="#cite_note-17">[17]</a> </sup> and they can be visualized using <a href="https://en.m.wikipedia.org/wiki/Ishikawa_diagram">fishbone diagrams</a> or tables. The Five Whys can be used as a foundational tool in personal improvement, <sup> <a href="#cite_note-18">[18]</a> </sup> or as a means to create wealth.  <sup> <a href="#cite_note-19">[19]</a> </sup> </p>
+                <p> <a href="https://en.m.wikipedia.org/wiki/Masaaki_Imai">Masaaki Imai</a> made the term famous in his book <i>Kaizen: The Key to Japan's Competitive Success</i> .  <sup> <a href="#cite_note-ImaiMasaaki-1">[1]</a> </sup> </p>
+                <p> In the <i>Toyota Way Fieldbook</i> , Liker and Meier discuss the kaizen blitz and kaizen burst (or kaizen event) approaches to continuous improvement. A kaizen blitz, or rapid improvement, is a focused activity on a particular process or activity. The basic concept is to identify and quickly remove waste. Another approach is that of the kaizen burst, a specific kaizen activity on a particular process in the <a href="https://en.m.wikipedia.org/wiki/Value_stream_mapping">value stream</a> .  <sup> <a href="#cite_note-20">[20]</a> </sup> Kaizen facilitators generally <sup> [ <i> <a href="https://en.m.wikipedia.org/wiki/Wikipedia:Avoid_weasel_words"> <span>weasel words</span> </a> </i> ] </sup> go through training and certification before attempting a Kaizen project.  <sup> [ <i> <a href="https://en.m.wikipedia.org/wiki/Wikipedia:Citation_needed"> <span>citation needed</span> </a> </i> ] </sup> </p>
                 <p>In the 1990s, Professor Iwao Kobayashi published his book 20 Keys to Workplace Improvement and created a practical, step-by-step improvement framework called "the 20 Keys". He identified 20 operations focus areas which should be improved to attain holistic and sustainable change. He went further and identified the 5 levels of implementation for each of these 20 focus areas. 4 of the focus areas are called Foundation Keys. According to the 20 Keys, these foundation keys should be launched ahead of the others in order to form a strong constitution in the company. The four foundation keys are:</p>
                 <ul>
                     <li>Key 1 - Cleaning and Organising to Make Work Easy, which is based on the 5S methodology.</li> <li>Key 2 - Goal Alignment/Rationalising the System</li>
@@ -100,63 +154,60 @@
                 </ul>
                 </div>
             </div>
-            <h2 onclick="this.parentElement.querySelector('div').classList.toggle('hidden')">
-                <div></div>
-                <span>See also</span>
+            <h2 onclick="ToggleContent(this,'#content-4')">   
+                    <svg class="up_arrow" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" transform="translate(6.029200, 6.044700) scale(1, -1) translate(-6.029200, -6.044700)" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                    <svg class="down_arrow hidden" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                    <span>See also</span>
             </h2>
-            <div>
-                <div aria->
+            <div id='content-4'>
+                <div class="two-column">
                     <ul>
-                        <li> <span> <noscript> <img height="21" data-file- data-file-height="600"> </noscript> <span data- data- data- data-height="21" data- data-></span> </span> <span> <a href="/wiki/Portal:Japan">Japan portal</a> </span> </li>
-                    </ul>
-                </div>
-                <div>
-                    <ul>
-                        <li> <a href="/wiki/5S_(methodology)">5S</a> </li>
-                        <li> <a href="/wiki/Business_process_reengineering">Business process reengineering</a> </li>
-                        <li> <a href="/wiki/Hansei">Hansei</a> </li>
-                        <li> <a href="/wiki/Kaikaku">Kaikaku</a> </li>
-                        <li> <a href="/wiki/Kanban">Kanban</a> , <a href="/wiki/Kanban_(development)">Kanban Method</a> </li>
-                        <li> <a href="/wiki/Experiential_learning">Experiential learning</a> </li>
-                        <li> <a href="/wiki/Management_fad">Management fad</a> </li>
-                        <li> <a href="/wiki/Mottainai">Mottainai</a> , a sense of regret concerning waste </li>
-                        <li> <a href="/wiki/Muda_(Japanese_term)">Muda (Japanese term)</a> </li>
-                        <li> <a href="/wiki/Overall_equipment_effectiveness">Overall equipment effectiveness</a> </li>
-                        <li> <a href="/wiki/Quality_circle">Quality circle</a> </li>
-                        <li> <a href="/wiki/Six_Sigma">Six Sigma</a> </li>
-                        <li> <a href="/wiki/Statistical_process_control">Statistical process control</a> </li>
-                        <li> <a href="/wiki/Theory_of_constraints">Theory of constraints</a> </li>
-                        <li> <a href="/wiki/Total_productive_maintenance">Total productive maintenance</a> </li>
-                        <li> <a href="/wiki/TRIZ">TRIZ</a> , the theory of inventive problem solving </li>
-                        <li> <a href="/wiki/Visual_control">Visual control</a> </li>
+                        <li> <a href="https://en.m.wikipedia.org/wiki/5S_(methodology)">5S</a> </li>
+                        <li> <a href="https://en.m.wikipedia.org/wiki/Business_process_reengineering">Business process reengineering</a> </li>
+                        <li> <a href="https://en.m.wikipedia.org/wiki/Hansei">Hansei</a> </li>
+                        <li> <a href="https://en.m.wikipedia.org/wiki/Kaikaku">Kaikaku</a> </li>
+                        <li> <a href="https://en.m.wikipedia.org/wiki/Kanban">Kanban</a> , <a href="https://en.m.wikipedia.org/wiki/Kanban_(development)">Kanban Method</a> </li>
+                        <li> <a href="https://en.m.wikipedia.org/wiki/Experiential_learning">Experiential learning</a> </li>
+                        <li> <a href="https://en.m.wikipedia.org/wiki/Management_fad">Management fad</a> </li>
+                        <li> <a href="https://en.m.wikipedia.org/wiki/Mottainai">Mottainai</a> , a sense of regret concerning waste </li>
+                        <li> <a href="https://en.m.wikipedia.org/wiki/Muda_(Japanese_term)">Muda (Japanese term)</a> </li>
+                        <li> <a href="https://en.m.wikipedia.org/wiki/Overall_equipment_effectiveness">Overall equipment effectiveness</a> </li>
+                        <li> <a href="https://en.m.wikipedia.org/wiki/Quality_circle">Quality circle</a> </li>
+                        <li> <a href="https://en.m.wikipedia.org/wiki/Six_Sigma">Six Sigma</a> </li>
+                        <li> <a href="https://en.m.wikipedia.org/wiki/Statistical_process_control">Statistical process control</a> </li>
+                        <li> <a href="https://en.m.wikipedia.org/wiki/Theory_of_constraints">Theory of constraints</a> </li>
+                        <li> <a href="https://en.m.wikipedia.org/wiki/Total_productive_maintenance">Total productive maintenance</a> </li>
+                        <li> <a href="https://en.m.wikipedia.org/wiki/TRIZ">TRIZ</a> , the theory of inventive problem solving </li>
+                        <li> <a href="https://en.m.wikipedia.org/wiki/Visual_control">Visual control</a> </li>
                     </ul>
                 </div>
             </div>
-            <h2 onclick="this.parentElement.querySelector('div').classList.toggle('hidden')">
-                <div></div>
-                <span>References</span>
+            <h2 onclick="ToggleContent(this,'#content-5')">  
+                    <svg class="up_arrow" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" transform="translate(6.029200, 6.044700) scale(1, -1) translate(-6.029200, -6.044700)" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                    <svg class="down_arrow hidden" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                    <span>References</span> 
             </h2>
-            <div>
+            <div id="content-5">
                 <h3>
                     <span>Notes</span>
                 </h3>
-                <div>
+                <div class="two-column">
                     <ol>
                         <li> <span> ^ <a href="#cite_ref-ImaiMasaaki_1-0"> <sup> <i> <b>a</b> </i> </sup> </a> <a href="#cite_ref-ImaiMasaaki_1-1"> <sup> <i> <b>b</b> </i> </sup> </a> </span> <span> <cite> Imai, Masaaki (1986). <i>Kaizen: The Key to Japan's Competitive Success</i> . New York: Random House.  </cite> <span></span> <style data-mw-> .mw-parser-output cite.citation { font-style: inherit } .mw-parser-output q { quotes: "\"""\"""'""'" } .mw-parser-output code.cs1-code { color: inherit; background: inherit; border: inherit; padding: inherit } .mw-parser-output .cs1-lock-free a { background: url("//upload.wikimedia.org/wikipedia/commons/thumb/6/65/Lock-green.svg/9px-Lock-green.svg.png")no-repeat; background-position: right .1em center } .mw-parser-output .cs1-lock-limited a,.mw-parser-output .cs1-lock-registration a { background: url("//upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Lock-gray-alt-2.svg/9px-Lock-gray-alt-2.svg.png")no-repeat; background-position: right .1em center } .mw-parser-output .cs1-lock-subscription a { background: url("//upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Lock-red-alt-2.svg/9px-Lock-red-alt-2.svg.png")no-repeat; background-position: right .1em center } .mw-parser-output .cs1-subscription,.mw-parser-output .cs1-registration { color: #555 } .mw-parser-output .cs1-subscription span,.mw-parser-output .cs1-registration span { border-bottom: 1px dotted; cursor: help } .mw-parser-output .cs1-hidden-error { display: none; font-size: 100% } .mw-parser-output .cs1-visible-error { font-size: 100% } .mw-parser-output .cs1-subscription,.mw-parser-output .cs1-registration,.mw-parser-output .cs1-format { font-size: 95% } .mw-parser-output .cs1-kern-left,.mw-parser-output .cs1-kern-wl-left { padding-left: 0.2em } .mw-parser-output .cs1-kern-right,.mw-parser-output .cs1-kern-wl-right { padding-right: 0.2em } </style> </span> </li>
                                 <li> <span> <b> <a href="#cite_ref-2">^</a> </b> </span> <span> <cite> Weed, Julie (July 10, 2010). <a href="https://www.nytimes.com/2010/07/11/business/11seattle.html">"Factory Efficiency Comes to the Hospital"</a> . <i>The New York Times</i> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
                                 <li> <span> <b> <a href="#cite_ref-3">^</a> </b> </span> <span> <cite> M. M. Feldman (1992). <a href="https://pdfs.semanticscholar.org/9898/aad5ee15e0e7716d5e83f9c3c3974eabe57d.pdf">"Audit in psychotherapy: the concept of Kaizen"</a> <span>(PDF)</span> . <i>Psychiatric Bulletin</i> . Royal College of Psychiatrists. pp. 334–336.  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
                                 <li> <span> <b> <a href="#cite_ref-4">^</a> </b> </span> <span>Europe Japan Centre, Kaizen Strategies for Improving Team Performance, Ed. Michael Colenso, London: Pearson Education Limited, 2000</span> </li>
                                 <li> <span> <b> <a href="#cite_ref-whatiskaizen_5-0">^</a> </b> </span> <span> <cite> <a href="http://www.homejapan.com/2009/03/debunked-kaizen"> "Debunked: "kaizen = Japanese philosophy of continuous improvement<span>"</span> " </a> <span> . Retrieved <span>2009-08-15</span> </span> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
-                                <li> <span> ^ <a href="#cite_ref-:0_6-0"> <sup> <i> <b>a</b> </i> </sup> </a> <a href="#cite_ref-:0_6-1"> <sup> <i> <b>b</b> </i> </sup> </a> </span> <span> <cite> Misiurek, Bartosz (2016). <i>Standardized Work with TWI: Eliminating Human Errors in Production and Service Processes</i> . New York: Productivity Press. <a href="/wiki/International_Standard_Book_Number">ISBN</a> <a href="/wiki/Special:BookSources/9781498737548">9781498737548</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
-                                <li> <span> <b> <a href="#cite_ref-7">^</a> </b> </span> <span> <cite> Tozawa, Bunji; Japan Human Relations Association (1995).  <a href="https://books.google.com/books?id=1vqyBirIQLkC&amp;pg=PA34"> <i>The improvement engine: creativity &amp;innovation through employee involvement: the Kaizen teian system</i> </a> . Productivity Press. p. 34. <a href="/wiki/International_Standard_Book_Number">ISBN</a> <a href="/wiki/Special:BookSources/978-1-56327-010-9">978-1-56327-010-9</a> <span> . Retrieved <span>6 February</span> 2010 </span> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
-                                <li> <span> <b> <a href="#cite_ref-8">^</a> </b> </span> <span> <cite> Laraia, Anthony C.; Patricia E. Moody; Robert W. Hall (1999).  <a href="https://books.google.com/books?id=mZgEBdQhjAAC"> <i>The Kaizen Blitz: accelerating breakthroughs in productivity and performance</i> </a> . John Wiley and Sons. p. 26. <a href="/wiki/International_Standard_Book_Number">ISBN</a> <a href="/wiki/Special:BookSources/978-0-471-24648-0">978-0-471-24648-0</a> <span> . Retrieved <span>6 February</span> 2010 </span> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
+                                <li> <span> ^ <a href="#cite_ref-:0_6-0"> <sup> <i> <b>a</b> </i> </sup> </a> <a href="#cite_ref-:0_6-1"> <sup> <i> <b>b</b> </i> </sup> </a> </span> <span> <cite> Misiurek, Bartosz (2016). <i>Standardized Work with TWI: Eliminating Human Errors in Production and Service Processes</i> . New York: Productivity Press. <a href="https://en.m.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a> <a href="https://en.m.wikipedia.org/wiki/Special:BookSources/9781498737548">9781498737548</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
+                                <li> <span> <b> <a href="#cite_ref-7">^</a> </b> </span> <span> <cite> Tozawa, Bunji; Japan Human Relations Association (1995).  <a href="https://books.google.com/books?id=1vqyBirIQLkC&amp;pg=PA34"> <i>The improvement engine: creativity &amp;innovation through employee involvement: the Kaizen teian system</i> </a> . Productivity Press. p. 34. <a href="https://en.m.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a> <a href="https://en.m.wikipedia.org/wiki/Special:BookSources/978-1-56327-010-9">978-1-56327-010-9</a> <span> . Retrieved <span>6 February</span> 2010 </span> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
+                                <li> <span> <b> <a href="#cite_ref-8">^</a> </b> </span> <span> <cite> Laraia, Anthony C.; Patricia E. Moody; Robert W. Hall (1999).  <a href="https://books.google.com/books?id=mZgEBdQhjAAC"> <i>The Kaizen Blitz: accelerating breakthroughs in productivity and performance</i> </a> . John Wiley and Sons. p. 26. <a href="https://en.m.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a> <a href="https://en.m.wikipedia.org/wiki/Special:BookSources/978-0-471-24648-0">978-0-471-24648-0</a> <span> . Retrieved <span>6 February</span> 2010 </span> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
                                 <li> <span> <b> <a href="#cite_ref-9">^</a> </b> </span> <span> <cite> <a href="http://www.6sigma.us/lean-six-sigma-articles/five-reasons-to-implement-kaizen-in-non-manufacturing/">"Five Reasons to Implement Kaizen in Non-Manufacturing"</a> . <i>6sigma.us</i> <span> . Retrieved <span>March 31,</span> 2015 </span> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
-                                <li> <span> <b> <a href="#cite_ref-Kaizen_Event_Fieldbook:_Foundation,_Framework,_and_Standard_Work_for_Effective_Events_10-0">^</a> </b> </span> <span> <cite> Hamel, Mark (2010).  <a href="https://books.google.com/books?id=99Flh8fqCH0C"> <i>Kaizen Event Fieldbook: Foundation, Framework, and Standard Work for Effective Events</i> </a> . Society Of Manufacturing Engineers. p. 36. <a href="/wiki/International_Standard_Book_Number">ISBN</a> <a href="/wiki/Special:BookSources/978-0-87263-863-1">978-0-87263-863-1</a> <span> . Retrieved <span>20 April</span> 2013 </span> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
-                                <li> <span> <b> <a href="#cite_ref-11">^</a> </b> </span> <span> <cite> Karen Martin; Mike Osterling (October 5, 2007). <i>The Kaizen Event Planner</i> . Productivity Press. p. 240. <a href="/wiki/International_Standard_Book_Number">ISBN</a> <a href="/wiki/Special:BookSources/1563273519">1563273519</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
-                                <li> <span> <b> <a href="#cite_ref-12">^</a> </b> </span> <span> <cite> Graupp P., Wrona B. (2015). <i>The TWI Workbook: Essential Skills for Supervisors</i> . New York: Productivity Press. <a href="/wiki/International_Standard_Book_Number">ISBN</a> <a href="/wiki/Special:BookSources/9781498703963">9781498703963</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
-                                <li> <span> <b> <a href="#cite_ref-13">^</a> </b> </span> <span> US National Archives - SCAP collection - PR News Wire <sup> [ <i> <a href="/wiki/Wikipedia:Citation_needed"> <span>citation needed</span> </a> </i> ] </sup> </span> </li>
+                                <li> <span> <b> <a href="#cite_ref-Kaizen_Event_Fieldbook:_Foundation,_Framework,_and_Standard_Work_for_Effective_Events_10-0">^</a> </b> </span> <span> <cite> Hamel, Mark (2010).  <a href="https://books.google.com/books?id=99Flh8fqCH0C"> <i>Kaizen Event Fieldbook: Foundation, Framework, and Standard Work for Effective Events</i> </a> . Society Of Manufacturing Engineers. p. 36. <a href="https://en.m.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a> <a href="https://en.m.wikipedia.org/wiki/Special:BookSources/978-0-87263-863-1">978-0-87263-863-1</a> <span> . Retrieved <span>20 April</span> 2013 </span> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
+                                <li> <span> <b> <a href="#cite_ref-11">^</a> </b> </span> <span> <cite> Karen Martin; Mike Osterling (October 5, 2007). <i>The Kaizen Event Planner</i> . Productivity Press. p. 240. <a href="https://en.m.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a> <a href="https://en.m.wikipedia.org/wiki/Special:BookSources/1563273519">1563273519</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
+                                <li> <span> <b> <a href="#cite_ref-12">^</a> </b> </span> <span> <cite> Graupp P., Wrona B. (2015). <i>The TWI Workbook: Essential Skills for Supervisors</i> . New York: Productivity Press. <a href="https://en.m.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a> <a href="https://en.m.wikipedia.org/wiki/Special:BookSources/9781498703963">9781498703963</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
+                                <li> <span> <b> <a href="#cite_ref-13">^</a> </b> </span> <span> US National Archives - SCAP collection - PR News Wire <sup> [ <i> <a href="https://en.m.wikipedia.org/wiki/Wikipedia:Citation_needed"> <span>citation needed</span> </a> </i> ] </sup> </span> </li>
                                 <li> <span> <b> <a href="#cite_ref-14">^</a> </b> </span> <span> <cite> <a href="http://blog.bulsuk.com/2009/02/taking-first-step-with-pdca.html">"Taking the First Step with PDCA"</a> . 2 February 2009 <span> . Retrieved <span>17 March</span> 2011 </span> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
-                                <li> <span> <b> <a href="#cite_ref-15">^</a> </b> </span> <span> <a href="/wiki/5_Whys">5 Whys</a> </span> </li>
+                                <li> <span> <b> <a href="#cite_ref-15">^</a> </b> </span> <span> <a href="https://en.m.wikipedia.org/wiki/5_Whys">5 Whys</a> </span> </li>
                                 <li> <span> <b> <a href="#cite_ref-16">^</a> </b> </span> <span> <cite> <a href="http://www.isixsigma.com/tools-templates/cause-effect/determine-root-cause-5-whys/">"Determine the Root Cause:5 Whys"</a> <span> . Retrieved <span>24 October</span> 2013 </span> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
                                 <li> <span> <b> <a href="#cite_ref-17">^</a> </b> </span> <span> <cite> <a href="http://blog.bulsuk.com/2009/03/5-why-finding-root-causes.html">"An Introduction to 5-Why"</a> . 2 April 2009 <span> . Retrieved <span>1 February</span> 2011 </span> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
                                 <li> <span> <b> <a href="#cite_ref-18">^</a> </b> </span> <span> <cite> <a href="http://blog.getswip.com/the-5-whys-and-5-hows-when-clarity-is-just-two-questions-away/">"The 5 Whys and 5 Hows – When Clarity Is Just Two Questions Away"</a> <span> . Retrieved <span>13 February</span> 2017 </span> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </span> </li>
@@ -168,26 +219,24 @@
                     <span>Further reading</span>
                 </h3>
                 <ul>
-                    <li> <cite> Dinero, Donald (2005). <i>Training Within Industry: The Foundation of</i> . Productivity Press. <a href="/wiki/International_Standard_Book_Number">ISBN</a> <a href="/wiki/Special:BookSources/1-56327-307-1">1-56327-307-1</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
-                    <li> <cite> Graban, Mark; Joe, Swartz (2012). <i>Healthcare Kaizen: Engaging Front-Line Staff in Sustainable Continuous Improvements</i> (1 ed.). Productivity Press. <a href="/wiki/International_Standard_Book_Number">ISBN</a> <a href="/wiki/Special:BookSources/1439872961">1439872961</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
-                    <li> <cite> Maurer, Robert (2012). <i>The Spirit of Kaizen: Creating Lasting Excellence One Small Step at a Time</i> (1 ed.). McGraw-Hill. <a href="/wiki/International_Standard_Book_Number">ISBN</a> <a href="/wiki/Special:BookSources/978-0071796170">978-0071796170</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
-                    <li> <cite> Emiliani, Bob; Stec, David; Grasso, Lawrence; Stodder, James (2007). <i>Better Thinking, Better Results: Case Study and Analysis of an Enterprise-Wide Lean Transformation</i> (2e. ed.). Kensington, CT, US: The CLBM, LLC. <a href="/wiki/International_Standard_Book_Number">ISBN</a> <a href="/wiki/Special:BookSources/978-0-9722591-2-5">978-0-9722591-2-5</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
-                    <li> <cite> Hanebuth, D. (2002). <i>Rethinking Kaizen: An empirical approach to the employee perspective. In J. Felfe (Ed.), Organizational Development and Leadership (Vol. 11, pp. 59-85)</i> . Frankfurt a. M.: Peter Lang. <a href="/wiki/International_Standard_Book_Number">ISBN</a> <a href="/wiki/Special:BookSources/978-3-631-38624-8">978-3-631-38624-8</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
-                    <li> <cite> <a href="/wiki/Masaaki_Imai">Imai, Masaaki</a> (1986). <i>Kaizen: The Key to Japan's Competitive Success</i> . McGraw-Hill/Irwin. <a href="/wiki/International_Standard_Book_Number">ISBN</a> <a href="/wiki/Special:BookSources/0-07-554332-X">0-07-554332-X</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
-                    <li> <cite> <a href="/wiki/Masaaki_Imai">Imai, Masaaki</a> (1997-03-01). <i>Gemba Kaizen: A Commonsense, Low-Cost Approach to Management</i> (1e. ed.). McGraw-Hill. <a href="/wiki/International_Standard_Book_Number">ISBN</a> <a href="/wiki/Special:BookSources/0-07-031446-2">0-07-031446-2</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
-                    <li> <cite> Scotchmer, Andrew (2008). <i>5S Kaizen in 90 Minutes</i> . Management Books 2000 Ltd. <a href="/wiki/International_Standard_Book_Number">ISBN</a> <a href="/wiki/Special:BookSources/978-1-85252-547-7">978-1-85252-547-7</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
-                    <li> <cite> Bodek, Norman (2010). <i>How to do Kaizen: A new path to innovation - Empowering everyone to be a problem solver</i> . Vancouver, WA, US: PCS Press. <a href="/wiki/International_Standard_Book_Number">ISBN</a> <a href="/wiki/Special:BookSources/978-0-9712436-7-5">978-0-9712436-7-5</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
-                    <li> <cite> Kobayashi, Iwao (1995). <i>20 Keys to Workplace Improvement</i> . Portland, OR, USA: Productivity, Inc. <a href="/wiki/International_Standard_Book_Number">ISBN</a> <a href="/wiki/Special:BookSources/1-56327-109-5">1-56327-109-5</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
+                    <li> <cite> Dinero, Donald (2005). <i>Training Within Industry: The Foundation of</i> . Productivity Press. <a href="https://en.m.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a> <a href="https://en.m.wikipedia.org/wiki/Special:BookSources/1-56327-307-1">1-56327-307-1</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
+                    <li> <cite> Graban, Mark; Joe, Swartz (2012). <i>Healthcare Kaizen: Engaging Front-Line Staff in Sustainable Continuous Improvements</i> (1 ed.). Productivity Press. <a href="https://en.m.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a> <a href="https://en.m.wikipedia.org/wiki/Special:BookSources/1439872961">1439872961</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
+                    <li> <cite> Maurer, Robert (2012). <i>The Spirit of Kaizen: Creating Lasting Excellence One Small Step at a Time</i> (1 ed.). McGraw-Hill. <a href="https://en.m.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a> <a href="https://en.m.wikipedia.org/wiki/Special:BookSources/978-0071796170">978-0071796170</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
+                    <li> <cite> Emiliani, Bob; Stec, David; Grasso, Lawrence; Stodder, James (2007). <i>Better Thinking, Better Results: Case Study and Analysis of an Enterprise-Wide Lean Transformation</i> (2e. ed.). Kensington, CT, US: The CLBM, LLC. <a href="https://en.m.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a> <a href="https://en.m.wikipedia.org/wiki/Special:BookSources/978-0-9722591-2-5">978-0-9722591-2-5</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
+                    <li> <cite> Hanebuth, D. (2002). <i>Rethinking Kaizen: An empirical approach to the employee perspective. In J. Felfe (Ed.), Organizational Development and Leadership (Vol. 11, pp. 59-85)</i> . Frankfurt a. M.: Peter Lang. <a href="https://en.m.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a> <a href="https://en.m.wikipedia.org/wiki/Special:BookSources/978-3-631-38624-8">978-3-631-38624-8</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
+                    <li> <cite> <a href="https://en.m.wikipedia.org/wiki/Masaaki_Imai">Imai, Masaaki</a> (1986). <i>Kaizen: The Key to Japan's Competitive Success</i> . McGraw-Hill/Irwin. <a href="https://en.m.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a> <a href="https://en.m.wikipedia.org/wiki/Special:BookSources/0-07-554332-X">0-07-554332-X</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
+                    <li> <cite> <a href="https://en.m.wikipedia.org/wiki/Masaaki_Imai">Imai, Masaaki</a> (1997-03-01). <i>Gemba Kaizen: A Commonsense, Low-Cost Approach to Management</i> (1e. ed.). McGraw-Hill. <a href="https://en.m.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a> <a href="https://en.m.wikipedia.org/wiki/Special:BookSources/0-07-031446-2">0-07-031446-2</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
+                    <li> <cite> Scotchmer, Andrew (2008). <i>5S Kaizen in 90 Minutes</i> . Management Books 2000 Ltd. <a href="https://en.m.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a> <a href="https://en.m.wikipedia.org/wiki/Special:BookSources/978-1-85252-547-7">978-1-85252-547-7</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
+                    <li> <cite> Bodek, Norman (2010). <i>How to do Kaizen: A new path to innovation - Empowering everyone to be a problem solver</i> . Vancouver, WA, US: PCS Press. <a href="https://en.m.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a> <a href="https://en.m.wikipedia.org/wiki/Special:BookSources/978-0-9712436-7-5">978-0-9712436-7-5</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
+                    <li> <cite> Kobayashi, Iwao (1995). <i>20 Keys to Workplace Improvement</i> . Portland, OR, USA: Productivity, Inc. <a href="https://en.m.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a> <a href="https://en.m.wikipedia.org/wiki/Special:BookSources/1-56327-109-5">1-56327-109-5</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
                 </ul>
             </div>
-            <h2 onclick="this.parentElement.querySelector('div').classList.toggle('hidden')">
-                <div></div>
-                <span>External links</span>
-                <span>
-                    <a href="/w/index.php?title=Kaizen&amp;action=edit&amp;section=8" data->Edit</a>
-                </span>
+            <h2 onclick="ToggleContent(this,'#content-6')">  
+                    <svg class="up_arrow" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" transform="translate(6.029200, 6.044700) scale(1, -1) translate(-6.029200, -6.044700)" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                    <svg class="down_arrow hidden" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                    <span>External links</span>  
             </h2>
-            <div>
+            <div id="content-6">
                 <table>
                     <tbody>
                         <tr>
@@ -211,11 +260,6 @@
                     <li> <a href="https://web.archive.org/web/20131029204446/http://www.kaizen.com/about-us/definition-of-kaizen.html">Definition of Kaizen</a> , Masaaki Imai </li>
                     <li> <a href="http://www.multinationalmonitor.org/hyper/issues/1990/01/slaughter.html">Management by Stress</a> , Jane Slaughter </li>
                 </ul>
-            </div>
-            <div>
-                Retrieved from "<a href="https://en.wikipedia.org/w/index.php?title=Kaizen&amp;oldid=858446203">https://en.wikipedia.org/w/index.php?title=Kaizen &amp;oldid=858446203</a>
-                "
-
             </div>
         </div>
 </html>

@@ -3,44 +3,47 @@
   src: url(../fonts/Karla.ttf);
 }
 
-body {
-    background  : white;
+div#content {
     font-family : "Lato";
     font-size   : 20px;
     line-height : 1.5;
     max-width   : 40em;
-    margin: 1em;
+    margin: 1em auto;
+    padding: 0 1em;
 }
 blockquote {
     line-height   : 1.4;
 }
-a:link, a:visited {
-    color           : inherit;
+a, a:visited {
+    color: #36c;
     text-decoration : none;
 }
 a:hover {
     border-bottom       : solid medium ;
     border-bottom-color : inherit;
+    transition: 0.1s;
 }
+
 
 body.dark
 {
     background-color : #444;
     color            : #e6e6e6;
 }
+body.dark a
+{
+    color: lightsalmon;
+}
 img.preview {
-    width: 40%;
-    outline-style: solid;
-    outline-width: thin;
+    border-style: solid;
+    border-width: thin;
     cursor: pointer;
     margin-top: 1em;
     margin-right: 1em;
 }
-
 .imgcontainer {
     text-align: center;
 }
-
 
 h1 {
     font-size: 1.5em;
