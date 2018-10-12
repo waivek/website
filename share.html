@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+        <title>Kaizen - Wikipedia</title>
+        <link rel="stylesheet" href="css/wikipedia.css" type="text/css">
+        <link rel="icon" href="favicon/wikipedia.ico"  >
+    <script>
+
+        function ToggleContent(parent,id)
+        {
+            content_div = document.querySelector(id);
+            content_div.classList.toggle("hidden");
+            up_arrow = parent.querySelector(".up_arrow").classList.toggle("hidden");
+            down_arrow = parent.querySelector(".down_arrow").classList.toggle("hidden");
+        }
+        function DrawCanvas(text) {
+
+           
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+            ctx.fillStyle="white";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle="black";
+            ctx.font = "30px Arial";
+
+            var padding = 60;
+            var x = padding;
+            var maxWidth = canvas.width - padding * 2;
+            var y = padding * 1.5;
+            var maxHeight = canvas.height - padding * 2;
+            var lineHeight = 1.65 * parseInt(ctx.font);
+            var text = global_selection;
+            wrapText(ctx, text, x, y, maxWidth, maxHeight, lineHeight);
+
+            ctx.fillStyle="#aaa";
+            ctx.fillText("waivek.github.io/website", 280, canvas.height - padding/2);
+
+        }
+        function Image() {
+            var img=canvas.toDataURL("image/png");
+            document.querySelector("#preview").src = img;
+        }
+        function ToggleDark(ele) {
+            document.body.classList.toggle("dark");
+            if (document.body.classList.contains("dark")) {
+                ele.innerText = "light";
+            } else {
+                ele.innerText = "dark";
+            }
+        }  
+        var global_selection = "";
+        function MouseUp()
+        {
+            var selection = window.getSelection().toString();
+            if (selection === "") {
+                document.querySelector("#share").classList.add("hide_visibility");
+            } else {
+                global_selection = selection;
+                document.querySelector("#share").classList.remove("hide_visibility");
+            }
+        }
+        function Share()
+        {
+
+
+            DrawCanvas(global_selection)
+            Image();
+        }
+      function wrapText(context, text, x, y, maxWidth, maxHeight, lineHeight) {
+          var words = text.split(' ');
+          var line = '';
+
+          for(var n = 0; n < words.length; n++) {
+              var testLine = line + words[n] + ' ';
+              var metrics = context.measureText(testLine);
+              var testWidth = metrics.width;
+              if (y > maxHeight) {
+                  break;
+              }
+              if (testWidth > maxWidth && n > 0) {
+                  console.log("y = " + y);
+                  context.fillText(line, x, y);
+                  line = words[n] + ' ';
+                  y += lineHeight;
+              }
+              else {
+                  line = testLine;
+              }
+          }
+
+          if (y < maxHeight) {
+              context.fillText(line, x, y);
+          }
+      }
+      
+    </script>
+    <style>
+    .hide_visibility {
+        visibility: hidden;
+    }
+    #share {
+        cursor: pointer;
+    }
+    #preview {
+        border: dotted 2px black;
+    }
+    canvas {
+        display: none;
+    }
+    </style>
+
+    </head>
+    <body>
+        <div onmouseup="MouseUp()" id="content">
+            <div id="menubar">
+                <a id="share" class="hide_visibility" onclick="Share()">share</a>
+                <a href="about.html">about</a>  
+                <a href="work.html">work</a> 
+                <a  href="blog.html">blog</a>
+                <a onclick="ToggleDark(this)" id="theme">dark</a>
+            </div>
+            <h1> <i>Kaizen</i> </h1>
+            <p> <i> <b>Kaizen</b> </i> <span> (<span>改善</span>) </span> is the <a href="https://en.m.wikipedia.org/wiki/Japanese_language">Japanese</a> word for "improvement". In business, kaizen refers to activities that <a href="https://en.m.wikipedia.org/wiki/Continual_improvement_process">continuously improve</a> all functions and involve all employees from the <a href="https://en.m.wikipedia.org/wiki/CEO">CEO</a> to the <a href="https://en.m.wikipedia.org/wiki/Assembly_line">assembly line</a> workers. It also applies to processes, such as purchasing and <a href="https://en.m.wikipedia.org/wiki/Logistics">logistics</a> , that cross organizational boundaries into the <a href="https://en.m.wikipedia.org/wiki/Supply_chain">supply chain</a> .  <sup> <a href="#cite_note-ImaiMasaaki-1">[1]</a> </sup> It has been applied in healthcare, <sup> <a href="#cite_note-2">[2]</a> </sup> <a href="https://en.m.wikipedia.org/wiki/Psychotherapy">psychotherapy</a> , <sup> <a href="#cite_note-3">[3]</a> </sup> <a href="https://en.m.wikipedia.org/wiki/Life-coaching">life-coaching</a> , government, and banking.  </p>
+            <p> By improving standardized programmes and processes, kaizen aims to eliminate waste (see <a href="https://en.m.wikipedia.org/wiki/Lean_manufacturing">lean manufacturing</a>). Kaizen was first practiced in <a href="https://en.m.wikipedia.org/wiki/Economy_of_Japan">Japanese businesses</a> after <a href="https://en.m.wikipedia.org/wiki/World_War_II">World War II</a> , influenced in part by American business and quality-management teachers, and most notably as part of <a href="https://en.m.wikipedia.org/wiki/The_Toyota_Way">The Toyota Way</a> . It has since spread throughout the world and has been applied to environments outside business and productivity.  <sup> <a href="#cite_note-4">[4]</a> </sup> </p>
+
+            <div id="canvas_image">
+                <canvas id="canvas" width="640" height="640" style="border:1px solid #000000;">
+                
+                </canvas>
+                <img width="320" height="320" id="preview" />
+            </div>
+
+      
+        </div>
+
+</html>
