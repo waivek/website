@@ -17,40 +17,6 @@
             down_arrow = parent.querySelector(".down_arrow").classList.toggle("hidden");
         }
     </script>
-<style>
-#menubar {
-    padding: 0.5em 0;
-    font-family: "Arial";
-    position: sticky;
-    top: 0em;
-    text-align: center;
-    background-color: white;
-}
-#menubar a {
-    color: #ccc;
-    margin-right: 1em;
-}
-
-body.dark, body.dark #menubar
-{
-    background-color : #444;
-    color            : #e6e6e6;
-}
-body.dark .up_arrow, body.dark .down_arrow {
-    stroke: #e6e6e6;
-    fill: #e6e6e6;
-}
-body.dark a
-{
-    color: lightsalmon;
-}
-body {
-    margin-top: 0;
-}
-#theme {
-    cursor: pointer;
-}
-</style>
     <script>
         function ToggleDark(ele) {
             document.body.classList.toggle("dark");
@@ -61,6 +27,16 @@ body {
             }
         }
     </script>
+    <style>
+    h2:target {
+        position: relative;
+        z-index: 1;
+        background-color: white;
+    }
+    body.dark h2:target {
+        background-color: #444;
+    }
+    </style>
     </head>
     <body>
         <div id="content">
@@ -79,11 +55,21 @@ body {
             <p> <i> <b>Kaizen</b> </i> <span> (<span>改善</span>) </span> is the <a href="https://en.m.wikipedia.org/wiki/Japanese_language">Japanese</a> word for "improvement". In business, kaizen refers to activities that <a href="https://en.m.wikipedia.org/wiki/Continual_improvement_process">continuously improve</a> all functions and involve all employees from the <a href="https://en.m.wikipedia.org/wiki/CEO">CEO</a> to the <a href="https://en.m.wikipedia.org/wiki/Assembly_line">assembly line</a> workers. It also applies to processes, such as purchasing and <a href="https://en.m.wikipedia.org/wiki/Logistics">logistics</a> , that cross organizational boundaries into the <a href="https://en.m.wikipedia.org/wiki/Supply_chain">supply chain</a> .  <sup> <a href="#cite_note-ImaiMasaaki-1">[1]</a> </sup> It has been applied in healthcare, <sup> <a href="#cite_note-2">[2]</a> </sup> <a href="https://en.m.wikipedia.org/wiki/Psychotherapy">psychotherapy</a> , <sup> <a href="#cite_note-3">[3]</a> </sup> <a href="https://en.m.wikipedia.org/wiki/Life-coaching">life-coaching</a> , government, and banking.  </p>
             <p> By improving standardized programmes and processes, kaizen aims to eliminate waste (see <a href="https://en.m.wikipedia.org/wiki/Lean_manufacturing">lean manufacturing</a>). Kaizen was first practiced in <a href="https://en.m.wikipedia.org/wiki/Economy_of_Japan">Japanese businesses</a> after <a href="https://en.m.wikipedia.org/wiki/World_War_II">World War II</a> , influenced in part by American business and quality-management teachers, and most notably as part of <a href="https://en.m.wikipedia.org/wiki/The_Toyota_Way">The Toyota Way</a> . It has since spread throughout the world and has been applied to environments outside business and productivity.  <sup> <a href="#cite_note-4">[4]</a> </sup> </p>
 
+            <div id="toc">
+                <ul>
+                    <li><a href="#header_overview">Overview</a></li>
+                    <li><a href="#header_history">History</a></li>
+                    <li><a href="#header_implementation">Implementation</a></li>
+                    <li><a href="#header_see_also">See also</a></li>
+                    <li><a href="#header_references">References</a></li>
+                    <li><a href="#header_external_links">External links</a></li>
+                </ul>
+            </div>
 
             <div>
-                <h2 onclick="ToggleContent(this,'#content-1')"> 
-                    <svg class="up_arrow" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" transform="translate(6.029200, 6.044700) scale(1, -1) translate(-6.029200, -6.044700)" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
-                    <svg class="down_arrow hidden" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                <h2 id="header_overview" onclick="ToggleContent(this,'#content-1')"> 
+                    <svg height="12" class="up_arrow" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" transform="translate(6.029200, 6.044700) scale(1, -1) translate(-6.029200, -6.044700)" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                    <svg height="12" class="down_arrow hidden" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
                     <span>Overview</span>  
                 </h2>
                 <div id="content-1">
@@ -101,9 +87,9 @@ body {
 
 
             <div>
-                <h2 onclick="ToggleContent(this,'#content-2')">  
-                    <svg class="up_arrow" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" transform="translate(6.029200, 6.044700) scale(1, -1) translate(-6.029200, -6.044700)" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
-                    <svg class="down_arrow hidden" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                <h2 id="header_history" onclick="ToggleContent(this,'#content-2')">  
+                    <svg height="12" class="up_arrow" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" transform="translate(6.029200, 6.044700) scale(1, -1) translate(-6.029200, -6.044700)" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                    <svg height="12" class="down_arrow hidden" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
                     <span>History</span>
                 </h2>
                 <div id="content-2">
@@ -117,9 +103,9 @@ body {
                 </div>
             </div>
             <div>
-                <h2 onclick="ToggleContent(this,'#content-3')">  
-                    <svg class="up_arrow" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" transform="translate(6.029200, 6.044700) scale(1, -1) translate(-6.029200, -6.044700)" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
-                    <svg class="down_arrow hidden" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                <h2 id="header_implementation" onclick="ToggleContent(this,'#content-3')">  
+                    <svg height="12" class="up_arrow" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" transform="translate(6.029200, 6.044700) scale(1, -1) translate(-6.029200, -6.044700)" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                    <svg height="12" class="down_arrow hidden" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
                     <span>Implementation</span> 
                 </h2>
                 <div id="content-3">
@@ -154,9 +140,9 @@ body {
                 </ul>
                 </div>
             </div>
-            <h2 onclick="ToggleContent(this,'#content-4')">   
-                    <svg class="up_arrow" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" transform="translate(6.029200, 6.044700) scale(1, -1) translate(-6.029200, -6.044700)" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
-                    <svg class="down_arrow hidden" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+            <h2 id="header_see_also" onclick="ToggleContent(this,'#content-4')">   
+                    <svg height="12" class="up_arrow" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" transform="translate(6.029200, 6.044700) scale(1, -1) translate(-6.029200, -6.044700)" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                    <svg height="12" class="down_arrow hidden" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
                     <span>See also</span>
             </h2>
             <div id='content-4'>
@@ -182,9 +168,9 @@ body {
                     </ul>
                 </div>
             </div>
-            <h2 onclick="ToggleContent(this,'#content-5')">  
-                    <svg class="up_arrow" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" transform="translate(6.029200, 6.044700) scale(1, -1) translate(-6.029200, -6.044700)" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
-                    <svg class="down_arrow hidden" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+            <h2 id="header_references" onclick="ToggleContent(this,'#content-5')">  
+                    <svg height="12" class="up_arrow" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" transform="translate(6.029200, 6.044700) scale(1, -1) translate(-6.029200, -6.044700)" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                    <svg height="12" class="down_arrow hidden" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
                     <span>References</span> 
             </h2>
             <div id="content-5">
@@ -231,9 +217,9 @@ body {
                     <li> <cite> Kobayashi, Iwao (1995). <i>20 Keys to Workplace Improvement</i> . Portland, OR, USA: Productivity, Inc. <a href="https://en.m.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a> <a href="https://en.m.wikipedia.org/wiki/Special:BookSources/1-56327-109-5">1-56327-109-5</a> .  </cite> <span></span> <link href="mw-data:TemplateStyles:r861714446"> </li>
                 </ul>
             </div>
-            <h2 onclick="ToggleContent(this,'#content-6')">  
-                    <svg class="up_arrow" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" transform="translate(6.029200, 6.044700) scale(1, -1) translate(-6.029200, -6.044700)" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
-                    <svg class="down_arrow hidden" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+            <h2 id="header_external_links" onclick="ToggleContent(this,'#content-6')">  
+                    <svg height="12" class="up_arrow" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" transform="translate(6.029200, 6.044700) scale(1, -1) translate(-6.029200, -6.044700)" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
+                    <svg height="12" class="down_arrow hidden" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g><polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3"></polygon></g></svg>
                     <span>External links</span>  
             </h2>
             <div id="content-6">
@@ -261,5 +247,6 @@ body {
                     <li> <a href="http://www.multinationalmonitor.org/hyper/issues/1990/01/slaughter.html">Management by Stress</a> , Jane Slaughter </li>
                 </ul>
             </div>
+            <a href="#top">Go to the Top of the page</a>
         </div>
 </html>
