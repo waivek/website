@@ -1,0 +1,154 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Data</title>
+<style>
+div#content {
+    max-width: 993px;
+    font-family: "Arial";
+    margin: 1em auto;
+    line-height: 1.65;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+}
+
+th, td {
+    padding: 1em;
+}
+table, th, td {
+    border-bottom: 1px solid #ccc;
+}
+tr:hover {
+    background-color: #eee;
+}
+
+
+
+.tab_list button:not(.selected):hover {
+    cursor: pointer;
+    background-color: #eee;
+    border-top-color: #eee;
+}
+.tab_list button {
+    float: left;
+    width: 33%;
+    font-weight: bold;
+    background-color: white;
+    border: none;
+    padding: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tab_list button:not(.selected) {
+    border-bottom: solid .25em black;
+    border-top: solid .25em white;
+}
+.tab_list button.selected {
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: solid .25em black;
+    border-bottom-color: white;
+}
+
+.tab_list {
+    height: 3em;
+    position: sticky;
+    top: 0;
+}
+.tab_list button:focus {
+    outline: none;
+}
+.hidden {
+    display: none;
+}
+body, div#content {
+    margin-top: 0;
+}
+
+</style>
+<script>
+    function show_page(element) {
+        var previousElement = document.querySelector(".selected");
+        document.querySelector(".selected").classList.remove("selected");
+        element.classList.add("selected");
+        var list = [...element.parentNode.children];
+        var previousIndex = list.indexOf(previousElement);
+        var index = list.indexOf(element);
+        var tabs = document.querySelectorAll("div.tab");
+        tabs[previousIndex].classList.add("hidden");
+        tabs[index].classList.remove("hidden");
+
+    }
+</script>
+    </head>
+    <body>
+        <div id="content">
+            <div class="tab_list">
+                <button onclick="show_page(this)" class="selected">Table</button>
+                <button onclick="show_page(this)">Combat</button>
+                <button onclick="show_page(this)">John Carmack</button>
+            </div>
+            <div class="tab_container">
+            <div class="tab">
+                <h1>Power Process Data</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10:55 A.M.</td>
+                            <td>12:47 P.M.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab hidden">
+                <h1>Combat</h1>
+<p>
+Combat (French for fight) is a purposeful violent conflict meant to weaken, establish dominance over, or kill the
+opposition, or to drive the opposition away from a location where it is not wanted or needed.</p>
+<p>
+Combat is typically between opposing military forces in warfare. Combat violence can be unilateral, whereas fighting
+implies at least a defensive reaction. A large-scale fight is known as a battle. A verbal fight is commonly known as an
+argument. Combat effectiveness, in the strategic field, requires combat readiness. In military areas, the term is
+applied also to personnel, that has to receive proper training and be qualified to carry out combat operations in the
+unit to which they are assigned.[1]</p>
+<p>
+Combat may take place under a specific set of rules or be unregulated. Examples of rules include the Geneva
+Conventions (covering the treatment of people in war), medieval chivalry, the Marquess of Queensberry rules (covering
+boxing) and several forms of combat sports.</p>
+<p>
+Combat in warfare involves two or more opposing military organizations, usually fighting for nations at war (although
+guerrilla warfare and suppression of insurgencies can fall outside this definition). Warfare falls under the laws of
+war, which govern its purposes and conduct, and protect the rights of combatants and non-combatants.</p>
+<p>
+Combat may be armed (using weapons) or unarmed (not using weapons). Hand-to-hand combat (melee) is combat at very
+close range, attacking the opponent with the body (striking, kicking, strangling, etc.) and/or with a melee weapon
+(knives, swords, batons, etc.), as opposed to a ranged weapon.</p>
+<p>
+Hand-to-hand combat can be further divided into three sections depending on the distance and positioning of the
+combatants:</p>
+            </div>
+            <div class="tab hidden">
+                <h1>John Carmack</h1>
+<p>John D. Carmack II[2] (born August 20, 1970) is an American computer programmer, video game developer and engineer.
+He co-founded id Software. Carmack was the lead programmer of the id video games Commander Keen, Wolfenstein 3D, Doom,
+Quake, Rage and their sequels. Carmack is best known for his innovations in 3D graphics, such as his Carmack's Reverse
+algorithm for shadow volumes. In August 2013, Carmack took the position of CTO at Oculus VR.[3]</p>
+            </div>
+        </div>
+    </body>
+</html>
+
