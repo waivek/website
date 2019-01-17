@@ -1,0 +1,186 @@
+<html>
+    <head>
+        <title>Schedule</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<style>
+div#content {
+    margin: 1em auto;
+    max-width: 40em;
+    font-size: 20px;
+    font-family: "Concourse T3";
+}
+table {
+    font-size: 20px;
+    max-width: 40em;
+}
+thead {
+    text-align: left;
+}
+th, td {
+    padding: .5em;
+}
+table{
+    border-collapse: collapse;
+}
+table tr + tr {
+    border-top: 1px solid #ccc;
+}
+table td + td {
+    border-left: 1px solid #ccc;
+}
+.type1 {
+    width: 20%;
+}
+.type2 {
+    width: 60%;
+}
+.type3 {
+    width: 10%;
+}
+.type4 {
+    width: 10%;
+}
+h1, h2 {
+    font-family: "Concourse C2";
+    padding-bottom: 0.5em;
+    border-bottom: solid 2px #eee;
+}
+a {
+    color: blue;
+    text-decoration: none;
+    padding-bottom: 2px;
+}
+a:hover {
+    background-color: #85eaff59;
+}
+</style>
+    </head>
+    <body>
+        <div id="content">
+            <h1>Schedule</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date &amp; Time</th>
+                        <th>Name</th>
+                        <th>Link</th>
+                        <th>Next Ep.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="type1">Monday 11AM</td>
+                        <td class="type2">True Detective</td>
+                        <td class="type3"><a href="https://www.magnetdl.com/t/true-detective-1080p-utr/">MagnetDL</a></td>
+                        <td class="type4"></td>
+                    </tr>
+                    <tr>
+                        <td>Monday 10PM</td>
+                        <td>Mob Psycho</td>
+                        <td><a href="https://horriblesubs.info/shows/mob-psycho-100-s2/">
+                                HorribleSubs</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday 9PM</td>
+                        <td>Yakusoku no Neverland</td>
+                        <td><a href="https://horriblesubs.info/shows/yakusoku-no-neverland/">
+                                HorribleSubs</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Friday 8PM</td>
+                        <td>Brooklyn Nine-Nine</td>
+                        <td><a href="https://www.magnetdl.com/b/brooklyn-nine-nine-x265-megusta-1080p/">MagnetDL</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Saturday 10PM</td>
+                        <td>Kaguya-sama wa Kokurasetai: Tensai-tachi no Renai Zunousen</td>
+                        <td><a href="https://horriblesubs.info/shows/kaguya-sama-wa-kokurasetai/">HorribleSubs</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Sunday 8PM</td>
+                        <td>Running Man</td>
+                        <td><a href="https://www.torrentmap.com/search.php?stx=%EB%9F%B0%EB%8B%9D%EB%A7%A8+1080p+NEXT">TorrentMap</a></td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+            </table>
+    <script>
+
+        function ampm_to_hours(x) {
+            var is_pm = x.indexOf("PM") !== -1;
+            var hours = parseInt(x);
+            if (is_pm) {
+                hours += 12;
+            }
+            return hours;
+        }
+        function getRemainingHours(releaseTime) {
+            var hours = ampm_to_hours(releaseTime);
+            var d = new Date();
+            var remainingHours = hours - d.getHours();
+            return remainingHours
+        }
+        function g(innerText) {
+            var episodeDay = innerText.split(" ")[0];
+            var remainingDays = getRemainingDays(episodeDay);
+            if (remainingDays === 1) {
+                return "1 day";
+            }
+            else if (remainingDays !== 0) {
+                return remainingDays + " days";
+            }
+            var releaseTime = innerText.split(" ")[1];
+            var remainingHours = getRemainingHours(releaseTime)
+            if (remainingHours === 1) {
+                return "1 hour";
+            } else if (remainingHours !== 0 && remainingHours > 0) {
+                return remainingHours + " hours";
+            } else if (remainingHours < 0) {
+                return "released";
+            }
+            return "<1 hour";
+        }
+        function getRemainingDays(episodeDay) {
+            var L = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
+                     "Friday", "Saturday"];
+            var d = new Date();
+            var remainingDays = L.indexOf(episodeDay)-d.getDay();
+            if (remainingDays < 0) {
+                remainingDays += 7;
+            }
+            return remainingDays;
+        }
+        function s(s) {
+            var L = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
+                     "Friday", "Saturday"];
+            var episodeDay = s.split(" ")[0];
+            var targetDay = L.indexOf(episodeDay);
+            var remainingDays = getRemainingDays(episodeDay);
+            var target = new Date();
+            target.setDate(target.getDate() + remainingDays);
+
+            var hours_str = s.split(" ")[1];
+            var hours = ampm_to_hours(hours_str);
+            target.setHours(hours);
+            target.setMinutes(0);
+            target.setSeconds(0);
+            return target;
+        }
+        var table = document.querySelector("table");
+        var input_cell_index = document.querySelector(".type1").cellIndex;
+        var output_cell_index = document.querySelector(".type4").cellIndex;
+        var rows = document.querySelector("tbody").rows;
+        for (var i = 0; i < rows.length; i++) {
+            var innerText = rows[i].cells[input_cell_index].innerText;
+            rows[i].cells[output_cell_index].innerText = g(innerText);
+        }
+    </script>
+        </div>
+    </body>
+</html>
