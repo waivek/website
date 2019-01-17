@@ -33,13 +33,13 @@ table td + td {
     width: 20%;
 }
 .type2 {
-    width: 60%;
+    width: 55%;
 }
 .type3 {
     width: 10%;
 }
 .type4 {
-    width: 10%;
+    width: 15%;
 }
 h1, h2 {
     font-family: "Concourse C2";
@@ -70,6 +70,12 @@ a:hover {
                 </thead>
                 <tbody>
                     <tr>
+                        <td class="type1">Monday 7AM</td>
+                        <td class="type2">Funhaus - Board as Hell</td>
+                        <td class="type3"><a href="https://www.youtube.com/channel/UCboMX_UNgaPBsUOIgasn3-Q/videos">YouTube</a></td>
+                        <td class="type4"></td>
+                    </tr>
+                    <tr>
                         <td class="type1">Monday 11AM</td>
                         <td class="type2">True Detective</td>
                         <td class="type3"><a href="https://www.magnetdl.com/t/true-detective-1080p-utr/">MagnetDL</a></td>
@@ -83,7 +89,7 @@ a:hover {
                         <td></td>
                     </tr>
                     <tr>
-                        <td>Wednesday 9PM</td>
+                        <td>Thursday 11PM</td>
                         <td>Yakusoku no Neverland</td>
                         <td><a href="https://horriblesubs.info/shows/yakusoku-no-neverland/">
                                 HorribleSubs</a></td>
@@ -99,6 +105,12 @@ a:hover {
                         <td>Saturday 10PM</td>
                         <td>Kaguya-sama wa Kokurasetai: Tensai-tachi no Renai Zunousen</td>
                         <td><a href="https://horriblesubs.info/shows/kaguya-sama-wa-kokurasetai/">HorribleSubs</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Saturday 9PM</td>
+                        <td>Blind Wave - Attack on Titan</td>
+                        <td><a href="https://www.youtube.com/user/Atopgun007/videos">YouTube</a></td>
                         <td></td>
                     </tr>
                     <tr>
@@ -120,32 +132,6 @@ a:hover {
             }
             return hours;
         }
-        function getRemainingHours(releaseTime) {
-            var hours = ampm_to_hours(releaseTime);
-            var d = new Date();
-            var remainingHours = hours - d.getHours();
-            return remainingHours
-        }
-        function g(innerText) {
-            var episodeDay = innerText.split(" ")[0];
-            var remainingDays = getRemainingDays(episodeDay);
-            if (remainingDays === 1) {
-                return "1 day";
-            }
-            else if (remainingDays !== 0) {
-                return remainingDays + " days";
-            }
-            var releaseTime = innerText.split(" ")[1];
-            var remainingHours = getRemainingHours(releaseTime)
-            if (remainingHours === 1) {
-                return "1 hour";
-            } else if (remainingHours !== 0 && remainingHours > 0) {
-                return remainingHours + " hours";
-            } else if (remainingHours < 0) {
-                return "released";
-            }
-            return "<1 hour";
-        }
         function getRemainingDays(episodeDay) {
             var L = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
                      "Friday", "Saturday"];
@@ -156,7 +142,43 @@ a:hover {
             }
             return remainingDays;
         }
-        function s(s) {
+
+        function formatDatestring(days, hours, minutes) {
+
+            if (minutes < 0) {
+                return "released";
+            }
+
+            var d_str = "";
+            var h_str = "";
+            var m_str = "";
+            if (days === 1) {
+                d_str = "1 day";
+            } else if (days !== 0) {
+                d_str = days + " days";
+            }
+            if (hours === 1) {
+                h_str= "1 hour";
+            } else if (hours !== 0) {
+                h_str = hours + " hours";
+            }
+            if (minutes === 1) {
+                m_str = "1 min";
+            } else {
+                m_str += minutes + " mins";
+            }
+            if (d_str !== "") {
+                return d_str;
+            }
+            if (h_str !== "") {
+                return h_str;
+            }
+            if (m_str !== "") {
+                return m_str;
+            }
+
+        }
+        function getTargetDateTime(s) {
             var L = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
                      "Friday", "Saturday"];
             var episodeDay = s.split(" ")[0];
@@ -172,13 +194,28 @@ a:hover {
             target.setSeconds(0);
             return target;
         }
+        function s(s) {
+            var target = getTargetDateTime(s);
+            var now = new Date();
+            var t_sec = (target - now)/1000;
+            var days = parseInt(t_sec / (3600 * 24));
+            t_sec = t_sec % (3600 * 24);
+            var hours = parseInt(t_sec / 3600);
+            t_sec = t_sec % 3600;
+            var minutes = parseInt(t_sec / 60);
+            var hours_since_last_release = (7*3600*24-(target-now)/1000)/3600;
+            if (hours_since_last_release < 12) {
+                return "released";
+            }
+            return formatDatestring(days, hours, minutes);
+        }
         var table = document.querySelector("table");
         var input_cell_index = document.querySelector(".type1").cellIndex;
         var output_cell_index = document.querySelector(".type4").cellIndex;
         var rows = document.querySelector("tbody").rows;
         for (var i = 0; i < rows.length; i++) {
             var innerText = rows[i].cells[input_cell_index].innerText;
-            rows[i].cells[output_cell_index].innerText = g(innerText);
+            rows[i].cells[output_cell_index].innerText = s(innerText);
         }
     </script>
         </div>
