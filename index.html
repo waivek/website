@@ -1,63 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<html>
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <title>Vivek's Website</title>
-        <link rel="stylesheet" href="css/mobile.css" type="text/css">
-        <link rel="icon" href="favicon/index.ico"  >
-<style>
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Local Layout</title>
+    <style>
 
-li.toc {
-    list-style: none;
-    margin: 0.5em 0;
-    font-style: small-caps;
-    border-radius: 8px;
+
+#content {
+    margin: 0 auto;
+    padding: 1em 1em;
+    font-family: "Arial";
+    max-width: 30em;
+    line-height: 1.65;
 }
-li.toc:hover {
-    background: #0088a01f;
-}
-li.toc > a {
+a {
+    text-decoration: none;
+    color: black;
     display: block;
-    padding: 0.3em;
+    padding: 1em;
+    transition: 0.1s;
 }
-li.toc > a:hover {
-    border-bottom: none;
+a:hover {
+    background-color: #efefef88;
+    transition: 0.1s;
 }
-@media screen and (min-width: 600px) {
-       div.toc {
-        column-count: 2;
-    }
+h2 {
+    padding-bottom: .5em;
+    border-bottom: solid 1px #ccc;
 }
-
-</style>
+    </style>
     </head>
     <body>
         <div id="content">
-        <div class="imgcontainer" >
-                <img class="preview" width=40% onclick="document.body.classList.remove('dark')" alt="Click for a light theme"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA8AAAALQAgMAAAAiGfEnAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAJUExURf///wAAAH9/f0nhj6QAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABBklEQVR42u3dUQ0AIAxDwSGSf/yrwMNCsjTcOXgG2ioAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgDxrjzqCBQsWLFjwz8EAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4QxqCxYsWLBgwW4PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJoMagsWLFiwYMFuDwAAAAAAAAAAAAAAAAAAAAAAAAAAAIBX7EsLFixYsGDBXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmgxqCxYsWLBgwW4PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJoMagsWLFiwYMFuDwAAAAAAAAAAAAAAAAAAAAAAAAAAAACAZBdqY+q6tWqFhwAAAABJRU5ErkJggg=="/>
-                <img class="preview" width=40% onclick="document.body.classList.add('dark')"  alt="Click for a dark theme"   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA8AAAALQAQMAAABluYv3AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAGUExURURERObm5mSJf2MAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAoUlEQVR42u3bsQkAIAxFwWzi/htaCDqAZQIGuVsgvP4nAgAAAAAAAAAAAAAA+hg7Zb46vBQrVgwAAAAAAAAAAAAA0JUpu2LF3hUAAAAAAAAAAAAAAIqZsitW7F0BAAAAAAAAAAAAAPiVRblixb4GAAAAAAAAAAAAAACKmbIrVuxdAQAAAAAAAAAAAACgmCm7YsXeFQAAAAAAAAAAAAAA4HYAwavJtg/9eHYAAAAASUVORK5CYII="/>
-        </div>
 
-        <h1 class="pjgm-posttitle">Vivek's Website</h1>
-		
-        <div class="toc">
-		<li class="toc"><a href="anime.html">Anime I've watched</a></li>
-		<li class="toc"><a href="config_download.html">Configuration files</a></li>
-		<li class="toc"><a href="ars_longa.html">Ars Longa, Vita Brevis</a></li>
-		<li class="toc"><a href="ars_longa_v2.html">Ars Longa, Vita Brevis Version 2</a></li>
-		<li class="toc"><a href="miyamoto.html">Shigeru Miyamoto Interview</a></li>
-		<li class="toc"><a href="websites.html">List of Websites with interesting CSS</a></li>
-		<li class="toc"><a href="bgnet.html">Beej's Guide to Network Programming</a></li>
-		<li class="toc"><a href="tooltip.html">Tooltip</a></li>
-		<li class="toc"><a href="two-columns.html">Two Column Layout</a></li>
-		<li class="toc"><a href="pink.html">Pink</a></li>
-		<li class="toc"><a href="wikipedia.html">Wikipedia style with collapsible divs, path, menubar, text dark layout</a></li>
-		<li class="toc"><a href="amateurs_vs_professionals.html">Wikipedia style with image dark layout</a></li>
-        </div>
-        </div>
 
+<h2>Blog Layout</h2>
+    <a href="ars_longa.html">ars_longa.html </a>
+    <a href="ars_longa_v2.html">ars_longa_v2.html </a>
+    <a href="asides.html">asides.html </a>
+    <a href="miyamoto.html">miyamoto.html </a>
+    <a href="pink.html">pink.html </a>
+    <a href="two-columns.html">two-columns.html </a>
+<h2>Keep Offline</h2>
+    <a href="file:///C:/Users/vivek/Desktop/Industrial%20Society/industrial_society.html">industrial_society.html </a>
+    <a href="file:///C:/Users/vivek/Desktop/The%20Elements%20of%20Style/style.html">style.html</a>
+<h2>List Layout</h2>
+    <a href="essays.html">essays.html </a>
+    <a href="index.html">index.html </a>
+    <a href="media_links.html">media_links.html </a>
+    <a href="the_expanse.html">the_expanse.html </a>
+    <a href="twice.html">twice.html </a>
+    <a href="websites.html">websites.html </a>
+<h2>Media Layout</h2>
+    <a href="anime.html">anime.html </a>
+    <a href="media.html">media.html </a>
+<h2>Third Party Content</h2>
+    <a href="bgnet.html">bgnet.html </a>
+    <a href="hackernews.html">hackernews.html </a>
+<h2>Unique</h2>
+    <a href="config_download.html">config_download.html </a>
+    <a href="schedule.html">schedule.html </a>
+<h2>Web Components</h2>
+    <a href="hovercard.html">hovercard.html </a>
+    <a href="overlay.html">overlay.html </a>
+    <a href="share.html">share.html </a>
+    <a href="tabbed_layout.html">tabbed_layout.html </a>
+    <a href="tooltip.html">tooltip.html </a>
+<h2>Wikipedia Layout</h2>
+    <a href="amateurs_vs_professionals.html">amateurs_vs_professionals.html </a>
+    <a href="wikipedia.html">wikipedia.html </a>
+    <a href="zoom.html">zoom.html </a>
+<h2>Writing</h2>
+    <a href="concepts.html">concepts.html </a>
+    <a href="learning.html">learning.html </a>
+    <a href="time.html">time.html </a>
+        </div>
     </body>
-
-
 </html>
