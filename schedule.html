@@ -6,11 +6,9 @@
 <style>
 div#content {
     margin: 1em auto;
-    max-width: 40em;
-    font-size: 20px;
     font-family: "Concourse T3";
 }
-table {
+table, div#content {
     font-size: 20px;
     max-width: 40em;
 }
@@ -29,6 +27,14 @@ table tr + tr {
 table td + td {
     border-left: 1px solid #ccc;
 }
+
+table th {
+    border-bottom: 1px solid #ccc;
+}
+table th+th {
+    border-left: 1px solid #ccc;
+}
+
 .type1 {
     width: 20%;
 }
@@ -55,73 +61,6 @@ a:hover {
     background-color: #85eaff59;
 }
 </style>
-    </head>
-    <body>
-        <div id="content">
-            <h1>Schedule</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date &amp; Time</th>
-                        <th>Name</th>
-                        <th>Link</th>
-                        <th>Next Ep.</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="type1">Monday 7AM</td>
-                        <td class="type2">Funhaus - Board as Hell</td>
-                        <td class="type3"><a href="https://www.youtube.com/channel/UCboMX_UNgaPBsUOIgasn3-Q/videos">YouTube</a></td>
-                        <td class="type4"></td>
-                    </tr>
-                    <tr>
-                        <td class="type1">Monday 11AM</td>
-                        <td class="type2">True Detective</td>
-                        <td class="type3"><a href="https://www.magnetdl.com/t/true-detective-1080p-utr/">MagnetDL</a></td>
-                        <td class="type4"></td>
-                    </tr>
-                    <tr>
-                        <td>Monday 10PM</td>
-                        <td>Mob Psycho</td>
-                        <td><a href="https://horriblesubs.info/shows/mob-psycho-100-s2/">
-                                HorribleSubs</a></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Thursday 11PM</td>
-                        <td>Yakusoku no Neverland</td>
-                        <td><a href="https://horriblesubs.info/shows/yakusoku-no-neverland/">
-                                HorribleSubs</a></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Friday 8PM</td>
-                        <td>Brooklyn Nine-Nine</td>
-                        <td><a href="https://www.magnetdl.com/b/brooklyn-nine-nine-x265-megusta-1080p/">MagnetDL</a></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Saturday 10PM</td>
-                        <td>Kaguya-sama wa Kokurasetai: Tensai-tachi no Renai Zunousen</td>
-                        <td><a href="https://horriblesubs.info/shows/kaguya-sama-wa-kokurasetai/">HorribleSubs</a></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Saturday 9PM</td>
-                        <td>Blind Wave - Attack on Titan</td>
-                        <td><a href="https://www.youtube.com/user/Atopgun007/videos">YouTube</a></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Sunday 8PM</td>
-                        <td>Running Man</td>
-                        <td><a href="https://www.torrentmap.com/search.php?stx=%EB%9F%B0%EB%8B%9D%EB%A7%A8+1080p+NEXT">TorrentMap</a></td>
-                        <td></td>
-                    </tr>
-
-                </tbody>
-            </table>
     <script>
 
         function ampm_to_hours(x) {
@@ -194,8 +133,8 @@ a:hover {
             target.setSeconds(0);
             return target;
         }
-        function s(s) {
-            var target = getTargetDateTime(s);
+        function getShortenedDatestring(innerText) {
+            var target = getTargetDateTime(innerText);
             var now = new Date();
             var t_sec = (target - now)/1000;
             var days = parseInt(t_sec / (3600 * 24));
@@ -209,15 +148,129 @@ a:hover {
             }
             return formatDatestring(days, hours, minutes);
         }
-        var table = document.querySelector("table");
-        var input_cell_index = document.querySelector(".type1").cellIndex;
-        var output_cell_index = document.querySelector(".type4").cellIndex;
-        var rows = document.querySelector("tbody").rows;
-        for (var i = 0; i < rows.length; i++) {
-            var innerText = rows[i].cells[input_cell_index].innerText;
-            rows[i].cells[output_cell_index].innerText = s(innerText);
+        function getFullDatestring(innerText) {
+            var target = getTargetDateTime(innerText);
+            var now = new Date();
+            var t_sec = (target - now)/1000;
+            var days = parseInt(t_sec / (3600 * 24));
+            t_sec = t_sec % (3600 * 24);
+            var hours = parseInt(t_sec / 3600);
+            t_sec = t_sec % 3600;
+            var minutes = parseInt(t_sec / 60);
+            var hours_since_last_release = (7*3600*24-(target-now)/1000)/3600;
+            if (hours_since_last_release < 12) {
+                return "released";
+            }
+            return days + " days, " + hours + " hours, " + minutes + " minutes";
+
         }
+        function fillTable() {
+            var table = document.querySelector("table");
+            var input_cell_index = document.querySelector(".type1").cellIndex;
+            var output_cell_index = document.querySelector(".type4").cellIndex;
+            var rows = document.querySelector("tbody").rows;
+            for (var i = 0; i < rows.length; i++) {
+                var innerText = rows[i].cells[input_cell_index].innerText;
+                rows[i].cells[output_cell_index].innerText = getShortenedDatestring(innerText);
+                rows[i].cells[output_cell_index]["title"] = getFullDatestring(innerText);
+            }
+        }
+        function updateLiveTimeSpan() {
+            var L = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
+                     "Friday", "Saturday"];
+            var now = new Date();
+            var day_str = L[now.getDay()];
+            var ampm_str = now.getHours() > 12 ? "PM" : "AM";
+            var minutes = now.getMinutes().toString().padStart(2, "0");
+            var seconds = now.getSeconds().toString().padStart(2, "0");
+            var ret_str =  day_str + " " + (now.getHours() % 12) + ":" +
+                minutes + ":" + seconds + " " + ampm_str;
+
+            var live_time_span = document.querySelector("#live_time_span");
+            live_time_span.innerText = ret_str;
+        }
+        window.addEventListener("load", function(event){
+            updateLiveTimeSpan();
+            setInterval(updateLiveTimeSpan, 1000);
+
+            fillTable();
+
+            var now = new Date();
+            var seconds_to_next_minute = 60 - (now.getSeconds() % 60); 
+            setTimeout(function() {
+                fillTable();
+                setInterval(fillTable , 60*1000);
+            }, seconds_to_next_minute * 1000);
+        });
     </script>
+    </head>
+    <body>
+        <div id="content">
+            <h1>Schedule</h1>
+            <p><span id="live_time_span">Loading&hellip;</span></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date &amp; Time</th>
+                        <th>Name</th>
+                        <th>Link</th>
+                        <th>ETA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="type1">Monday 7AM</td>
+                        <td class="type2">Funhaus - Board as Hell</td>
+                        <td class="type3"><a href="https://www.youtube.com/channel/UCboMX_UNgaPBsUOIgasn3-Q/videos">YouTube</a></td>
+                        <td class="type4"></td>
+                    </tr>
+                    <tr>
+                        <td class="type1">Monday 10PM</td>
+                        <td class="type2">True Detective</td>
+                        <td class="type3"><a href="https://www.magnetdl.com/t/true-detective-1080p-utr/">MagnetDL</a></td>
+                        <td class="type4"></td>
+                    </tr>
+                    <tr>
+                        <td>Monday 10PM</td>
+                        <td>Mob Psycho</td>
+                        <td><a href="https://horriblesubs.info/shows/mob-psycho-100-s2/">
+                                HorribleSubs</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Thursday 11PM</td>
+                        <td>Yakusoku no Neverland</td>
+                        <td><a href="https://horriblesubs.info/shows/yakusoku-no-neverland/">
+                                HorribleSubs</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Friday 6PM</td>
+                        <td>Brooklyn Nine-Nine</td>
+                        <td><a href="https://www.magnetdl.com/b/brooklyn-nine-nine-1080p/">MagnetDL</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Friday 10PM</td>
+                        <td>Blind Wave - Attack on Titan</td>
+                        <td><a href="https://www.youtube.com/user/Atopgun007/videos">YouTube</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Saturday 10PM</td>
+                        <td>Kaguya-sama wa Kokurasetai</td>
+                        <td><a href="https://horriblesubs.info/shows/kaguya-sama-wa-kokurasetai/">HorribleSubs</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Sunday 8PM</td>
+                        <td>Running Man</td>
+                        <td><a href="https://www.torrentmap.com/search.php?stx=%EB%9F%B0%EB%8B%9D%EB%A7%A8+1080p+NEXT">TorrentMap</a></td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+            </table>
         </div>
     </body>
 </html>
