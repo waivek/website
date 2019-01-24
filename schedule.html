@@ -189,11 +189,40 @@ a:hover {
             var live_time_span = document.querySelector("#live_time_span");
             live_time_span.innerText = ret_str;
         }
+        function CreateRunningManUrl() {
+            var target = getTargetDateTime("Sunday 8PM");
+            var year = target.getFullYear() % 1000;
+            var year_str = year.toString();
+
+            var month = target.getMonth() + 1;
+            var month_str = month.toString().padStart(2, "0");
+
+            var day = target.getDate();
+            var day_str = day.toString().padStart(2, "0");
+
+            var date_str = year_str + month_str + day_str ;
+
+            var query_str = "https://www.torrentmap.com/bbs/board.php?bo_table=kr_ent&sfl=wr_subject&stx=런닝맨+" + date_str;
+
+            var table = document.querySelector("table");
+            var show_name_cell_index = document.querySelector(".type2").cellIndex;
+            var link_cell_index = document.querySelector(".type3").cellIndex;
+            var rows = document.querySelector("tbody").rows;
+            for (var i = 0; i < rows.length; i++) {
+                var show_name = rows[i].cells[show_name_cell_index].innerText;
+                if (show_name === "Running Man") {
+                    var a = rows[i].cells[link_cell_index].querySelector("a");
+                    a.href = query_str;
+                }
+            }
+
+        }
         window.addEventListener("load", function(event){
             updateLiveTimeSpan();
             setInterval(updateLiveTimeSpan, 1000);
 
             fillTable();
+            CreateRunningManUrl();
 
             var now = new Date();
             var seconds_to_next_minute = 60 - (now.getSeconds() % 60); 
@@ -201,6 +230,9 @@ a:hover {
                 fillTable();
                 setInterval(fillTable , 60*1000);
             }, seconds_to_next_minute * 1000);
+
+
+
         });
     </script>
     </head>
@@ -225,7 +257,7 @@ a:hover {
                         <td class="type4"></td>
                     </tr>
                     <tr>
-                        <td class="type1">Monday 10PM</td>
+                        <td class="type1">Tuesday 3AM</td>
                         <td class="type2">True Detective</td>
                         <td class="type3"><a href="https://www.magnetdl.com/t/true-detective-1080p-utr/">MagnetDL</a></td>
                         <td class="type4"></td>
