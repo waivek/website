@@ -52,9 +52,14 @@ a:hover {
         <div id="content">
             <h1>Theology</h1>
 <p>
-Theology is the critical study of the nature of the <a onclick="togglecard(this)" onmouseover="showcard(this)" onmouseout="hidecard(this)">divine</a>. 
+Theology is the critical study of the nature of the <a id="divinity" onclick="togglecard(this)" onmouseover="showcard(this)" onmouseout="hidecard(this)">divine</a>. 
 It is taught as an academic discipline, typically in universities and seminaries.[1]</p>
     <script>
+function helper() {
+    var el = document.querySelector("a#divinity");
+    showcard(el);
+    return document.querySelector(".divinity");
+}
 function togglecard(element) {
     var text = element.innerText;
     var card = document.querySelector(".hovercards ." + text);
@@ -73,6 +78,14 @@ function showcard(element) {
     card.style.position = "fixed";
     card.style.top = element.offsetTop + fontSize ;
     card.style.left = element.offsetLeft;
+    /* 
+    var card_is_squished_to_the_right = document.body.clientWidth - card.offsetLeft === card.offsetWidth;
+    if (card_is_squished_to_the_right) {
+        card.style.left = "";
+        card.style.right = "0px";
+    }
+     */
+
 }
 function hidecard(element) {
     var text = element.innerText;
@@ -80,52 +93,132 @@ function hidecard(element) {
     card.classList.add("hidden");
 
 }
+window.addEventListener("load", function() {
+    var el = document.querySelector("#divinity");
+    // showcard(el);
+});
     </script>
-<p>
-Theology is basically the study of deities or their scriptures[2] in order to discover what they have revealed about
-themselves. While theology has turned into a secular field, religion followers still consider theology as a discipline
-that helps them live and understand concepts such as life, love and helps them lead a life of obedience to the deities
-they follow or worship.[3]</p>
+<style>
+#top_100 { left: 100; } #top_200 { left: 200; } #top_300 { left: 300; } #top_400 { left: 400; } #top_500 { left: 500; } #top_600 { left: 600; } #top_700 { left: 700; } #top_800 { left: 800; } #top_900 { left: 900; } #top_1000 { left: 1000; } #top_1100 { left: 1100; } #top_1200 { left: 1200; } #top_1300 { left: 1300; } #top_1400 { left: 1400; } #top_1500 { left: 1500; } #top_1600 { left: 1600; }
+#left_100 { top: 100; } #left_200 { top: 200; } #left_300 { top: 300; } #left_400 { top: 400; } #left_500 { top: 500; } #left_600 { top: 600; } #left_700 { top: 700; } #left_800 { top: 800; } #left_900 { top: 900; } #left_1000 { top: 1000; } #left_1100 { top: 1100; } #left_1200 { top: 1200; } #left_1300 { top: 1300; } #left_1400 { top: 1400; } #left_1500 { top: 1500; } #left_1600 { top: 1600; }
 
-<p>
-The history of the study of theology in institutions of higher education is as old as the history of such institutions
-themselves. For instance, Taxila was an early centre of Vedic learning, possible from the 6th century BC or earlier;[37]
-the Platonic Academy founded in Athens in the 4th century BC seems to have included theological themes in its subject
-matter;[38] the Chinese Taixue delivered Confucian teaching from the 2nd century BC;[39] the School of Nisibis was a
-centre of Christian learning from the 4th century AD;[40][41] Nalanda in India was a site of Buddhist higher learning
-from at least the 5th or 6th century AD;[42] and the Moroccan University of Al-Karaouine was a centre of Islamic
-learning from the 10th century,[43] as was Al-Azhar University in Cairo.[44]</p>
+div#solid_div_top {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    font-family: monospace;
+    border-bottom: solid 1px ;
+    padding-bottom: .25em;
+    color: #ccc;
+}
+div#solid_div_left {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    font-family: monospace;
+    color: #ccc;
+}
 
-<p>
-The earliest universities were developed under the aegis of the Latin Church by papal bull as studia generalia and
-perhaps from cathedral schools. It is possible, however, that the development of cathedral schools into universities was
-quite rare, with the University of Paris being an exception.[45] Later they were also founded by Kings (University of
-Naples Federico II, Charles University in Prague, Jagiellonian University in Kraków) or municipal administrations
-(University of Cologne, University of Erfurt). In the early medieval period, most new universities were founded from
-pre-existing schools, usually when these schools were deemed to have become primarily sites of higher education. Many
-historians state that universities and cathedral schools were a continuation of the interest in learning promoted by
-monasteries.[46] Christian theological learning was therefore a component in these institutions, as was the study of
-Church or Canon law: universities played an important role in training people for ecclesiastical offices, in helping the
-church pursue the clarification and defence of its teaching, and in supporting the legal rights of the church over
-against secular rulers.[47] At such universities, theological study was initially closely tied to the life of faith and
-of the church: it fed, and was fed by, practices of preaching, prayer and celebration of the Mass.[48]</p>
+div#solid_div_top *, div#solid_div_left * {
+    position: fixed;
+}
+</style>
+<div id="solid_div_top">
+    <span id="top_100">100</span>
+    <span id="top_200">200</span>
+    <span id="top_300">300</span>
+    <span id="top_400">400</span>
+    <span id="top_500">500</span>
+    <span id="top_600">600</span>
+    <span id="top_700">700</span>
+    <span id="top_800">800</span>
+    <span id="top_900">900</span>
+    <span id="top_1000">1000</span>
+    <span id="top_1100">1100</span>
+    <span id="top_1200">1200</span>
+    <span id="top_1300">1300</span>
+    <span id="top_1400">1400</span>
+    <span id="top_1500">1500</span>
+    <span id="top_1600">1600</span>
+</div>
+<div id="solid_div_left">
+    <span id="left_100">100</span>
+    <span id="left_200">200</span>
+    <span id="left_300">300</span>
+    <span id="left_400">400</span>
+    <span id="left_500">500</span>
+    <span id="left_600">600</span>
+    <span id="left_700">700</span>
+    <span id="left_800">800</span>
+    <span id="left_900">900</span>
+    <span id="left_1000">1000</span>
+    <span id="left_1100">1100</span>
+    <span id="left_1200">1200</span>
+    <span id="left_1300">1300</span>
+    <span id="left_1400">1400</span>
+    <span id="left_1500">1500</span>
+    <span id="left_1600">1600</span>
+</div>
+<p> Theology is basically the study of deities or their scriptures[2] in order to
+discover what they have revealed about themselves. While theology has turned into a
+secular field, religion followers still consider theology as a discipline that helps
+them live and understand concepts such as life, love and helps them lead a life of
+obedience to the deities they follow or worship.[3]</p>
 
-<p>
-During the High Middle Ages, theology was therefore the ultimate subject at universities, being named "The Queen of the
-Sciences" and serving as the capstone to the Trivium and Quadrivium that young men were expected to study. This meant
-that the other subjects (including Philosophy) existed primarily to help with theological thought.[49]</p>
+<p> The history of the study of theology in institutions of higher education is as
+old as the history of such institutions themselves. For instance, Taxila was an
+early centre of Vedic learning, possible from the 6th century BC or earlier;[37] the
+Platonic Academy founded in Athens in the 4th century BC seems to have included
+theological themes in its subject matter;[38] the Chinese Taixue delivered Confucian
+teaching from the 2nd century BC;[39] the School of Nisibis was a centre of
+Christian learning from the 4th century AD;[40][41] Nalanda in India was a site of
+Buddhist higher learning from at least the 5th or 6th century AD;[42] and the
+Moroccan University of Al-Karaouine was a centre of Islamic learning from the 10th
+century,[43] as was Al-Azhar University in Cairo.[44]</p>
 
-<p>
-Christian theology's preeminent place in the university began to be challenged during the European Enlightenment,
-especially in Germany.[50] Other subjects gained in independence and prestige, and questions were raised about the place
-of a discipline that seemed to involve commitment to the authority of particular religious traditions in institutions
-that were increasingly understood to be devoted to independent reason.[51]</p>
+<p> The earliest universities were developed under the aegis of the Latin Church by
+papal bull as studia generalia and perhaps from cathedral schools. It is possible,
+however, that the development of cathedral schools into universities was quite rare,
+with the University of Paris being an exception.[45] Later they were also founded by
+Kings (University of Naples Federico II, Charles University in Prague, Jagiellonian
+University in Kraków) or municipal administrations (University of Cologne,
+University of Erfurt). In the early medieval period, most new universities were
+founded from pre-existing schools, usually when these schools were deemed to have
+become primarily sites of higher education. Many historians state that universities
+and cathedral schools were a continuation of the interest in learning promoted by
+monasteries.[46] Christian theological learning was therefore a component in these
+institutions, as was the study of Church or Canon law: universities played an
+important role in training people for ecclesiastical offices, in helping the church
+pursue the clarification and defence of its teaching, and in supporting the legal
+rights of the church over against secular rulers.[47] At such universities,
+theological study was initially closely tied to the life of faith and of the church:
+it fed, and was fed by, practices of preaching, prayer and celebration of the
+Mass.[48]</p>
 
-<p>
-Since the early nineteenth century, various different approaches have emerged in the West to theology as an academic
-discipline. Much of the debate concerning theology's place in the university or within a general higher education
-curriculum centres on whether theology's methods are appropriately theoretical and (broadly speaking) scientific or, on
-the other hand, whether theology requires a pre-commitment of faith by its practitioners, and whether such a commitment
+<p> During the High Middle Ages, theology was therefore the ultimate subject at
+universities, being named "The Queen of the Sciences" and serving as the capstone to
+the Trivium and Quadrivium that young men were expected to study. This meant that
+the other subjects (including Philosophy) existed primarily to help with theological
+thought.[49]</p>
+
+<p> Christian theology's preeminent place in the university began to be challenged
+during the European Enlightenment, especially in Germany.[50] Other subjects gained
+in independence and prestige, and questions were raised about the place of a
+discipline that seemed to involve commitment to the authority of particular
+religious traditions in institutions that were increasingly understood to be devoted
+to independent reason.[51]</p>
+
+<p> Since the early nineteenth century, various different approaches have emerged in
+the West to theology as an academic discipline. Much of the debate concerning
+theology's place in the university or within a general higher education curriculum
+centres on whether theology's methods are appropriately theoretical and (broadly
+speaking) scientific or, on the other hand, whether theology requires a
+pre-commitment of faith by its practitioners, and whether such a commitment
 conflicts with academic freedom.[52]</p>
 
             <div class="hovercards">
