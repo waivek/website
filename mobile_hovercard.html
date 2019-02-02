@@ -36,7 +36,8 @@ a:hover {
     background-color: white;
     box-shadow: 0 0 40px;
     padding: 0 1em;
-    width: auto;
+    width: -moz-available;          
+    width: -webkit-fill-available; 
 }
 .hidden {
     transform: translateY(110%);
@@ -44,6 +45,13 @@ a:hover {
 .hovercard {
     transition: transform 0.3s ease-out;
     -webkit-transform 0.3s ease-out;
+}
+
+.notransition {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
 }
 .right {
     position: relative;
@@ -59,11 +67,104 @@ a:hover {
     border-radius: 8px;
 }
 
+button {
+    background-color: #cd7c7c;
+    color: white;
+    text-shadow: 0 0 black;
+    border: none;
+    padding: 1em;
+    font-family: "Concourse C4";
+    font-size: inherit;
+    text-transform: uppercase;
+    box-shadow: 0px 0px 6px 0px black;
+}
+button:active {
+    background-color: lightblue;
+}
+.span_hidden {
+    visibility: hidden;
+    opacity: 0;
+}
 </style>
     </head>
     <body>
         <div id="content">
+            <div>
+                <button onclick="toggle_hovercards(this)">
+                    Hovercards: ON
+                </button>
+            </div>
     <script>
+        function toggle_hovercards(button) {
+            if (button.innerText.indexOf("OFF") === -1) {
+                button.innerText = button.innerText.replace("ON", "OFF");
+
+                var hovercards = document.querySelectorAll(".hovercard");
+                for (var i = 0; i < hovercards.length; i++) {
+                    hovercards[i].classList.remove("hovercard");
+                    hovercards[i].classList.remove("hidden");
+                    hovercards[i].querySelector("span.right").classList.add("span_hidden");
+                }
+            } else {
+                button.innerText = button.innerText.replace("OFF", "ON");
+
+                var selector = 'a[href^="#"]';
+                var anchor_links = document.querySelectorAll(selector);
+                for (var i = 0; i < anchor_links.length; i++) {
+                    var card_id = anchor_links[i].getAttribute("href");
+                    var footnote = document.querySelector(card_id);
+                    footnote.classList.add("hovercard");
+                    footnote.classList.add("hidden");
+                    footnote.classList.add("notransition"); 
+                    footnote.querySelector("span.right.span_hidden").classList.remove("span_hidden");
+                }
+                setTimeout(function() {
+                    var notransition_elements = document.querySelectorAll(".notransition");
+                    for (var i =0 ; i < notransition_elements.length; i++) {
+                        notransition_elements[i].classList.remove("notransition");
+                    }
+                }, 10);
+
+            }
+
+        }
+        window.addEventListener("load", function () {
+            var selector = 'a[href^="#"]';
+            var anchor_links = document.querySelectorAll(selector);
+            var span_node = document.createElement("span");
+            span_node.classList.add("right");
+            span_node.innerText = "X";
+            for (var i = 0; i < anchor_links.length; i++) {
+                var card_id = anchor_links[i].getAttribute("href");
+                var footnote = document.querySelector(card_id);
+                footnote.classList.add("hovercard");
+                footnote.classList.add("hidden");
+                footnote.classList.add("notransition");
+
+                var span_clone = span_node.cloneNode(1);
+                (function (footnote) {
+
+                    span_clone.addEventListener("click", function () {
+                        footnote.classList.add("hidden");
+                    });
+
+                })(footnote);
+                footnote.querySelector("h3").appendChild(span_clone);
+
+                (function (a, card_id) {
+                    a.addEventListener("click", function () {
+                        toggle_hovercard(card_id);
+                    });
+                })(anchor_links[i], card_id);
+
+            }
+            setTimeout(function() {
+                var notransition_elements = document.querySelectorAll(".notransition");
+                for (var i =0 ; i < notransition_elements.length; i++) {
+                    notransition_elements[i].classList.remove("notransition");
+                }
+            }, 10);
+        });
         function toggle_hovercard(identifier) {
             var visible_card = document.querySelector(".hovercard:not(.hidden)");
             var clicked_card = document.querySelector(identifier);
@@ -78,18 +179,15 @@ a:hover {
             }
 
         }
-        function close_card(inner_span) {
-            inner_span.parentNode.parentNode.classList.add("hidden");
-        }
     </script>
 
             <h1>Theology - Mobile</h1>
 <p>
 Theology is the critical study of the nature of the 
-<a onclick="toggle_hovercard('#h_divinity')">divine</a>. 
+<a href="#h_divinity">divine</a>. 
 It is taught as an academic discipline, typically in universities and seminaries.[1]</p>
 <p> Theology is basically the study of deities or their 
-<a onclick="toggle_hovercard('#h_scripture')">scriptures</a>
+<a href="#h_scripture">scriptures</a>
 in order to discover what they have revealed about themselves. While theology
 has turned into a secular field, religion followers still consider theology as
 a discipline that helps them live and understand concepts such as life, love
@@ -146,15 +244,15 @@ centres on whether theology's methods are appropriately theoretical and (broadly
 speaking) scientific or, on the other hand, whether theology requires a
 pre-commitment of faith by its practitioners, and whether such a commitment
 conflicts with academic freedom.[52]</p>
-    <div id="h_divinity" class="hovercard hidden">
-        <h3>Divinity<span onclick="close_card(this)" class="right">x</span></h3>
+    <div id="h_divinity">
+        <h3>Divinity</h3>
             <p>In religion, divinity or godhead is the state of things that are
             believed to come from a supernatural power or deity, such as a god,
             supreme being, creator deity, or spirits, and are therefore
             regarded as sacred and holy.</p>
     </div>
-   <div id="h_scripture" class="hovercard hidden">
-        <h3>Religious Texts<span onclick="close_card(this)" class="right">x</span></h3>
+   <div id="h_scripture">
+        <h3>Religious Texts</h3>
         <p>Religious texts are texts which religious traditions consider to be
         central to their practice or beliefs.</p>
     </div>

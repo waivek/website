@@ -47,36 +47,112 @@ a:hover {
 
     transition:visibility 0.15s linear,opacity 0.15s linear;
 }
-a[href^="#"] {
+button {
+    background-color: #cd7c7c;
+    color: white;
+    text-shadow: 0 0 black;
+    border: none;
+    padding: 1em;
+    font-family: "Concourse C4";
+    font-size: inherit;
+    text-transform: uppercase;
+    box-shadow: 0px 0px 6px 0px black;
+}
+button:active {
     background-color: lightblue;
+}
+.notransition {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
 }
 </style>
     </head>
     <body>
         <div id="content">
+            <div>
+                <button onclick="toggle_hovercards(this)">
+                    Hovercards: ON
+                </button>
+            </div>
     <script>
-window.addEventListener("load", function () {
-    var selector = 'a[href^="#"]';
-    var anchor_links = document.querySelectorAll(selector);
-    for (var i = 0; i < anchor_links.length; i++) {
-        var card_id = anchor_links[i].getAttribute("href");
-        anchor_links[i].removeAttribute("href");
-        var footnote = document.querySelector(card_id);
-        footnote.classList.add("hovercard");
-        footnote.classList.add("hidden");
 
-        (function (a, card_id) {
-            a.addEventListener("mouseover", function () {
-                showcard(card_id, a);
-            });
-            a.addEventListener("mouseout", function () {
-                hidecard(card_id);
-            });
-        })(anchor_links[i], card_id);
+        function hide_hovercards_without_transition () {
+            var hovercards = document.querySelectorAll(".hovercard");
+            for (var i = 0; i < hovercards.length; i++) {
+                hovercards[i].classList.add("hidden");
+                hovercards[i].classList.add("notransition");
+            }
+            setTimeout(function() {
+                var notransition_elements = document.querySelectorAll(".notransition");
+                for (var i =0 ; i < notransition_elements.length; i++) {
+                    notransition_elements[i].classList.remove("notransition");
+                }
+            }, 10);
+        }
+        function toggle_hovercards(button) {
+            var selector = 'a[href^="#"]';
+            var anchor_links = document.querySelectorAll(selector);
+            var hovercards = [];
+            for (var i = 0; i < anchor_links.length; i++) {
+                hovercards[i] = document.querySelector(anchor_links[i].getAttribute("href"));
+            }
+            var footnotes = hovercards;
 
+            if (button.innerText.indexOf("OFF") === -1) {
+                button.innerText = button.innerText.replace("ON", "OFF");
 
-    }
-});
+                for (var i = 0; i < hovercards.length; i++) {
+                    hovercards[i].classList.remove("hovercard");
+                    hovercards[i].classList.remove("hidden");
+                    var f1 = global_mouseover_event_listeners[i];
+                    var f2 = global_mouseout_event_listeners[i];
+                    anchor_links[i].removeEventListener("mouseover", f1);
+                    anchor_links[i].removeEventListener("mouseout", f2);
+                }
+            } else {
+                button.innerText = button.innerText.replace("OFF", "ON");
+
+                for (var i = 0; i < footnotes.length; i++) {
+                    footnotes[i].classList.add("hovercard");
+                    var f1 = global_mouseover_event_listeners[i];
+                    var f2 = global_mouseout_event_listeners[i];
+                    anchor_links[i].addEventListener("mouseover", f1);
+                    anchor_links[i].addEventListener("mouseout", f2);
+                }
+                hide_hovercards_without_transition();
+
+            }
+        }
+
+        var global_mouseover_event_listeners;
+        var global_mouseout_event_listeners;
+        window.addEventListener("load", function () {
+            var selector = 'a[href^="#"]';
+            var anchor_links = document.querySelectorAll(selector);
+            var mouseover_event_listeners = [];
+            var mouseout_event_listeners = [];
+
+            for (var i = 0; i < anchor_links.length; i++) {
+                var card_id = anchor_links[i].getAttribute("href");
+                var footnote = document.querySelector(card_id);
+                footnote.classList.add("hovercard");
+                footnote.classList.add("hidden");
+
+                (function f3(a, card_id) {
+                    function f1 () { showcard(card_id, a) };
+                    function f2 () { hidecard(card_id) };
+                    a.addEventListener("mouseover", f1);
+                    a.addEventListener("mouseout", f2);
+                    mouseover_event_listeners[i] = f1;
+                    mouseout_event_listeners[i] = f2;
+                })(anchor_links[i], card_id);
+            }
+            global_mouseover_event_listeners = mouseover_event_listeners;
+            global_mouseout_event_listeners = mouseout_event_listeners;
+
+        });
 function showcard(identifier, element) {
     var card = document.querySelector(identifier);
     card.classList.remove("hidden");
