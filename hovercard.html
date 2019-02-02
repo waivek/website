@@ -58,24 +58,28 @@ a[href^="#"] {
 window.addEventListener("load", function () {
     var selector = 'a[href^="#"]';
     var anchor_links = document.querySelectorAll(selector);
-    var card_identifier;
     for (var i = 0; i < anchor_links.length; i++) {
+        var card_id = anchor_links[i].getAttribute("href");
+        anchor_links[i].removeAttribute("href");
+        var footnote = document.querySelector(card_id);
+        footnote.classList.add("hovercard");
+        footnote.classList.add("hidden");
 
-        (function (anchor_element) {
-            var card_identifier = anchor_element.getAttribute("href");
-            anchor_element.addEventListener("mouseover", function () {
-                showcard(card_identifier, anchor_element);
+        (function (a, card_id) {
+            a.addEventListener("mouseover", function () {
+                showcard(card_id, a);
             });
-            anchor_element.addEventListener("mouseout", function() {
-                hidecard(card_identifier);
+            a.addEventListener("mouseout", function () {
+                hidecard(card_id);
             });
-        })(anchor_links[i])
+        })(anchor_links[i], card_id);
+
+
     }
 });
 function showcard(identifier, element) {
     var card = document.querySelector(identifier);
     card.classList.remove("hidden");
-    card.classList.add("hovercard");
 
     var fontSize = parseInt(window.getComputedStyle(element).getPropertyValue("font-size"));
     card.style.top = element.offsetTop + fontSize ;
@@ -163,14 +167,14 @@ speaking) scientific or, on the other hand, whether theology requires a
 pre-commitment of faith by its practitioners, and whether such a commitment
 conflicts with academic freedom.[52]</p>
 
-    <div id="h_divinity" class="hovercard hidden">
+    <div id="h_divinity" >
         <h3>Divinity</h3>
             <p>In religion, divinity or godhead is the state of things that are
             believed to come from a supernatural power or deity, such as a god,
             supreme being, creator deity, or spirits, and are therefore
             regarded as sacred and holy.</p>
     </div>
-    <div id="h_scripture" class="hovercard hidden">
+    <div id="h_scripture" >
         <h3>Religious Texts</h3>
         <p>Religious texts are texts which religious traditions consider to be
         central to their practice or beliefs.</p>
