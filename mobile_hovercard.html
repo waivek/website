@@ -1,0 +1,167 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<style>
+h1, h2, h3 {
+    font-family: "Concourse C2";
+    text-transform: uppercase;
+}
+body {
+    font-family: "Equity Text A";
+    line-height: 1.3;
+}
+div#content {
+    margin: 1em auto;
+    max-width: 40em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+@media screen and (min-width: 720px) {
+    #content {
+        font-size: 150%;
+    }
+}
+a {
+    text-decoration: none;
+    color: #36c;
+}
+a:hover {
+    cursor: pointer;
+}
+.hovercard {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    box-shadow: 0 0 40px;
+    padding: 0 1em;
+    width: auto;
+}
+.hidden {
+    transform: translateY(110%);
+}
+.hovercard {
+    transition: transform 0.3s ease-out;
+    -webkit-transform 0.3s ease-out;
+}
+.right {
+    position: relative;
+    right: auto;
+    float: right;
+    color: #ccc;
+    padding: 6px;
+}
+.right:hover {
+    cursor: pointer;
+    background: #df8787;
+    color: white;
+    border-radius: 8px;
+}
+
+</style>
+    </head>
+    <body>
+        <div id="content">
+    <script>
+        function toggle_hovercard(identifier) {
+            var visible_card = document.querySelector(".hovercard:not(.hidden)");
+            var clicked_card = document.querySelector(identifier);
+
+            if (visible_card === null) {
+                clicked_card.classList.remove("hidden");
+            } else if (clicked_card === visible_card) {
+                clicked_card.classList.add("hidden");
+            } else if (clicked_card !== visible_card) {
+                visible_card.classList.add("hidden");
+                clicked_card.classList.remove("hidden");
+            }
+
+        }
+        function close_card(inner_span) {
+            inner_span.parentNode.parentNode.classList.add("hidden");
+        }
+    </script>
+
+            <h1>Theology - Mobile</h1>
+<p>
+Theology is the critical study of the nature of the 
+<a onclick="toggle_hovercard('#h_divinity')">divine</a>. 
+It is taught as an academic discipline, typically in universities and seminaries.[1]</p>
+<p> Theology is basically the study of deities or their 
+<a onclick="toggle_hovercard('#h_scripture')">scriptures</a>
+in order to discover what they have revealed about themselves. While theology
+has turned into a secular field, religion followers still consider theology as
+a discipline that helps them live and understand concepts such as life, love
+and helps them lead a life of obedience to the deities they follow or
+worship.[3]</p>
+
+<p> The history of the study of theology in institutions of higher education is as
+old as the history of such institutions themselves. For instance, Taxila was an
+early centre of Vedic learning, possible from the 6th century BC or earlier;[37] the
+Platonic Academy founded in Athens in the 4th century BC seems to have included
+theological themes in its subject matter;[38] the Chinese Taixue delivered Confucian
+teaching from the 2nd century BC;[39] the School of Nisibis was a centre of
+Christian learning from the 4th century AD;[40][41] Nalanda in India was a site of
+Buddhist higher learning from at least the 5th or 6th century AD;[42] and the
+Moroccan University of Al-Karaouine was a centre of Islamic learning from the 10th
+century,[43] as was Al-Azhar University in Cairo.[44]</p>
+
+<p> The earliest universities were developed under the aegis of the Latin Church by
+papal bull as studia generalia and perhaps from cathedral schools. It is possible,
+however, that the development of cathedral schools into universities was quite rare,
+with the University of Paris being an exception.[45] Later they were also founded by
+Kings (University of Naples Federico II, Charles University in Prague, Jagiellonian
+University in Kraków) or municipal administrations (University of Cologne,
+University of Erfurt). In the early medieval period, most new universities were
+founded from pre-existing schools, usually when these schools were deemed to have
+become primarily sites of higher education. Many historians state that universities
+and cathedral schools were a continuation of the interest in learning promoted by
+monasteries.[46] Christian theological learning was therefore a component in these
+institutions, as was the study of Church or Canon law: universities played an
+important role in training people for ecclesiastical offices, in helping the church
+pursue the clarification and defence of its teaching, and in supporting the legal
+rights of the church over against secular rulers.[47] At such universities,
+theological study was initially closely tied to the life of faith and of the church:
+it fed, and was fed by, practices of preaching, prayer and celebration of the
+Mass.[48]</p>
+
+<p> During the High Middle Ages, theology was therefore the ultimate subject at
+universities, being named "The Queen of the Sciences" and serving as the capstone to
+the Trivium and Quadrivium that young men were expected to study. This meant that
+the other subjects (including Philosophy) existed primarily to help with theological
+thought.[49]</p>
+
+<p> Christian theology's preeminent place in the university began to be challenged
+during the European Enlightenment, especially in Germany.[50] Other subjects gained
+in independence and prestige, and questions were raised about the place of a
+discipline that seemed to involve commitment to the authority of particular
+religious traditions in institutions that were increasingly understood to be devoted
+to independent reason.[51]</p>
+
+<p> Since the early nineteenth century, various different approaches have emerged in
+the West to theology as an academic discipline. Much of the debate concerning
+theology's place in the university or within a general higher education curriculum
+centres on whether theology's methods are appropriately theoretical and (broadly
+speaking) scientific or, on the other hand, whether theology requires a
+pre-commitment of faith by its practitioners, and whether such a commitment
+conflicts with academic freedom.[52]</p>
+    <div id="h_divinity" class="hovercard hidden">
+        <h3>Divinity<span onclick="close_card(this)" class="right">x</span></h3>
+            <p>In religion, divinity or godhead is the state of things that are
+            believed to come from a supernatural power or deity, such as a god,
+            supreme being, creator deity, or spirits, and are therefore
+            regarded as sacred and holy.</p>
+    </div>
+   <div id="h_scripture" class="hovercard hidden">
+        <h3>Religious Texts<span onclick="close_card(this)" class="right">x</span></h3>
+        <p>Religious texts are texts which religious traditions consider to be
+        central to their practice or beliefs.</p>
+    </div>
+
+
+        </div>
+    </body>
+</html>
+
+
