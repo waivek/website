@@ -2,6 +2,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Hovercard - Desktop</title>
 <style>
 h1, h2, h3 {
     font-family: "Concourse C2";
@@ -15,10 +16,6 @@ div#content {
     padding-left: 1em;
     padding-right: 1em;
 }
-@media screen and (min-width: 720px) {
-    #content {
-    }
-}
 a {
     text-decoration: none;
     color: #36c;
@@ -27,92 +24,89 @@ a:hover {
     cursor: pointer;
 }
 
-.hovercards div {
+.hovercard {
     max-width: 20em;
     border: solid 1px;
     box-shadow: 2px 2px;
     padding: .5em 2em;
     background-color: white;
     font-size: 80%;
+    position: fixed;
 }
 @media screen and (min-width: 720px) {
-    .hovercards div {
+    .hovercard {
         text-align: center;
     }
 }
 
 .hidden {
+    visibility: hidden;
     opacity: 0;
 }
-.hidden {
-    transition: opacity 0.3s;
+.hidden, .hovercard {
+
+    transition:visibility 0.15s linear,opacity 0.15s linear;
 }
-.hovercards div {
-    transition: opacity 0.3s;
+a[href^="#"] {
+    background-color: lightblue;
 }
 </style>
     </head>
     <body>
         <div id="content">
-            <h1>Theology</h1>
-<p>
-Theology is the critical study of the nature of the <a id="divinity" onclick="togglecard(this)" onmouseover="showcard(this)" onmouseout="hidecard(this)">divine</a>. 
-It is taught as an academic discipline, typically in universities and seminaries.[1]</p>
     <script>
-function helper() {
-    var el = document.querySelector("a#divinity");
-    showcard(el);
-    return document.querySelector(".divinity");
-}
-function togglecard(element) {
-    var text = element.innerText;
-    var card = document.querySelector(".hovercards ." + text);
-    if (card.classList.contains("hidden")) {
-        showcard(element);
-    } else {
-        hidecard(element);
-    }
-}
-function showcard(element) {
-    var text = element.innerText;
-    var card = document.querySelector(".hovercards ." + text);
-    var fontSize = parseInt(window.getComputedStyle(element).getPropertyValue("font-size"));
-    var lineHeight = parseInt(window.getComputedStyle(element).getPropertyValue("line-height"));
-    card.classList.remove("hidden");
-    card.style.position = "fixed";
-    card.style.top = element.offsetTop + fontSize ;
-    var mid_point = document.body.offsetWidth / 2;
+window.addEventListener("load", function () {
+    var selector = 'a[href^="#"]';
+    var anchor_links = document.querySelectorAll(selector);
+    var card_identifier;
+    for (var i = 0; i < anchor_links.length; i++) {
 
+        (function (anchor_element) {
+            var card_identifier = anchor_element.getAttribute("href");
+            anchor_element.addEventListener("mouseover", function () {
+                showcard(card_identifier, anchor_element);
+            });
+            anchor_element.addEventListener("mouseout", function() {
+                hidecard(card_identifier);
+            });
+        })(anchor_links[i])
+    }
+});
+function showcard(identifier, element) {
+    var card = document.querySelector(identifier);
+    card.classList.remove("hidden");
+    card.classList.add("hovercard");
+
+    var fontSize = parseInt(window.getComputedStyle(element).getPropertyValue("font-size"));
+    card.style.top = element.offsetTop + fontSize ;
+
+    var mid_point = document.body.offsetWidth / 2;
+    card.style.right = "";
+    card.style.left = "";
     if (mid_point >= element.offsetLeft) {
-        if (card.style.right !== "") {
-            card.style.right = "";
-        }
         card.style.left = element.offsetLeft;
-        console.log("if");
     } else {
-        if (card.style.left !== "") {
-            card.style.left = "";
-        }
         var left_offset = element.offsetLeft + element.offsetWidth;
         var right_offset = document.body.offsetWidth - left_offset;
-        card.style.right = right_offset + "px";
+        card.style.right = right_offset;
     }
-
-
-
 }
-function hidecard(element) {
-    var text = element.innerText;
-    var card = document.querySelector(".hovercards ." + text);
+function hidecard(identifier) {
+    var card = document.querySelector(identifier);
     card.classList.add("hidden");
-
 }
-window.addEventListener("load", function() {
-    var el = document.querySelector("#divinity");
-    // showcard(el);
-});
     </script>
-<p> Theology is basically the study of deities or their scriptures[2] in order to
+
+            <h1>Theology - Desktop</h1>
+<p>
+Theology is the critical study of the nature of the 
+<!--a onmouseover = "showcard('#h_divinity',this)"
+   onmouseout  = "hidecard('#h_divinity') ">divine</a-->
+<a href="#h_divinity">divine</a>.
+It is taught as an academic discipline, typically in universities and seminaries.[1]</p>
+<p> Theology is basically the study of deities or their 
+<a href="#h_scripture">scriptures</a>
+in order to
 discover what they have revealed about themselves. While theology has turned into a
 secular field, religion followers still consider theology as a discipline that helps
 them live and understand concepts such as life, love and helps them lead a life of
@@ -169,14 +163,18 @@ speaking) scientific or, on the other hand, whether theology requires a
 pre-commitment of faith by its practitioners, and whether such a commitment
 conflicts with academic freedom.[52]</p>
 
-            <div class="hovercards">
-                <div class="divinity divine hidden">
-                    <h3>Divinity</h3>
-                        <p>In religion, divinity or godhead is the state of things that are believed to come from a
-                        supernatural power or deity, such as a god, supreme being, creator deity, or spirits, and are
-                        therefore regarded as sacred and holy.</p>
-                </div>
-            </div>
+    <div id="h_divinity" class="hovercard hidden">
+        <h3>Divinity</h3>
+            <p>In religion, divinity or godhead is the state of things that are
+            believed to come from a supernatural power or deity, such as a god,
+            supreme being, creator deity, or spirits, and are therefore
+            regarded as sacred and holy.</p>
+    </div>
+    <div id="h_scripture" class="hovercard hidden">
+        <h3>Religious Texts</h3>
+        <p>Religious texts are texts which religious traditions consider to be
+        central to their practice or beliefs.</p>
+    </div>
 
         </div>
     </body>
