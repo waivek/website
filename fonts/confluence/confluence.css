@@ -1,37 +1,37 @@
 /* Concourse Font */
 @font-face {
     font-family: "Confluence C2";
-    src: url("confluence_c2_regular.woff") format("woff2");
+    src: url("confluence_c2_regular.woff") format("woff");
     font-weight: normal;
 }
 @font-face {
     font-family: "Confluence C2";
-    src: url("confluence_c2_bold.woff") format("woff2");
+    src: url("confluence_c2_bold.woff") format("woff");
     font-weight: bold;
 }
 @font-face {
     font-family: "Confluence T3";
-    src: url("confluence_t3_bold.woff") format("woff2");
+    src: url("confluence_t3_bold.woff") format("woff");
     font-weight: bold;
 }
 
 @font-face {
     font-family: "Confluence T3";
-    src: url("confluence_t3_bold_italic.woff") format("woff2");
+    src: url("confluence_t3_bold_italic.woff") format("woff");
     font-weight: bold;
     font-style: italic;
 }
 
 @font-face {
     font-family: "Confluence T3";
-    src: url("confluence_t3_italic.woff") format("woff2");
+    src: url("confluence_t3_italic.woff") format("woff");
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
     font-family: "Confluence T3";
-    src: url("confluence_t3_regular.woff") format("woff2");
+    src: url("confluence_t3_regular.woff") format("woff");
     font-weight: normal;
 }
 
