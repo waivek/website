@@ -4,37 +4,80 @@
     
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Local Layout</title>
-    <style>
+<style>
+    body {
+        background-color: bisque;
+    }
+    #content {
+        margin: auto;
+        padding: 1em;
+        max-width: 30em;
+    }
+    a {
+        text-decoration: none;
+        color: black;
+        display: block;
+        padding: 1em;
+        transition: 0.1s;
+        font-family: "Concourse T4";
+    }
+    a {
+        border: solid 1px;
+        box-shadow: 2px 2px;
+        margin: 4px;
+        padding: .5em;
+        text-transform: lowercase;
+        display: inline-block;
+    }
+    a:hover {
+        background-color: lightsalmon;
+        transition: 0.1s;
+    }
+    h2 {
+        font-family: "Concourse C4";
+        text-transform: uppercase;
+        padding: 1em;
+        border: 1px solid black;
+        box-shadow: 2px 2px;
+        background-color: lightsalmon;
+    }
+    #toc {
+        text-align: center;
+    }
+    #toc a {
+        background-color: brown;
+        color: white;
+        border:none;
+        box-shadow: none;
+    }
+</style>
+<script>
+function generateTableOfContents() {
+    var L = document.querySelectorAll("h2");
+    for (var i=0; i < L.length; i++) {
+        var id_str = "header_" + i;
+        L[i]["id"] = id_str;
+    }
 
+    var toc_div = document.createElement("div");
+    toc_div["id"] = "toc";
+    var parent_div = document.querySelector("body");
+    var first_child = parent_div.firstElementChild;
+    parent_div.insertBefore(toc_div, first_child);
+    for (var i=0; i < L.length; i++) {
+        var href = "#" + L[i]["id"];
+        var a = document.createElement("a");
+        a["href"] = href;
+        a.innerText = L[i].innerText;
+        toc_div.appendChild(a);
+    }
 
-#content {
-    margin: 0 auto;
-    padding: 1em 1em;
-    font-family: "Arial";
-    max-width: 30em;
-    line-height: 1.65;
 }
-a {
-    text-decoration: none;
-    color: black;
-    display: block;
-    padding: 1em;
-    transition: 0.1s;
-}
-a:hover {
-    background-color: #efefef88;
-    transition: 0.1s;
-}
-h2 {
-    padding-bottom: .5em;
-    border-bottom: solid 1px #ccc;
-}
-    </style>
+window.addEventListener("load", generateTableOfContents);
+</script>
     </head>
     <body>
         <div id="content">
-
-
 <h2>Blog Layout</h2>
     <a href="ars_longa.html">ars_longa.html </a>
     <a href="ars_longa_v2.html">ars_longa_v2.html </a>
