@@ -1,0 +1,258 @@
+
+<html>
+    <head>
+        <title>Draggable</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="fonts/confluence/confluence.css">
+<style>
+    body {
+        font-family: "Equity Text A";
+        line-height: 1.35;
+        font-size: 20px;
+    }
+    #content {
+        max-width: 40em;
+        margin: 1em auto;
+    }
+    .draggable {
+        border-bottom: dotted 1px black;
+        cursor: col-resize;
+    }
+    .no_user_select {
+        user-select: none;
+    }
+    .col_resize_cursor {
+        cursor: col-resize;
+    }
+    table {
+        margin: auto;
+        border-collapse: collapse;
+        width: 60%;
+    }
+    td,th {
+        
+        padding: 1em;
+        text-align: center;
+    }
+    td {
+        border-top: solid ;
+    }
+    td + td, th + th {
+        border-left: solid ;
+    }
+    td, th, th+th, td+td {
+        border-color: #ccc;
+        border-width: 1px;
+    }
+
+    .affected {
+        border-bottom: solid;
+    }
+
+</style>
+    <script>
+
+
+    window.addEventListener("load", function() {
+
+
+        var spans = document.querySelectorAll(".draggable");
+        var clicked_span;
+        var original_value;
+        var original_mouse_x;
+        
+        for (var i = 0; i < spans.length; i++) {
+            (function (target_span) {
+                target_span.addEventListener("mousedown", function (event) {
+                    original_value = parseInt(target_span.innerText);
+                    original_mouse_x = event.clientX;
+                    target_span.classList.add("no_user_select");
+                    document.body.classList.add("col_resize_cursor");
+                    
+                    
+                    clicked_span = target_span;
+                });
+                target_span.addEventListener("mouseover", function (event) {
+                    highlight_affected_nodes("#" + target_span.getAttribute("id"));
+                });
+                target_span.addEventListener("mouseout", function (event) {
+                    if (!clicked_span){
+                        unhighlight_affected_nodes("#" + target_span.getAttribute("id"));
+                    }
+                    
+                });
+            })(spans[i]);
+        }
+
+        window.addEventListener("mousemove", function (event) {
+            if (clicked_span) {
+                var delta = event.clientX - original_mouse_x;
+                clicked_span.innerText = original_value + parseInt(delta/10);
+
+                var id_string = "#" +  clicked_span.getAttribute("id");
+                update(id_string);
+
+
+            }
+            
+        });
+        window.addEventListener("mouseup", function () {
+            if (clicked_span) {
+                clicked_span.classList.remove("no_user_select");
+                document.body.classList.remove("col_resize_cursor");
+                unhighlight_affected_nodes("#" + clicked_span.getAttribute("id"));
+                clicked_span = false;
+            }
+        });
+
+        initialize();
+    });
+
+
+    
+   
+
+    function update_equation (equation) {
+        var selectors = equation.match(/#[a-zA-Z_][a-zA-Z0-9_]*/g);
+        var list_of_ids = selectors.slice(1);
+        for (var i = 0; i < list_of_ids.length; i++) {
+            var id = list_of_ids[i];
+            var node = document.querySelector(id);
+            var value = parseInt(node.innerText);
+            equation = equation.replace(id, value.toString());
+        }
+        var equal_index = equation.indexOf("=");
+        var rhs_equation = equation.slice(equal_index+1);
+        
+        var lhs_node = document.querySelector(selectors[0]);
+        lhs_node.innerText = eval(rhs_equation);        
+    }
+    
+
+    function update(id_string) {
+        var equations = id_dict[id_string];
+        for (var i = 0; i < equations.length; i++) {
+            update_equation(equations[i]);
+        }
+    }
+
+    function initialize() {
+        for (var i = 0; i < equation_list.length; i++) {
+            var equation = equation_list[i];
+            update_equation(equation);
+        }
+    }
+
+    function pre_compute() {
+
+        // extract all identifiers from equation_list in L
+        var L = [];
+        for (var i = 0; i < equation_list.length; i++) {
+            var equation = equation_list[i];                
+            var selectors = equation.match(/#[a-zA-Z_][a-zA-Z0-9_]*/g);
+            L = L.concat(selectors);
+        }
+
+        // remove duplicate identifiers from L and put the result in keys
+        L.sort();
+        var keys = [];
+        keys[0] = L[0];
+        for (var i = 1; i < L.length; i++) {
+            if (L[i-1] === L[i]) {
+                continue;
+            }
+            keys.push(L[i]);
+        }
+
+        // give each identifier a list of equations it appears in 
+        var D = {};
+        for (var i = 0; i < keys.length; i++) {
+            var key = keys[i];
+            D[key] = [];
+            for (var j = 0; j < equation_list.length; j++) {
+                var equation = equation_list[j];
+                if (equation.indexOf(key) !== -1) {
+                    D[key].push(equation);
+                }
+            }
+        }
+        return D;
+    }
+
+
+    equation_list = ["#d3=#d1+2*#d2", "#d4=2*#d1+2*#d2", "#d5=3*#d2"];
+    var id_dict = pre_compute();
+
+    
+    var input_ids = [];
+    var list_of_lists = [];
+    window.addEventListener("load", function () {
+        var input_nodes = document.querySelectorAll(".draggable");
+        for (var i = 0; i < input_nodes.length; i++) {
+            var node = input_nodes[i];
+            var id_string = "#" + node.getAttribute("id"); 
+            input_ids[i] = id_string;
+            list_of_lists[i] = id_dict[id_string].map(x => x.split("=")[0]);
+        }
+        
+    });
+    function get_affected_nodes (id_string) {
+        var index = input_ids.indexOf(id_string);
+        var node_ids = list_of_lists[index];
+        var selector_string = node_ids.join(",");
+        return document.querySelectorAll(selector_string);
+    }
+    function highlight_affected_nodes(id_string) {
+        var nodes = get_affected_nodes(id_string);
+        for (var i = 0; i < nodes.length; i++) {
+            nodes[i].classList.add("affected");
+        }
+    }
+    function unhighlight_affected_nodes(id_string) {
+        var nodes = get_affected_nodes(id_string);
+        for (var i = 0; i < nodes.length; i++) {
+            nodes[i].classList.remove("affected");
+        }            
+    }
+    
+
+    </script>
+    </head>
+    <body>
+        <div id="content">
+            <h2>Draggable</h2>
+            <p><i><small>Click the value at x or y and drag.</small></i></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>x</td>
+                        <td><span class="draggable"   id="d1">1</span></td>
+                    </tr>
+                    <tr>
+                        <td>y</td>
+                        <td><span class="draggable"  id="d2">10</span></td>
+                    </tr>
+                    <tr>
+                        <td>x+2y</td>
+                        <td><span  id="d3"></span></td>
+                    </tr>
+                    <tr>
+                        <td>2x+2y</td>
+                        <td><span  id="d4"></span></td>
+                    </tr>
+                    <tr>
+                        <td>3y</td>
+                        <td><span  id="d5"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
