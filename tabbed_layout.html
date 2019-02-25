@@ -57,9 +57,10 @@ tr:hover {
     border-top-color : #eee;
 }
 .tab_list button {
+    font-family: "Concourse C3";
+    font-size: 20px;
     float            : left;
     width            : 33%;
-    font-weight      : bold;
     background-color : white;
     border           : none;
     padding          : 1em;
@@ -70,17 +71,17 @@ tr:hover {
 }
 
 .tab_list button:not(.selected) {
-    border-bottom : solid .25em black;
-    border-top    : solid .25em white;
+    border-bottom : solid .10em black;
+    border-top    : solid .10em white;
 
 }
 .tab_list button.selected {
     padding-left            : 0.75em;
     padding-right           : 0.75em;
-    border                  : solid .25em black;
+    border                  : solid .10em black;
     border-bottom-color     : white;
-    border-top-left-radius  : .5em;
-    border-top-right-radius : .5em;
+    border-top-left-radius  : .2em;
+    border-top-right-radius : .2em;
 }
 
 .tab_list {
@@ -123,12 +124,12 @@ body, div#content {
 </script>
     </head>
     <body>
-        <div id="content">
             <div class="tab_list">
                 <button onclick="show_page(this)" class="selected">Table</button>
                 <button onclick="show_page(this)">Writing</button>
                 <button onclick="show_page(this)">Weight</button>
             </div>
+        <div id="content">
 
 
             <div class="tab">

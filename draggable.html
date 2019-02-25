@@ -10,6 +10,7 @@
         font-family: "Equity Text A";
         line-height: 1.35;
         font-size: 20px;
+        margin: auto 1em;
     }
     #content {
         max-width: 40em;
@@ -53,64 +54,149 @@
 </style>
     <script>
 
-
+       
     window.addEventListener("load", function() {
 
 
         var spans = document.querySelectorAll(".draggable");
-        var clicked_span;
         var original_value;
+
+        var clicked_span;
         var original_mouse_x;
-        
+
+        var touched_span;
+        var original_touch_x;
+
+        var mouse_event_targets = [];
+        var mouse_event_handlers = [];
+        var mouse_event_types = [];
+
         for (var i = 0; i < spans.length; i++) {
+            
             (function (target_span) {
-                target_span.addEventListener("mousedown", function (event) {
+
+                // PRESS
+                function mousedown_handler(event) {
                     original_value = parseInt(target_span.innerText);
                     original_mouse_x = event.clientX;
                     target_span.classList.add("no_user_select");
                     document.body.classList.add("col_resize_cursor");
                     
-                    
                     clicked_span = target_span;
-                });
-                target_span.addEventListener("mouseover", function (event) {
+                }
+                target_span.addEventListener("mousedown", mousedown_handler);                
+                mouse_event_handlers.push(mousedown_handler);
+                mouse_event_targets.push(target_span);
+                mouse_event_types.push("mousedown");
+                target_span.addEventListener("touchstart", function (event) {
+                    original_value = parseInt(target_span.innerText);
+                    original_touch_x = event.touches[0].clientX;
+                    
                     highlight_affected_nodes("#" + target_span.getAttribute("id"));
-                });
-                target_span.addEventListener("mouseout", function (event) {
+
+                    touched_span = target_span;
+               });
+
+               // No functionality, only UI
+                function mouseover_handler(event) {
+                    highlight_affected_nodes("#" + target_span.getAttribute("id"));
+                };
+                target_span.addEventListener("mouseover", mouseover_handler);     
+                mouse_event_handlers.push(mouseover_handler);
+                mouse_event_targets.push(target_span);
+                mouse_event_types.push("mouseover");
+
+                // No functionality, only UI
+                function mouseout_handler(event) {
                     if (!clicked_span){
                         unhighlight_affected_nodes("#" + target_span.getAttribute("id"));
                     }
                     
-                });
+                }
+                target_span.addEventListener("mouseout", mouseout_handler); 
+                mouse_event_handlers.push(mouseout_handler);
+                mouse_event_targets.push(target_span);
+                mouse_event_types.push("mouseout");
+
+                
+
             })(spans[i]);
         }
 
-        window.addEventListener("mousemove", function (event) {
+        // MOVE
+        function mousemove_handler(event) {
             if (clicked_span) {
                 var delta = event.clientX - original_mouse_x;
                 clicked_span.innerText = original_value + parseInt(delta/10);
+                
 
                 var id_string = "#" +  clicked_span.getAttribute("id");
                 update(id_string);
-
-
             }
             
+        }
+        window.addEventListener("mousemove", mousemove_handler);
+        mouse_event_handlers.push(mousemove_handler);
+        mouse_event_targets.push(window);
+        mouse_event_types.push("mousemove");
+        window.addEventListener("touchmove", function (event) {
+            if (touched_span) {
+                var delta = event.touches[0].clientX - original_touch_x;
+                touched_span.innerText = original_value + parseInt(delta/10);
+
+                var id_string = "#" +  touched_span.getAttribute("id");
+                update(id_string);
+            }
         });
-        window.addEventListener("mouseup", function () {
+
+        // RELEASE
+        function mouseup_handler() {
             if (clicked_span) {
                 clicked_span.classList.remove("no_user_select");
                 document.body.classList.remove("col_resize_cursor");
                 unhighlight_affected_nodes("#" + clicked_span.getAttribute("id"));
                 clicked_span = false;
             }
+        }
+        window.addEventListener("mouseup", mouseup_handler);
+        mouse_event_handlers.push(mouseup_handler);
+        mouse_event_targets.push(window);
+        mouse_event_types.push("mouseup");
+        window.addEventListener("touchend", function (event) {
+            if (touched_span) {
+                unhighlight_affected_nodes("#" + touched_span.getAttribute("id"));
+
+                touched_span = false;
+            }
         });
+
+        
+        function remove_mouse_handlers() {
+            console.log("remove_mouse_handlers");
+            for (var i = 0; i < mouse_event_handlers.length; i++) {
+                var target = mouse_event_targets[i];
+                var handler = mouse_event_handlers[i];
+                var type = mouse_event_types[i];
+                target.removeEventListener(type, handler);
+            }
+        }
+        window.addEventListener("touchstart", remove_mouse_handlers);
 
         initialize();
     });
 
 
-    
+    function remove_duplicates(sorted_list) {
+        var unique_list = [];
+        unique_list[0] = sorted_list[0];
+        for (var i = 1; i < sorted_list.length; i++) {
+            if (sorted_list[i-1] === sorted_list[i]) {
+                continue;
+            }
+            unique_list.push(sorted_list[i]);
+        }        
+        return unique_list;
+    }
    
 
     function update_equation (equation) {
@@ -130,6 +216,7 @@
     }
     
 
+    
     function update(id_string) {
         var equations = id_dict[id_string];
         for (var i = 0; i < equations.length; i++) {
@@ -144,6 +231,7 @@
         }
     }
 
+    
     function pre_compute() {
 
         // extract all identifiers from equation_list in L
@@ -154,16 +242,8 @@
             L = L.concat(selectors);
         }
 
-        // remove duplicate identifiers from L and put the result in keys
         L.sort();
-        var keys = [];
-        keys[0] = L[0];
-        for (var i = 1; i < L.length; i++) {
-            if (L[i-1] === L[i]) {
-                continue;
-            }
-            keys.push(L[i]);
-        }
+        var keys = remove_duplicates(L);
 
         // give each identifier a list of equations it appears in 
         var D = {};
@@ -181,7 +261,12 @@
     }
 
 
-    equation_list = ["#d3=#d1+2*#d2", "#d4=2*#d1+2*#d2", "#d5=3*#d2"];
+    equation_list = [
+        "#d3=#d1+2*#d2", 
+        "#d4=2*#d1+2*#d2", 
+        "#d5=3*#d2",
+        "#unique_identifier_boys=3*#d1"
+    ];
     var id_dict = pre_compute();
 
     
@@ -250,6 +335,10 @@
                     <tr>
                         <td>3y</td>
                         <td><span  id="d5"></span></td>
+                    </tr>
+                    <tr>
+                        <td>3x</td>
+                        <td><span  id="unique_identifier_boys"></span></td>
                     </tr>
                 </tbody>
             </table>

@@ -1,0 +1,1981 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Three Themes</title>
+        <style>
+            body {
+                font-family: "Concourse T4";
+                line-height: 1.5;
+                padding: 0 1em;
+            }
+            #content {
+                max-width: 70em;
+                margin: auto;
+            }
+            #toc {
+                padding: 1em 3em;
+                box-shadow: 0px 0px 8px 2px;
+                margin: 2em auto;
+                border-radius: 8px;
+                column-width: 30em;
+            }
+
+            .responsive_column {
+                column-width: 15em;
+            }
+
+            h1 {
+                text-align: center;
+                text-transform: lowercase;
+            }
+            h2 {
+                color: brown;
+                font-family: "Concourse C3";
+                text-transform: uppercase;
+                padding-top: .5em;
+            }
+            h3 {
+                font-family: "Concourse C3";
+                text-transform: uppercase;
+            }
+
+
+            a {
+                text-decoration: none;
+                color: lightseagreen;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+            #toc > ol {
+                margin: 0;
+                padding: 0;
+            }
+
+
+            body.light {
+                background: white;
+                color: black;
+            }
+
+            .light a {
+                color: #36c;
+            }
+            .light h2 {
+                color: brown;
+            }
+
+            .light #toc {
+                color: #eee;
+            }
+            .light #toc ol, .light .theme {
+                color: #ccc;
+            }
+
+            body.sepia {
+                background-color: cornsilk;
+                color: black;
+            }
+
+            .sepia a {
+                color: #c30010ab;
+            }
+            .sepia h2 {
+                color:#BF360C;
+            }
+
+            .sepia #toc{
+                color: #99999944;
+            }
+            .sepia #toc ol, .sepia .theme {
+                color: #99999988;
+            }
+         
+            body.dark {
+                background-color: #444;
+                color: #eaeaea;
+            }
+
+            .dark a {
+                color: #24cbe6;
+            }
+            .dark h2 {
+                color: #fbc02d;
+            }
+
+            .dark #toc {
+                color: #333;
+            }
+            .dark #toc ol, .dark .theme {
+                color: #eaeaea44;
+            }
+
+        </style>
+    <script>
+        window.addEventListener("load", function () {
+            var headers = document.querySelectorAll("h2,h3,h4");
+
+            var toc_list = document.createElement("ol");
+
+            var toc_div = document.createElement("div");
+            toc_div.setAttribute("id", "toc");
+            toc_div.appendChild(toc_list);
+
+            // toc_list.setAttribute("id", "toc");
+            var firstH2 = document.querySelector("h2");
+            firstH2.before(toc_div);
+
+            var a_node;
+            var h2_node;
+            var h3_node;
+            var h4_node;
+            var header;
+            var href_text;
+            var li_node;
+            for (var i = 0; i < headers.length; i++) {
+                header = headers[i];
+                href_text = "#"+header.querySelector("span").getAttribute("id");
+
+                a_node = document.createElement("a");
+                a_node.setAttribute("href", href_text);
+                a_node.innerText = header.textContent.trim();
+
+                li_node = document.createElement("li");
+                li_node.appendChild(a_node);
+
+                if (header.tagName === "H2") {
+                    h2_node = document.createElement("ol");
+                    li_node.appendChild(h2_node);
+                    toc_list.appendChild(li_node);
+                } else if (header.tagName === "H3") {
+                    h3_node = document.createElement("ol");
+                    li_node.appendChild(h3_node);
+                    h2_node.appendChild(li_node);
+                } else if (header.tagName === "H4") {
+                    h4_node = document.createElement("ol");
+                    li_node.appendChild(h4_node);
+                    h3_node.appendChild(li_node);
+                }
+            }
+        });
+    </script>
+    <script>
+        function change_theme(clicked_span, theme_str) {
+            document.body.classList.remove("light");
+            document.body.classList.remove("dark");
+            document.body.classList.remove("sepia");
+            var selected_span = document.querySelector(".theme_selected");
+            if (selected_span) {
+                selected_span.classList.remove("theme_selected");
+            }
+
+            clicked_span.classList.add("theme_selected");
+            document.body.classList.add(theme_str);
+        }
+window.addEventListener("load", function () {
+    var L = document.querySelector(".theme").children;
+    for (var i = 0; i < L.length; i++) {
+        var my_span = L[i];
+        if (my_span.innerText === "Light") {
+            change_theme(my_span, "light");
+        }
+    }
+});
+    </script>
+<style>
+.theme {
+    text-align: center;
+}
+.theme span:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.theme_selected {
+    font-weight: bold;
+}
+
+</style>
+    </head>
+    <body>
+        <div id="content">
+            <h1 id="section_0">Design</h1>
+            <div class="theme">
+                <span onclick="change_theme(this, 'light')">Light</span> / 
+                <span onclick="change_theme(this, 'sepia')">Sepia</span> / 
+                <span onclick="change_theme(this, 'dark')">Dark</span>
+            </div>
+
+                                    <p>Design can have different connotations in different fields of application (see design disciplines below), but there are two basic meanings of design: as a verb and as a noun.
+</p>
+            <p>
+                <b>Design</b>
+                (as a verb: to design) is the intentional creation of a plan or specification for the construction of an object or system or for the implementation of an activity or process. 
+
+                                    
+                                    
+            </p>
+            <p>
+                <b>Design</b>
+                (as a noun: a design) can refer to such a plan or specification (e.g. a drawing or other document) or to the created object, etc., and features of it such as aesthetic, functional, economic or socio-political.
+
+                                    
+                                    
+            </p>
+            <p>The process of creating a design can be brief (a quick sketch) or lengthy and complicated, involving considerable research, negotiation, reflection, modelling, interactive adjustment and re-design. In some cases, the direct construction of an object without an explicit prior plan (such as in craftwork and some engineering, coding, and graphic design) is also considered to be a design activity.
+</p>
+            <h2>
+                <span id="Definitions">Definitions</span>
+            </h2>
+            <p>
+                "Everyone designs who devises courses of action aimed at changing existing situations into preferred ones."
+                                        
+                                        
+                <sup id="cite_ref-Simon_1-0">
+                    <a href="#cite_note-Simon-1">[1]</a>
+                </sup>
+            </p>
+            <p>More formally design has been defined as follows:
+</p>
+            <style>
+                .mw-parser-output .templatequote {
+                    overflow: hidden;
+                    margin: 1em 0;
+                    padding: 0 40px
+                }
+
+                .mw-parser-output .templatequote .templatequotecite {
+                    line-height: 1.5em;
+                    text-align: left;
+                    padding-left: 1.6em;
+                    margin-top: 0
+                }
+            </style>
+            <blockquote>
+                <p>
+                    (noun) a specification of an <a href="/wiki/Object_(philosophy)">object</a>
+                    , manifested by an <a href="/wiki/Agency_(philosophy)">agent</a>
+                    , intended to accomplish <a href="/wiki/Goal">goals</a>
+                    , in a particular <a href="/wiki/Environment_(systems)">environment</a>
+                    , using a set of primitive components, satisfying a set of <a href="/wiki/Requirement">requirements</a>
+                    , subject to constraints; (verb, transitive) to create a design, in an <a href="/wiki/Environment_(systems)">environment</a>
+                    (where the designer operates)
+                                            
+                                            
+                    <sup id="cite_ref-2">
+                        <a href="#cite_note-2">[2]</a>
+                    </sup>
+                </p>
+            </blockquote>
+            <p>
+                Another definition for design is "a roadmap or a strategic approach for someone to achieve a unique expectation. It defines the specifications, plans, parameters, costs, activities, processes and how and what to do within legal, political, social, environmental, safety and economic constraints in achieving that objective."
+                                        
+                                        
+                <sup id="cite_ref-3">
+                    <a href="#cite_note-3">[3]</a>
+                </sup>
+            </p>
+            <p>Here, a "specification" can be manifested as either a plan or a finished product, and "primitives" are the elements from which the design object is composed.
+</p>
+            <p>
+                The person designing is called a designer, which is also a term used for people who work professionally in one of the various design areas usually specifying which area is being dealt with (such as a textile designer, fashion designer, product designer, concept designer, web designer or interior designer). A designer's sequence of activities is called a design process while the scientific study of design is called <a href="/wiki/Design_science">design science</a>
+                .
+                                        
+                                        
+                <sup id="cite_ref-Simon_1-1">
+                    <a href="#cite_note-Simon-1">[1]</a>
+                </sup>
+                <sup id="cite_ref-4">
+                    <a href="#cite_note-4">[4]</a>
+                </sup>
+                <sup id="cite_ref-5">
+                    <a href="#cite_note-5">[5]</a>
+                </sup>
+                <sup id="cite_ref-design_theory_6-0">
+                    <a href="#cite_note-design_theory-6">[6]</a>
+                </sup>
+            </p>
+            <p>Another definition of design is planning to manufacture an object, system, component or structure. Thus the word "design" can be used as a noun or a verb. In a broader sense, design is an applied art and engineering that integrates with technology.
+</p>
+            <p>While the definition of design is fairly broad, design has a myriad of specifications that professionals utilize in their fields.
+</p>
+            <p>
+                Major examples of design are <a href="/wiki/Blueprint">architectural blueprints</a>
+                , <a href="/wiki/Engineering_drawing">engineering drawings</a>
+                , <a href="/wiki/Business_process">business processes</a>
+                , <a href="/wiki/Circuit_diagram">circuit diagrams</a>
+                , and <a href="/wiki/Pattern_(sewing)">sewing patterns</a>
+                <sup id="cite_ref-7">
+                    <a href="#cite_note-7">[7]</a>
+                </sup>
+            </p>
+            <h2>
+                <span id="Design_as_a_process">
+                    Design as a process<span id="Process"></span>
+                </span>
+            </h2>
+            <p>
+                Substantial disagreement exists concerning how designers in many fields, whether amateur or professional, alone or in teams, produce designs. Kees Dorst and Judith Dijkhuis, both designers themselves, argued that "there are many ways of describing design processes" and discussed "two basic and fundamentally different ways",
+                                        
+                                        
+                <sup id="cite_ref-8">
+                    <a href="#cite_note-8">[8]</a>
+                </sup>
+                both of which have several names. The prevailing view has been called "the rational model",
+                                        
+                                        
+                <sup id="cite_ref-Brooks_9-0">
+                    <a href="#cite_note-Brooks-9">[9]</a>
+                </sup>
+                "technical problem solving"
+                                        
+                                        
+                <sup id="cite_ref-Schön_1983_10-0">
+                    <a href="#cite_note-Sch%C3%B6n_1983-10">[10]</a>
+                </sup>
+                and "the reason-centric perspective".
+                                        
+                                        
+                <sup id="cite_ref-Ralph_2010_11-0">
+                    <a href="#cite_note-Ralph_2010-11">[11]</a>
+                </sup>
+                The alternative view has been called "reflection-in-action",
+                                        
+                                        
+                <sup id="cite_ref-Schön_1983_10-1">
+                    <a href="#cite_note-Sch%C3%B6n_1983-10">[10]</a>
+                </sup>
+                "evolutionary design",
+                                        
+                                        
+                <sup id="cite_ref-design_theory_6-1">
+                    <a href="#cite_note-design_theory-6">[6]</a>
+                </sup>
+                "co-evolution",
+                                        
+                                        
+                <sup id="cite_ref-DC_12-0">
+                    <a href="#cite_note-DC-12">[12]</a>
+                </sup>
+                and "the action-centric perspective".
+                                        
+                                        
+                <sup id="cite_ref-Ralph_2010_11-1">
+                    <a href="#cite_note-Ralph_2010-11">[11]</a>
+                </sup>
+            </p>
+            <h3>
+                <span id="The_rational_model">The rational model</span>
+            </h3>
+            <p>
+                The rational model was independently developed by <a href="/wiki/Herb_Simon">Herbert A. Simon</a>
+                ,
+                                        
+                                        
+                <sup id="cite_ref-13">
+                    <a href="#cite_note-13">[13]</a>
+                </sup>
+                <sup id="cite_ref-Simon_1-2">
+                    <a href="#cite_note-Simon-1">[1]</a>
+                </sup>
+                an American scientist, and Gerhard Pahl and Wolfgang Beitz, two German engineering design theorists.
+                                        
+                                        
+                <sup id="cite_ref-14">
+                    <a href="#cite_note-14">[14]</a>
+                </sup>
+                It posits that:
+
+                                    
+                                    
+            </p>
+            <ol>
+                <li>
+                    designers attempt to <a href="/wiki/Optimization_(mathematics)">optimize</a>
+                    a design candidate for known <a href="/wiki/Constraint_optimization">constraints</a>
+                    and <a href="/wiki/Goal">objectives</a>
+                    ,
+                                        
+                                        
+                </li>
+                <li>the design process is plan-driven,</li>
+                <li>the design process is understood in terms of a discrete sequence of stages.</li>
+            </ol>
+            <p>
+                The rational model is based on a <a href="/wiki/Rationalism">rationalist philosophy</a>
+                <sup id="cite_ref-Brooks_9-1">
+                    <a href="#cite_note-Brooks-9">[9]</a>
+                </sup>
+                and underlies the <a href="/wiki/Waterfall_model">waterfall model</a>
+                ,
+                                        
+                                        
+                <sup id="cite_ref-Royce_15-0">
+                    <a href="#cite_note-Royce-15">[15]</a>
+                </sup>
+                <a href="/wiki/Systems_development_life_cycle">systems development life cycle</a>
+                ,
+                                        
+                                        
+                <sup id="cite_ref-Bourque_16-0">
+                    <a href="#cite_note-Bourque-16">[16]</a>
+                </sup>
+                and much of the <a href="/wiki/Engineering_design">engineering design</a>
+                literature.
+                                        
+                                        
+                <sup id="cite_ref-17">
+                    <a href="#cite_note-17">[17]</a>
+                </sup>
+                According to the rationalist philosophy, design is informed by research and knowledge in a predictable and controlled manner.
+
+                                    
+                                    
+            </p>
+            <h4>
+                <span id="Example_sequence_of_stages">Example sequence of stages</span>
+            </h4>
+            <p>Typical stages consistent with the rational model include the following:
+</p>
+            <ul>
+                <li>
+                    Pre-production design
+
+                                            
+                                            
+                    <ul>
+                        <li>
+                            <a href="/wiki/Design_brief">Design brief</a>
+                            or 
+                                                    
+                                                    
+                            <i>
+                                <a href="/wiki/Parti_pris">Parti pris</a>
+                            </i>
+                            – an early (often the beginning) statement of design goals
+                                                
+                                                
+                        </li>
+                        <li>
+                            <a href="/wiki/Analysis">Analysis</a>
+                            – analysis of current design goals
+                                                
+                                                
+                        </li>
+                        <li>
+                            <a href="/wiki/Research">Research</a>
+                            – investigating similar design solutions in the field or related topics
+                                                
+                                                
+                        </li>
+                        <li>
+                            <a href="/wiki/Specification">Specification</a>
+                            – specifying requirements of a design solution for a product (<a href="/wiki/Product_design_specification">product design specification</a>
+                            )
+                                                    
+                                                    
+                            <sup id="cite_ref-18">
+                                <a href="#cite_note-18">[18]</a>
+                            </sup>
+                            or service.
+                                                
+                                                
+                        </li>
+                        <li>
+                            <a href="/wiki/Problem_solving">Problem solving</a>
+                            – <a href="https://en.wiktionary.org/wiki/conceptualize">conceptualizing</a>
+                            and <a href="/wiki/Document">documenting</a>
+                            design solutions
+                                                
+                                                
+                        </li>
+                        <li>
+                            <a href="/wiki/Presentation">Presentation</a>
+                            – presenting design solutions
+                                                
+                                                
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Design during production
+
+                                            
+                                            
+                    <ul>
+                        <li>
+                            <a href="/wiki/Product_development">Development</a>
+                            – continuation and improvement of a designed solution
+                                                
+                                                
+                        </li>
+                        <li>
+                            Testing – 
+                                                    
+                                                    
+                            <i>
+                                <a href="/wiki/In_situ">in situ</a>
+                            </i>
+                            testing of a designed solution
+                                                
+                                                
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Post-production design feedback for future designs
+
+                                            
+                                            
+                    <ul>
+                        <li>
+                            <a href="/wiki/Implementation">Implementation</a>
+                            – introducing the designed solution into the environment
+                                                
+                                                
+                        </li>
+                        <li>
+                            <a href="/wiki/Evaluation">Evaluation</a>
+                            and <a href="/wiki/Logical_consequence">conclusion</a>
+                            – summary of process and results, including <a href="/wiki/Constructive_criticism">constructive criticism</a>
+                            and suggestions for future improvements
+                                                
+                                                
+                        </li>
+                    </ul>
+                </li>
+                <li>Redesign – any or all stages in the design process repeated (with corrections made) at any time before, during, or after production.</li>
+            </ul>
+            <p>
+                Each stage has many associated <a href="/wiki/Best_practices">best practices</a>
+                .
+                                        
+                                        
+                <sup id="cite_ref-19">
+                    <a href="#cite_note-19">[19]</a>
+                </sup>
+            </p>
+            <h4>
+                <span id="Criticism_of_the_rational_model">Criticism of the rational model</span>
+            </h4>
+            <p>The rational model has been widely criticized on two primary grounds:
+</p>
+            <ol>
+                <li>
+                    Designers do not work this way – extensive empirical evidence has demonstrated that designers do not act as the rational model suggests.
+                                            
+                                            
+                    <sup id="cite_ref-Cross_20-0">
+                        <a href="#cite_note-Cross-20">[20]</a>
+                    </sup>
+                    <sup id="cite_ref-Ralph_2010_11-2">
+                        <a href="#cite_note-Ralph_2010-11">[11]</a>
+                    </sup>
+                    <sup id="cite_ref-Schön_1983_10-2">
+                        <a href="#cite_note-Sch%C3%B6n_1983-10">[10]</a>
+                    </sup>
+                </li>
+                <li>
+                    Unrealistic assumptions – goals are often unknown when a design project begins, and the requirements and constraints continue to change.
+                                            
+                                            
+                    <sup id="cite_ref-Brooks_9-2">
+                        <a href="#cite_note-Brooks-9">[9]</a>
+                    </sup>
+                    <sup id="cite_ref-21">
+                        <a href="#cite_note-21">[21]</a>
+                    </sup>
+                </li>
+            </ol>
+            <h3>
+                <span id="The_action-centric_model">The action-centric model</span>
+            </h3>
+            <p>
+                The action-centric perspective is a label given to a collection of interrelated concepts, which are antithetical to the rational model.
+                                        
+                                        
+                <sup id="cite_ref-Ralph_2010_11-3">
+                    <a href="#cite_note-Ralph_2010-11">[11]</a>
+                </sup>
+                It posits that:
+
+                                    
+                                    
+            </p>
+            <ol>
+                <li>
+                    designers use <a href="/wiki/Creativity">creativity</a>
+                    and <a href="/wiki/Emotion">emotion</a>
+                    to generate design candidates,
+                                        
+                                        
+                </li>
+                <li>
+                    the design process is <a href="/wiki/Improvisation">improvised</a>
+                    ,
+                                        
+                                        
+                </li>
+                <li>
+                    no universal sequence of stages is apparent – analysis, design and implementation are contemporary and inextricably linked
+                                            
+                                            
+                    <sup id="cite_ref-Ralph_2010_11-4">
+                        <a href="#cite_note-Ralph_2010-11">[11]</a>
+                    </sup>
+                </li>
+            </ol>
+            <p>
+                The action-centric perspective is based on an <a href="/wiki/Empiricism">empiricist philosophy</a>
+                and broadly consistent with the <a href="/wiki/Agile_software_development">agile approach</a>
+                <sup id="cite_ref-Beck_22-0">
+                    <a href="#cite_note-Beck-22">[22]</a>
+                </sup>
+                and amethodical development.
+                                        
+                                        
+                <sup id="cite_ref-Truex_23-0">
+                    <a href="#cite_note-Truex-23">[23]</a>
+                </sup>
+                Substantial empirical evidence supports the veracity of this perspective in describing the actions of real designers.
+                                        
+                                        
+                <sup id="cite_ref-Cross_20-1">
+                    <a href="#cite_note-Cross-20">[20]</a>
+                </sup>
+                Like the rational model, the action-centric model sees design as informed by research and knowledge. However, research and knowledge are brought into the design process through the judgment and common sense of designers – by designers "thinking on their feet" – more than through the predictable and controlled process stipulated by the rational model.
+
+                                    
+                                    
+            </p>
+            <h4>
+                <span id="Descriptions_of_design_activities">Descriptions of design activities</span>
+            </h4>
+            <p>At least two views of design activity are consistent with the action-centric perspective. Both involve three basic activities.
+</p>
+            <p>
+                In the <a href="/wiki/Reflective_practice">reflection-in-action paradigm</a>
+                , designers alternate between "<a href="/wiki/Framing_(social_sciences)">framing</a>
+                ", "making moves", and "evaluating moves". "Framing" refers to conceptualizing the problem, i.e., defining goals and objectives. A "move" is a tentative design decision. The evaluation process may lead to further moves in the design.
+                                        
+                                        
+                <sup id="cite_ref-Schön_1983_10-3">
+                    <a href="#cite_note-Sch%C3%B6n_1983-10">[10]</a>
+                </sup>
+            </p>
+            <p>
+                In the sensemaking–coevolution–implementation framework, designers alternate between its three titular activities. <a href="/wiki/Sensemaking_(information_science)">Sensemaking</a>
+                includes both framing and evaluating moves. Implementation is the process of constructing the design object. Coevolution is "the process where the design agent simultaneously refines its mental picture of the design object based on its mental picture of the context, and vice versa".
+                                        
+                                        
+                <sup id="cite_ref-Ralph_2010_11-5">
+                    <a href="#cite_note-Ralph_2010-11">[11]</a>
+                </sup>
+            </p>
+            <p>
+                The concept of the <a href="/wiki/Design_cycle">design cycle</a>
+                is understood as a circular time structure,
+                                        
+                                        
+                <sup id="cite_ref-24">
+                    <a href="#cite_note-24">[24]</a>
+                </sup>
+                which may start with the thinking of an idea, then expressing it by the use of visual or verbal means of communication (design tools), the sharing and perceiving of the expressed idea, and finally starting a new cycle with the critical rethinking of the perceived idea. Anderson points out that this concept emphasizes the importance of the means of expression, which at the same time are means of perception of any design ideas.
+                                        
+                                        
+                <sup id="cite_ref-25">
+                    <a href="#cite_note-25">[25]</a>
+                </sup>
+            </p>
+            <h2>
+                <span id="Design_disciplines">Design disciplines</span>
+            </h2>
+            <ul class="responsive_column">
+                <li>
+                    <a href="/wiki/Applied_arts">Applied arts</a>
+                </li>
+                <li>
+                    <a href="/wiki/Architecture">Architecture</a>
+                </li>
+                <li>
+                    <a href="/wiki/Automotive_design">Automotive design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Synthetic_biology">Biological design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Communication_design">Communication design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Configuration_design">Configuration design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Design_management">Design management</a>
+                </li>
+                <li>
+                    <a href="/wiki/Engineering_design_process">Engineering design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Experience_design">Experience design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Fashion_design">Fashion design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Game_design">Game design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Graphic_design">Graphic design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Information_architecture">Information architecture</a>
+                </li>
+                <li>
+                    <a href="/wiki/Information_design">Information design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Industrial_design">Industrial design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Instructional_design">Instructional design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Interaction_design">Interaction design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Interior_design">Interior design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Landscape_architecture">Landscape architecture</a>
+                </li>
+                <li>
+                    <a href="/wiki/Lighting_designer">Lighting design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Modular_design">Modular design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Motion_graphic_design">Motion graphic design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Organizational_architecture">Organization design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Product_design">Product design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Process_design">Process design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Service_design">Service design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Social_design">Social design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Software_design">Software design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Sound_design">Sound design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Spatial_design">Spatial design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Strategic_design">Strategic design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Systems_architecture">Systems architecture</a>
+                </li>
+                <li>
+                    <a href="/wiki/Systems_design">Systems design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Systems_modeling">Systems modeling</a>
+                </li>
+                <li>
+                    <a href="/wiki/Urban_design">Urban design</a>
+                </li>
+                <li>
+                    <a href="/wiki/User_experience_design">User experience design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Visual_design">Visual design</a>
+                </li>
+                <li>
+                    <a href="/wiki/Web_design">Web design</a>
+                </li>
+            </ul>
+            <h2>
+                <span id="Philosophies_and_studies_of_design">Philosophies and studies of design</span>
+            </h2>
+            <p>
+                There are countless philosophies for guiding design as design values and its accompanying aspects within modern design vary, both between different schools of thought
+                                        
+                                        
+                <sup>
+                    [
+                                            
+                                            
+                    <i>
+                        <a href="/wiki/Wikipedia:Avoid_weasel_words">
+                            <span>which?</span>
+                        </a>
+                    </i>
+                    ]
+                                        
+                                        
+                </sup>
+                and among practicing designers.
+                                        
+                                        
+                <sup id="cite_ref-26">
+                    <a href="#cite_note-26">[26]</a>
+                </sup>
+                Design philosophies are usually for determining design goals. A design goal may range from solving the least significant individual problem of the smallest element, to the most <a href="/wiki/Holistic">holistic</a>
+                influential <a href="/wiki/Utopian">utopian</a>
+                goals. Design goals are usually for guiding design. However, conflicts over immediate and minor goals may lead to questioning the purpose of design, perhaps to set better long term or ultimate goals.  John Heskett, a 20th-century British writer on design claimed, "Design, stripped to its essence, can be defined as the human nature to shape and make our environment in ways without precedent in nature, to serve our needs and give meaning to our lives."
+                                        
+                                        
+                <sup id="cite_ref-27">
+                    <a href="#cite_note-27">[27]</a>
+                </sup>
+            </p>
+            <h3>
+                <span id="Philosophies_for_guiding_design">Philosophies for guiding design</span>
+            </h3>
+            <p>
+                Design philosophies are fundamental guiding principles that dictate how a designer approaches his/her practice. Reflections on <a href="/wiki/Material_culture">material culture</a>
+                and environmental concerns (<a href="/wiki/Sustainable_design">sustainable design</a>
+                ) can guide a design philosophy. One example is the <a href="/wiki/First_Things_First_2000_manifesto">First Things First manifesto</a>
+                which was launched within the graphic design community and states "We propose a reversal of priorities in favor of more useful, lasting and democratic forms of communication – a mindshift away from product marketing and toward the exploration and production of a new kind of meaning. The scope of debate is shrinking; it must expand. Consumerism is running uncontested; it must be challenged by other perspectives expressed, in part, through the visual languages and resources of design."
+                                        
+                                        
+                <sup id="cite_ref-maxbruinsma.nl_28-0">
+                    <a href="#cite_note-maxbruinsma.nl-28">[28]</a>
+                </sup>
+            </p>
+            <p>
+                In <i>The Sciences of the Artificial</i>
+                by polymath <a href="/wiki/Herbert_A._Simon">Herbert A. Simon</a>
+                , the author asserts design to be a meta-discipline of all professions. "Engineers are not the only professional designers. Everyone designs who devises courses of action aimed at changing existing situations into preferred ones. The intellectual activity that produces material artifacts is no different fundamentally from the one that prescribes remedies for a sick patient or the one that devises a new sales plan for a company or a social welfare policy for a state. Design, so construed, is the core of all professional training; it is the principal mark that distinguishes the professions from the sciences. Schools of engineering, as well as schools of architecture, business, education, law, and medicine, are all centrally concerned with the process of design."
+                                        
+                                        
+                <sup id="cite_ref-Simon_1-3">
+                    <a href="#cite_note-Simon-1">[1]</a>
+                </sup>
+            </p>
+            <h3>
+                <span id="Approaches_to_design">Approaches to design</span>
+            </h3>
+            <p>A design approach is a general philosophy that may or may not include a guide for specific methods. Some are to guide the overall goal of the design. Other approaches are to guide the tendencies of the designer. A combination of approaches may be used if they don't conflict.
+</p>
+            <p>Some popular approaches include:
+</p>
+            <ul>
+                <li>
+                    <a href="/wiki/Sociotechnical_system">Sociotechnical system</a>
+                    design, a philosophy and tools for participative designing of work arrangements and supporting processes – for organizational purpose, quality, safety, economics and customer requirements in core work processes, the quality of peoples experience at work and the needs of society
+                                        
+                                        
+                </li>
+                <li>
+                    <a href="/wiki/KISS_principle">KISS principle</a>
+                    , (Keep it Simple Stupid), which strives to eliminate unnecessary complications.
+                                        
+                                        
+                </li>
+                <li>
+                    <a href="/wiki/There_is_more_than_one_way_to_do_it">There is more than one way to do it</a>
+                    (TIMTOWTDI), a philosophy to allow multiple methods of doing the same thing.
+                                        
+                                        
+                </li>
+                <li>
+                    <a href="/wiki/Use-centered_design">Use-centered design</a>
+                    , which focuses on the goals and tasks associated with the use of the artifact, rather than focusing on the end user.
+                                        
+                                        
+                </li>
+                <li>
+                    <a href="/wiki/User-centered_design">User-centered design</a>
+                    , which focuses on the needs, wants, and limitations of the end user of the designed artifact.
+                                        
+                                        
+                </li>
+                <li>
+                    <a href="/wiki/Critical_design">Critical design</a>
+                    uses designed artifacts as an embodied critique or commentary on existing values, morals, and practices in a culture.
+                                        
+                                        
+                </li>
+                <li>
+                    <a href="/wiki/Service_design">Service design</a>
+                    designing or organizing the experience around a product and the service associated with a product's use.
+                                        
+                                        
+                </li>
+                <li>
+                    <a href="/wiki/Transgenerational_design">Transgenerational design</a>
+                    , the practice of making products and environments compatible with those physical and sensory impairments associated with human aging and which limit major activities of daily living.
+                                        
+                                        
+                </li>
+                <li>Speculative design, the speculative design process doesn't necessarily define a specific problem to solve, but establishes a provocative starting point from which a design process emerges. The result is an evolution of fluctuating iteration and reflection using designed objects to provoke questions and stimulate discussion in academic and research settings.</li>
+                <li>
+                    <a href="/wiki/Participatory_design">Participatory Design</a>
+                    (originally co-operative design, now often co-design) is the practice of collective creativity to design, attempting to actively involve all stakeholders (e.g. employees, partners, customers, citizens, end users) in the design process to help ensure the result meets their needs and is usable. Participatory design is an approach which is focused on processes and procedures of design and is not a design style
+                                            
+                                            
+                    <sup id="cite_ref-29">
+                        <a href="#cite_note-29">[29]</a>
+                    </sup>
+                </li>
+            </ul>
+            <h3>
+                <span id="Methods_of_designing">Methods of designing</span>
+            </h3>
+            Main article: <a href="/wiki/Design_methods">Design methods</a>
+            <p>Design methods is a broad area that focuses on:
+</p>
+            <ul>
+                <li>
+                    <a href="/wiki/Exploring">Exploring</a>
+                    possibilities and constraints by focusing critical thinking skills to research and define problem spaces for existing <a href="/wiki/Product_(business)">products</a>
+                    or <a href="/wiki/Service_(economics)">services</a>
+                    —or the creation of new categories (see also <a href="/wiki/Brainstorming">Brainstorming</a>
+                    )
+                                        
+                                        
+                </li>
+                <li>
+                    <a href="/wiki/Definition">Redefining</a>
+                    the specifications of design solutions which can lead to better guidelines for traditional design activities (graphic, industrial, architectural, etc.);
+                                        
+                                        
+                </li>
+                <li>
+                    <a href="/wiki/Management">Managing</a>
+                    the process of exploring, defining, creating artifacts continually over time
+                                        
+                                        
+                </li>
+                <li>
+                    <a href="/wiki/Prototyping">Prototyping</a>
+                    possible scenarios, or solutions that incrementally or significantly improve the inherited situation
+                                        
+                                        
+                </li>
+                <li>Trendspotting; understanding the trend process.</li>
+            </ul>
+            <h2>
+                <span id="Terminology">Terminology</span>
+            </h2>
+            <p>The word "design" is often considered ambiguous, as it is applied in varying contexts.
+</p>
+            <a href="/wiki/File:M-T4.jpg">
+                <noscript>
+                    <img/>
+                </noscript>
+                <span></span>
+            </a>
+            <a href="/wiki/File:M-T4.jpg"></a>
+            The new terminal at <a href="/wiki/Barajas_airport">Barajas airport</a>
+            in <a href="/wiki/Madrid">Madrid</a>
+            , <a href="/wiki/Spain">Spain</a>
+            <h3>
+                <span id="Design_and_art">Design and art</span>
+            </h3>
+            <p>
+                Today, the term design is widely associated with the <a href="/wiki/Applied_arts">applied arts</a>
+                as initiated by <a href="/wiki/Raymond_Loewy">Raymond Loewy</a>
+                and teachings at the <a href="/wiki/Bauhaus">Bauhaus</a>
+                and <a href="/wiki/Ulm_School_of_Design">Ulm School of Design</a>
+                (HfG Ulm) in Germany during the 20th century.
+
+                                    
+                                    
+            </p>
+            <p>
+                The boundaries between art and design are blurred, largely due to a range of applications both for the term 'art' and the term 'design'. <a href="/wiki/Applied_arts">Applied arts</a>
+                has been used as an umbrella term to define fields of <a href="/wiki/Industrial_design">industrial design</a>
+                , <a href="/wiki/Graphic_design">graphic design</a>
+                , <a href="/wiki/Fashion_design">fashion design</a>
+                , etc. The term '<a href="/wiki/Decorative_arts">decorative arts</a>
+                ' is a traditional term used in historical discourses to describe craft objects, and also sits within the umbrella of <a href="/wiki/Applied_arts">applied arts</a>
+                . In <a href="/wiki/Graphic_art">graphic arts</a>
+                (2D image making that ranges from photography to illustration), the distinction is often made between <a href="/wiki/Fine_art">fine art</a>
+                and <a href="/wiki/Commercial_art">commercial art</a>
+                , based on the context within which the work is produced and how it is traded.
+
+                                    
+                                    
+            </p>
+            <p>
+                To a degree, some methods for creating work, such as employing intuition, are shared across the disciplines within the <a href="/wiki/Applied_arts">applied arts</a>
+                and <a href="/wiki/Fine_art">fine art</a>
+                . Mark Getlein, writer, suggests the principles of design are "almost instinctive", "built-in", "natural", and part of "our sense of 'rightness'."
+                                        
+                                        
+                <sup id="cite_ref-30">
+                    <a href="#cite_note-30">[30]</a>
+                </sup>
+                However, the intended application and context of the resulting works will vary greatly.
+
+                                    
+                                    
+            </p>
+            <a href="/wiki/File:Booster-Layout.jpg">
+                <noscript>
+                    <img/>
+                </noscript>
+                <span></span>
+            </a>
+            <a href="/wiki/File:Booster-Layout.jpg"></a>
+            A drawing for a booster engine for <a href="/wiki/Steam_locomotive">steam locomotives</a>
+            . Engineering is applied to design, with emphasis on function and the utilization of mathematics and science.
+                                            
+                                    
+            <h3>
+                <span id="Design_and_engineering">Design and engineering</span>
+            </h3>
+            <p>
+                In <a href="/wiki/Engineering">engineering</a>
+                , design is a component of the engineering process. Many overlapping methods and processes can be seen when comparing <a href="/wiki/Product_design">Product design</a>
+                , <a href="/wiki/Industrial_design">Industrial design</a>
+                and <a href="/wiki/Engineering">Engineering</a>
+                . The <a href="/wiki/American_Heritage_Dictionary">American Heritage Dictionary</a>
+                defines design as: <i>"To conceive or fashion in the mind; invent,"</i>
+                and <i>"To formulate a plan"</i>
+                , and defines engineering as: <i>"The application of scientific and mathematical principles to practical ends such as the design, manufacture, and operation of efficient and economical structures, machines, processes, and systems."</i>
+                .
+                                        
+                                        
+                <sup id="cite_ref-31">
+                    <a href="#cite_note-31">[31]</a>
+                </sup>
+                <sup id="cite_ref-32">
+                    <a href="#cite_note-32">[32]</a>
+                </sup>
+                Both are forms of problem-solving with a defined distinction being the application of "scientific and mathematical principles". The increasingly scientific focus of engineering in practice, however, has raised the importance of more new "human-centered" fields of design.
+                                        
+                                        
+                <sup id="cite_ref-Faste_33-0">
+                    <a href="#cite_note-Faste-33">[33]</a>
+                </sup>
+                How much science is applied in a design is a question of what is considered "<a href="/wiki/Science">science</a>
+                ". Along with the question of what is considered science, there is <a href="/wiki/Social_science">social science</a>
+                versus <a href="/wiki/Natural_science">natural science</a>
+                . Scientists at <a href="/wiki/Xerox_PARC">Xerox PARC</a>
+                made the distinction of design versus engineering at "moving minds" versus "moving atoms" (probably in contradiction to the origin of term "engineering – engineer" from Latin "in genio" in meaning of a "genius" what assumes existence of a "mind" not of an "atom").
+
+                                    
+                                    
+            </p>
+            <a href="/wiki/File:Aluminium_MacBook.png">
+                <noscript>
+                    <img/>
+                </noscript>
+                <span></span>
+            </a>
+            <a href="/wiki/File:Aluminium_MacBook.png"></a>
+            <a href="/wiki/Jonathan_Ive">Jonathan Ive</a>
+            has received several awards for his design of <a href="/wiki/Apple_Inc.">Apple Inc.</a>
+            products like this MacBook. In some design fields, <a href="/wiki/Personal_computer">personal computers</a>
+            are also used for both design and production
+                                            
+                                    
+            <h3>
+                <span id="Design_and_production">Design and production</span>
+            </h3>
+            <p>
+                The relationship between design and <a href="/wiki/Production,_costs,_and_pricing">production</a>
+                is one of planning and executing. In theory, the plan should anticipate and compensate for potential problems in the execution process. Design involves problem-solving and <a href="/wiki/Creativity">creativity</a>
+                . In contrast, production involves a routine or pre-planned process. A design may also be a mere plan that does not include a production or engineering processes although a working knowledge of such processes is usually expected of designers. In some cases, it may be unnecessary or impractical to expect a designer with a broad <a href="/wiki/Multidisciplinary">multidisciplinary</a>
+                knowledge required for such designs to also have a detailed <a href="/wiki/Division_of_labour">specialized</a>
+                knowledge of how to produce the product.
+
+                                    
+                                    
+            </p>
+            <p>
+                Design and production are intertwined in many <a href="/wiki/Creative_professional">creative professional</a>
+                careers, meaning problem-solving is part of execution and the reverse. As the cost of rearrangement increases, the need for separating design from production increases as well. For example, a high-budget project, such as a <a href="/wiki/Skyscraper">skyscraper</a>
+                , requires separating (design) <a href="/wiki/Architect">architecture</a>
+                from (production) <a href="/wiki/Construction">construction</a>
+                . A Low-budget project, such as a <a href="/wiki/Multifunction_printer">locally printed</a>
+                office party invitation <a href="/wiki/Flyer_(pamphlet)">flyer</a>
+                , can be rearranged and printed dozens of times at the low cost of a few sheets of paper, a few drops of ink, and less than one hour's pay of a <a href="/wiki/Desktop_publishing">desktop publisher</a>
+                .
+
+                                    
+                                    
+            </p>
+            <p>
+                This is not to say that production never involves problem-solving or creativity, nor that design always involves creativity. Designs are rarely perfect and are sometimes repetitive. The imperfection of a design may task a production position (e.g. <a href="/wiki/Production_artist">production artist</a>
+                , <a href="/wiki/Construction_worker">construction worker</a>
+                ) with utilizing creativity or problem-solving skills to compensate for what was overlooked in the design process. Likewise, a design may be a simple repetition (copy) of a known preexisting solution, requiring minimal, if any, creativity or problem-solving skills from the designer.
+
+                                    
+                                    
+            </p>
+            <a href="/wiki/File:BPMN-DiscussionCycle.jpg">
+                <noscript>
+                    <img/>
+                </noscript>
+                <span></span>
+            </a>
+            <a href="/wiki/File:BPMN-DiscussionCycle.jpg"></a>
+            An example of a business workflow process using <a href="/wiki/Business_Process_Model_and_Notation">Business Process Model and Notation</a>
+            .
+                                            
+                                    
+            <h3>
+                <span id="Process_design">Process design</span>
+            </h3>
+            See also: <a href="/wiki/Business_process_management">Business process management</a>
+            and <a href="/wiki/Method_engineering">Method engineering</a>
+            <p>
+                "Process design" (in contrast to "design process" mentioned <a href="#Design_as_a_process">above</a>
+                ) refers to the planning of routine steps of a process aside from the expected result. Processes (in general) are treated as a product of design, not the method of design. The term originated with the industrial <a href="/wiki/Process_design_(chemical_engineering)">designing of</a>
+                <a href="/wiki/Chemical_process">chemical processes</a>
+                . With the increasing complexities of the <a href="/wiki/Information_age">information age</a>
+                , consultants and executives have found the term useful to describe the <a href="/wiki/Business_process_modeling">design of business processes</a>
+                as well as <a href="/wiki/Manufacturing">manufacturing processes</a>
+                .
+
+                                    
+                                    
+            </p>
+            <h2>
+                <span id="See_also">See also</span>
+            </h2>
+            <ul>
+                <li>
+                    <a href="/wiki/Design_elements_and_principles">Design elements and principles</a>
+                </li>
+                <li>
+                    <a href="/wiki/Design-based_learning">Design-based learning</a>
+                </li>
+                <li>
+                    <a href="/wiki/Design_thinking">Design thinking</a>
+                </li>
+                <li>
+                    <a href="/wiki/Evidence-based_design">Evidence-based design</a>
+                </li>
+            </ul>
+            <h2>
+                <span id="References">References</span>
+            </h2>
+            <ol>
+                <li id="cite_note-Simon-1">
+                    <span>
+                        ^ 
+                                                    
+                                                    
+                        <a href="#cite_ref-Simon_1-0">
+                            <sup>
+                                <i>
+                                    <b>a</b>
+                                </i>
+                            </sup>
+                        </a>
+                        <a href="#cite_ref-Simon_1-1">
+                            <sup>
+                                <i>
+                                    <b>b</b>
+                                </i>
+                            </sup>
+                        </a>
+                        <a href="#cite_ref-Simon_1-2">
+                            <sup>
+                                <i>
+                                    <b>c</b>
+                                </i>
+                            </sup>
+                        </a>
+                        <a href="#cite_ref-Simon_1-3">
+                            <sup>
+                                <i>
+                                    <b>d</b>
+                                </i>
+                            </sup>
+                        </a>
+                    </span>
+                    <span>
+                        Simon, H.A. (1996) <a href="https://books.google.com/books?id=k5Sr0nFw7psC&amp;printsec=frontcover">The sciences of the artificial</a>
+                        , MIT Press, Cambridge, MA, USA. p. 111. <style>
+                            .mw-parser-output cite.citation {
+                                font-style: inherit
+                            }
+
+                            .mw-parser-output .citation q {
+                                quotes: "\"""\"""'""'"
+                            }
+
+                            .mw-parser-output .citation .cs1-lock-free a {
+                                background: url("//upload.wikimedia.org/wikipedia/commons/thumb/6/65/Lock-green.svg/9px-Lock-green.svg.png")no-repeat;
+                                background-position: right .1em center
+                            }
+
+                            .mw-parser-output .citation .cs1-lock-limited a,.mw-parser-output .citation .cs1-lock-registration a {
+                                background: url("//upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Lock-gray-alt-2.svg/9px-Lock-gray-alt-2.svg.png")no-repeat;
+                                background-position: right .1em center
+                            }
+
+                            .mw-parser-output .citation .cs1-lock-subscription a {
+                                background: url("//upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Lock-red-alt-2.svg/9px-Lock-red-alt-2.svg.png")no-repeat;
+                                background-position: right .1em center
+                            }
+
+                            .mw-parser-output .cs1-subscription,.mw-parser-output .cs1-registration {
+                                color: #555
+                            }
+
+                            .mw-parser-output .cs1-subscription span,.mw-parser-output .cs1-registration span {
+                                border-bottom: 1px dotted;
+                                cursor: help
+                            }
+
+                            .mw-parser-output .cs1-ws-icon a {
+                                background: url("//upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Wikisource-logo.svg/12px-Wikisource-logo.svg.png")no-repeat;
+                                background-position: right .1em center
+                            }
+
+                            .mw-parser-output code.cs1-code {
+                                color: inherit;
+                                background: inherit;
+                                border: inherit;
+                                padding: inherit
+                            }
+
+                            .mw-parser-output .cs1-hidden-error {
+                                display: none;
+                                font-size: 100%
+                            }
+
+                            .mw-parser-output .cs1-visible-error {
+                                font-size: 100%
+                            }
+
+                            .mw-parser-output .cs1-maint {
+                                display: none;
+                                color: #33aa33;
+                                margin-left: 0.3em
+                            }
+
+                            .mw-parser-output .cs1-subscription,.mw-parser-output .cs1-registration,.mw-parser-output .cs1-format {
+                                font-size: 95%
+                            }
+
+                            .mw-parser-output .cs1-kern-left,.mw-parser-output .cs1-kern-wl-left {
+                                padding-left: 0.2em
+                            }
+
+                            .mw-parser-output .cs1-kern-right,.mw-parser-output .cs1-kern-wl-right {
+                                padding-right: 0.2em
+                            }
+                        </style>
+                        <a href="/wiki/International_Standard_Book_Number">ISBN</a>
+                        <a href="/wiki/Special:BookSources/0-262-69191-4">0-262-69191-4</a>
+                        .
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-2">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-2">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        Ralph, P. and Wand, Y. (2009). "A proposal for a formal definition of the design concept". In Lyytinen, K., Loucopoulos, P., <a href="/wiki/John_Mylopoulos">Mylopoulos, J.</a>
+                        , and Robinson, W., editors, <i>Design Requirements Workshop</i>
+                        (LNBIP 14), p. 109. Springer-Verlag <a href="/wiki/Digital_object_identifier">doi</a>
+                        :<a href="https://doi.org/10.1007%2F978-3-540-92966-6_6">10.1007/978-3-540-92966-6_6</a>
+                        .
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-3">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-3">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        Don Kumaragamage, Y. (2011). <i>Design Manual</i>
+                        . Vol 1
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-4">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-4">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        Alexander, C. (1964) <i>Notes on the Synthesis of Form</i>
+                        , Harvard University Press.
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-5">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-5">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        <cite>
+                            Eekels, J. (2000). "On the Fundamentals of Engineering Design Science: The Geography of Engineering Design Science, Part 1". <i>Journal of Engineering Design</i>
+                            . <b>11</b>
+                            (4): 377–397. <a href="/wiki/Digital_object_identifier">doi</a>
+                            :<a href="//doi.org/10.1080%2F09544820010000962">10.1080/09544820010000962</a>
+                            .
+                                                    
+                                                    
+                        </cite>
+                        <span></span>
+                        <link href="mw-data:TemplateStyles:r879151008"/>
+                    </span>
+                </li>
+                <li id="cite_note-design_theory-6">
+                    <span>
+                        ^ 
+                                                    
+                                                    
+                        <a href="#cite_ref-design_theory_6-0">
+                            <sup>
+                                <i>
+                                    <b>a</b>
+                                </i>
+                            </sup>
+                        </a>
+                        <a href="#cite_ref-design_theory_6-1">
+                            <sup>
+                                <i>
+                                    <b>b</b>
+                                </i>
+                            </sup>
+                        </a>
+                    </span>
+                    <span>
+                        Braha, D. and Maimon, O. (1998) <i>A Mathematical Theory of Design</i>
+                        , Springer.
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-7">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-7">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        Dictionary meanings in the <a href="//dictionary.cambridge.org/dictionary/english/design">Cambridge Dictionary of American English</a>
+                        , at <a href="//www.dictionary.com/browse/design">Dictionary.com</a>
+                        (esp. meanings 1–5 and 7–8) and at <a href="//en.oxforddictionaries.com/definition/design">AskOxford</a>
+                        (esp. verbs).
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-8">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-8">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        <cite>
+                            Dorst, Kees; Dijkhuis, Judith (1995). <a href="http://cumincad.architexturez.net//doc/oai-cumincadworks-id-d0f1">"Comparing paradigms for describing design activity"</a>
+                            . <i>Design Studies</i>
+                            . <b>16</b>
+                            (2): 261–274. <a href="/wiki/Digital_object_identifier">doi</a>
+                            :<a href="//doi.org/10.1016%2F0142-694X%2894%2900012-3">10.1016/0142-694X(94)00012-3</a>
+                            .
+                                                    
+                                                    
+                        </cite>
+                        <span></span>
+                        <link href="mw-data:TemplateStyles:r879151008"/>
+                    </span>
+                </li>
+                <li id="cite_note-Brooks-9">
+                    <span>
+                        ^ 
+                                                    
+                                                    
+                        <a href="#cite_ref-Brooks_9-0">
+                            <sup>
+                                <i>
+                                    <b>a</b>
+                                </i>
+                            </sup>
+                        </a>
+                        <a href="#cite_ref-Brooks_9-1">
+                            <sup>
+                                <i>
+                                    <b>b</b>
+                                </i>
+                            </sup>
+                        </a>
+                        <a href="#cite_ref-Brooks_9-2">
+                            <sup>
+                                <i>
+                                    <b>c</b>
+                                </i>
+                            </sup>
+                        </a>
+                    </span>
+                    <span>
+                        Brooks, F.P. (2010) <i>The design of design: Essays from a computer scientist</i>
+                        , Addison-Wesley Professional. <link href="mw-data:TemplateStyles:r879151008"/>
+                        <a href="/wiki/International_Standard_Book_Number">ISBN</a>
+                        <a href="/wiki/Special:BookSources/0-201-36298-8">0-201-36298-8</a>
+                        .
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-Schön_1983-10">
+                    <span>
+                        ^ 
+                                                    
+                                                    
+                        <a href="#cite_ref-Sch%C3%B6n_1983_10-0">
+                            <sup>
+                                <i>
+                                    <b>a</b>
+                                </i>
+                            </sup>
+                        </a>
+                        <a href="#cite_ref-Sch%C3%B6n_1983_10-1">
+                            <sup>
+                                <i>
+                                    <b>b</b>
+                                </i>
+                            </sup>
+                        </a>
+                        <a href="#cite_ref-Sch%C3%B6n_1983_10-2">
+                            <sup>
+                                <i>
+                                    <b>c</b>
+                                </i>
+                            </sup>
+                        </a>
+                        <a href="#cite_ref-Sch%C3%B6n_1983_10-3">
+                            <sup>
+                                <i>
+                                    <b>d</b>
+                                </i>
+                            </sup>
+                        </a>
+                    </span>
+                    <span>
+                        Schön, D.A. (1983) <i>The reflective practitioner: How professionals think in action</i>
+                        , Basic Books, USA.
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-Ralph_2010-11">
+                    <span>
+                        ^ 
+                                                    
+                                                    
+                        <a href="#cite_ref-Ralph_2010_11-0">
+                            <sup>
+                                <i>
+                                    <b>a</b>
+                                </i>
+                            </sup>
+                        </a>
+                        <a href="#cite_ref-Ralph_2010_11-1">
+                            <sup>
+                                <i>
+                                    <b>b</b>
+                                </i>
+                            </sup>
+                        </a>
+                        <a href="#cite_ref-Ralph_2010_11-2">
+                            <sup>
+                                <i>
+                                    <b>c</b>
+                                </i>
+                            </sup>
+                        </a>
+                        <a href="#cite_ref-Ralph_2010_11-3">
+                            <sup>
+                                <i>
+                                    <b>d</b>
+                                </i>
+                            </sup>
+                        </a>
+                        <a href="#cite_ref-Ralph_2010_11-4">
+                            <sup>
+                                <i>
+                                    <b>e</b>
+                                </i>
+                            </sup>
+                        </a>
+                        <a href="#cite_ref-Ralph_2010_11-5">
+                            <sup>
+                                <i>
+                                    <b>f</b>
+                                </i>
+                            </sup>
+                        </a>
+                    </span>
+                    <span>
+                        Ralph, P. (2010) "Comparing two software design process theories". International Conference on Design Science Research in Information Systems and Technology (DESRIST 2010), Springer, St. Gallen, Switzerland, pp. 139–153. <a href="/wiki/Digital_object_identifier">doi</a>
+                        :<a href="https://doi.org/10.1007%2F978-3-642-13335-0_10">10.1007/978-3-642-13335-0_10</a>
+                        .
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-DC-12">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-DC_12-0">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        <cite>
+                            Dorst, K.; Cross, N. (2001). <a href="http://cumincad.architexturez.net//doc/oai-cumincadworks-id-d0f1">"Creativity in the design process: Co-evolution of problem-solution"</a>
+                            . <i>Design Studies</i>
+                            (Submitted manuscript). <b>22</b>
+                            (2): 425–437. <a href="/wiki/Digital_object_identifier">doi</a>
+                            :<a href="//doi.org/10.1016%2F0142-694X%2894%2900012-3">10.1016/0142-694X(94)00012-3</a>
+                            .
+                                                    
+                                                    
+                        </cite>
+                        <span></span>
+                        <link href="mw-data:TemplateStyles:r879151008"/>
+                    </span>
+                </li>
+                <li id="cite_note-13">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-13">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        Newell, A., and Simon, H. (1972) <i>Human problem solving</i>
+                        , Prentice-Hall, Inc.
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-14">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-14">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        Pahl, G., and Beitz, W. (1996) 
+                                                    
+                                                    
+                        <a href="https://books.google.com/books?id=8fuhesYeJmkC&amp;printsec=frontcover">
+                            <i>Engineering design: A systematic approach</i>
+                        </a>
+                        , Springer-Verlag, London. <link href="mw-data:TemplateStyles:r879151008"/>
+                        <a href="/wiki/International_Standard_Book_Number">ISBN</a>
+                        <a href="/wiki/Special:BookSources/3-540-19917-9">3-540-19917-9</a>
+                        .
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-Royce-15">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-Royce_15-0">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        Royce, W.W. (1970) <a href="http://www-scf.usc.edu/~csci201/lectures/Lecture11/royce1970.pdf">"Managing the development of large software systems: Concepts and techniques,"</a>
+                        Proceedings of Wescon.
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-Bourque-16">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-Bourque_16-0">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        Bourque, P., and Dupuis, R. (eds.) (2004) <a href="http://webyes.com.br/wp-content/uploads/ebooks/book_SWEBOK.pdf">Guide to the software engineering body of knowledge</a>
+                        (SWEBOK). IEEE Computer Society Press, <link href="mw-data:TemplateStyles:r879151008"/>
+                        <a href="/wiki/International_Standard_Book_Number">ISBN</a>
+                        <a href="/wiki/Special:BookSources/0-7695-2330-7">0-7695-2330-7</a>
+                        .
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-17">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-17">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        Pahl, G., Beitz, W., Feldhusen, J., and Grote, K.-H. (2007 ) <a href="https://books.google.com/books?id=qsKNwB2gL5wC&amp;printsec=frontcover">Engineering design: A systematic approach</a>
+                        , (3rd ed.), Springer-Verlag, <link href="mw-data:TemplateStyles:r879151008"/>
+                        <a href="/wiki/International_Standard_Book_Number">ISBN</a>
+                        <a href="/wiki/Special:BookSources/1-84628-318-3">1-84628-318-3</a>
+                        .
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-18">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-18">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        Cross, N., (2006). <i>T211 Design and Designing: Block 2</i>
+                        , p. 99. Milton Keynes: The Open University.
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-19">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-19">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        Ullman, David G. (2009) <i>The Mechanical Design Process</i>
+                        , Mc Graw Hill, 4th edition <link href="mw-data:TemplateStyles:r879151008"/>
+                        <a href="/wiki/International_Standard_Book_Number">ISBN</a>
+                        <a href="/wiki/Special:BookSources/0-07-297574-1">0-07-297574-1</a>
+                    </span>
+                </li>
+                <li id="cite_note-Cross-20">
+                    <span>
+                        ^ 
+                                                    
+                                                    
+                        <a href="#cite_ref-Cross_20-0">
+                            <sup>
+                                <i>
+                                    <b>a</b>
+                                </i>
+                            </sup>
+                        </a>
+                        <a href="#cite_ref-Cross_20-1">
+                            <sup>
+                                <i>
+                                    <b>b</b>
+                                </i>
+                            </sup>
+                        </a>
+                    </span>
+                    <span>
+                        Cross, N., Dorst, K., and Roozenburg, N. (1992) <i>Research in design thinking</i>
+                        , Delft University Press, Delft. <link href="mw-data:TemplateStyles:r879151008"/>
+                        <a href="/wiki/International_Standard_Book_Number">ISBN</a>
+                        <a href="/wiki/Special:BookSources/90-6275-796-0">90-6275-796-0</a>
+                        .
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-21">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-21">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        <cite>
+                            McCracken, D.D.; Jackson, M.A. (1982). <a href="http://www.deepdyve.com/lp/association-for-computing-machinery/life-cycle-concept-considered-harmful-WXRCv45NVM">"Life cycle concept considered harmful"</a>
+                            . <i>SIGSOFT Software Engineering Notes</i>
+                            . <b>7</b>
+                            (2): 29–32. <a href="/wiki/Digital_object_identifier">doi</a>
+                            :<a href="//doi.org/10.1145%2F1005937.1005943">10.1145/1005937.1005943</a>
+                            .
+                                                    
+                                                    
+                        </cite>
+                        <span></span>
+                        <link href="mw-data:TemplateStyles:r879151008"/>
+                    </span>
+                </li>
+                <li id="cite_note-Beck-22">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-Beck_22-0">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        Beck, K., Beedle, M., van Bennekum, A., Cockburn, A., Cunningham, W., Fowler, M., Grenning, J., Highsmith, J., Hunt, A., Jeffries, R., Kern, J., Marick, B., Martin, R.C., Mellor, S., Schwaber, K., Sutherland, J., and Thomas, D. (2001) <a href="http://www.agilemanifesto.org/">Manifesto for agile software development</a>
+                        .
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-Truex-23">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-Truex_23-0">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        <cite>
+                            Truex, D.; Baskerville, R.; and Travis, J. (2000). "Amethodical systems development: The deferred meaning of systems development methods". <i>Accounting, Management and Information Technologies</i>
+                            . <b>10</b>
+                            (1): 53–79. <a href="/wiki/Digital_object_identifier">doi</a>
+                            :<a href="//doi.org/10.1016%2FS0959-8022%2899%2900009-0">10.1016/S0959-8022(99)00009-0</a>
+                            .
+                                                    
+                                                    
+                        </cite>
+                        <span></span>
+                        <link href="mw-data:TemplateStyles:r879151008"/>
+                    </span>
+                </li>
+                <li id="cite_note-24">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-24">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        Fischer, Thomas "Design Enigma. A typographical metaphor for enigmatic processes, including designing", in: T. Fischer, K. De Biswas, J.J. Ham, R. Naka, W.X. Huang, <i>Beyond Codes and Pixels: Proceedings of the 17th International Conference on Computer-Aided Architectural Design Research in Asia</i>
+                        , p. 686
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-25">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-25">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        Anderson, Jane (2011) <i>Architectural Design</i>
+                        , Basics Architecture 03, Lausanne, AVA academia, p. 40. <link href="mw-data:TemplateStyles:r879151008"/>
+                        <a href="/wiki/International_Standard_Book_Number">ISBN</a>
+                        <a href="/wiki/Special:BookSources/978-2-940411-26-9">978-2-940411-26-9</a>
+                        .
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-26">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-26">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        Holm, Ivar (2006). <i>Ideas and Beliefs in Architecture and Industrial design: How attitudes, orientations and underlying assumptions shape the built environment</i>
+                        . Oslo School of Architecture and Design. <link href="mw-data:TemplateStyles:r879151008"/>
+                        <a href="/wiki/International_Standard_Book_Number">ISBN</a>
+                        <a href="/wiki/Special:BookSources/82-547-0174-1">82-547-0174-1</a>
+                        .
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-27">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-27">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        <cite>
+                            Heskett, John (2002). <i>Toothpicks and Logos: Design in Everyday Life</i>
+                            . Oxford University Press.
+                                                    
+                                                    
+                        </cite>
+                        <span></span>
+                        <link href="mw-data:TemplateStyles:r879151008"/>
+                    </span>
+                </li>
+                <li id="cite_note-maxbruinsma.nl-28">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-maxbruinsma.nl_28-0">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        <a href="http://maxbruinsma.nl/index1.html?ftf2000.htm">First Things First 2000 a design manifesto</a>
+                        <a href="https://web.archive.org/web/20111219160927/http://maxbruinsma.nl/index1.html?ftf2000.htm">Archived</a>
+                        2011-12-19 at the <a href="/wiki/Wayback_Machine">Wayback Machine</a>
+                        . manifesto published jointly by 33 signatories in: Adbusters, the AIGA journal, Blueprint, Emigre, Eye, Form, Items fall 1999/spring 2000
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-29">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-29">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        <cite>
+                            <a href="http://studiolab.ide.tudelft.nl/manila/gems/contextmapping/PreprintDraft.pdf">"Co-creation and the new landscape of design"</a>
+                            <span>(PDF)</span>
+                            .
+                                                    
+                                                    
+                        </cite>
+                        <span></span>
+                        <link href="mw-data:TemplateStyles:r879151008"/>
+                    </span>
+                </li>
+                <li id="cite_note-30">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-30">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        Getlein, Mark (2008) <i>Living With Art</i>
+                        , 8th ed. New York, p. 121.
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-31">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-31">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        American Psychological Association (APA): <a href="http://dictionary.reference.com/browse/design">design</a>
+                        <a href="https://web.archive.org/web/20070108172005/http://dictionary.reference.com/browse/design">Archived</a>
+                        2007-01-08 at the <a href="/wiki/Wayback_Machine">Wayback Machine</a>
+                        . The American Heritage Dictionary of the English Language, Fourth Edition. Retrieved January 10, 2007
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-32">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-32">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        American Psychological Association (APA): <a href="http://dictionary.reference.com/browse/engineering">engineering</a>
+                        <a href="https://web.archive.org/web/20070102052421/http://dictionary.reference.com/browse/engineering">Archived</a>
+                        2007-01-02 at the <a href="/wiki/Wayback_Machine">Wayback Machine</a>
+                        . The American Heritage Dictionary of the English Language, Fourth Edition. Retrieved January 10, 2007
+                                                
+                                                
+                    </span>
+                </li>
+                <li id="cite_note-Faste-33">
+                    <span>
+                        <b>
+                            <a href="#cite_ref-Faste_33-0">^</a>
+                        </b>
+                    </span>
+                    <span>
+                        <cite>
+                            Faste, R. (2001). <a href="http://www.ijee.ie/articles/Vol17-4and5/Ijee1230.pdf">"The Human Challenge in Engineering Design"</a>
+                            <span>(PDF)</span>
+                            . <i>International Journal of Engineering Education</i>
+                            . <b>17</b>
+                            (4–5): 327–331.
+                                                    
+                                                    
+                        </cite>
+                        <span></span>
+                        <link href="mw-data:TemplateStyles:r879151008"/>
+                    </span>
+                </li>
+            </ol>
+            <h2>
+                <span id="Bibliography">Bibliography</span>
+            </h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            Look up 
+                                                    
+                                                    
+                            <i>
+                                <b>
+                                    <a href="https://en.wiktionary.org/wiki/design">design</a>
+                                </b>
+                            </i>
+                            in Wiktionary, the free dictionary.
+                                                
+                                                
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            Wikiquote has quotations related to: 
+                                                    
+                                                    
+                            <i>
+                                <b>
+                                    <a href="https://en.wikiquote.org/wiki/Special:Search/Design">Design</a>
+                                </b>
+                            </i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            Wikimedia Commons has media related to 
+                                                    
+                                                    
+                            <i>
+                                <b>
+                                    <a href="https://commons.wikimedia.org/wiki/Category:Design">Design</a>
+                                </b>
+                            </i>
+                            .
+                                                
+                                                
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <noscript>
+                <img></img>
+            </noscript>
+            Retrieved from "<a href="https://en.wikipedia.org/w/index.php?title=Design&amp;oldid=883436145">https://en.wikipedia.org/w/index.php?title=Design &amp;oldid=883436145</a>
+            "
+                        
+        
+        </div>
+    </body>
+</html>
