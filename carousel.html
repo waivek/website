@@ -16,23 +16,30 @@ h2 {
     text-transform: uppercase;
 }
 .carousel_parent {
-    width: 500px;
+    width: 100%;
+    max-width: 600px;
+
     overflow-x: hidden;
     margin: 1em auto;
-    border: solid 2px black;
+
+    border: solid 1px lightblue;
 
 }
 .carousel {
-    height: 500px;
-    width: 2500px;
+    height: 400px;
+    width: 2000px;
+
     transform: translateX(0%);
+
+    overflow-y: hidden;
 }
 .animated {
     transition: transform 0.3s ease-out;
 }
 .post {
-    height: 500px;
-    width: 500px;
+    height: 100%;
+    width: 400px;
+
     text-align: center;
     color: white;
     display: inline-block;
@@ -48,29 +55,86 @@ h2 {
 .hidden {
     display: none;
 }
+
+body {
+    margin-left: 0;
+    margin-right: 0;
+}
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+.dots {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 50px;
+}
+.dot {
+    border-radius: 50%;
+    height: 6px;
+    width: 6px;
+    background-color: lightgray;
+    display: inline-block;
+}
+.active_dot {
+    background-color: lightblue;
+}
 </style>
 <script>
-    window.addEventListener("load", function () {
+    window.addEventListener("resize", refresh_translates);
+    var global_net_translate;
+    var global_bounds;
+    function refresh_translates() {
+        var carousel_parent = document.querySelector(".carousel_parent");
+        var width = carousel_parent.clientWidth;
         var carousel = document.querySelector(".carousel");
-        var width = carousel.parentElement.clientWidth;
-        var net_width = carousel.clientWidth;
-        var bounds = width-net_width;
-        console.log("bounds: " + bounds);
+        var post = document.querySelector(".post");
+        var old_width = parseInt(post.style.width);
+
+        carousel.style.width = carousel_parent.clientWidth * carousel.childElementCount;
+        carousel.style.height = carousel_parent.clientWidth;
+        var posts = document.querySelectorAll(".post");
+        for (var i = 0; i < posts.length; i++) {
+            posts[i].style.width = carousel_parent.clientWidth;
+        }
+        var net_translate = parseInt(carousel.style.transform.slice(11, carousel.style.transform.length - 1));
+        var left_swipe_count = net_translate / old_width * -1;
+        var new_net_translate = left_swipe_count * carousel_parent.clientWidth * -1;
+
+        carousel.style.transform = "translateX(" + new_net_translate + "px)";
+        global_net_translate = new_net_translate;
+        global_bounds = carousel_parent.clientWidth-carousel.clientWidth;
+    }
+    window.addEventListener("load", function () {
+        var carousel_parent = document.querySelector(".carousel_parent");
+        var carousel = document.querySelector(".carousel");
+
+        carousel.style.height = carousel_parent.clientWidth;
+        carousel.style.width = carousel.childElementCount * carousel_parent.clientWidth;
+        
+        var posts = carousel.querySelectorAll(".post");
+        for (var i = 0; i < posts.length; i++) {
+            var post = posts[i];
+
+            post.style.width = carousel_parent.clientWidth;
+        }
+
+        
+        global_bounds = carousel_parent.clientWidth - carousel.clientWidth;
+
         var swipe_start_x;
-        var swipe_delta_x;
-        var net_translate = 0;
+        global_net_translate = 0;
         function swipe_start(event) {
             swipe_start_x = event.touches[0].clientX;
         }
         function swipe_move(event) {
-            var swipe_move_x = event.touches[0].clientX;
-            var swipe_delta_x = swipe_move_x - swipe_start_x;
-            var translate_x = net_translate + swipe_delta_x;
-            // console.log("[swipe_move] delta: " + swipe_delta_x);
+            var swipe_delta_x = event.touches[0].clientX - swipe_start_x;
+            var translate_x = global_net_translate + swipe_delta_x;
             if (translate_x > 0) {
                 translate_x = 0;
-            } else if (translate_x < bounds) {
-                translate_x = bounds;
+            } else if (translate_x < global_bounds) {
+                translate_x = global_bounds;
             }
             carousel.style.transform = "translateX("+translate_x+"px)";
         }
@@ -81,26 +145,32 @@ h2 {
             carousel.classList.add("animated");
             setTimeout(function () {
                 carousel.classList.remove("animated");
-            }, 400);
-            var old_transition = carousel.style.transition;
+            }, 300);
 
             if (swipe_delta_x < 0) {
-                console.log("translate left");
-                net_translate = net_translate - width;
-                if (net_translate < bounds) {
-                    net_translate = bounds;
-                }
-                carousel.style.transform = "translateX(" + net_translate + "px)";
+                // swipe right, translate left
+                global_net_translate = global_net_translate - carousel_parent.clientWidth;
             } else if (swipe_delta_x > 0) {
-                console.log("translate right");
-                net_translate = net_translate + width;
-                if (net_translate > 0) {
-                    net_translate = 0;
-                }
-                carousel.style.transform = "translateX(" + net_translate + "px)";
+                // swipe left, translate right
+                global_net_translate = global_net_translate + carousel_parent.clientWidth;
             }
 
+            if (global_net_translate < global_bounds) {
+                // don't allow swipe left on last image
+                global_net_translate = global_bounds;
+            } else if (global_net_translate > 0) {
+                // don't allow swipe right on first image
+                global_net_translate = 0;
+            }
 
+            carousel.style.transform = "translateX(" + global_net_translate + "px)";
+
+            var active_dot = document.querySelector(".active_dot");
+            active_dot.classList.remove("active_dot");
+
+            var left_swipe_count = global_net_translate / carousel_parent.clientWidth * -1;
+            var dots = document.querySelectorAll(".dot");
+            dots[left_swipe_count].classList.add("active_dot");
         }
         carousel.addEventListener("touchstart", swipe_start);
         carousel.addEventListener("touchmove", swipe_move);
@@ -112,15 +182,30 @@ h2 {
         <div id="content">
 <h2>Carousel</h2>
 
+<div class="exp_parent">
+<div class="experiment">
+
+</div>
+</div>
+
 <div class="carousel_parent">
     <div class="carousel">
 <div class="post odd">
-    1</div><div class="post even">
-    2</div><div class="post odd">
-    3</div><div class="post even">
-    4</div><div class="post odd">
-5</div>
+    <img src="images/carousel/img_1.jpg">1</img></div><div class="post even">
+    <img src="images/carousel/img_2.jpg">2</img></div><div class="post odd">
+    <img src="images/carousel/img_3.jpg">3</img></div><div class="post even">
+    <img src="images/carousel/img_4.jpg">4</img></div><div class="post odd">
+    <img src="images/carousel/img_5.jpg">5</img></div>
     </div>
+</div>
+<div class="dots">
+    <div class="active_dot dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+
+
 </div>
         </div>
     </body>
