@@ -184,7 +184,6 @@ img {
             var active_dot = document.querySelector(".active_dot");
             active_dot.classList.remove("active_dot");
             var active_description = document.querySelector(".active_description");
-            active_description.classList.remove("active_description");
 
             var left_swipe_count = global_net_translate / carousel_parent.clientWidth * -1;
             var dots = document.querySelectorAll(".dot");
@@ -192,6 +191,9 @@ img {
 
             var descriptions = document.querySelectorAll(".description");
             descriptions[left_swipe_count].classList.add("active_description");
+            if (active_description !== descriptions[left_swipe_count]) {
+                active_description.classList.remove("active_description");
+            }
         }
         carousel.addEventListener("touchstart", swipe_start);
         carousel.addEventListener("touchmove", swipe_move);
