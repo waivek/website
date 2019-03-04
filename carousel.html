@@ -140,9 +140,14 @@ img {
         global_bounds = carousel_parent.clientWidth - carousel.clientWidth;
 
         var swipe_start_x;
+        var swipe_start_y;
+        var swipe_start_seconds;
         global_net_translate = 0;
+
         function swipe_start(event) {
             swipe_start_x = event.touches[0].clientX;
+            swipe_start_seconds = Date.now() / 1000;
+            swipe_start_y = event.touches[0].clientY;
         }
         function swipe_move(event) {
             var swipe_delta_x = event.touches[0].clientX - swipe_start_x;
@@ -156,12 +161,38 @@ img {
         }
         function swipe_end(event) {
             var swipe_end_x = event.changedTouches[0].pageX;
+            var swipe_end_y = event.changedTouches[0].clientY;
+            var swipe_end_seconds = Date.now() / 1000;
+            
             var swipe_delta_x = swipe_end_x - swipe_start_x;
+            var swipe_delta_y = swipe_end_y - swipe_start_y;
+            var swipe_delta_seconds = swipe_end_seconds - swipe_start_seconds;
+            console.log("swipe_delta_seconds: " + swipe_delta_seconds.toPrecision(2));
 
             carousel.classList.add("animated");
             setTimeout(function () {
                 carousel.classList.remove("animated");
             }, 300);
+
+            var swipe_x_fraction = Math.abs(swipe_delta_x / carousel_parent.clientWidth);
+            console.log("swipe_x_fraction: " + swipe_x_fraction.toPrecision(2));
+
+            var slow_swipe = swipe_delta_seconds > .3;
+            var fast_swipe = !slow_swipe;
+            var narrow_swipe = swipe_x_fraction < 0.6;
+            var vertical_swipe =  Math.abs(swipe_delta_y) > Math.abs(swipe_delta_x);
+            var horizontal_swipe = !vertical_swipe;
+
+            var conditions_str = "";
+
+            if (fast_swipe && horizontal_swipe) {
+            }
+            else if (slow_swipe || vertical_swipe) {
+                if (narrow_swipe) {
+                    carousel.style.transform = "translateX(" + global_net_translate + "px)";
+                    return;
+                }
+            }
 
             if (swipe_delta_x < 0) {
                 // swipe right, translate left
