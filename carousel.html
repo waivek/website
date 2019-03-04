@@ -169,6 +169,11 @@ img {
             var swipe_delta_seconds = swipe_end_seconds - swipe_start_seconds;
             console.log("swipe_delta_seconds: " + swipe_delta_seconds.toPrecision(2));
 
+            carousel.classList.add("animated");
+            setTimeout(function () {
+                carousel.classList.remove("animated");
+            }, 300);
+
             var swipe_x_fraction = Math.abs(swipe_delta_x / carousel_parent.clientWidth);
             console.log("swipe_x_fraction: " + swipe_x_fraction.toPrecision(2));
 
@@ -188,11 +193,6 @@ img {
                     return;
                 }
             }
-
-            carousel.classList.add("animated");
-            setTimeout(function () {
-                carousel.classList.remove("animated");
-            }, 300);
 
             if (swipe_delta_x < 0) {
                 // swipe right, translate left
