@@ -169,21 +169,16 @@ img {
             var swipe_delta_seconds = swipe_end_seconds - swipe_start_seconds;
             console.log("swipe_delta_seconds: " + swipe_delta_seconds.toPrecision(2));
 
-            carousel.classList.add("animated");
-            setTimeout(function () {
-                carousel.classList.remove("animated");
-            }, 300);
-
             var swipe_x_fraction = Math.abs(swipe_delta_x / carousel_parent.clientWidth);
             console.log("swipe_x_fraction: " + swipe_x_fraction.toPrecision(2));
 
             var slow_swipe = swipe_delta_seconds > .3;
             var fast_swipe = !slow_swipe;
+
             var narrow_swipe = swipe_x_fraction < 0.6;
+
             var vertical_swipe =  Math.abs(swipe_delta_y) > Math.abs(swipe_delta_x);
             var horizontal_swipe = !vertical_swipe;
-
-            var conditions_str = "";
 
             if (fast_swipe && horizontal_swipe) {
             }
@@ -193,6 +188,11 @@ img {
                     return;
                 }
             }
+
+            carousel.classList.add("animated");
+            setTimeout(function () {
+                carousel.classList.remove("animated");
+            }, 300);
 
             if (swipe_delta_x < 0) {
                 // swipe right, translate left
