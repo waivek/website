@@ -1,0 +1,185 @@
+
+
+<html>
+    <head>
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Product Pillars</title>
+
+<style>
+
+body {
+    line-height: 1.65;
+    font-family: sans-serif;
+}
+#content {
+    max-width: 60em;
+    margin:  auto;
+    padding: 0 1em;
+}
+a {
+    text-decoration: none;
+    padding-bottom: 4px;
+    color: #36c;
+}
+a:hover {
+    border-bottom: solid 1.5px;
+}
+
+h1 {
+    text-align: center;
+    text-transform: lowercase;
+}
+.keyword {
+    border-bottom: dotted 1.5px;
+    padding-bottom: 4px;
+}
+.desktop_definition {
+    position: absolute;
+    padding: .5em 1em;
+    background: #FFE082;
+    background: #eee;
+    color: #888;
+    box-shadow: 1px 1px 4px;
+    border-radius: 2px;
+}
+
+.desktop_hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.desktop_definition, .desktop_hidden {
+    transition: visibility 0.15s linear, opacity 0.15s linear;
+}
+
+.hidden {
+    display: none;
+}
+
+</style>
+
+<script>
+    window.addEventListener("load", function () {
+        var anchors = document.querySelectorAll("a");
+        for (var i = 0; i < anchors.length; i++) {
+            var anchor = anchors[i];
+            anchor.setAttribute("href", anchor.textContent);
+        }
+    });
+    
+    function add_desktop_definitions(definitions) {
+        var keyword_spans = document.querySelectorAll("span.keyword");
+        for (var i = 0; i < keyword_spans.length; i++) {
+            var element = keyword_spans[i];
+
+            (function (el) {
+
+                var keyword = el.innerText;
+                var definition = definitions[keyword];
+                var desktop_definition = document.createElement("div");
+                desktop_definition.classList.add("desktop_definition");
+                desktop_definition.classList.add("desktop_hidden");
+                desktop_definition.innerText = definition;
+                document.body.append(desktop_definition);
+
+                function mouseover_fn(event) {
+                    desktop_definition.classList.remove("desktop_hidden");
+                    desktop_definition.style.top = event.clientY + window.pageYOffset + 16;
+                    desktop_definition.style.left = "";
+                    desktop_definition.style.right = "";
+
+                    if (event.clientX <= window.innerWidth / 2) {
+                        desktop_definition.style.left = event.clientX;
+                    } else {
+                        desktop_definition.style.right = window.innerWidth - event.clientX;
+                    }
+                }
+
+                function mouseout_fn(event) {
+                    desktop_definition.classList.add("desktop_hidden");
+                }
+
+                el.addEventListener("mouseover", mouseover_fn);
+                el.addEventListener("mouseout", mouseout_fn);
+
+
+            })(element);
+
+        } // end for loop
+
+        function hide_visible_desktop_definition_on_touch (event) {
+            var visible_desktop_definition = document.querySelector(".desktop_definition:not(.desktop_hidden)");
+            if (!visible_desktop_definition) {
+                return;
+            }
+            visible_desktop_definition.classList.add("desktop_hidden");
+        }
+
+        window.addEventListener("touchstart", hide_visible_desktop_definition_on_touch);
+        window.addEventListener("scroll", hide_visible_desktop_definition_on_touch);
+
+
+    } // end addEventListener
+
+
+    window.addEventListener("load", function () {
+        var definitions = {
+            "lightweight" : "a category of web page that loads extremely quickly"
+        }
+        var content_nodes = document.body.querySelectorAll("p");
+        for (var i = 0; i < content_nodes.length; i++) {
+            var node = content_nodes[i];
+            var text_content = node.innerHTML
+
+            for (keyword in definitions) {
+                var re = new RegExp(keyword, "g")
+                var defintion = definitions[keyword];
+                text_content = text_content.replace(re, '<span class="keyword">' + keyword + '</span>');
+            }
+
+            node.innerHTML = text_content;
+        }
+        add_desktop_definitions(definitions);
+        // add_mobile_definitions(definitions);
+
+    });
+</script>
+
+    </head>
+    <body>
+        <div id="content">
+
+            <h1>Product Pillars</h1>
+
+            <p>
+                When making websites, I should have guiding principles that form the foundation of my design. I
+                shouldn't pretend that I am making a lightweight web page and then use two fonts with four weights each
+                adding up to 250 kilobytes of extra page size. I should also avoid constraining my more ambitious experiments
+                with JavaScript or CSS design with concerns of page size.
+            </p>
+
+            <p>
+                The gold standard of a lightweight web page is <a>https://www.reddit.com/.mobile</a>. It loads faster
+                than the Android Reddit is Fun app and also the official website on a 2G network connection running at
+                64 kbps (8 kilobytes/sec). Other honorary mentions are <a>https://news.ycombinator.com</a> and
+                <a>https://lite.cnn.com.</a> All of these sites don't load additional fonts. A reddit thread with 400+
+                comments has a page size of 25 kiB.
+            </p>
+
+            <p>
+                A web page can have lines of JavaScript and CSS and still be lightweight as these don't affect page
+                sizes as much as fonts do.
+            </p>
+
+            <p>
+                Requirements for a lightweight web page
+                <ol>
+                    <li>No fonts</li>
+                    <li>Page size is less than 25 kilobytes</p>
+                </ol>
+            </p>
+
+        </div>
+    </body>
+</html>
