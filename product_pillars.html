@@ -11,11 +11,9 @@
 body {
     line-height: 1.65;
     font-family: sans-serif;
-}
-#content {
     max-width: 60em;
-    margin:  auto;
-    padding: 0 1em;
+    padding: 1em;
+    margin: auto;
 }
 a {
     text-decoration: none;
@@ -24,6 +22,8 @@ a {
 }
 a:hover {
     border-bottom: solid 1.5px;
+    color: brown;
+    border-color: goldenrod;
 }
 
 h1 {
@@ -31,11 +31,33 @@ h1 {
     border-bottom: solid 1.5px lightgray;
     padding-bottom: .5em;
     padding-top: .5em;
+
+    color: brown;
+    border-color: goldenrod;
 }
-body {
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: 0;
+@media screen and (min-width: 600px) {
+    #toc {
+        float: right;
+        line-height: 2;
+        margin-left: 1em;
+    }
+    #wrapped {
+        /* max-width: 900px; */
+    }
+}
+#toc > b {
+    text-transform: uppercase;
+}
+#wrapped > p:first-of-type:first-letter {
+    float: left;
+    font-size: 54px;
+    line-height: 1;
+    margin: 5px 8px 5px 0;
+    padding: 5px;
+    font-family: serif;
+    border: solid 2px goldenrod;
+    color: brown;
+
 }
 </style>
 
@@ -62,7 +84,24 @@ body {
 
             <h1>Product Pillars</h1>
 
+            <!-- <div id="toc"> -->
+            <!--     <b><small>Contents</small></b> -->
+            <!--     <ol> -->
+            <!--         <li>Flyweight Page</li> -->
+            <!--         <li>Bantamweight Page</li> -->
+            <!--         <li>Featherweight Page</li> -->
+            <!--         <li>Lightweight Page</li> -->
+            <!--         <li>Welterweight Page</li> -->
+            <!--         <li>Middleweight Page</li> -->
+            <!--         <li>Cruiserweight Page</li> -->
+            <!--         <li>Heavyweight Page</li> -->
+            <!--     </ol> -->
+            <!--  -->
+            <!--     <hr /> -->
+            <!-- </div> -->
                 
+            <div id="wrapped">
+
             <p>
                 When you are in the flow of designing a website, it is easy to gradually make small decisions that go
                 against the overall design goal you have for the site. These small mistakes add up to make a product
@@ -112,9 +151,7 @@ body {
                 </ol>
             </p>
     
-            <p>
-                
-            </p>
+            </div>
 
         </div>
     </body>
