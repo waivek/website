@@ -160,7 +160,8 @@ function showcard(identifier, element) {
     card.classList.remove("hidden");
 
     var fontSize = parseInt(window.getComputedStyle(element).getPropertyValue("font-size"));
-    card.style.top = element.offsetTop + fontSize ;
+    // card.style.top = element.offsetTop + fontSize ;
+    card.style.top = element.offsetTop + fontSize - window.pageYOffset;;
 
     var mid_point = document.body.offsetWidth / 2;
     card.style.right = "";

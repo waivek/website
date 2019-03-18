@@ -25,6 +25,7 @@ h2 {
     border-top: solid 1px lightblue;
     border-bottom: solid 1px lightblue;
 
+
 }
 .carousel {
     height: 400px;
@@ -33,6 +34,7 @@ h2 {
     transform: translateX(0%);
 
     overflow-y: hidden;
+
 }
 .animated {
     transition: transform 0.3s ease-out;
@@ -45,7 +47,6 @@ h2 {
     color: white;
     display: inline-block;
     transform: translateX(0%);
-
 }
 .odd {
     background-color: brown;
@@ -65,6 +66,8 @@ img {
     height: 100%;
     width: 100%;
     object-fit: contain;
+
+
 }
 .dots {
     margin-left: auto;
@@ -96,13 +99,18 @@ img {
 .description.active_description {
     display: block;
 }
-
+.carousel_parent:hover {
+    cursor: grab;
+}
+.carousel_parent:active {
+    cursor: grabbing;
+}
 </style>
 <script>
-    window.addEventListener("resize", refresh_translates);
+    window.addEventListener("resize", refresh_translates_on_resize);
     var global_net_translate;
     var global_bounds;
-    function refresh_translates() {
+    function refresh_translates_on_resize() {
         var carousel_parent = document.querySelector(".carousel_parent");
         var width = carousel_parent.clientWidth;
         var carousel = document.querySelector(".carousel");
@@ -170,11 +178,6 @@ img {
             var swipe_delta_seconds = swipe_end_seconds - swipe_start_seconds;
             console.log("swipe_delta_seconds: " + swipe_delta_seconds.toPrecision(2));
 
-            carousel.classList.add("animated");
-            setTimeout(function () {
-                carousel.classList.remove("animated");
-            }, 300);
-
             var swipe_x_fraction = Math.abs(swipe_delta_x / carousel_parent.clientWidth);
             console.log("swipe_x_fraction: " + swipe_x_fraction.toPrecision(2));
 
@@ -194,6 +197,11 @@ img {
                     return;
                 }
             }
+
+            carousel.classList.add("animated");
+            setTimeout(function () {
+                carousel.classList.remove("animated");
+            }, 300);
 
             if (swipe_delta_x < 0) {
                 // swipe right, translate left
@@ -227,9 +235,27 @@ img {
                 active_description.classList.remove("active_description");
             }
         }
-        carousel.addEventListener("touchstart", swipe_start);
-        carousel.addEventListener("touchmove", swipe_move);
-        carousel.addEventListener("touchend", swipe_end);
+        // carousel.addEventListener("touchstart", swipe_start);
+        // carousel.addEventListener("touchmove", swipe_move);
+        // carousel.addEventListener("touchend", swipe_end);
+
+        var grab_start_x;
+        function grab_start(event) {
+            grab_start_x = event.clientX;
+        }
+
+        function grab_move(event) {
+            console.log("grab_move");
+            var grab_delta_x = event.clientX - grab_start_x;
+            carousel.style.transform = "translateX(-" + grab_delta_x + ")";
+        }
+
+        function grab_end(event) {
+
+        }
+        carousel.addEventListener("mousedown", grab_start);
+        window.addEventListener("mousemove", grab_move, false);
+        carousel.addEventListener("mouseup", grab_end);
     });
 </script>
     </head>
@@ -237,29 +263,36 @@ img {
         <div id="content">
 <h2>Carousel</h2>
 
-<div class="exp_parent">
-<div class="experiment">
 
-</div>
-</div>
+<div class="carousel_with_dots">
+    <div class="carousel_parent">
 
-<div class="carousel_parent">
-    <div class="carousel">
-<div class="post odd">
-    <img src="images/carousel/img_1.jpg">1</img></div><div class="post even">
-    <img src="images/carousel/img_2.jpg">2</img></div><div class="post odd">
-    <img src="images/carousel/img_3.jpg">3</img></div><div class="post even">
-    <img src="images/carousel/img_4.jpg">4</img></div><div class="post odd">
-    <img src="images/carousel/img_5.jpg">5</img></div>
+        <div class="carousel">
+
+            <div class="post odd">
+                <img src="images/carousel/img_1.jpg" />
+            </div><div class="post even">
+                <img src="images/carousel/img_2.jpg" />
+            </div><div class="post odd">
+                <img src="images/carousel/img_3.jpg" />
+            </div><div class="post even">
+                <img src="images/carousel/img_4.jpg" />
+            </div><div class="post odd">
+                <img src="images/carousel/img_5.jpg" />
+            </div>
+
+        </div>
+
+    </div>
+    <div class="dots">
+        <div class="active_dot dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
     </div>
 </div>
-<div class="dots">
-    <div class="active_dot dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-</div>
+
 <div class="descriptions">
     <div class="active_description description">
         <h4>Harry Potter</h4>
@@ -292,6 +325,7 @@ img {
         </p>
     </div>
 </div>
+
         </div>
     </body>
 </html>

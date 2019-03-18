@@ -1,10 +1,6 @@
 @font-face {
-    font-family: "Lora";
-    src:    
-            local("Lora"),
-            url("../fonts/Lora-Regular.woff2") format("woff2"),
-            url("../fonts/Lora-Regular.woff")  format("woff"),
-            url("../fonts/Lora-Regular.ttf")   format("truetype");
+    font-family: "New Face";
+    src:    url("../fonts/Lora-Regular.woff2") format("woff2");
     font-weight: normal;
 }
 
@@ -18,7 +14,7 @@ body {
     margin: 0 auto;
 }
 h1, h2 {
-    font-family:"Lora";
+    font-family:"New Face";
     padding-bottom: 6px;
     border-bottom: solid 1px #eee;
 }

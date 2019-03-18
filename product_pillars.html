@@ -7,11 +7,10 @@
     <title>Product Pillars</title>
 
 <style>
-
 body {
     line-height: 1.65;
     font-family: sans-serif;
-    padding: 0 1em 0 1em;
+    padding: 0 1em;
     max-width: 60em;
     margin: auto;
 }
@@ -25,28 +24,13 @@ a:hover {
     color: brown;
     border-color: goldenrod;
 }
-
 h1 {
     text-align: center;
     border-bottom: solid 1.5px lightgray;
     padding-top: .5em;
     padding-bottom: .5em;
-
     color: brown;
     border-color: goldenrod;
-}
-@media screen and (min-width: 600px) {
-    #toc {
-        float: right;
-        line-height: 2;
-        margin-left: 1em;
-    }
-    #wrapped {
-        /* max-width: 900px; */
-    }
-}
-#toc > b {
-    text-transform: uppercase;
 }
 #wrapped > p:first-of-type:first-letter {
     float: left;
@@ -57,23 +41,22 @@ h1 {
     font-family: serif;
     border: solid 2px goldenrod;
     color: brown;
-
 }
+/* @media screen and (min-width: 600px) { */
+/*     #toc { */
+/*         float: right; */
+/*         line-height: 2; */
+/*         margin-left: 1em; */
+/*     } */
+/*     #wrapped { */
+/*         /* max-width: 900px; */ */
+/*     } */
+/* } */
+/* #toc > b { */
+/*     text-transform: uppercase; */
+/* } */
 </style>
 
-<script>
-
-    window.addEventListener("load", function () {
-        var anchors = document.querySelectorAll("a");
-        for (var i = 0; i < anchors.length; i++) {
-            var anchor = anchors[i];
-            anchor.setAttribute("href", anchor.textContent);
-
-        }
-    });
-
-
-</script>
 
     </head>
     <body>
@@ -127,9 +110,9 @@ h1 {
             <p>
                 Flyweight page examples:
                 <ul type="square">
-                    <li><a>https://www.reddit.com/.mobile</a></li>
-                    <li><a>https://news.ycombinator.com</a></li>
-                    <li><a>https://lite.cnn.com.</a></li>
+                    <li><a href="https://www.reddit.com/.mobile">https://www.reddit.com/.mobile</a></li>
+                    <li><a href="https://news.ycombinator.com">https://news.ycombinator.com</a></li>
+                    <li><a href="https://lite.cnn.com.">https://lite.cnn.com.</a></li>
                 </ul>
             </p>
 
