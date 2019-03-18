@@ -11,8 +11,8 @@
 body {
     line-height: 1.65;
     font-family: sans-serif;
+    padding: 0 1em 0 1em;
     max-width: 60em;
-    padding: 1em;
     margin: auto;
 }
 a {
@@ -29,8 +29,8 @@ a:hover {
 h1 {
     text-align: center;
     border-bottom: solid 1.5px lightgray;
-    padding-bottom: .5em;
     padding-top: .5em;
+    padding-bottom: .5em;
 
     color: brown;
     border-color: goldenrod;
@@ -116,7 +116,7 @@ h1 {
                 make their way to the final version of your site.
             </p>
 
-            <h2>Lightweight Page</h2>
+            <h2>Flyweight Page</h2>
 
             <p>
                 If the intention is to make a page that works on 2G networks, then using even two fonts in their woff
@@ -125,7 +125,7 @@ h1 {
             </p>
 
             <p>
-                Lightweight page examples:
+                Flyweight page examples:
                 <ul type="square">
                     <li><a>https://www.reddit.com/.mobile</a></li>
                     <li><a>https://news.ycombinator.com</a></li>
@@ -139,17 +139,51 @@ h1 {
             </p>
 
             <p>
-                A web page can have lines of JavaScript and CSS and still be lightweight as these don't affect page
+                A web page can have lines of JavaScript and CSS and still be flyweight as these don't affect page
                 sizes as much as fonts do.
             </p>
 
             <p>
-                Requirements for a lightweight web page
+                Requirements for a flyweight web page
                 <ol>
                     <li>No fonts</li>
                     <li>No images</li>
                 </ol>
             </p>
+
+            <h2>Lightweight</h2>
+
+            <p>
+                The moment you use fonts in your page, it can no longer be considered flyweight. A font adds around
+                20-200 kb of bloat to the web page and introduces an addition of 1-4 HTTP requests depending on the
+                number of weights the font is using.
+            </p>
+
+            <p>
+                Requirements for a lightweight page:
+                <ol>
+                    <li>1 or more fonts</li>
+                    <li>No images</li>
+                </ol>
+            </p>
+
+            <h2>Heavyweight</h2>
+
+            <p>
+                Images unlike fonts, are not a fixed cost. Three or four images can easily take up a megabyte of space
+                along with increasing the number of HTTP requests made by the page. Having images be essential to your
+                page and the impact delivered by it's content fundamentally changes the nature of the networks the page
+                will be able to operate smoothly on. A page that makes moderate to heavy use of images is a heavyweight
+                page.
+            </p>
+
+            <p>
+                Requirements for a heavyweight page:
+                <ol>
+                    <li>Moderate to heavy use of images</li>
+                </ol>
+            </p>
+
     
             </div>
 
