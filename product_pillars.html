@@ -1,11 +1,7 @@
-
-
 <html>
     <head>
-    
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Product Pillars</title>
-
 <style>
 body {
     line-height: 1.65;
@@ -27,7 +23,6 @@ a:hover {
 h1 {
     text-align: center;
     border-bottom: solid 1.5px lightgray;
-    padding-top: .5em;
     padding-bottom: .5em;
     color: brown;
     border-color: goldenrod;
@@ -42,31 +37,65 @@ h1 {
     border: solid 2px goldenrod;
     color: brown;
 }
-/* @media screen and (min-width: 600px) { */
-/*     #toc { */
-/*         float: right; */
-/*         line-height: 2; */
-/*         margin-left: 1em; */
-/*     } */
-/*     #wrapped { */
-/*         /* max-width: 900px; */ */
-/*     } */
-/* } */
-/* #toc > b { */
-/*     text-transform: uppercase; */
-/* } */
+#menubar, #menubar * {
+    color: #ccc;
+}
+#menubar {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    text-align: center;
+    padding: .5em;
+}
+#menubar * {
+    padding-left: .2em;
+    padding-right: .2em;
+}
+#addressbar {
+    /* text-align: center; */
+}
+#addressbar, #addressbar * {
+    color: #a52a2a82;
+
+}
+#addressbar a.odd,
+#menubar a.odd {
+    color: goldenrod;
+}
+#addressbar a.even,
+#menubar a.even {
+    color: brown;
+}
+
 </style>
 
+<script>
+    window.addEventListener("scroll", function () {
+        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
 
+        } else {
+        }
+    });
+</script>
     </head>
     <body>
 
-        
         <div id="content">
 
+            <div id="menubar">
+                <a class="odd" href="index.html">branding.com</a>
+                <a class="even" href="wikipedia.html">kaizen</a>
+                <a class="odd" href="scrolling_toc.html">toc</a>
+                <a class="even">dark</a>
+            </div>
 
             <h1>Product Pillars</h1>
 
+            <div id="addressbar">
+                <a class="odd" href="index.html">home</a> / 
+                <a class="even" href="essays.html">writing</a> / 
+                <a class="odd" href="#">product pillars</a>
+            </div>
             <!-- <div id="toc"> -->
             <!--     <b><small>Contents</small></b> -->
             <!--     <ol> -->
@@ -112,7 +141,7 @@ h1 {
                 <ul type="square">
                     <li><a href="https://www.reddit.com/.mobile">https://www.reddit.com/.mobile</a></li>
                     <li><a href="https://news.ycombinator.com">https://news.ycombinator.com</a></li>
-                    <li><a href="https://lite.cnn.com.">https://lite.cnn.com.</a></li>
+                    <li><a href="https://lite.cnn.com">https://lite.cnn.com</a></li>
                 </ul>
             </p>
 
