@@ -42,6 +42,7 @@ h1 {
     background-color: white;
     text-align: center;
     padding: .5em;
+    
 }
 #menubar * {
     padding-left: .2em;
@@ -110,17 +111,41 @@ body.dark a {
         if (a.textContent === "sepia") {
             a.textContent = "dark";
             document.body.classList.add("sepia");
+            document.cookie = "theme=sepia";
         } else if (a.textContent == "dark") {
             a.textContent = "light";
             document.body.classList.add("dark");
+            document.cookie = "theme=dark";
         } else if (a.textContent == "light") {
             a.textContent = "sepia";
             document.body.classList.add("light");
+            document.cookie = "theme=light";
         }
     }
     function initialze_theme() {
-        document.body.classList.add("light");
-        document.querySelector("a#theme_anchor").textContent = "sepia";
+
+        if (document.cookie === "") {
+            document.body.classList.add("light");
+            document.querySelector("a#theme_anchor").textContent = "sepia";
+            document.cookie = "theme=light";
+        } else {
+            var theme_string = document.cookie.split("=")[1];
+            document.body.classList.remove("light");
+            document.body.classList.remove("sepia");
+            document.body.classList.remove("dark");
+
+            if (theme_string === "light") {
+                document.body.classList.add("light");
+                document.querySelector("a#theme_anchor").textContent = "sepia";
+            } else if (theme_string === "sepia") {
+                document.body.classList.add("sepia");
+                document.querySelector("a#theme_anchor").textContent = "dark";
+            } else if (theme_string === "dark") {
+                document.body.classList.add("dark");
+                document.querySelector("a#theme_anchor").textContent = "light";
+            }
+
+        }
     }
     window.addEventListener("load", initialze_theme);
  </script>
@@ -132,7 +157,7 @@ body.dark a {
             <div id="menubar">
                 <a class="odd" href="index.html">branding.com</a>
                 <a class="even" href="wikipedia.html">kaizen</a>
-                <a class="odd" href="scrolling_toc.html">toc</a>
+                <a class="odd" href="https://twitter.com">twitter</a>
                 <a id="theme_anchor" class="even" onclick="cycle_theme(this)">sepia</a>
             </div>
 
