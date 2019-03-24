@@ -3,6 +3,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Product Pillars</title>
 <style>
+:root {
+    --primary-color: lightseagreen;
+    --secondary-color: goldenrod;
+}
 body {
     line-height: 1.65;
     font-family: sans-serif;
@@ -13,19 +17,14 @@ body {
 a {
     text-decoration: none;
     padding-bottom: 4px;
-    color: #36c;
 }
 a:hover {
     border-bottom: solid 1.5px;
-    color: brown;
-    border-color: goldenrod;
 }
 h1 {
     text-align: center;
-    border-bottom: solid 1.5px lightgray;
+    border-bottom: solid 1.5px;
     padding-bottom: .5em;
-    color: brown;
-    border-color: goldenrod;
 }
 #wrapped > p:first-of-type:first-letter {
     float: left;
@@ -34,12 +33,9 @@ h1 {
     margin: 5px 8px 5px 0;
     padding: 5px;
     font-family: serif;
-    border: solid 2px goldenrod;
-    color: brown;
+    border: solid 2px;
 }
-#menubar, #menubar * {
-    color: #ccc;
-}
+
 #menubar {
     position: sticky;
     top: 0;
@@ -51,32 +47,83 @@ h1 {
     padding-left: .2em;
     padding-right: .2em;
 }
-#addressbar {
-    /* text-align: center; */
-}
-#addressbar, #addressbar * {
-    color: #a52a2a82;
 
-}
 #addressbar a.odd,
 #menubar a.odd {
-    color: goldenrod;
+    color: var(--secondary-color);
 }
+
+a:hover,
+h1,
+#wrapped > p:first-of-type:first-letter {
+    border-color: var(--secondary-color);
+}
+
 #addressbar a.even,
-#menubar a.even {
-    color: brown;
+#menubar a.even,
+#addressbar, #addressbar *,
+#wrapped > p:first-of-type:first-letter,
+h1,
+a:hover {
+    color: var(--primary-color);
 }
 
+a:hover {
+    cursor: pointer;
+}
+
+body.light #menubar,
+body.light {
+    background: white;
+    color: black;
+}
+
+body.sepia #menubar,
+body.sepia {
+    background: cornsilk;
+    color: black;
+}
+body.dark #menubar,
+body.dark {
+    background: #444;
+    color: #eaeaea
+}
+
+
+body.light a {
+    color: #36c;
+}
+
+body.sepia a {
+    color: #36c;
+}
+
+body.dark a {
+    color: #24cbe6;
+}
 </style>
-
 <script>
-    window.addEventListener("scroll", function () {
-        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-
-        } else {
+    function cycle_theme (a) {
+        document.body.classList.remove("light");
+        document.body.classList.remove("sepia");
+        document.body.classList.remove("dark");
+        if (a.textContent === "sepia") {
+            a.textContent = "dark";
+            document.body.classList.add("sepia");
+        } else if (a.textContent == "dark") {
+            a.textContent = "light";
+            document.body.classList.add("dark");
+        } else if (a.textContent == "light") {
+            a.textContent = "sepia";
+            document.body.classList.add("light");
         }
-    });
-</script>
+    }
+    function initialze_theme() {
+        document.body.classList.add("light");
+        document.querySelector("a#theme_anchor").textContent = "sepia";
+    }
+    window.addEventListener("load", initialze_theme);
+ </script>
     </head>
     <body>
 
@@ -86,7 +133,7 @@ h1 {
                 <a class="odd" href="index.html">branding.com</a>
                 <a class="even" href="wikipedia.html">kaizen</a>
                 <a class="odd" href="scrolling_toc.html">toc</a>
-                <a class="even">dark</a>
+                <a id="theme_anchor" class="even" onclick="cycle_theme(this)">sepia</a>
             </div>
 
             <h1>Product Pillars</h1>
@@ -96,21 +143,6 @@ h1 {
                 <a class="even" href="essays.html">writing</a> / 
                 <a class="odd" href="#">product pillars</a>
             </div>
-            <!-- <div id="toc"> -->
-            <!--     <b><small>Contents</small></b> -->
-            <!--     <ol> -->
-            <!--         <li>Flyweight Page</li> -->
-            <!--         <li>Bantamweight Page</li> -->
-            <!--         <li>Featherweight Page</li> -->
-            <!--         <li>Lightweight Page</li> -->
-            <!--         <li>Welterweight Page</li> -->
-            <!--         <li>Middleweight Page</li> -->
-            <!--         <li>Cruiserweight Page</li> -->
-            <!--         <li>Heavyweight Page</li> -->
-            <!--     </ol> -->
-            <!--  -->
-            <!--     <hr /> -->
-            <!-- </div> -->
                 
             <div id="wrapped">
 
