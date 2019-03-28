@@ -1,0 +1,290 @@
+
+
+<html>
+    <head>
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Stripe - Strategy, Culture and Hiring</title>
+    <link rel="stylesheet" href="fonts\fairplay\fairplay.css" type="text/css">
+    <link id="favicon" rel="shortcut icon" type="image/icon" href="https://stripe.com/favicon.ico">
+
+<style>
+body {
+    font-family: "Fairplay Text A";
+    line-height: 1.35;
+    padding: .5em 1em;
+}
+#content {
+    max-width: 30em;
+    margin: auto;
+}
+
+a.timestamp_float_left {
+    float: left;
+    margin-left: -80px;
+    margin-top: 0;
+    max-width: 80px;
+    font-family: monospace;
+    color: #ccc;
+    text-decoration: none;
+}
+a.timestamp_float_left:hover {
+    color: black;
+    font-weight: bold;
+}
+@media screen and (max-width: 700px) {
+    a.timestamp_float_left {
+        float: none;
+        margin: 1em auto;
+        max-width: none;
+    }
+}
+</style>
+
+    <script>
+function timestamp_to_seconds(timestamp_string) {
+    var [hh, mm, ss] = timestamp_string.split(":");
+    return hh * 3600 + mm * 60 + ss;
+
+}
+window.addEventListener("load", function() {
+    var articles = document.querySelectorAll("article");
+    for (var i = 0; i < articles.length; i++) {
+        var article = articles[i];
+        var url_string = article.querySelector(".url").textContent;
+        var anchors = article.querySelectorAll("a.timestamp_float_left");
+        for (var j = 0; j < anchors.length; j++) {
+            var anchor = anchors[j];
+            anchor.setAttribute("target", "_blank");
+            anchor.setAttribute("rel", "noopener noreferrer");
+
+            var timestamp_string = anchor.textContent;
+            var [hh_str, mm_str, ss_str] = timestamp_string.split(":");
+            var seconds = parseInt(hh_str) * 3600 
+                            + parseInt(mm_str) * 60 
+                            + parseInt(ss_str);
+            var timestamped_url_string = url_string + "&t=" + seconds.toString();
+
+            anchor.setAttribute("href", timestamped_url_string);
+        }
+    }
+});
+    </script>
+    </head>
+    <body>
+        <div id="content">
+<article>
+
+<h2>Blitzscaling 11: Patrick Collison on Hiring at Stripe and the Role of a Product-Focused CEO</h2>
+
+<p class="url">https://www.youtube.com/watch?v=qrDZhAxpKrQ</p>
+
+<a class="timestamp_float_left">00:20:00</a>
+
+<p>
+    Choose where you want to innovate and where to go with inertia.
+</p>
+
+<p>
+    What do pithy quotes actually mean in practice? Eg. “Work really hard to hire
+    good people”.
+</p>
+
+<a class="timestamp_float_left">00:30:00</a>
+
+<p>
+    The first person you hire influences 50 people that your company will hire.
+</p>
+
+<a class="timestamp_float_left">00:40:00</a>
+
+<p>
+    Working with the credit card companies was solved by a “business development”
+    guy.
+</p>
+
+<p>
+    It’s important for the CEO to by integrally involved in the micro-product
+    decisions. What’s optimal on a 1-year horizon is drastially different from
+    what’s optimal on a 5-year horizion.
+</p>
+
+<p>70% of Stripe’s decisons was being led by it’s customers and users.</p>
+
+<a class="timestamp_float_left">00:50:00 - Intense</a>
+
+<p>
+    Stripe has a “product engineering manager” which seems to be the secret sauce to
+    their success.
+</p>
+
+<p>
+    Covers how it’s possible for a company to become big and maintain it’s rate of
+    innovation.
+</p>
+
+<p>
+    Stripe has a complicated versioning system that let’s one version of the API be
+    converted to another version.
+</p>
+
+<a class="timestamp_float_left">01:00:00</a>
+
+<p>
+    You should generally shift from speaking to writing. 
+</p>
+
+<p>
+    Speaking can only happen once. Writing persists throught time. It can be updated
+    an revisited.
+</p>
+
+<p>
+    Writing is easier to dissect than anecdotes.
+</p>
+
+<a class="timestamp_float_left">01:10:00</a>
+
+<p>
+    Three things the CEO should focus on:
+    <ol>
+        <li>Strategy</li>
+        <li>Culture</li>
+        <li>Selecting senior management</li>
+        <li>(optional) Product</li>
+    </ol>
+</p>
+
+</article>
+
+
+<article>
+
+    <h2> How to Start a Startup 11 : Hiring and Culture with Patrick and John
+        Collison and Ben Silbermann (2014)</h2>
+
+    <p class="url">https://www.youtube.com/watch?v=kTS7OIAMunM</p>
+
+    <a class="timestamp_float_left">00:00:00</a>
+
+    <p>
+        BS: If you are aligned with the mission and have access to information
+        which gives you an idea about the current state of the company, it helps
+        build a productive culture.
+    </p>
+
+    <p>
+        BS: As you become big (50+ people), you can’t be involved with every
+        aspect of the product.  Culture is the invariant which helps you in this
+        regard.
+    </p>
+
+    <p>
+        BS: People think that culture is like architecture, however it’s a lot
+        like gardening. You have to maintain it and pull out the weeds.
+    </p>
+
+    <p>
+        JC: The first 10 people you’re hiring are going to be top quality. So
+        they’ll probably have their peers vehemently discouraging them. 
+    </p>
+
+    <p>
+        JC: If they’re already at Facebook or Google, it’s difficult to hire
+        them. Hire the 18 y/o undiscovered talent instead.
+    </p>
+
+    <a class="timestamp_float_left">00:10:00</a>
+
+    <p>
+        PC: Advice is very limited experience, wildly over-extrapolated.
+    </p>
+
+    <p>
+        PC: Your first hires should be genuine and straight. Trustworth and have
+        intellectual honesty. Excited about getting things finished.
+    </p>
+
+    <p>
+        PC: They should care a great deal. Something being even slightly off is
+        offensive to them.
+    </p>
+
+    <p>
+        PC: Three traits: 
+        <ol>
+            <li>Genuine</li>
+            <li>Caring a great deal</li>
+            <li>Completing thing</li>
+        </ol>
+    </p>
+
+    <p>
+        BS: The really good people are generally doing something else. So you’ll
+        have to seek them out. They won’t seek you out.
+    </p>
+
+    <p>
+        JC: Have an elevator pitch for potential recruits.
+    </p>
+
+    <p>
+        JC: When interviewing for positions outside of you’re expertise, ask
+        them to do a project related to you’re company. That way you have a
+        reference point in an area you have no idea aboout.
+    </p>
+
+    <a class="timestamp_float_left">00:20:00</a>
+
+    <p>
+        PC: It’s pretty hard to fake it for a week.
+    </p>
+
+    <p>
+        JC: When asking for references, ask the referrer “Where would you rank
+        this person amongst the people you’ve worked with in this role?” 
+    </p>
+
+    <p>
+        JC: Get people working on real problems on the very first day. Quickly
+        give them feedback to help them adapt to the culture.
+    </p>
+
+    <a class="timestamp_float_left">00:30:00</a>
+
+    <p>
+        PC: Stripe has 3 meals everyday on long tables where everyone can sit
+        together.  This increases the net human interactions.
+    </p>
+
+    <p>
+        PC: In a startup, you can afford to have complete transparency. This is
+        a luxury you lose when you become big. You’re subject to the scrutiy of
+        the entire organization. This is the tradeoff to the advantage that
+        everyone is much more informed.
+    </p>
+
+    <p>
+        JC: You have to create norms to when employees can jump in to
+        conversations that are taking place on IRC or Slack between other
+        employees.
+    </p>
+
+    <p>
+        Every single leader of a project gives a 30 minute talk on what their
+        project is doing and how you can contribute if you’re interested.
+    </p>
+
+    <a class="timestamp_float_left">00:40:00</a>
+
+    <p>
+        BS: As the CEO of Pinterest, looking at what people have hand-picked has
+        had a tremendous influence on the overall vision of the company. This is
+        extremely valuable data.
+    </p>
+
+</article>
+
+        </div>
+    </body>
+</html>
