@@ -1,0 +1,187 @@
+
+<html>
+    <head>
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Calendar</title>
+<style>
+@font-face {
+    font-family: "Modified Lato";
+    src: url(fonts/Lato.ttf);
+}
+body {
+    font-family: "Modified Lato", sans-serif;
+}
+#content {
+    max-width: 60em;
+    margin: auto;
+}
+
+#calendar_grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr) ;
+    grid-gap: 8px;
+}
+.calendar_day {
+    color: #aac;
+    border: solid 1px #ccc;
+    padding: 7px;
+    background-size: contain ;
+    box-shadow: 1px 1px 2px 0px;
+}
+.calendar_day:hover {
+    /* border: solid 8px #ccc; */
+    /* padding: 0px; */
+    cursor: pointer;
+    display: flex;
+}
+.calendar_day::before {
+    content: "";
+    padding-bottom: 100%;
+    display: inline-block;
+}
+.today_calendar_day > .day_span {
+    background: lightblue;
+    color: white;
+    width: 20px;
+    border-radius: 50%;
+    text-align: center;
+}
+.calendar_label {
+    text-align: center;
+    padding-bottom: 8px;
+    color: #aac;
+}
+
+.day_span {
+    position: absolute;
+    padding: 8px;
+}
+.day_span.filled_span {
+    background: brown;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    text-align: center;
+}
+
+h2 {
+    padding: 1em 0;
+    color: #aac;
+    text-align: center;
+}
+
+</style>
+<script>
+
+    window.addEventListener("load", function () {
+        var month_year = "April 2019";
+        events = [
+            ["Shazam", 5],
+            ["Veep", 7],
+            [ "Game of Thrones" , 14 ],
+            ["Avengers Endgame", 26],
+            ["Attack on Titan", 28]
+        ];
+
+        document.querySelector("h2").innerText = month_year;
+
+        var first_day_date = new Date(month_year);
+        var month_int = first_day_date.getMonth();
+        var year_int = first_day_date.getFullYear();
+        // Mo - 1, Su - 7
+        var day = first_day_date.getDay();
+        var last_day_date = new Date(year_int, month_int+1, 0)
+        var number_of_days = last_day_date.getDate();
+
+        var calendar_days = document.querySelectorAll(".calendar_day");
+
+        for (var i = 0; i < number_of_days; i++) {
+            var date_day = i+1;
+            var calendar_day = calendar_days[i+day-1];
+
+            var day_span = document.createElement("span");
+            day_span.classList.add("day_span");
+            day_span.innerText = date_day;
+            calendar_day.appendChild(day_span);
+        }
+
+        for (var i = 0; i < events.length; i++) {
+            var [event_name, event_day] = events[i];
+            var calendar_day = calendar_days[event_day+day-2];
+
+            calendar_day.style.backgroundImage = "url('images/calendar/" + event_name + ".png')";
+            calendar_day.querySelector(".day_span").classList.add("filled_span");
+        }
+
+        var today_day = new Date().getDate();
+        var today_calendar_day = calendar_days[today_day+day-2];
+        today_calendar_day.classList.add("today_calendar_day");
+
+    });
+
+</script>
+    </head>
+    <body>
+        <div id="content">
+            <h2></h2>
+            <div id="calendar_grid">
+
+                <div class="calendar_label">Mo</div>
+                <div class="calendar_label">Tu</div>
+                <div class="calendar_label">We</div>
+                <div class="calendar_label">Th</div>
+                <div class="calendar_label">Fr</div>
+                <div class="calendar_label">Sa</div>
+                <div class="calendar_label">Su</div>
+
+                <!-- 1 -->
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+
+                <!-- 2 -->
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+
+                <!-- 3 -->
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+
+                <!-- 4 -->
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+
+                <!-- 5 -->
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+                <div class="calendar_day"></div>
+
+            </div>
+        
+        </div>
+    </body>
+</html>
