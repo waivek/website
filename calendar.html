@@ -22,6 +22,8 @@ body {
     grid-template-columns: repeat(7, 1fr) ;
     grid-gap: 8px;
 }
+
+
 .calendar_day {
     color: #aac;
     border: solid 1px #ccc;
@@ -30,10 +32,7 @@ body {
     box-shadow: 1px 1px 2px 0px;
 }
 .calendar_day:hover {
-    /* border: solid 8px #ccc; */
-    /* padding: 0px; */
     cursor: pointer;
-    display: flex;
 }
 .calendar_day::before {
     content: "";
@@ -70,6 +69,34 @@ h2 {
     color: #aac;
     text-align: center;
     font-weight: normal;
+}
+@media screen and (max-width: 700px) {
+    #calendar_grid {
+        grid-auto-flow: column;
+        grid-template-rows: repeat(7, 1fr) ;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 0px;
+    }
+    .calendar_day {
+        box-shadow: none;
+        font-size: 12px;
+        padding: 0px;
+    }
+    .calendar_label {
+        display: none;
+    }
+    .calendar_day:not(.filled_div) {
+    }
+    .day_span {
+        padding: 4px;
+    }
+    .day_span.filled_span {
+        border-radius: 0px;
+    }
+    .today_calendar_day > .day_span {
+        border-radius: 0px;
+    }
+
 }
 
 </style>
@@ -113,6 +140,7 @@ h2 {
 
             calendar_day.style.backgroundImage = "url('images/calendar/" + event_name + ".png')";
             calendar_day.querySelector(".day_span").classList.add("filled_span");
+            calendar_day.classList.add("filled_div");
         }
 
         var today_day = new Date().getDate();
