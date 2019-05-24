@@ -26,7 +26,7 @@ h1 {
     border-bottom: solid 1.5px;
     padding-bottom: .5em;
 }
-#wrapped > p:first-of-type:first-letter {
+main > p:first-of-type:first-letter {
     float: left;
     font-size: 54px;
     line-height: 1;
@@ -56,14 +56,14 @@ h1 {
 
 a:hover,
 h1,
-#wrapped > p:first-of-type:first-letter {
+main> p:first-of-type:first-letter {
     border-color: var(--secondary-color);
 }
 
 #addressbar a.even,
 #menubar a.even,
 #addressbar, #addressbar *,
-#wrapped > p:first-of-type:first-letter,
+main > p:first-of-type:first-letter,
 h1,
 a:hover {
     color: var(--primary-color);
@@ -122,11 +122,11 @@ body.dark a {
             document.cookie = "theme=light";
         }
     }
-    function initialze_theme() {
-
+    function initialize_theme() {
+        var a = document.querySelector("a#theme_anchor");
         if (document.cookie === "") {
             document.body.classList.add("light");
-            document.querySelector("a#theme_anchor").textContent = "sepia";
+            a.textContent = "sepia";
             document.cookie = "theme=light";
         } else {
             var theme_string = document.cookie.split("=")[1];
@@ -134,20 +134,18 @@ body.dark a {
             document.body.classList.remove("sepia");
             document.body.classList.remove("dark");
 
+            document.body.classList.add(theme_string);
             if (theme_string === "light") {
-                document.body.classList.add("light");
-                document.querySelector("a#theme_anchor").textContent = "sepia";
+                a.textContent = "sepia";
             } else if (theme_string === "sepia") {
-                document.body.classList.add("sepia");
-                document.querySelector("a#theme_anchor").textContent = "dark";
+                a.textContent = "dark";
             } else if (theme_string === "dark") {
-                document.body.classList.add("dark");
-                document.querySelector("a#theme_anchor").textContent = "light";
+                a.textContent = "light";
             }
 
         }
     }
-    window.addEventListener("load", initialze_theme);
+    window.addEventListener("load", initialize_theme);
  </script>
     </head>
     <body>
@@ -161,15 +159,16 @@ body.dark a {
                 <a id="theme_anchor" class="even" onclick="cycle_theme(this)">sepia</a>
             </div>
 
-            <h1>Product Pillars</h1>
+            <header>
+                <h1>Product Pillars</h1>
+                 <nav id="addressbar">
+                    <a class="odd" href="index.html">home</a> / 
+                    <a class="even" href="essays.html">writing</a> / 
+                    <a class="odd" href="#">product pillars</a>
+                </nav>
+            </header>
 
-            <div id="addressbar">
-                <a class="odd" href="index.html">home</a> / 
-                <a class="even" href="essays.html">writing</a> / 
-                <a class="odd" href="#">product pillars</a>
-            </div>
-                
-            <div id="wrapped">
+            <main>
 
             <p>
                 When you are in the flow of designing a website, it is easy to gradually make small decisions that go
@@ -253,8 +252,7 @@ body.dark a {
                 </ol>
             </p>
 
-    
-            </div>
+            </main>
 
         </div>
     </body>
