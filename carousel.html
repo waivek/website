@@ -17,13 +17,16 @@ h2 {
 }
 .carousel_parent {
     width: 100%;
-    max-width: 600px;
+    /* max-width: 600px; */
+    max-width: 400px;
 
     overflow-x: hidden;
     margin: 1em auto;
 
     border-top: solid 1px lightblue;
     border-bottom: solid 1px lightblue;
+    border-left: solid 1px lightblue;
+    border-right: solid 1px lightblue;
 
 
 }
@@ -159,6 +162,7 @@ img {
             swipe_start_y = event.touches[0].clientY;
         }
         function swipe_move(event) {
+            console.log("swipe_move");
             var swipe_delta_x = event.touches[0].clientX - swipe_start_x;
             var translate_x = global_net_translate + swipe_delta_x;
             if (translate_x > 0) {
@@ -176,10 +180,8 @@ img {
             var swipe_delta_x = swipe_end_x - swipe_start_x;
             var swipe_delta_y = swipe_end_y - swipe_start_y;
             var swipe_delta_seconds = swipe_end_seconds - swipe_start_seconds;
-            console.log("swipe_delta_seconds: " + swipe_delta_seconds.toPrecision(2));
 
             var swipe_x_fraction = Math.abs(swipe_delta_x / carousel_parent.clientWidth);
-            console.log("swipe_x_fraction: " + swipe_x_fraction.toPrecision(2));
 
             var slow_swipe = swipe_delta_seconds > .3;
             var fast_swipe = !slow_swipe;
@@ -235,27 +237,87 @@ img {
                 active_description.classList.remove("active_description");
             }
         }
-        // carousel.addEventListener("touchstart", swipe_start);
-        // carousel.addEventListener("touchmove", swipe_move);
-        // carousel.addEventListener("touchend", swipe_end);
+        carousel.addEventListener("touchstart", swipe_start);
+        carousel.addEventListener("touchmove", swipe_move);
+        carousel.addEventListener("touchend", swipe_end);
 
         var grab_start_x;
+        var grab_start_seconds;
+        var grab_start_y;
+        var global_drag_net_translate = 0;
+        var is_grabbing = false;
         function grab_start(event) {
             grab_start_x = event.clientX;
+            grab_start_seconds = Date.now() / 1000;
+            grab_start_y = event.clientY;
+
+            is_grabbing = true;
         }
 
-        function grab_move(event) {
-            console.log("grab_move");
+        function drag_handler(event) {
+            if (event.clientX == 0) {
+                return;
+            }
+            if (!is_grabbing) {
+                return ;
+            }
             var grab_delta_x = event.clientX - grab_start_x;
-            carousel.style.transform = "translateX(-" + grab_delta_x + ")";
+            var translate_x = global_drag_net_translate + grab_delta_x;
+            if (translate_x > 0) {
+                translate_x = 0;
+            } else if (translate_x < global_bounds) {
+                translate_x = global_bounds;
+            }
+            carousel.style.transform = "translateX("+translate_x+"px)";
         }
 
         function grab_end(event) {
+            var grab_end_x = event.pageX;
+            var grab_delta_x = grab_end_x - grab_start_x;
+            var grab_x_fraction = Math.abs(grab_delta_x / carousel_parent.clientWidth);
 
+            carousel.classList.add("animated");
+            setTimeout(function () {
+                carousel.classList.remove("animated");
+            }, 300);
+
+            if (grab_delta_x < 0) {
+                // grab right, translate left
+                global_drag_net_translate = global_drag_net_translate - carousel_parent.clientWidth;
+            } else if (grab_delta_x > 0) {
+                // grab left, translate right
+                global_drag_net_translate = global_drag_net_translate + carousel_parent.clientWidth;
+            }
+
+            if (global_drag_net_translate < global_bounds) {
+                // don't allow grab left on last image
+                global_drag_net_translate = global_bounds;
+            } else if (global_drag_net_translate > 0) {
+                // don't allow grab right on first image
+                global_drag_net_translate = 0;
+            }
+            carousel.style.transform = "translateX(" + global_drag_net_translate + "px)";
+
+            var active_dot = document.querySelector(".active_dot");
+            active_dot.classList.remove("active_dot");
+            var active_description = document.querySelector(".active_description");
+
+            var left_grab_count = global_drag_net_translate / carousel_parent.clientWidth * -1;
+            var dots = document.querySelectorAll(".dot");
+            dots[left_grab_count].classList.add("active_dot");
+
+            var descriptions = document.querySelectorAll(".description");
+            descriptions[left_grab_count].classList.add("active_description");
+            if (active_description !== descriptions[left_grab_count]) {
+                active_description.classList.remove("active_description");
+            }
+
+            is_grabbing = false;
         }
+
         carousel.addEventListener("mousedown", grab_start);
-        window.addEventListener("mousemove", grab_move, false);
-        carousel.addEventListener("mouseup", grab_end);
+        window.addEventListener("mousemove", drag_handler);
+        window.addEventListener("mouseup", grab_end);
     });
 </script>
     </head>
@@ -269,16 +331,16 @@ img {
 
         <div class="carousel">
 
-            <div class="post odd">
-                <img src="images/carousel/img_1.jpg" />
+            <div tabindex="-1" class="post odd">
+                <img draggable="false" tabindex="-1" src="images/carousel/img_1.jpg" />
             </div><div class="post even">
-                <img src="images/carousel/img_2.jpg" />
+                <img draggable="false" tabindex="-1" src="images/carousel/img_2.jpg" />
             </div><div class="post odd">
-                <img src="images/carousel/img_3.jpg" />
+                <img draggable="false" tabindex="-1" src="images/carousel/img_3.jpg" />
             </div><div class="post even">
-                <img src="images/carousel/img_4.jpg" />
+                <img draggable="false" tabindex="-1" src="images/carousel/img_4.jpg" />
             </div><div class="post odd">
-                <img src="images/carousel/img_5.jpg" />
+                <img draggable="false" tabindex="-1" src="images/carousel/img_5.jpg" />
             </div>
 
         </div>
