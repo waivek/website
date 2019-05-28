@@ -5,44 +5,100 @@
         <title>List of Websites</title>
 
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="fonts/Lato/lato.css" type="text/css">
+        <link rel="stylesheet" href="fonts/Lora/lora.css" type="text/css">
+        <link rel="stylesheet" href="fonts/FreightText/freighttext.css" type="text/css">
 
-        <link rel="stylesheet" href="css/mobile.css" type="text/css">
+<style>
 
+div#content {
+    font-family : "Lato webfont";
+    line-height : 1.5;
+    max-width   : 40em;
+    padding: 1em 1.5em;
+    margin: auto;
+}
+h1 {
+    font-family: "Lora webfont";
+    text-align: center;
+    padding-bottom: 1em;
+}
+dl {
+    font-family: "Lato webfont";
+    font-weight: 700;
+}
+h1 > span {
+    border: solid 2px black;
+    padding: .5em 1em;
+}
+a, a:visited {
+    color: #36c;
+    text-decoration : none;
+    transition: 0.1s;
+}
+a:hover {
+    border-bottom       : solid medium ;
+    border-bottom-color : inherit;
+    transition: 0.1s;
+}
+
+</style>
 
     </head>
     <body>
         <div id="content">
-        <div class="imgcontainer" >
-                <img class="preview" width=40% onclick="document.body.classList.remove('dark')" alt="Click for a light theme"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA8AAAALQAgMAAAAiGfEnAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAJUExURf///wAAAH9/f0nhj6QAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABBklEQVR42u3dUQ0AIAxDwSGSf/yrwMNCsjTcOXgG2ioAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgDxrjzqCBQsWLFjwz8EAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4QxqCxYsWLBgwW4PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJoMagsWLFiwYMFuDwAAAAAAAAAAAAAAAAAAAAAAAAAAAIBX7EsLFixYsGDBXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmgxqCxYsWLBgwW4PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJoMagsWLFiwYMFuDwAAAAAAAAAAAAAAAAAAAAAAAAAAAACAZBdqY+q6tWqFhwAAAABJRU5ErkJggg=="/>
-                <img class="preview" width=40% onclick="document.body.classList.add('dark')"  alt="Click for a dark theme"   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA8AAAALQAQMAAABluYv3AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAGUExURURERObm5mSJf2MAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAoUlEQVR42u3bsQkAIAxFwWzi/htaCDqAZQIGuVsgvP4nAgAAAAAAAAAAAAAA+hg7Zb46vBQrVgwAAAAAAAAAAAAA0JUpu2LF3hUAAAAAAAAAAAAAAIqZsitW7F0BAAAAAAAAAAAAAPiVRblixb4GAAAAAAAAAAAAAACKmbIrVuxdAQAAAAAAAAAAAACgmCm7YsXeFQAAAAAAAAAAAAAA4HYAwavJtg/9eHYAAAAASUVORK5CYII="/>
-        </div>
 
-        <h1 class="pjgm-posttitle">List of Websites</h1>
+        <h1><span>List of Websites</span></h1>
 		
 		<dl><a href="http://site.macleans.ca/longform/alzheimers/" />Macleans</a></dl>
-		<dd> A bare bones website that integrates media seamlessly. Scroll towards the end to get the feeling that you're reading a research paper. </dd>
+		<dd>
+            A bare bones website that integrates media seamlessly. Scroll towards the end to get the feeling that you're
+            reading a research paper. 
+        </dd>
 
 		
 		<dl><a href="https://distill.pub" />Distill.Pub</a></dl>
-		<dd> A site focussing on interactively explaining machine-learning concepts. The referencing system, bibliography and horizontal rules are notworthy. </dd>
+		<dd>
+             A site focussing on interactively explaining machine-learning concepts. The referencing system,
+             bibliography and horizontal rules are notworthy. 
+        </dd>
 				
 		<dl><a href="https://www.imaginarycloud.com/blog/timeless-classic-ui-design/amp" />Is Timeless Ui Design A Thing?</a></dl>		
-		<dd>Images are presented in a really creative manner. They are overlain on top of one another, giving the website a magazine feel. </dd>
+		<dd>
+            Images are presented in a really creative manner. They are overlain on top of one another, giving the
+            website a magazine feel. 
+        </dd>
 		
 		<dl><a href="https://www.politico.com/magazine/story/2018/06/29/google-city-technology-toronto-canada-218841" />The Politico</a></dl>		
-		<dd> Great way to do blockquotes. Change the red to black however. Also clicking on the print dialogue results in a well typeset document.	</dd>
+		<dd>
+            Great way to do blockquotes. Change the red to black however. Also clicking on the print dialogue results
+            in a well typeset document.	
+        </dd>
 		
 		<dl><a href="https://beautifulracket.com" > Beautiful Racket </a></p></dl>		
-		<dd>A good looking site where code is styled sanely and sensible. <a href="https://beautifulracket.com/appendix/why-racket-why-lisp.html"/>Click here to see beautiful tooltips. </a></dd>
+		<dd>
+            A good looking site where code is styled sanely and sensible. 
+            <a href="https://beautifulracket.com/appendix/why-racket-why-lisp.html"/>Click here to see beautiful tooltips. </a>
+        </dd>
 
 		<dl><a href="https://alejandromp.com" >Alejandro Martinez's Blog</a></p></dl>		
-        <dd>Tages are displayed really well - <a href="https://alejandromp.com/blog/2018/01/27/jonathan-blow-libraries-discussion-jai/">Jonathan Blow's libraries discussion</a>. If you hover over a link, the linked page is prefetched. This makes navigation almost instantaneous.</dd>
+        <dd>
+            Tags are displayed really well - 
+            <a href="https://alejandromp.com/blog/2018/01/27/jonathan-blow-libraries-discussion-jai/">Jonathan Blow's libraries discussion</a>. 
+            If you hover over a link, the linked page is prefetched. This makes navigation almost instantaneous.
+        </dd>
 
-		<dl><a href="https://joeclark.org/book/sashay/serialization/home.html" >Building Accessible Websites</a></dl>		
-        <dd>Wide webpage with lot's of good advice</dd>
+		<dl>
+            <a href="https://joeclark.org/book/sashay/serialization/home.html" >Building Accessible Websites</a>
+        </dl>		
+        <dd>
+            Wide webpage with lot's of good advice
+        </dd>
 		
 		<dl><a href="https://kyleschaeffer.com/development/css-font-size-em-vs-px-vs-pt-vs/" >Kyle Schaeffer's Blog</a></dl>		
-        <dd>Uses one font for header and body. Subsets it from TypeKit. Avoids F.O.U.T.</dd>
+        <dd>
+            Uses one font for header and body. Subsets it from TypeKit. Avoids F.O.U.T.
+        </dd>
 
 		<dl><a href="https://heronebag.com/" >Her One Bag</a></dl>		
         <dd>
@@ -53,20 +109,34 @@
         </dd>
 
 		<dl><a href="https://javascript.info" >JavaScript.Info</a></dl>		
-        <dd>Looks great on all widths. Well spaced. Unobtrusive hamburger menu. Keyboard shortcuts on hover for left and
-        right arrows. The content itself is comprehensive.</dd>
+        <dd>
+            Looks great on all widths. Well spaced. Unobtrusive hamburger menu.  Keyboard shortcuts on hover for left
+            and right arrows. The content itself is comprehensive.
+        </dd>
 
 		<dl><a href="http://www.lawprose.org/bryan-garner">Who is Bryan Garner</a></dl>		
-        <dd>Click on the "Articles about Bryan Garner" on the right for useful definition list. The navbar updates
-        accordingly at the top right. The stickied menubar is functional. 
-        <a href="http://www.lawprose.org/lesson-85/">This page</a> also makes use of trackbacks.</dd>
+        <dd>
+            Click on the "Articles about Bryan Garner" on the right for useful definition list. The navbar updates
+            accordingly at the top right. The stickied menubar is functional. 
+            <a href="http://www.lawprose.org/lesson-85/">This page</a> also makes use of trackbacks.
+        </dd>
 
 		<dl><a href="https://newleftreview.org/II/113/richard-stallman-talking-to-the-mailman">Talking to the mailman</a></dl>		
-        <dd>Super simple website. Let's you download a PDF that has been typeset well.</dd>
+        <dd>
+            Super simple website. Let's you download a PDF that has been typeset well.
+        </dd>
 
 		<dl><a href="https://www.chris-granger.com/2016/07/21/two-years-of-eve/">Two years of Eve - Chris Granger Blog</a></dl>		
-        <dd>Clean blog layout. Links are underlined nicely and the body font (Merriweather) is easy on the eyes. The
-        site makes a good use of shades of gray.</dd>
+        <dd>
+            Clean blog layout. Links are underlined nicely and the body font (Merriweather) is easy on the eyes. The
+            site makes a good use of shades of gray.
+        </dd>
+
+		<dl><a href="https://www.atlasobscura.com/">Atlas Obscura - Curious and Wondrous Travel Destinations</a></dl>		
+        <dd>
+            The card component which has the “Place of the Day” is elegant. The search bar is located on the border of
+            two divs. Each of the dropdown menu items are uniquely styled on the desktop version.
+        </dd>
 
 		<br>
         </div>
