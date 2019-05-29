@@ -3,6 +3,7 @@
 <html>
     <head>
     
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Carousel</title>
 <style>
@@ -16,6 +17,7 @@ h2 {
     text-transform: uppercase;
 }
 .carousel_parent {
+    user-select: none;
     width: 100%;
     /* max-width: 600px; */
     max-width: 400px;
@@ -23,10 +25,10 @@ h2 {
     overflow-x: hidden;
     margin: 1em auto;
 
-    border-top: solid 1px lightblue;
-    border-bottom: solid 1px lightblue;
-    border-left: solid 1px lightblue;
-    border-right: solid 1px lightblue;
+    border-top: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
+    border-left: solid 1px #ccc;
+    border-right: solid 1px #ccc;
 
 
 }
@@ -40,7 +42,8 @@ h2 {
 
 }
 .animated {
-    transition: transform 0.3s ease-out;
+    /* transition: transform 0.3s ease-out; */
+    transition: transform 0.3s cubic-bezier(0.07, 0.59, 0.32, 1.28);
 }
 .post {
     height: 100%;
@@ -106,6 +109,9 @@ img {
     cursor: grab;
 }
 .carousel_parent:active {
+    cursor: grabbing;
+}
+body.grabbing_cursor {
     cursor: grabbing;
 }
 </style>
@@ -191,6 +197,12 @@ img {
             var vertical_swipe =  Math.abs(swipe_delta_y) > Math.abs(swipe_delta_x);
             var horizontal_swipe = !vertical_swipe;
 
+            carousel.classList.add("animated");
+            setTimeout(function () {
+                carousel.classList.remove("animated");
+            }, 300);
+
+
             if (fast_swipe && horizontal_swipe) {
             }
             else if (slow_swipe || vertical_swipe) {
@@ -199,11 +211,6 @@ img {
                     return;
                 }
             }
-
-            carousel.classList.add("animated");
-            setTimeout(function () {
-                carousel.classList.remove("animated");
-            }, 300);
 
             if (swipe_delta_x < 0) {
                 // swipe right, translate left
@@ -242,6 +249,7 @@ img {
         carousel.addEventListener("touchend", swipe_end);
 
         var grab_start_x;
+        var grab_start_y;
         var grab_start_seconds;
         var grab_start_y;
         var global_drag_net_translate = 0;
@@ -250,6 +258,7 @@ img {
             grab_start_x = event.clientX;
             grab_start_seconds = Date.now() / 1000;
             grab_start_y = event.clientY;
+            document.body.classList.add("grabbing_cursor");
 
             is_grabbing = true;
         }
@@ -272,14 +281,45 @@ img {
         }
 
         function grab_end(event) {
+
+            if (!is_grabbing) {
+                return ;
+            }
+            is_grabbing = false;
+
+            document.body.classList.remove("grabbing_cursor");
+
             var grab_end_x = event.pageX;
+            var grab_end_y = event.clientY;
+            var grab_end_seconds = Date.now() / 1000;
+
             var grab_delta_x = grab_end_x - grab_start_x;
+            var grab_delta_y = grab_end_y - grab_start_y;
+            var grab_delta_seconds = grab_end_seconds - grab_start_seconds;
+
             var grab_x_fraction = Math.abs(grab_delta_x / carousel_parent.clientWidth);
+
+            var slow_grab = grab_delta_seconds > .3;
+            var fast_grab = !slow_grab;
+
+            var narrow_grab = grab_x_fraction < 0.6;
+
+            var vertical_grab =  Math.abs(grab_delta_y) > Math.abs(grab_delta_x);
+            var horizontal_grab = !vertical_grab;
 
             carousel.classList.add("animated");
             setTimeout(function () {
                 carousel.classList.remove("animated");
             }, 300);
+
+            if (fast_grab && horizontal_grab) {
+            }
+            else if (slow_grab || vertical_grab) {
+                if (narrow_grab) {
+                    carousel.style.transform = "translateX(" + global_drag_net_translate + "px)";
+                    return;
+                }
+            }
 
             if (grab_delta_x < 0) {
                 // grab right, translate left
@@ -311,8 +351,6 @@ img {
             if (active_description !== descriptions[left_grab_count]) {
                 active_description.classList.remove("active_description");
             }
-
-            is_grabbing = false;
         }
 
         carousel.addEventListener("mousedown", grab_start);
@@ -323,7 +361,7 @@ img {
     </head>
     <body>
         <div id="content">
-<h2>Carousel</h2>
+<h2 class="animated">Carousel</h2>
 
 
 <div class="carousel_with_dots">
@@ -331,16 +369,16 @@ img {
 
         <div class="carousel">
 
-            <div tabindex="-1" class="post odd">
-                <img draggable="false" tabindex="-1" src="images/carousel/img_1.jpg" />
+            <div class="post odd">
+                <img draggable="false" src="images/carousel/img_1.jpg" />
             </div><div class="post even">
-                <img draggable="false" tabindex="-1" src="images/carousel/img_2.jpg" />
+                <img draggable="false" src="images/carousel/img_2.jpg" />
             </div><div class="post odd">
-                <img draggable="false" tabindex="-1" src="images/carousel/img_3.jpg" />
+                <img draggable="false" src="images/carousel/img_3.jpg" />
             </div><div class="post even">
-                <img draggable="false" tabindex="-1" src="images/carousel/img_4.jpg" />
+                <img draggable="false" src="images/carousel/img_4.jpg" />
             </div><div class="post odd">
-                <img draggable="false" tabindex="-1" src="images/carousel/img_5.jpg" />
+                <img draggable="false" src="images/carousel/img_5.jpg" />
             </div>
 
         </div>
