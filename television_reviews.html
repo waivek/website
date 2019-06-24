@@ -1,9 +1,8 @@
-
-
-
+<!DOCTYPE html>
 <html>
     <head>
     
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="fonts/Lora/lora.css" type="text/css">
     <title>Reviews</title>
@@ -14,6 +13,19 @@
     src: url("fonts/Roboto.ttf") format("truetype");
 }
 
+h1 {
+    text-align: center;
+}
+h2 {
+    margin-bottom: 0;
+    padding: 0.75em;
+    background: #b9ae80;
+    color: white;
+    border: solid 1.5px #b9ae80;
+    border-bottom-width: 0px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
 h1, h2, h3, h4 {
     font-family: "Lora webfont";
     /* text-transform: uppercase; */
@@ -31,14 +43,59 @@ body {
 .episode_info {
     color: #aaa;
     float: right;
+    color: #b9ae80;
+    background: #f9eec4;
+    padding: 0.5em;
+    display: inline-block;
+    border-radius: 6px;
 }
 
+.episode {
+    background: cornsilk;
+    color: black;
+    margin: 0;
+    padding: 1em;
+    border: solid 1.5px #b9ae80;
 
-@media screen and (max-width: 600px) {
-    .episode_info  {
-        float: none;
+}
+.episode + .episode {
+    border-top-width: 0px;
+}
+blockquote {
+    font-size: 0.95em;
+    line-height: 1.4;
+    padding: 0 5em;
+    margin: 0;
+}
+cite {
+    display: none;
+    display: block;
+    font-style: normal;
+    font-size: .75em;
+    border-top: solid 1px;
+    padding-top: 0.5em;
+}
+a {
+    color: black;
+}
+
+@media screen and (max-width: 960px) {
+    body {
+        padding: 0;
+        margin: 0;
     }
+    #content {
+        margin: 0;
+        padding: 0;
+    }
+    .episode, h2 {
+        border-left: none;
+        border-right: none;
+        border-radius: 0;
+    }
+
 }
+
 
 </style>
 <script>
@@ -54,42 +111,120 @@ body {
 
                 <h2>Attack on Titan </h2>
 
-                <div class="episode_info">
-                    <span class="season_number">3</span>x<span class="episode_number">18</span> : <span class="episode_name">The Day</span>
-                    <br />
-                    <span class="review_date">2019-06-20</span>
+                <div class="episode">
+
+                    <div class="episode_info">
+                        <span class="season_number">3</span>x<span class="episode_number">18</span>: <span class="episode_name">The Day</span>
+                        <br />
+                        <span class="review_date">2019-06-20</span>
+                    </div>
+
+                    <div class="review">
+
+                        <h3>Visuals</h3>
+                        <p>Gorgeous still life drawings during Grisha’s flashback.</p>
+
+                        <h3>Writing</h3>
+                        <p>Titan’s that appeared in the first episode of the series were shown to have originated in
+                        this episode. The Smiling Titan is Grisha’s first wife. Her eating Grisha’s second wife (Eren’s
+                        mother) is now a poetic and haunting scene, adding to the horror the viewer felt the first time
+                        watching the scene.</p>
+
+                        <p>The Marley reveal makes Reiner, Bertholdt and Annie’s cloudy motivations now seem more
+                        reasonable. All the revelations fit neatly into the events that had happened in the show and
+                        don't contradict any plot devices or character motivations.</p>
+
+                        <p>Ymir’s OVA which seemed confusing also fits neatly into the episode. Seemingly independent
+                        episodes are now connected and are important to the overall structure of the show.</p>
+
+                        <p>Grisha’s origin also makes sense. He seems to appear outside the walls and the viewer is
+                        tricked into thinking that he was a wall resident who accidentally escaped.</p>
+
+                        <h3>Overall</h3>
+                        <p>Small scenes throughout the series now have very different tones in terms of how the viewer
+                        will watch them going back. Every character’s arc was meticulously written out by Isayama and
+                        each of them has an effect on the overall story. By telling the character perspective’s
+                        non-linearly and using Eren’s fading memories to do so is a stroke of genius. We avoid the
+                        flashback trope in favour of something that makes more sense.</p>
+
+                    </div>
                 </div>
 
-                <div class="review">
+                <div class="episode">
 
-                    <h3>Visuals</h3>
-                    <p>Gorgeous still life drawings during Grisha’s flashback.</p>
+                    <div class="episode_info">
+                        <span class="season_number">3</span>x<span class="episode_number">19</span>: <span class="episode_name">Attack Titan</span>
+                        <br />
+                        <span class="review_date">2019-06-24</span>
+                    </div>
 
-                    <h3>Writing</h3>
-                    <p>Titan’s that appeared in the first episode of the series were shown to have originated in this
-                    episode. The Smiling Titan is Grisha’s first wife. Her eating Grisha’s second wife (Eren’s mother)
-                    is now a poetic and haunting scene, adding to the horror the viewer felt the first time watching the
-                    scene.</p>
+                    <div class="review">
 
-                    <p>The Marley reveal makes Reiner, Bertholdt and Annie’s cloudy motivations now seem more
-                    reasonable. All the revelations fit neatly into the events that had happened in the show and don't
-                    contradict any plot devices or character motivations.</p>
+                        <h3>Visuals</h3>
 
-                    <p>Ymir’s OVA which seemed confusing also fits neatly into the episode. Seemingly independent
-                    episodes are now connected and are important to the overall structure of the show.</p>
+                        <p>The galaxy image used in Ymir’s flashback gets thematic significance. The coordinate
+                        represents all the memory paths of all the Eldian’s. It is the intersection of these paths.
+                        Ymir’s flashback has a galaxy image, however even that has an intersection.</p>
 
-                    <p>Grisha’s origin also makes sense. He seems to appear outside the walls and the viewer is tricked
-                    into thinking that he was a wall resident who accidentally escaped.</p>
+                        <h3>Writing</h3>
 
-                    <h3>Overall</h3>
-                    <p>Small scenes throughout the series now have very different tones in terms of how the viewer will
-                    watch them going back. Every character’s arc was meticulously written out by Isayama and each of
-                    them has an effect on the overall story. By telling the character perspective’s non-linearly and
-                    using Eren’s fading memories to do so is a stroke of genius. We avoid the flashback trope in favour
-                    of something that makes more sense.</p>
+                        <p>Dina Fritz is the Smiling Titan. This reveal serves to explain why Eren was able to control
+                        the titans in 2x12. According to the current rules of the world, only a descendant of royal
+                        blood can wield the Founding Titan’s powers. Eren was able to do it the moment he punched the
+                        Smiling Titan, despite not possessing royal blood. This is written off as him activating his
+                        power’s due to his heightened emotional state and a desire to survive. However, Isayama’s deft
+                        writing gives a proper explanation and closes any plausible loopholes in this portion of the
+                        story.</p>
+
+                        <p>A user on reddit pointed out the significance of the reveal that Titan wielder’s can live for
+                        only 13 years.</p>
+
+                        <blockquote>
+                            <p>Finally, they adapted the chapter where the Curse of Ymir was first mentioned, or the
+                            thirteen-year remaining lifespan curse.</p>
+
+                            <p>For those who have not seen some discussions on how the number 13 is significant, lets do
+                            some math:</p>
+
+                            <p>From the narrations in season 1 and the history books shown, around 100 years ago
+                            (specifically, 107 years from chapter 2 of the manga), the first ruler of the Walls,
+                            King Fritz the 145th created the walls to protect humanity.</p>
+
+                            <p>When a someone gains a titan power, their remaining lifespan is set to 13 years due
+                            to “Ymir’s Curse”. Same number of years between the royal family’s succesion
+                            ritual.</p>
+
+                            <p>“145th king” means there have been 145 wielders of the Founding Titan at that time.
+                            145 x 13 = 1885. So 107 years ago, it has been 1885 years from Ymir Fritz.</p>
+
+                            <p>At present time (1885 + 107) it would be 1992 years since Ymir Fritz.</p>
+
+                            <p>Eren got his titan power at age 10, he’s supposed to die when he’s 23. Currently,
+                            Eren is 15 and has around 8 years left to live.</p>
+
+                            <p>1992 + 8 = 2000</p>
+
+
+                            <p>What was the title of the first episode again? Oh yeah, “To you, in 2000 years.” No
+                            biggie, nothing to see here.</p>
+
+                            <cite>
+                                From the reddit discussion of this episode on the /r/anime subreddit.
+                                Link:
+                                <a href="https://www.reddit.com/comments/c4cjuq/-/ervwyyl/">
+                                    https://www.reddit.com/comments/c4cjuq/-/ervwyyl/
+                                </a>
+                            </cite>
+
+                        </blockquote>
+
+                        <p>Dialogue repetition also has thematic significance. In 1x9, the dialogue used is “If you want
+                        to save Mikasa, Armin and everyone else,”. In this episode, the dialogue used was the same in
+                        the ED credits.</p>
+
+                    </div>
 
                 </div>
-
             </div>
 
         </div>
