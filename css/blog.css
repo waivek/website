@@ -1,0 +1,34 @@
+
+body {
+    font-family: "Equity Text A";
+    font-size: 24px;
+    line-height: 1.4;
+}
+
+body {
+    margin: auto;
+    max-width: 35em;
+    padding: 1em;
+}
+
+a {
+    color: #36c;
+}
+
+h1 { 
+    font-family: "Lora"; 
+    letter-spacing: 0.12em; 
+    text-align: center; 
+    text-transform: uppercase; 
+    padding: 0.5em; 
+    font-size: 2em; 
+}
+
+
+img { 
+    max-width: 100%; 
+}
+
+body { font-size: 3vw; }
+@media all and (min-width:800px) { body { font-size: 24px; } }
+@media all and (max-width:600px) { body { font-size: 18px; } }
