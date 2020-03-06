@@ -8,48 +8,28 @@
 
 	<style>
         div#content {
-            max-width: 40em;
-            font-family: "Balthazar";
-            font-size: 24px;
-            line-height: 1.4;
-            margin: 2em auto;
-        }
-        a {
-            text-decoration: none;
-            color: #36c;
-            padding-bottom: 8px;
-        }
-        .link a {
-            text-decoration: none;
-            color: black;
-            border-bottom: dotted 1px black;
-        }
-        .link a:hover,  a:hover{
-            border-bottom: solid 3px ;
-        }
-        .comment {
-            text-align: left;
-            border-left: 8px solid black;
-            padding-left: 2em;
-            margin-bottom: 3em;
-        }
-    
-        h2 {
-            margin-bottom: 1em;
-        }
-        @media screen and (max-width: 720px) {
-            div#content {
-                font-size: 16px;
-                margin: 0.5em;
-            }
-            .comment {
-                border-left: none;
-            }
-        }
-
-        .link {
-            display: block;
+            margin-top: 2em ;
             margin-bottom: 2em;
+            padding: 1em;
+            font-family: "Inter"; font-size: 20px; line-height: 1.4; 
+
+        }
+        a { text-decoration: none; color: #36c; }
+        a:hover { text-decoration: underline; }
+        .link { display: block; margin-bottom: 2em; }
+        .link a { text-decoration: none; color: black; border-bottom: dotted 1px black; padding-bottom: 8px; }
+        .link a:hover { border-bottom: solid 3px ; color: #d87700;}
+        .comment { text-align: left; border-left: 8px solid black; padding-left: 2em; margin-bottom: 3em; }
+        .thread { max-width: 40em; margin: auto; }
+        .wide_thread { max-width: 60em; margin: auto; }
+    
+        h2 { margin-bottom: 1em; }
+        blockquote { border-left: solid 6px mediumseagreen; margin-left: 0; padding-left: 1em; } 
+        li { margin-left: -0.9em; padding-left: 2em; }
+
+        @media screen and (max-width: 720px) {
+            div#content { font-size: 16px; margin: 0.5em; margin-left: 0; }
+            .comment { border-left-width: 4px; padding-left: 1em; }
         }
 
     </style>
@@ -60,19 +40,13 @@
                 <div class="link">
                     <a href="https://news.ycombinator.com/item?id=18110383">https://news.ycombinator.com/item?id=18110383</a>
                 </div>
-                <div class="comment">
-                    <p>
-                    Putting my mostly-retired audio engineer hat back on for a minute...<p>The Yamaha Sound Reinforcement Handbook</p><p><a href="https://www.amazon.com/Sound-Reinforcement-Handbook-Gary-Davis/dp/0881889008" rel="nofollow">https://www.amazon.com/Sound-Reinforcement-Handbook-Gary-Dav...</a></p><p>This is basically the soundman's bible. Sold for an aspiring live sound engineer, has much more than just advice for live sound guys - covering everything from microphones to acoustics to basic electronics to handy rules of thumb to MIDI, all written to be relentlessly pragmatic. It even has a handy appendix covering logarithms.</p><p>This isn't the book to give you the final "20%" of knowledge on anything it covers - but it will help you on your way to the first 80% a lot more quickly than most other writing on anything related to semi/pro audio, and pretty much every expert in the field is at least familiar with it, if they don't own a copy.</p><p>There seem to be plenty of people interested in music and audio around here, so hopefully someone finds the unusual reference useful.
-                    </p>
-                </div>
+                <p>Putting my mostly-retired audio engineer hat back on for a minute…</p>
+                <p><a href="https://www.amazon.com/Sound-Reinforcement-Handbook-Gary-Davis/dp/0881889008" rel="nofollow">The Yamaha Sound Reinforcement Handbook</a></p>
+                <p>This is basically the soundman's bible. Sold for an aspiring live sound engineer, has much more than just advice for live sound guys - covering everything from microphones to acoustics to basic electronics to handy rules of thumb to MIDI, all written to be relentlessly pragmatic. It even has a handy appendix covering logarithms.</p><p>This isn't the book to give you the final “20%” of knowledge on anything it covers - but it will help you on your way to the first 80% a lot more quickly than most other writing on anything related to semi/pro audio, and pretty much every expert in the field is at least familiar with it, if they don't own a copy.</p><p>There seem to be plenty of people interested in music and audio around here, so hopefully someone finds the unusual reference useful.</p>
                 <div class="link">
                     <a href="https://news.ycombinator.com/item?id=18109528">https://news.ycombinator.com/item?id=18109528</a>
                 </div>
-                <div class="comment">
-                    <p>
-                    Kotler's "Marketing Management" remains the most definitive text on the practice of marketing.<p>Many people - including some on HN - mistakenly equate marketing with only advertising or, more broadly, marketing communications. In truth that's only a small portion of the discipline.</p><p><a href="https://www.amazon.com/Marketing-Management-14th-Philip-Kotler/dp/0132102927" rel="nofollow">https://www.amazon.com/Marketing-Management-14th-Philip-Kotl...</a>
-                    </p>
-                </div>
+                <p>Kotler's “Marketing Management” remains the most definitive text on the practice of marketing.<p>Many people - including some on HN - mistakenly equate marketing with only advertising or, more broadly, marketing communications. In truth that's only a small portion of the discipline.</p><p><a href="https://www.amazon.com/Marketing-Management-14th-Philip-Kotler/dp/0132102927" rel="nofollow">https://www.amazon.com/Marketing-Management-14th-Philip-Kotl...</a></p>
             </div>
             <div class="thread">
                 <h2>Success</h2>
@@ -80,7 +54,7 @@
                     <a href="https://news.ycombinator.com/item?id=18118498">https://news.ycombinator.com/item?id=18118498</a>
                 </div>
                 <p>
-                At one time I thought highly successful people would be more like each other than less successful people.  I believed it even more when it was explained as the Anna Karenina principle.  But my experience hasn't borne it out.  There are many things you can point to as advantages or "best practices" but in the end it all seems to dissolve into our penchant for telling stories.  One guy is successful because he was born into it, it's all he saw growing up, every element was demonstrated for him and instilled in him as normal his whole life.  Another guy is successful because he was born with nothing and had to fight for every little thing, and he kept fighting for the next thing until he had a whole company.  These are both coherent stories, but they don't explain the difference between those two and all the other people who were born to success but reverted to the mean or who were born into poverty and stayed there.<p>I've seen people succeed with vastly different, contradictory strategies.  I've seen engineers promoted to management earn respect by getting in the weeds and doing unwanted grunt work, and I've seen engineers promoted to management stay so hands-off from technical stuff that new employees assumed they were MBAs who didn't understand the work they were managing.  I've seen people with humble origins flaunt them at every opportunity and others all but deny them.  I've seen people who immersed themselves in detail to see the whole picture and people who carefully rationed the information they consumed to avoid being overwhelmed, systematically delegating the responsibility for details.</p><p>Conclusion:  that's the wrong way to try to understand the difference between luck and skill.  Suppose you ran a huge experiment where you had 1000 chess grandmasters, 1000 masters, 1000 good amateurs, and so on down to 1000 chronic duffers, and they each inherited a thousand games starting at move eight (crediting the first seven moves to luck, circumstances, and childhood.)  You wouldn't learn much by asking whether the winners attacked or defended, opened the middle or jammed it up, preferred their knights or their bishops.  Those aren't the right questions.  A grandmaster doesn't move a knight just because she likes knights, or because moving knights is the baller thing that all the grandmasters do.  It's because it accomplishes something in their situation.  If life was a game you could play over and over again, with executive control gradually fading in starting in the teenage years, a brilliant player might play each lifetime very differently.  It's an interesting thought experiment to ask what skills you would develop as you "played" dozens or hundreds of lifetimes!  Certainly not rigid rules like "wake up at 5am" or "wear the same thing every day."
+                At one time I thought highly successful people would be more like each other than less successful people.  I believed it even more when it was explained as the Anna Karenina principle.  But my experience hasn't borne it out.  There are many things you can point to as advantages or “best practices” but in the end it all seems to dissolve into our penchant for telling stories.  One guy is successful because he was born into it, it's all he saw growing up, every element was demonstrated for him and instilled in him as normal his whole life.  Another guy is successful because he was born with nothing and had to fight for every little thing, and he kept fighting for the next thing until he had a whole company.  These are both coherent stories, but they don't explain the difference between those two and all the other people who were born to success but reverted to the mean or who were born into poverty and stayed there.<p>I've seen people succeed with vastly different, contradictory strategies.  I've seen engineers promoted to management earn respect by getting in the weeds and doing unwanted grunt work, and I've seen engineers promoted to management stay so hands-off from technical stuff that new employees assumed they were MBAs who didn't understand the work they were managing.  I've seen people with humble origins flaunt them at every opportunity and others all but deny them.  I've seen people who immersed themselves in detail to see the whole picture and people who carefully rationed the information they consumed to avoid being overwhelmed, systematically delegating the responsibility for details.</p><p>Conclusion:  that's the wrong way to try to understand the difference between luck and skill.  Suppose you ran a huge experiment where you had 1000 chess grandmasters, 1000 masters, 1000 good amateurs, and so on down to 1000 chronic duffers, and they each inherited a thousand games starting at move eight (crediting the first seven moves to luck, circumstances, and childhood.)  You wouldn't learn much by asking whether the winners attacked or defended, opened the middle or jammed it up, preferred their knights or their bishops.  Those aren't the right questions.  A grandmaster doesn't move a knight just because she likes knights, or because moving knights is the baller thing that all the grandmasters do.  It's because it accomplishes something in their situation.  If life was a game you could play over and over again, with executive control gradually fading in starting in the teenage years, a brilliant player might play each lifetime very differently.  It's an interesting thought experiment to ask what skills you would develop as you “played” dozens or hundreds of lifetimes!  Certainly not rigid rules like “wake up at 5am” or “wear the same thing every day.”
                 </p>
             </div>
             <div class="thread">
@@ -88,51 +62,25 @@
                 <div class="link">
                     <a href="https://www.reddit.com/comments/4rjdda/-/d51pow6/">https://www.reddit.com/comments/4rjdda/-/d51pow6/</a>
                 </div>
-                <div class="comment">
-                    <p>Here's my advice for hardcore learning:</p>
-<p>Seek out grammar resources (in print or online). Read through one or two of them to confirm that you have a complete,
-if basic, understanding of tense, punctuation, mood, etc.</p>
-
-<p>Begin a regular reading schedule. Optimally, you should read one poem, one short story, and one essay each day. You
-should seek out classic and contemporary works that challenge your reading level. You should read each piece critically
-to understand how and why they work. You will absorb a great deal this way. Even with an average reading speed, this
-will take only 1.5&mdash;2 hours per day and will positively impact your entire life. Read widely. Read things you
-normally wouldn't. Read what's popular. Read what's critically acclaimed. Read what's famously bad (to find out
-why).</p>
-
-<p>Begin a regular writing schedule. The ideal time to write is in the morning, before your other obligations begin. If
-you customarily rise at 6 AM to prepare for work, rise at 4 AM or 5 AM instead, write for 1 or 2 hours, and continue as
-normal, going to bed that much earlier. Even with an average typing speed, you will, with practice, bang out 1000-2000
-words in a couple hours. Every week, you will be able to produce first drafts for 1 to 2 short stories. Make that the
-goal: one decent first draft each week, or two if you're really keen.</p>
-
-<p>Focus on short stories for the first two years. Short stories allow you to experiment with new techniques quickly.
-After two years, you'll have produced at least a hundred first drafts for short stories, some of which will be pretty
-good. Some of them will even be about the same set of characters, like a proto novel.</p>
-
-<p>Set time aside to reread and edit your old work. After two years of practice, your idea of what constitutes quality
-writing will have changed. But only now will you have the training to make meaningful edits! Some of the stories will be
-garbage, but many will be rough gems.</p>
-
-<p>At the end of this two-year period, you will be able to call yourself a beginner writer.</p>
-                </div>
+                <p>Here's my advice for hardcore learning:</p>
+                <p>Seek out grammar resources (in print or online). Read through one or two of them to confirm that you have a complete, if basic, understanding of tense, punctuation, mood, etc.</p>
+                <p>Begin a regular reading schedule. Optimally, you should read one poem, one short story, and one essay each day. You should seek out classic and contemporary works that challenge your reading level. You should read each piece critically to understand how and why they work. You will absorb a great deal this way. Even with an average reading speed, this will take only 1.5&mdash;2 hours per day and will positively impact your entire life. Read widely. Read things you normally wouldn't. Read what's popular. Read what's critically acclaimed. Read what's famously bad (to find out why).</p>
+                <p>Begin a regular writing schedule. The ideal time to write is in the morning, before your other obligations begin. If you customarily rise at 6 AM to prepare for work, rise at 4 AM or 5 AM instead, write for 1 or 2 hours, and continue as normal, going to bed that much earlier. Even with an average typing speed, you will, with practice, bang out 1000-2000 words in a couple hours. Every week, you will be able to produce first drafts for 1 to 2 short stories. Make that the goal: one decent first draft each week, or two if you're really keen.</p>
+                <p>Focus on short stories for the first two years. Short stories allow you to experiment with new techniques quickly.  After two years, you'll have produced at least a hundred first drafts for short stories, some of which will be pretty good. Some of them will even be about the same set of characters, like a proto novel.</p>
+                <p>Set time aside to reread and edit your old work. After two years of practice, your idea of what constitutes quality writing will have changed. But only now will you have the training to make meaningful edits! Some of the stories will be garbage, but many will be rough gems.</p>
+                <p>At the end of this two-year period, you will be able to call yourself a beginner writer.</p>
 
                 <div class="link">
                     <a href="https://www.reddit.com/comments/9lzqbv/-/e7b78pa/">https://www.reddit.com/comments/9lzqbv/-/e7b78pa/</a>
                 </div>
+                <p>People always recommend “Elements of Style” by Strunk and White. This is an okay book. It's really basic, really simple. That's the reason it's so popular - no nuance. It will advance a flawed writer to a decent writer. But it won't make a decent writer into a good writer.</p> 
+                <p>If you want to take it to the next level, I highly recommend “Syntax as Style” by Virginia Tufte. This is, by far, the best book on grammar and style out there.</p>
 
-                <div class="comment">
-<p>People always recommend "Elements of Style" by Strunk and White. This is an okay book. It's really basic, really
-simple. That's the reason it's so popular - no nuance. It will advance a flawed writer to a decent writer. But it won't
-make a decent writer into a good writer.</p>
+                <p>Honestly, the best way to improve grammar is to read and write. A lot. But a couple books on syntax can't hurt.</p>
 
-<p>If you want to take it to the next level, I highly recommend "Syntax as Style" by Virginia Tufte. This is, by far,
-the best book on grammar and style out there.</p>
+                <p>If you want a third recommendation, try “How to Write a Sentence”, by Fisher.</p>
+            </div>
 
-<p>Honestly, the best way to improve grammar is to read and write. A lot. But a couple books on syntax can't hurt.</p>
-
-<p>If you want a third recommendation, try "How to Write a Sentence", by Fisher.</p>
-                </div>
                 <div class="thread">
                     <h2>Bryan Garner & Writing</h2>
                     <div class="link">
@@ -145,6 +93,244 @@ the best book on grammar and style out there.</p>
                     <p>“Though I never mastered Old English, I acquired a passing knowledge of the Middle English of Chaucer and Gower. Two summers at Oxford University—where I studied Chaucer and T.S. Eliot—deepened my appreciation of how language and literature intersect. It was at Oxford that I first got to know Robert W. Burchfield, the editor of the Supplement to the <em>Oxford English Dictionary</em> (then underway), and Christopher Ricks, one of the great modern literary critics.”</p>
                     <p>“While at Texas and Oxford, I attended many lectures by noted linguists who were dogmatically descriptive in their approach. The most bothersome thing to me was that they didn‘t write well: their offerings were dreary gruel. So I gravitated away from the Linguistics Department and toward English and Classics. My mentors were John W. Velz, a Shakespearean of the first rank, and Thomas Cable, whose history of the English language (with Albert Baugh) is a classic. So while I was still in college emboldened by Professor Velz&#8217;s assurances that my work was worthy of publication, I knew that I would one day write a book in my favorite genre: a dictionary of usage.”</p>
                 </div>
-        </div>
+
+                <div class="thread">
+                    <h2>Learning to Build Distributed Systems</h2>
+                    <div class="link">
+                        <a href="https://news.ycombinator.com/item?id=20251589">https://news.ycombinator.com/item?id=20251589</a>
+                    </div>
+                    <p>Disclaimer: ex-AWS. Not for reproduction.</p>
+                    <blockquote>There are a lot of distributed systems books I love, but I haven't found an accessible introduction I particularly like yet.</blockquote>
+                    <p>I'd highly recommend Martin Kleppmann's Desgining Data Intensive Applications [0] as an introductory book on distributed systems.</p>
+                    <blockquote>Here's Jaso Sorenson describing the design of DynamoDB</blockquote>
+                    <p>For the uninitiated, Jaso played a key role in S3's evolution and was one of S3's founding engineers along with the then CTO and now Distinguished Eng, Alan Vermeulen (who's probably Jeff Dean of Amazon), who btw is an expert speaker. Such a shame folks outside of Amazon don't get to see his numerous talks. Absolute legends.</p>
+                    <blockquote>Colm MacCarthaigh talking about some principles for building control planes.</blockquote>
+                    <p>Jaso also built “one of the most complex distributed systems ever built at AWS”, what then later formed inspiration for AWS HyperPlane and the NetworkLoadBalancer by a team led by Colm, who inturn, was a founding eng with Route53 (first-ever 100% uptime public service at AWS?), VPC, and CloudFront among other very fancy security things.</p>
+                    <blockquote>I've (Marc Brooker) been doing this stuff for 15 years in one way or another, and still feel like I'm scratching the surface.</blockquote>
+                    <p>Well, he's being humble here. Marc's internal wiki pages on various designs he's come up with over the years for AWS are absolute gold mines, in that they explain his thought process, his experimentation, and his research with existing publications. Along with Colm (and a few others), he's is a prolific speaker internally at AWS with some of his talks ranked in the top 10 consistently. His recent contributions with EC2/EBS and Lambda mean he's worked with the largest and most complicated distributed systems there ever has been at AWS (imo, of course).</p>
+                    <p>There are others like Eric Brandwine (Security), James Hamilton (Data Centers), Peter Vosshall (Silk, EC2, and Architecture), Becky Weiss (VPC and Lambda), David Yancek (IoT, NoSQL), Andrew Certain (DB), Tim Rath (DB), Stefano Stefani (DB, Warehouse, AI), Brad M (S3), Nafea B (Hardware), MSW (EC2/OS), A Ligouri (EC2/OS), Hall Cary (Builder Tools), Marvin T (Kinesis) et al who don't get a mention in the blog post but have been every bit gigantic in their contributions at AWS since forever. The recent recruits at the top rungs of eng at AWS have considerable pedigree coming in, as well. Exciting times, for sure.</p>
+                    <p>I wish they'd release those internal videos (and CoEs) on a case-to-case basis to public. That'd go a long way in contributing to the distributed systems literature... apart from resuming to write blogs and papers abt their systems [1] like the NetEng/Route53 team once did.</p>
+                    <p>[0] <a href="https://dataintensive.net">https://dataintensive.net</a></p>
+                    <p>[1] <a href="https://news.ycombinator.com/item?id=19290069">https://news.ycombinator.com/item?id=19290069</a></p>
+                    <p>(Opinions my own. Facts presented may not be accurate. Zero intention to cause hurt and anguish.)</p>
+                </div>
+                <div class="thread">
+                    <h2>A Learning Secret: Don't Take Notes with a Laptop (2014)</h2>
+                    <div class="link">
+                        <a href="https://news.ycombinator.com/item?id=20271407">https://news.ycombinator.com/item?id=20271407</a>
+                    </div>
+                    <p>I'm 53 and work in IT for a 'funky' learning/media company, ranking among the seniors in both age and position.</p>
+                    <p>I have a customised Cornell Notes* Word doc template, and I run off batches of 5-10 sheets to take to meetings and training sessions. My colleagues typically turn up with their tablets, surfaces, laptops, phones and 'multitask', however a few have started to adopt my method - it's been particularly useful for client meetings where I have been able to later confirm sub-points or asides mentioned by customers - sometimes months later. It's also very easy to drill down through Quarterly reviews and link chains of historic comments 'on the fly' - for example, being able to confirm that so-and-so first mentioned something about a similar technical issue on a different system 12 months ago.</p>
+                    <p>My 'Cornell' style has developed an element of mindmapping on the pages, which makes it easy to track conversations or sections of meetings that break off into side discussions/brainstorming.</p>
+                    <p>The biggest benefit is that the structure of all notes is consistent, so not only can I find things very quickly, but others can interpret them too - this is a particularly powerful way to allow teams to share, compare and understand someone else's notes, even months after the meeting or training took place.</p>
+                    <p>Edit: I also believe it looks very professional in customer meetings when everyone from the same business is taking notes in a similar way, using identical stationery.</p>
+                    <p>I've been working this way since the mid 1990s and find it beats all forms of tech.</p>
+                    <ul>
+                        <li> <a href="https://en.wikipedia.org/wiki/Cornell_Notes">https://en.wikipedia.org/wiki/Cornell_Notes</a></li>
+                        <li> <a href="http://lsc.cornell.edu/notes.html">http://lsc.cornell.edu/notes.html</a></li>
+                        <li> <a href="https://github.com/linker3000/Cornell">https://github.com/linker3000/Cornell</a></li>
+                    </ul>
+
+                    <div class="link">
+                        <a href="https://news.ycombinator.com/item?id=20268974">https://news.ycombinator.com/item?id=20268974</a>
+                    </div>
+                    <p>The left column is the notes/subject/item/named person index. If a 3 hr meeting has 12 pages (double sided), I can probably pick up the notes and check all columns in about 10 seconds.</p>
+                    <p>If a URL is mentioned, it's likely either because someone knows it (make a note to ask them for it), it's in their notes (ask for them), or it's been put on a whiteboard (take a photo if needed). Ditto for code, if it's that kind of meeting (and, yes, I do have those kinds of meetings).</p>
+                </div>
+
+
+                <div class="thread wide_thread">
+                    <h2>Failure</h2>
+                    <div class="link">
+                        <a href="https://news.ycombinator.com/item?id=20388804">https://news.ycombinator.com/item?id=20388804</a>
+                    </div>
+                    <p>Okay, sure, but: many physical attributes, social perceptions, and pervasive mental habits probably do become increasingly solidified, even if fatalism about it is counterproductive. Sure, there's plenty of late bloomers, but how many of them do you get from a broken late starting point, and how many do you get from people who worked slowly and methodically and did the right slow things earlier on, taking care of their minds, bodies, social connections, growing their resources, gaining experiences, broadening and/or fine-tuning their abilities, and so on? Do fit/rich/popular/etc. 35-year-olds regularly get there from a truly broken (including internally!) state at 31, or is it more that they actually took all the advice about regular exercise/investing/graciousness/etc. back when they were 25, kept taking it, and maybe despaired in the moment about it not seeming to work while actually stacking up tons of invisible long-term bonuses?</p>
+                    <p>I'm trying to come off about a decade of poor habits myself, due to a number of factors which are undoubtedly my responsibility but which it's not clear whether I could have realistically avoided. I've had some minor successes but have never really stabilized so far, including in all the little things like the above. I don't usually see this case handled clearly in the “it's okay to be a late bloomer!” inspiration crowd. (More personally, it doesn't help that the things I most want to do in life probably require being exceptional in specific ways that I'm not sure I can predict in advance and not just “successful” in a generic sort of way, and beyond a certain limited extent, I don't consider the wanting-what-I-have approach to be a viable one (except insofar as having that attitude on the face of things may make it more likely to reach my original desires anyway).)</p>
+                    <p>I'm trying to convince myself to try anyway and it's hellishly difficult.</p>
+
+                    <div class="comment">
+                        <p>&gt; I'm trying to convince myself to try anyway</p>
+                        <p>What else are you going to do?</p>
+                        <p>You are where you are right now, and you can either put in the effort to make your life better or you can give up now.</p>
+                        <p>The time's going to pass anyway, you might as well make the most of it.</p>
+                        <div class="comment">
+                            <p>If that worked enough of the time, articles like the OP wouldn't get written much. Emotionally speaking, giving up is actually a pretty sticky idea! The potential for putting a pile of effort in, finding it wasn't really enough, and being confronted afterward with all the things you did wrong with no chance to correct them now is paralyzing; it's “safer” in a way to not try, never know, and only experience the one, easily-dampened gnawing failure of having wandered off the path, rather than having a hundred different failures confirmed through hard work and inadequacy. I think a lot of people experience this in at least some areas of life, and it's a big source of deciding to lowball, or of blaming the environment (which isn't always factually false, but I'm referring to the emotional interpretation) or making various rationalizations surrounding “talent” or whatnot.</p>
+                            <p>So cognitively I know that's a common problem with an obvious answer, but it doesn't mean I can just skip to the end without convincing the rest of me.</p>
+                            <div class="comment">
+                                <p>That was brutally real.</p>
+                                <p>Our short attention spans keep giving us new chances, though. If you decide to give up, you can't just do it once (okay, you can, but please don't)-- you have to keep deciding to give up every day. Eventually you realize you're going to need to give up on giving up, at least some of the time.</p>
+                                <p>However, I know what you mean quite fully. I've given up on everything from academic hopes, to artistic dreams, to multiple types of fantasies I was taught were real as a child, to career possibilities and more. Learning to rest in the knowledge that someone out there is already doing whatever cool stuff I could've done, better than I could've done it - and training myself to be mildly comforted by this - has brought me no small amount of peace.</p>
+                                <p>Sentient existence is weird and hard. Giving up is an important life skill.</p>
+                            </div>
+                            <div class="comment">
+                                <p>The society will not like your attitude; expect to experience continuous peer pressure. Nearly everyone is hard-coded with the unconditional "never give up", "hope dies last" and so on. The common arguments "might as well make the best out of it", together with the anti-suicidal "if you are going to die, sell everything and give your life another chance", I find annoying. All attempts require efforts. Sometimes you know in advance that a reward will not justify an effort, sometimes it's a giant gamble of many years and you decide not to take the risk. I don't want to put an unbearable burden onto myself only to end up regretting it in the end, where I will know that I inflicted the pain of all efforts and the pain of the final defeat with my own hands. When you know that you could've idled while being sufficiently content and happy with your "unsuccessful" level, but you succumbed to momentary inebriation of inspiration and drove yourself into a trap where you are not happy with your prospects, but you don't want to give up because you already invested much efforts. Because of their inexhaustible fountain of optimism people tend to ignore that efforts are unpleasant, and one cannot sign oneself up to a giant contract of work just because muh "might as well make the best out of it".</p>
+                                <div class="comment">
+                                    <p>&gt; The society will not like your attitude; expect to experience continuous peer pressure. Nearly everyone is hard-coded with the unconditional "never give up", "hope dies last" and so on.</p>
+                                    <p>This is only true in US and perhaps a handful of other countries. In most of the world, society tells you to NOT follow your dreams, as they know from experience that this will usually end badly for both you and those close to you. I.e. even if you want to be a painter, your family in India or Eastern Europe will work very hard at convincing you to become a doctor, an engineer or something else "safe". They do it for your own sake (only minority of art students make it and are satisfied with their careers) and also for their own - it's no fun supporting a grown-up son/daughter that is a financially struggling and possibly depressed.</p>
+                                </div>
+                            </div>
+                            <div class="comment">
+                                <p>Hi You sound naturally ambitious but scared of failure because of the perfectionism. This might seem very off-topic but "helping others" seems to have a strange but good effect on this psychological debuff. I am not going to try and explain it, probably something along the lines of realising there are people who are even worse combined with the natural social programming to feel good when you help the group. That combo seems to help overcome fear. Build something because you care about the people who will benefit from it and it will bring them joy. Also consider that maybe the other guy doing it better than you prices it out of the reach of people who need it? Your unique contribution to society is still sorely needed by many, many people.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="thread">
+                    <h2>Search Engine Optimization</h2>
+                    <div class="link">
+                        <a href="https://news.ycombinator.com/item?id=20680014">https://news.ycombinator.com/item?id=20680014</a>
+                    </div>
+                    <p>Got curious and decided to go through their SEO.</p>
+                    <ul>
+                        <li>First off, according to <a href="https://ahrefs.com/">Ahrefs</a>, their dofollow / nofollow ratio is a staggering 10:1, which is a huge red flag right away. A more natural ratio would be in the neighborhood of 1:2 so we are talking 20x less. But hey, maybe it's the niche that naturally attracts a ton of dofollow links - let's move on</li>
+                        <li>Looking at another of the main spam indicators, anchor text, most of them are just single keywords, like “ashwagandha”, which point to the page optimized to rank for that exact generic search. The entire website is targeting single-term searches, which are notoriously hard to rank for and attract a lot of spam websites. This falls into anchor text over-optimization. They have 210 referring pages linking to their curcumin page with the exact anchor text “curcumin”, same with “catechins”, “creatine”, “caffeine”, “vitamin d” and the list goes on for all the keywords they are trying to rank for. This is not just unusual, it's literally impossible for it to just happen naturally. This has the Penguin penalty written all over it. Moving on…</li>
+                        <li>Their backlinks are for sure interesting. Among their top backlinks, we have pages such as: 
+                            <p>https://www.herbalsupplementreview.com/retro-lean-forskolin/ - with a URL rating of 46 for a website with zero traffic.</p>
+                            In SEO terms these are called “<a href="https://lionzeal.com/blog/pbn-guide/">PBN links</a>”. Not that unusual for the health niche, but definitely not white hat. Here’s another one with the same identical metrics as the previous one (this time, it’s a homepage link), also from a dubious website with zero traffic: https://best-testosteronebooster.com/.</li>
+                    </ul>
+                    <p>All of these with exact match anchor texts leading to their corresponding Examine.com pages.</p>
+                    <p>Mind you, I’m not saying that they don’t have great editorial content, and I’m not sure who helped them with their SEO, but I’m not the least bit surprised that Google might have penalized them multiple times for several reasons. There's probably more stuff but this is what I was able to find with a quick analysis.</p>
+                </div>
+
+                <div class="thread">
+                    <h2>The value of time</h2>
+                    <div class="link">
+                        <a href="https://news.ycombinator.com/item?id=21512921">https://news.ycombinator.com/item?id=21512921</a>
+                    </div>
+                    <p>I find that the key thing to overcome when selling to developers is the extreme reluctance to spend money buying something that they can build themselves. You see,</p>
+                    <ol>
+                        <li>Developers love to build things</li>
+                        <li>Developers hate spending money</li>
+                        <li>Developers undervalue their time</li>
+                    </ol>
+                    <p>If your product looks like it would have been fun to build, you'll lose the entire “insufficiently supervised developer” demographic. Those guys will happily spend tens of thousands of dollars of billable hours implementing an in-house version of your thing to avoid the possibility of outgrowing your Free Tier.</p>
+                    <p>I've seen this play out with S3stat customers (which costs $10/month, or three minutes twenty seconds of fully loaded engineer cost), where somebody will spend a week building an in-house version of the service and standing up a server to run it. Nicely done. You'll break even on your investment in 21 years.</p>
+                    <p>I've had moderate success with my latest API product pointing to a “Boss Page” that outlines things like build-vs-buy costs, and why you really would be better off paying us for this thing rather than dedicating an in-house guy to building and maintaining it.</p>
+                    <p>It's a tough one.</p>
+                </div>
+
+
+                <div class="thread">
+                    <h2>Learning Embedded Development</h2>
+                    <div class="link">
+                        <a href="https://news.ycombinator.com/item?id=21873918">https://news.ycombinator.com/item?id=21873918</a>
+                    </div>
+                    <p>No matter what you do, you NEED tools. I cannot stress this enough. If you can spend $250-$500 on a nice desktop scope, awesome. If you only have $80, you can get a serviceable Hantek USB scope that will at least give you an idea of what you're doing. If you can only spare $20, you can at least get an el cheapo JYETech scope. In addition, you'll want to pick up a multimeter and probably a logic analyzer. Again, no need to go all out; a cheap $20 meter and a $15 Saleae knockoff will get the job done when you're just starting out. DO NOT SKIP OUT ON THESE. Embedded development without being able to see and know what you're doing is miserable, so unless you're doing this because you want to be frustrated, just buy the tools you need upfront.</p>
+                    <p>As for what microcontroller to actually learn on, I would say the MSP430 is a very good starting point. It's a fairly mundane 16-bit RISC microcontroller series with very forgiving electrical design requirements, very good documentation, and very good community support. They make a devboard (TI calls them Launchpads) for the MSP430G2553 that's more than enough to get a beginner started. When you need a little more power, you can either opt to invest in learning the ARM ecosystem, or go for something a little more exotic. Just about every manufacturer makes an ARM microcontroller of some sort, so if that's what you're interested in, take your pick and go with it. If you're looking for something else, the Renesas RL78 and RX series provide a lot of functionality if you're willing to deal with how stodgy Renesas can be.</p>
+                    <p>Some important notes:</p>
+
+                    <ol>
+                        <li>Don't bother with Arduino. They were a much more compelling product 15 years ago when you had to pay thousands in tools and compiler/environment licensing to get in on in embedded development. Today, what Arduino nets you is a painfully barren environment that abstracts away a lot of what you're trying to learn when you're starting out. Losing out on the debugging, profiling, tracing, disassembly, memory usage statistics, etc. that modern development environments give you will do nothing but stunt your growth, especially if you're used to having all these tools while writing desktop software</li>
+                        <li>Be careful with (or preferably just avoid) starting with embedded Linux; it's pushing the limits of "embedded". You're going to miss out on a lot of important knowledge and insight jumping straight into using an operating system (and a very heavy one at that), and for many applications, it is MASSIVE overkill. When you start, you're not going to need an RTOS. When you need an RTOS, you're going to reach for something more reasonable, like FreeRTOS. If FreeRTOS doesn't cut it, then you can start looking at Linux.</li>
+                        <li>Don't get tangled up with Raspberry Pis; the microprocessor on these is complex and the documentation is severely lacking/nonexistent. RPis are much closer to a desktop computer than they are an embedded system.</li>
+                    </ol>
+
+                    <p>If you really want to get it, I would say one of the most useful exercises is implementing your own microcontroller/processor. You can pick up an FPGA devboard for fairly cheap, and there are plenty of textbooks (Harris & Harris' Digital Design and Computer Architecture comes to mind) that will get you through most of the key concepts. Once you've done this, a lot of the gaps in understanding when dealing with a microcontroller will be filled in. This exercise isn't strictly necessary, but I don't know anybody who has done it that wasn't better off for it.</p>
+                    <p>My final note is to buy or "acquire" Horowitz and Hill's The Art of Electronics. Embedded development is inseparable from electrical engineering, so even if you don't read it front to back, there are some sections that you will definitely be visiting if your background isn't in electronics.</p>
+                </div>
+
+                <div class="thread">
+                    <h2>Botanical illustration is becoming endangered</h2>
+                    <div class="link">
+                        <a href="https://news.ycombinator.com/item?id=22204392">https://news.ycombinator.com/item?id=22204392</a>
+                    </div>
+                    <p>This is a beautiful book we had bought to give as a present when my nephews (or maybe an eventual son/daughter) are older, but ended up keeping for ourselves.</p>
+                    <a href="https://www.amazon.in/Maps-Aleksandra-Mizielinska/dp/0763668966">https://www.amazon.in/Maps-Aleksandra-Mizielinska/dp/0763668966</a>
+                    <p>"The map is not the territory" is a well-worn metaphor that's not really about maps anymore -- but in that book some features (cultural, architectural, physical, etc.) are given such prominence at the expense of realism that you understand much more than you would by looking at methodical cartography.</p>
+                    <div class="link">
+                        <a href="https://news.ycombinator.com/item?id=22203840">https://news.ycombinator.com/item?id=22203840</a>
+                    </div>
+                    <p>If you like botanical illustrations you’ll love the work of Ernst Häckel, a Professor of botany from Germany who was also a great artist (in my opinion) and who produced an incredible amount of astonishingly beautiful illustrations. I recently gave a book with a collection of them to my wife as a gift and we spent hours just marveling at the drawings as well as copying some of them. Here’s the (non-affiliate) link if you’re interested:</p>
+                    <a href="https://www.amazon.in/dp/3836526468/">https://www.amazon.in/dp/3836526468/</a>
+                    <div class="comment">
+                        <p>Many (all?) of Häckel's illustrations are on Wikimedia Commons:</p> 
+                        <a href="https://commons.wikimedia.org/wiki/Ernst_Haeckel">https://commons.wikimedia.org/wiki/Ernst_Haeckel</a>
+                    </div>
+                    <div class="link">
+                        <a href="https://news.ycombinator.com/item?id=22203317">https://news.ycombinator.com/item?id=22203317</a>
+                    </div>
+                    <p>The article mentions that illustration is a lot better than photography but doesn't mention any specifics. Does anyone have insight as to why this is?</p>
+                    <div class="comment">
+                        <p>Photography is just not enough. Botanical illustration puts all required details, and only those, together in the same place.</p>
+                        <ol>
+                            <li>Can show all the plants in the same family in the same figure.</li>
+                            <li>Can link features that never appear at the same time (like winter buds, fall fruits, summer flowers and associated fauna and funghia),</li>
+                            <li>Can play with the scale showing features of much different sizes at similar scale (i.e tricolpate pollen, the shape of the aperture in anthers, and silhouette of the whole tree).</li>
+                            <li>Will show the required details, but not more. A photo will show five plants mixed in the same picture so is often very confuse for an untrained eye to understand "what" is from "who". Photos lead often to "frankenplants" and it takes a lot of experience to disclose it, and this is a problem [1].</li>
+                            <li>Will be uniform in design. Not distracting light or cropped leaves in photos. Not backgrounds that vary among figures.</li>
+                            <li>Will take care of correct hues and color variations. Cheap caperas distroy red hues for example. Subtle variations are notoriously difficult to reproduce. Colors will be oversaturated and will change a lot when taken in different hours of the day. Similar species will appear darker and its mimic will appear lighter. In the end you have a very confuse picture.</li>
+                        </ol>
+                        <p>[1] This can seem just pedantry until you realize that your children are looking at a photo showing the fruits of an edible species, tagged as "delicious as raw berries and green parts can be used in salads" but mixed with leaves of a second species growing in the background that is poisonous (and there is not a single warn about it at sight). Internet is full of those mistakes.</p>
+                    </div>
+
+                    <div class="link">
+                        <a href="https://news.ycombinator.com/item?id=22203387">https://news.ycombinator.com/item?id=22203387</a>
+                    </div>
+                    <p>How is this better than photography? Surely it's easier to zoom in on a picture to see it's characteristics.</p>
+                    <div class="comment">
+                        <a href="https://commons.wikimedia.org/wiki/File:Taraxacum_officinale_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-135.jpg#/media/File:Taraxacum_officinale_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-135.jpg">Wikipedia - Taraxacum officinale (1897 illustration from Franz Eugen Köhler)</a>
+                        <p>You would be hard pressed to find a single photograph that captures this much individual information about what the various parts and stages of a dandelion look like. Even to find the leaf shape captured correctly is hard for a photograph. I think in this case there's a difference between what is photorealistic and what is useful information for identification.</p>
+                    </div>
+                </div>
+
+                <div class="thread">
+                    <h2>Learning 3D Modelling</h2>
+                    <div class="link">
+                        <a href="https://news.ycombinator.com/item?id=11731804">https://news.ycombinator.com/item?id=11731804</a>
+                    </div>
+                    <p>Impressive dedication. Still very naive but for a first try it is very impressive.</p>
+                    <p>A few things:</p>
+                    <ul>
+                        <li>Non organic modeling is very programmatic, seek for symmetry in all things. Train yourself on wheel rims for instance. Then bevel, chamfer. All these details are very 'procedural' but they make the difference between a PS2 feeling and a feeling of beauty. Be lazy in a smart way, replicate and randomize the secondary details to give density to a scene. I don't know what blender gives today, try other tools, zbrush, modo, houdini, maya. They'll give you ways to express your ideas.</li>
+                        <li>Organic modeling... Andrew Loomis books about human figure gave a few life altering tips (most of them are free PDFs now). Also, search for mirai modeling bay raitt, martin kroll on youtube.</li>
+                        <li>Lightning today global PR based lightning does a lot for you, but scenes are about 'emotion' not physics. Peek what you show, what you don't, and how you do. Hollywood movies are known reference for that, they exagerate, emphasize everything to draw attention and decorate important points in the composition. Unless your goal is to convey a more natural sensation in which case forget everything about hollywood :)</li>
+                    </ul>
+                    <p>Enjoy</p>
+                </div>
+
+                <div class="thread">
+                    <h2>How to evaluate stocks and companies</h2>
+                    <div class="link">
+                        <a href="https://news.ycombinator.com/item?id=22392141">https://news.ycombinator.com/item?id=22392141</a>
+                    </div>
+                    <ul>
+                        <li>Best introduction: Financial Intelligence, Revised Edition: A Manager's Guide to Knowing What the Numbers Really Mean (Berman, Karen, Knight, Joe, Case, John, imusti)</li>
+                        <li>Then read this, all of it, except perhaps most of the exhibits: Most recent Costco annual report (10-k).</li>
+                        <li>Berkshire Hathaway annual letters, Transcripts from Berkshire annual meetings</li>
+                        <li>Great follow-up: Financial Shenanigans, Fourth Edition: How to Detect Accounting Gimmicks and Fraud in Financial Reports (Schilit, Howard, Perler, Jeremy, Engelhart, Yoni, McGraw-Hill Education)</li>
+                        <li>Absolute classic (but needs to be updated): The Intelligent Investor: The Definitive Book on Value Investing. (Graham)</li>
+                        <li>On investing in general: Margin of Safety (Seth Klarman)</li>
+                        <li>Great intro to valuation, with the caveat that modern finance and concepts like WACC may not necessarily be useful to your investing strategy: Valuation: Measuring and Managing the Value of Companies (Tim Koller, Marc Goedhart, David Wessels)</li>
+                        <li>Another classic (but needs to be updated): Security Analysis (Graham and Dodd)</li>
+                    </ul>
+                    <p>I've read those in more-or-less that order, interspersed with plenty of other useful books that you'll discover depending how deep you go. The most important thing is reading 10-ks.</p>
+                </div>
+
+                <div class="thread">
+                    <h2>Developing mathematical maturity</h2>
+                    <div class="link">
+                        <a href="https://news.ycombinator.com/item?id=22401625">https://news.ycombinator.com/item?id=22401625</a>
+                    </div>
+                    <p>I pretty much followed the same route as OP re-studying mathematics seriously after 10 years in industry after initially doing a CS degree and doing mostly software engineering but transitioning into Data Science the last 3 years. When I saw Book of Proof then Spivak then Apostol on his list I chuckled because that’s exactly the route I ended up following as well. Studying from 04:30 to 06:30 in the week and about 8 hours split up over the weekend, Spivak took 8 months to complete (excluding some of the appendix chapters) but if you can force yourself to truly master the exercises — and Spivak’s value is the exercises — then you’re close to having that weird state called “mathematical maturity” or at least an intuition as to what that means. You can forget about doing the starred exercises, unless you’re gifted. Spend a lot of time on the first few chapters (again, the exercises), it will pay off later in the book. It was a very frustrating experience and I had so much self doubt working through it, it’s an absolutely brutal book. Some exercises will take you literally hours to try and figure out.</p>
+                    <p>If you do Book of Proof first you will find Spivak much easier, since Spivak is very light on using set theoretic definitions of things. Even the way he defines a function pretty much avoids using set terminology. Book of Proof on the other hand slowly builds up everything through set theory. It was like learning assembly language, then going to a high level language (Spivak) and I could reason about what’s going on “under the hood”. Book of Proof is such a beautiful book, I wish I had something like it in high school, mathematics would have just made sense if I had that one book.</p>
+                    <p>I read a quote somewhere, think it was Von Neumann that said, you never really understand mathematics, you just get used to it. Keep that in mind.</p>
+                </div>
+
+        </div> <!-- content div -->
+        <!-- 
+        TEMPLATE:
+
+            <div class="thread">
+                <h2>Title</h2>
+                <div class="link">
+                    <a href="https://link.com/id123">https://link.com/id123</a>
+                </div>
+                <p>Comment 1</p>
+                <p>Comment 1</p>
+                <p>…</p>
+            </div>
+
+        -->
     </body>
 </html>
