@@ -1,8 +1,10 @@
 
-body {
+html {
     font-family: "Equity Text A";
-    font-size: 24px;
     line-height: 1.4;
+
+    font-family: "Vollkorn";
+    font-feature-settings: 'lnum', 'pnum';
 }
 
 body {
@@ -15,20 +17,28 @@ a {
     color: #36c;
 }
 
-h1 { 
-    font-family: "Lora"; 
-    letter-spacing: 0.12em; 
-    text-align: center; 
-    text-transform: uppercase; 
-    padding: 0.5em; 
-    font-size: 2em; 
+h1 {
+    font-family: "Lora";
+    letter-spacing: 0.12em;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0.5em;
+    font-size: 2em;
 }
 
 
-img { 
-    max-width: 100%; 
+img {
+    max-width: 100%;
+    bottom: 0;
+    position: relative;
+    margin-bottom: -0.1em;
 }
 
-body { font-size: 3vw; }
+hr { 
+    border: none; border-top: solid 2px black; 
+}
+
+body {font-size: 3vw;}
 @media all and (min-width:800px) { body { font-size: 24px; } }
 @media all and (max-width:600px) { body { font-size: 18px; } }
+
