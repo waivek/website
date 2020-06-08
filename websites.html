@@ -5,141 +5,405 @@
         <title>List of Websites</title>
 
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <link rel="stylesheet" href="fonts/Lato/lato.css" type="text/css">
-        <link rel="stylesheet" href="fonts/Lora/lora.css" type="text/css">
-        <link rel="stylesheet" href="fonts/FreightText/freighttext.css" type="text/css">
+        <link rel="stylesheet" href="fonts/fairplay/fairplay.css" type="text/css">
 
+    <script>
+        function initialize() {
+            var anchors = document.querySelectorAll("a");
+            for (var i = 0; i < anchors.length; i++) {
+                var anchor = anchors[i];
+                anchor.target = "_blank";
+            }
+        }
+        window.addEventListener("load", initialize);
+    </script>
 <style>
 
-div#content {
-    font-family : "Lato webfont";
-    line-height : 1.5;
-    max-width   : 40em;
-    padding: 1em 1.5em;
-    margin: auto;
-}
-h1 {
-    font-family: "Lora webfont";
-    text-align: center;
-    padding-bottom: 1em;
-}
-dl {
-    font-family: "Lato webfont";
-    font-weight: 700;
-}
-h1 > span {
-    border: solid 2px black;
-    padding: .5em 1em;
-}
-a, a:visited {
-    color: #36c;
-    text-decoration : none;
-    transition: 0.1s;
-}
-a:hover {
-    border-bottom       : solid medium ;
-    border-bottom-color : inherit;
-    transition: 0.1s;
-}
+body { font-family: "Fairplay Text A"; line-height: 1.4; }
+body { font-size: 3vw; }
+@media all and (min-width:800px) { body { font-size: 24px; } }
+@media all and (max-width:600px) { body { font-size: 18px; } }
+p { margin-bottom: 1em; }
+
+body { margin: 0; }
+section {  max-width: 35em; padding: 1em 1em 2em 1em; margin: auto; }
+h1 { font-family: "Lora"; letter-spacing: 0.12em; text-align: center; text-transform: uppercase; padding: 0.5em; font-size: 2em; }
+
+dt { font-weight: bold; padding: 0.5em; margin-top: 1em; margin-bottom: 1em; }
+.exceptional { background: cornsilk; border-top: solid; border-bottom: solid; border-width: 5px; border-color: #f5e6a9; }
+.exceptional dt { text-transform: none; letter-spacing: 0.08em; font-family: "Lora"; }
+
+.incomplete { background: #ffdde2; padding: 1em ; border-top: solid 5px #ffc8d0;}
+.incomplete a { color: #577ac2; }
+.incomplete ol { margin-bottom: 0; color: #ff7185; }
+.incomplete li { margin: 0 1em 1em 1em; }
+
+a, a:visited { color: #36c; text-decoration : none; }
+a:hover { text-decoration: underline; }
+dt a { padding: 0.3em; margin-left: -0.3em; }
+dt a:hover { background: #36c; color: white; border-radius: 4px; text-decoration: none; }
+
+.exceptional a, .exceptional a:visited { color: brown; }
+.exceptional dt a:hover { background: brown; color: white; }
+
+
+@media all and (min-width:800px) { .incomplete ol { columns: 3; }  .incomplete a { overflow-wrap: break-word; } }
+
+span.resource { text-transform: uppercase; font-variant: small-caps;  font-family: "Fairplay Text A"; letter-spacing: 0.05em; font-weight: bold; }
 
 </style>
 
     </head>
     <body>
-        <div id="content">
+        <article>
 
-        <h1><span>List of Websites</span></h1>
-		
-		<dl><a href="http://site.macleans.ca/longform/alzheimers/" />Macleans</a></dl>
-		<dd>
-            A bare bones website that integrates media seamlessly. Scroll towards the end to get the feeling that you're
-            reading a research paper. 
-        </dd>
+            <h1>Great Websites</h1>
 
-		
-		<dl><a href="https://distill.pub" />Distill.Pub</a></dl>
-		<dd>
-             A site focussing on interactively explaining machine-learning concepts. The referencing system,
-             bibliography and horizontal rules are notworthy. 
-        </dd>
-				
-		<dl><a href="https://www.imaginarycloud.com/blog/timeless-classic-ui-design/amp" />Is Timeless Ui Design A Thing?</a></dl>		
-		<dd>
-            Images are presented in a really creative manner. They are overlain on top of one another, giving the
-            website a magazine feel. 
-        </dd>
-		
-		<dl><a href="https://www.politico.com/magazine/story/2018/06/29/google-city-technology-toronto-canada-218841" />The Politico</a></dl>		
-		<dd>
-            Great way to do blockquotes. Change the red to black however. Also clicking on the print dialogue results
-            in a well typeset document.	
-        </dd>
-		
-		<dl><a href="https://beautifulracket.com" > Beautiful Racket </a></p></dl>		
-		<dd>
-            A good looking site where code is styled sanely and sensible. 
-            <a href="https://beautifulracket.com/appendix/why-racket-why-lisp.html"/>Click here to see beautiful tooltips. </a>
-        </dd>
+            <div class="exceptional">
+                <section>
+                    <dl>
+                        <dt><a href="https://practicaltypography.com/">Practical Typography</a></dt>
+                        <dd>The Bible.</dd>
 
-		<dl><a href="https://alejandromp.com" >Alejandro Martinez's Blog</a></p></dl>		
-        <dd>
-            Tags are displayed really well - 
-            <a href="https://alejandromp.com/blog/2018/01/27/jonathan-blow-libraries-discussion-jai/">Jonathan Blow's libraries discussion</a>. 
-            If you hover over a link, the linked page is prefetched. This makes navigation almost instantaneous.
-        </dd>
+                        <dt><a href="https://m.wikipedia.org/wiki/Design">Wikipedia Mobile</a></dt>
+                        <dd>Great iconography. Light. Carefully chosen line-height. Performant. Gold standard of web design.</dd>
 
-		<dl>
-            <a href="https://joeclark.org/book/sashay/serialization/home.html" >Building Accessible Websites</a>
-        </dl>		
-        <dd>
-            Wide webpage with lot's of good advice
-        </dd>
-		
-		<dl><a href="https://kyleschaeffer.com/development/css-font-size-em-vs-px-vs-pt-vs/" >Kyle Schaeffer's Blog</a></dl>		
-        <dd>
-            Uses one font for header and body. Subsets it from TypeKit. Avoids F.O.U.T.
-        </dd>
+                        <dt><a href="http://eev.ee">Eev.ee</a></dt>
+                        <dd>
+                        <p>Responsive site designed with colors by someone who has clear understanding of visual style.</p>
+                        <p><span class="resource">Resource</span> <a href="https://eev.ee/media/2020-02-css/thumbnail-grids.html">List of examples for the state of the art in HTML thumbnail grids over time</a>
+                        </dd>
 
-		<dl><a href="https://heronebag.com/" >Her One Bag</a></dl>		
-        <dd>
-            The best designed blog, period. The rotation on the images gives it a collage-ey feel. The dark theme UI is
-            brilliant. Menubars are seamless.  Tags are displayed beautifully. Go to any 
-            <a href="https://heronebag.com/blog/choosing-genuine-connection-in-a-disconnected-life/">blog post</a> 
-            to see elegant design.  Also check out the author's <a href="https://vickylai.com/">personal web page</a>.
-        </dd>
 
-		<dl><a href="https://javascript.info" >JavaScript.Info</a></dl>		
-        <dd>
-            Looks great on all widths. Well spaced. Unobtrusive hamburger menu.  Keyboard shortcuts on hover for left
-            and right arrows. The content itself is comprehensive.
-        </dd>
+                        <dt><a href="https://www.ft.com/">Financial Times</a></dt>
+                        <dd>Journalism website which makes proper use of desktop space.</dd>
 
-		<dl><a href="http://www.lawprose.org/bryan-garner">Who is Bryan Garner</a></dl>		
-        <dd>
-            Click on the "Articles about Bryan Garner" on the right for useful definition list. The navbar updates
-            accordingly at the top right. The stickied menubar is functional. 
-            <a href="http://www.lawprose.org/lesson-85/">This page</a> also makes use of trackbacks.
-        </dd>
+                        <dt><a href="https://www.gov.uk/">GOV.UK</a></dt>
+                        <dd>The standard for maintaining aesthetics without compromising on accesibility.</dd>
 
-		<dl><a href="https://newleftreview.org/II/113/richard-stallman-talking-to-the-mailman">Talking to the mailman</a></dl>		
-        <dd>
-            Super simple website. Let's you download a PDF that has been typeset well.
-        </dd>
+                        <dt><a href="https://socialclub.rockstargames.com/games/rdr2/catalogue">Red Ded Redemption 2 - Catalogue</a></dt>
+                        <dd>Incredible custom site that feels like a western cowboy newspaper. Looks good on mobile and
+                        desktop. &lt;select&gt; and &lt;input&gt; elements have custom typography and styling. Hover is also customized
+                        to the theme of the magazine.</dd>
 
-		<dl><a href="https://www.chris-granger.com/2016/07/21/two-years-of-eve/">Two years of Eve - Chris Granger Blog</a></dl>		
-        <dd>
-            Clean blog layout. Links are underlined nicely and the body font (Merriweather) is easy on the eyes. The
-            site makes a good use of shades of gray.
-        </dd>
+                        <dt><a href="https://stripe.com/us/billing">Stripe - Billing</a></dt>
+                        <dd>
+                        <p>
+                        Amazing animations in SVG, with CSS rotates to give an element of depth. On desktop, hover over the
+                        “Company” tab and then the “Developers” tab to see a unique animation transition for dropdown menus.
+                        </p>
+                        <p>
+                        Scroll down to “Building Blocks for Billing” and click on the links. This updates the SVG on the
+                        right.  The SVG itself has subtle hover animations.
+                        </p>
+                        <p>
+                        Scroll further to “A new way to accept wire transfers”, for a well-designed table where the relevant
+                        column is highlighted in a creative manner.
+                        </p>
+                        <p>
+                        In the “Simplify billing from order to cash” section, there is a list of features. Hovering over the
+                        list launches a tooltip that appears and disappears with relevant animations. In mobile, the tooltip
+                        appears when the user presses on the list item, and disappears when the user lifts their finger.
+                        </p>
+                        </dd>
 
-		<dl><a href="https://www.atlasobscura.com/">Atlas Obscura - Curious and Wondrous Travel Destinations</a></dl>		
-        <dd>
-            The card component which has the “Place of the Day” is elegant. The search bar is located on the border of
-            two divs. Each of the dropdown menu items are uniquely styled on the desktop version.
-        </dd>
+                        <dt><a href="https://saaslandingpage.com/">The best SaaS landing page examples</a></dt>
+                        <dd><span class="resource">Resource</span> Collection of great SaaS landing and feature pages.</dd>
+                    </dl>
 
-		<br>
-        </div>
+                </section>
+            </div>
+
+
+            <section class="good">
+                <dl>
+                    <dt><a href="http://site.macleans.ca/longform/alzheimers/">Macleans</a></dt>
+                    <dd>
+                    A bare bones website that integrates media seamlessly. Scroll towards the end to get the feeling that you're
+                    reading a research paper. 
+                    </dd>
+
+
+                    <dt><a href="https://distill.pub">Distill.Pub</a></dt>
+                    <dd>
+                    A site focussing on interactively explaining machine-learning concepts. The referencing system,
+                    bibliography and horizontal rules are noteworthy. 
+                    </dd>
+
+                    <dt><a href="https://www.imaginarycloud.com/blog/timeless-classic-ui-design/amp">Is Timeless Ui Design A Thing?</a></dt>        
+                    <dd>
+                    Images are presented in a really creative manner. They are overlain on top of one another, giving the
+                    website a magazine feel. 
+                    </dd>
+
+                    <dt><a href="https://www.politico.com/magazine/story/2018/06/29/google-city-technology-toronto-canada-218841">The Politico</a></dt>        
+                    <dd>
+                    Great way to do blockquotes. Change the red to black however. Also clicking on the print dialogue results
+                    in a well typeset document.    
+                    </dd>
+
+                    <dt><a href="https://beautifulracket.com" > Beautiful Racket </a></dt>        
+                    <dd>
+                    A good looking site where code is styled sanely and sensible. 
+                    <a href="https://beautifulracket.com/appendix/why-racket-why-lisp.html">Click here to see beautiful tooltips. </a>
+                    </dd>
+
+                    <dt><a href="https://alejandromp.com" >Alejandro Martinez's Blog</a></dt>        
+                    <dd>
+                    Tags are displayed really well - 
+                    <a href="https://alejandromp.com/blog/2018/01/27/jonathan-blow-libraries-discussion-jai/">Jonathan Blow's libraries discussion</a>. 
+                    If you hover over a link, the linked page is prefetched. This makes navigation almost instantaneous.
+                    </dd>
+
+                    <dt>
+                    <a href="https://joeclark.org/book/sashay/serialization/home.html" >Building Accessible Websites</a>
+                    </dt>        
+                    <dd>
+                    Wide webpage with lot's of good advice
+                    </dd>
+
+                    <dt><a href="https://kyleschaeffer.com/development/css-font-size-em-vs-px-vs-pt-vs/" >Kyle Schaeffer's Blog</a></dt>        
+                    <dd>
+                    Uses one font for header and body. Subsets it from TypeKit. Avoids F.O.U.T.
+                    </dd>
+
+                    <dt><a href="https://heronebag.com/" >Her One Bag</a></dt>        
+                    <dd>
+                    The best designed blog, period. The rotation on the images gives it a collage-ey feel. The dark theme UI is
+                    brilliant. Menubars are seamless.  Tags are displayed beautifully. Go to any 
+                    <a href="https://heronebag.com/blog/choosing-genuine-connection-in-a-disconnected-life/">blog post</a> 
+                    to see elegant design.  Also check out the author's <a href="https://vickylai.com/">personal web page</a>.
+                    </dd>
+
+                    <dt><a href="https://javascript.info" >JavaScript.Info</a></dt>        
+                    <dd>
+                    Looks great on all widths. Well spaced. Unobtrusive hamburger menu.  Keyboard shortcuts on hover for left
+                    and right arrows. The content itself is comprehensive.
+                    </dd>
+
+                    <dt><a href="http://www.lawprose.org/bryan-garner">Who is Bryan Garner</a></dt>        
+                    <dd>
+                    Click on the “Articles about Bryan Garner” on the right for useful definition list. The navbar updates
+                    accordingly at the top right. The stickied menubar is functional. 
+                    <a href="http://www.lawprose.org/lesson-85/">This page</a> also makes use of trackbacks.
+                    </dd>
+
+                    <dt><a href="https://newleftreview.org/II/113/richard-stallman-talking-to-the-mailman">Talking to the mailman</a></dt>        
+                    <dd>
+                    Super simple website. Let's you download a PDF that has been typeset well.
+                    </dd>
+
+                    <dt><a href="https://www.chris-granger.com/2016/07/21/two-years-of-eve/">Two years of Eve - Chris Granger Blog</a></dt>        
+                    <dd>
+                    Clean blog layout. Links are underlined nicely and the body font (Merriweather) is easy on the eyes. The
+                    site makes a good use of shades of gray.
+                    </dd>
+
+                    <dt><a href="https://www.atlasobscura.com/">Atlas Obscura - Curious and Wondrous Travel Destinations</a></dt>        
+                    <dd>
+                    The card component which has the “Place of the Day” is elegant. The search bar is located on the border of
+                    two divs. Each of the dropdown menu items are uniquely styled on the desktop version.
+                    </dd>
+
+                    <dt><a href="http://mrmrs.cc">Creator of Tachyons - Speaks about accessibility and web</a></dt>
+                    <dd>
+                    Home page has a different style on refresh. The reading section on the homepage is useful. 
+                    <a href="http://mrmrs.cc/writing/the-veil-of-ignorance/">The Veil of Ignorance</a>
+                    </dd>
+
+                    <dt><a href="http://hellogreg.com/portfolio/advertising/">Portfolio of a graphic designer - hellogreg.com</a></dt>
+                    <dd>
+                    Nice visual portfolio. Clicking on an image launches a carousel.
+                    </dd>
+
+                    <dt><a href="http://www.lauraelizabeth.co/products/">Portfolio of a web designer - lauraelizabeth.co</a></dt>
+                    <dd>
+                    <p><a href="http://www.lauraelizabeth.co/writing/">Blog article list layout.</a></p>
+                    <p><a href="http://www.lauraelizabeth.co/speaking/">Calendar of speaking events.</a></p>
+                    </dd>
+
+                    <dt><a href="https://www.gwern.net/Links">Links on gwern.net</a></dt>
+                    <dd>
+                    <p>On desktop, footnotes occupy the left and right margin as floating asides. Hovering over the aside
+                    highlights the subscript reference and vice-versa. </p>
+
+                    <p>Links to webpages on gwern.net have the logo at the end of the link. The logo goes well with the
+                    black-gray colorscheme employed through the webpage.</p>
+                    </dd>
+
+                    <dt><a href="https://gedd.ski/post/overlapping-grid-items/">gedd.ski</a></dt>
+                    <dd>
+                    <p>Live code snippets. Editing the snippet changes the output. Line length of the code is sensible and code
+                    looks pleasant on the smallest of screen sizes.  </p>
+
+                    <p>Rest of the website has vibrant custom illustrations with a consistent art style.</p>
+                    </dd>
+
+                    <dt><a href="https://www.bramstein.com/working/">Bram Stein - Software architect and product manager working for Adobe</a></dt>
+                    <dd>
+                    Great tab layout. Good use of typography. First paragraph is in a slightly larger font than the rest of the
+                    paragraphs. 
+                    </dd>
+
+                    <dt><a href="https://write.corbpie.com/tag/ffmpeg/">corbpie - Writing about interests; Web, Dev, SEO, Marketing and more!</a></dt>
+                    <dd>
+                    Good dark mode. Clean display of pages containing a specific tag. <a href="https://write.corbpie.com/change-image-based-on-screen-size/">
+                        Articles</a> have monospace as the body font and it is functional. Great code editor that wraps long
+                    lines while preserving line numbers. Hovering over the code block lets you toggle syntax highlighting
+                    and open the raw code sample in a new window.
+                    </dd>
+
+                    <dt><a href="https://nicepage.com/doc/article/20348/web-design-3-0-when-your-web-design-really-matters">nicepage - Web Design 3.0: When Your Web Design Really Matters </a></dt>
+                    <dd>
+                    <span class="resource">Resource</span> Provides a comprehensive history of frontend web design. Linked
+                    images have experimental designs that should be used as a reference.
+                    </dd>
+
+                    <dt><a href="https://increment.com/issues/">Increment - How teams build and operate software systems at scale.</a></dt>
+                    <dd>
+                    Website by Stripe. The magazine is divided into issues. Each issue has a central theme and high-quality
+                    articles by professionals in that area. Each article has custom artwork. 
+                    <a href="https://increment.com/documentation/">Issue page</a> allows you to jump to other magazine
+                    issues with ease. Hovering over the author’s name triggers a smooth animation. Layout and navigation to
+                    other pages is done in a visually pleasing manner.
+                    </dd>
+
+                    <dt><a href="https://www.hillelwayne.com/post/alan-kay/">Hillel Wayne - Blog</a></dt>
+                    <dd>
+                    Cute buttons at the bottom to jump to the previous or next article.
+                    </dd>
+
+                    <dt><a href="https://www.fonts.com/content/learning/fontology">fonts.com - Fontology</a></dt>
+                    <dd>
+                    <p>
+                    <span class="resource">Resource</span> A typography workbook for self-education. Clicking on one of
+                    the four levels opens that level and expands it’s table of contents. Logo on the top-left, is
+                    one word with two colors.
+                    </p>
+                    <p>
+                    <a href="https://www.fonts.com/content/learning/fontology/level-1/type-history/early-evolution-of-roman-letters-1">Sample article</a>
+                    has links to go to the previous and next section. At the bottom, the current article can be
+                    downloaded as a PDF that has good typesetting. Website is desktop only.
+                    </p>
+
+                    </dd>
+
+                    <dt><a href="https://www.lapa.ninja/book/">lapa books - Free Essential Books for Unicorn Designers</a></dt>
+                    <dd>
+                    <span class="resource">Resource:</span> Free PDF’s for learning design.
+                    </dd>
+
+                    <dt><a href="https://stripe.com/jobs">Stripe: Jobs</a></dt>
+                    <dd>
+                    <p>
+                    Video preview in a skewed rectangle. Hovering/touching highlighted text launches a tooltip. Clicking
+                    on the tooltip opens an external link. 
+                    </p>
+                    <p>
+                    In “What Matters Most To Us”, highlighted text on the desktop version corresponds to a slideshow.
+                    Hovering over a different highlight changes the slideshow.
+                    </p>
+                    <p>
+                    In “We don’t have all the answers”, there is a blockquote. Hovering over the quote changes the icon
+                    and updates it’s label into a link to the source of the quote.
+                    </p>
+                    <p>
+                    The entier site has skewed stripes that are in the background but have been placed to enhance the
+                    foreground element that they’re closest to. 
+                    </p>
+                    </dd>
+
+                    <dt><a href="https://philipwalton.github.io/solved-by-flexbox/">Solved By Flexbox</a></dt>
+                    <dd>
+                    <span class="resource">Resource</span> Three-image grid layout on desktop. Reflows single-grid on mobile. Provides real-world examples of problems that can be solved using flexbox.
+                    </dd>
+
+                    <dt><a href="https://www.noaa.gov/media-release/noaa-upgrades-us-global-weather-forecast-model">National Oceanic and Atmospheric Administration</a></dt>
+                    <dd>
+                    Navigation menu has great iconography. It is unobtrusive on desktop and collapses into a hamburger menu on mobile. Scrolling down on desktop triggers an animation which expands and collapses the menu, giving a preview of the other items.
+                    </dd>
+
+                    <dt><a href="http://www.tannerhelland.com/5675/simple-algorithms-adjusting-image-temperature-tint/">Tanner Helland</a></dt>
+                    <dd>
+                    Clicking on an image enlarges it with links to the original source, the full-sized image and a button to close the pop-up menu.
+                    </dd>
+
+                    <dt><a href="https://www.giftofspeed.com/how-to/">Gift of Speed</a></dt>
+                    <dd>
+                    <span class="resource">Resource</span> for page load optimization.
+                    </dd>
+
+                    <dt><a href="https://adrianroselli.com/">Adrian Roselli</a></dt>
+                    <dd>
+                    <p> <span class="resource">Resource</span> for CSS design. Favorites: </p>
+                    <p> <a href="https://adrianroselli.com/2018/12/a-css-venn-diagram.html">A CSS Venn Diagram</a> </p>
+                    <p> <a href="https://adrianroselli.com/2019/09/table-with-expando-rows.html">Tables with expando rows</a> </p>
+                    </dd>
+
+                    <dt><a href="https://jrsinclair.com/articles/2019/algebraic-structures-what-i-wish-someone-had-explained-about-functional-programming/">James Sinclair</a></dt>
+                    <dd>
+                    <p>Designed like a magazine. Code samples have a creative advanced CSS effect to make it look like a swatch.</p>
+                    <p>Love the custom line drawings and internal visual language. Reminds me of traditional magazines.</p>
+                    </dd>
+                </dl>
+
+            </section>
+
+            <div class="incomplete">
+                <ol>
+                    <li><a href="https://francisco.io/">Francisco Presencia</a></li>
+                    <li><a href="https://harvardlawreview.org/">Harvard Law Review - Beautiful Footnotes</a></li>
+                    <li><a href="https://lawler.io/">Eric Lawler - Beautiful Website</a></li>
+                    <li><a href="https://jrl.ninja/configs/">jrl.ninja - Beautiful Website & Visuals (minimalist CSS)</a></li>
+                    <li><a href="https://lawyerist.com/">Lawyerist - Uses buterick fonts, innovative sponsorship strategy</a></li>
+                    <li><a href="https://tryretool.com/blog/salesforce-for-engineers/">Salesforce - Creates a partial box shadow using a background image and a css filter</a></li>
+                    <li><a href="https://kunstler.com/writings/clusterfuck-nation/">Each of his articles get’s 500+ comments within two days. The comment section seems to be native and each username links back to the user’s personal website, interesting viewpoint on movies and how they should be more realistic: https://kunstler.com/other-stuff/movie-reviews/kunstlers-capsule-movie-reviews/</a></li>
+                    <li><a href="https://diveinto.html5doctor.com/detect.html#input-types">Useful libraries for cross-browser HTML development</a></li>
+                    <li><a href="https://jeffwilcox.blog/2019/06/scaling-25k/">Scrolling TOC that works on IE</a></li>
+                    <li><a href="https://www.sylvaindurand.org/">Sort by category - Sort by date </a></li>
+                    <li><a href="https://www.readthesequences.com">Site designed using Butterick as an inspiration</a></li>
+                    <li><a href="https://a16z.com/2019/07/16/substack/">Clean black and white website. Resizing the browser window has an animation from max to small</a></li>
+                    <li><a href="https://overreacted.io/algebraic-effects-for-the-rest-of-us/">Algebraic Effects: Code samples have relevant lines highlighted.  Written well. Duplicates code sample multiple times. Assumes you're just scrolling down and helps you avoid scrolling up.</a></li>
+                    <li><a href="https://speak.sh/posts/quiet-hacker-news">Clean blog layout</a></li>
+                    <li><a href="https://colah.github.io/posts/2015-09-Visual-Information/">Good print typesetting. Magic is in this file: https://colah.github.io/css/default.css</a></li>
+                    <li><a href="https://internetingishard.com/html-and-css/">Well-designed site. SVG’s look beautiful. Has a scrolling TOC. Lot’s of beautiful, custom diagrams.</a></li>
+                    <li><a href="https://www.plainlanguage.gov/guidelines/">https://www.plainlanguage.gov/guidelines/</a></li>
+                    <li><a href="https://archive.org/details/OnWritingWell/">Amazing online reader. Great search functionality and page typography</a></li>
+                    <li><a href="https://aeon.co/essays/mindfulness-is-loaded-with-troubling-metaphysical-assumptions">Non-ad website. Essays can be syndicated. Custom audio transcripts. Play the audio transcript and scroll down for a cute play/pause button at the bottom right corner.</a></li>
+                    <li><a href="https://iridakos.com/how-to/2019/06/26/composing-better-emails.html">Well-designed personal blog. Table of contents is a dropdown at the side. Makes good use of desktop spacing. Social media buttons are integrated in an aesthetically pleasing manner.</a></li>
+                    <li><a href="https://spec-md.com/">Scrolling ToC that collapses and expands in response to user’s scrolling.</a></li>
+                    <li><a href="https://www.theinformation.com/articles/facebook-to-add-its-name-to-instagram-whatsapp">Makes good use of desktop space. Nice SVG icons.</a></li>
+                    <li><a href="https://blog.prototypr.io/this-aint-disney-a-practical-guide-to-css-transitions-and-animations-a8b87e7c5531">Resource on CSS Animations</a></li>
+                    <li><a href="https://marketingexamples.com/content/drive-traffic-from-hacker-news">Good typography, illustrations and spacing.</a></li>
+                    <li><a href="https://www.ryanmercer.com/ryansthoughts/2019/7/3/i-am-an-oddball-a-tale-of-the-eloi-and-morlocks">ryanmercer.com - Black and white blog. Good spacing. Good tags display at the bottom.</a></li>
+                    <li><a href="https://github.com/Volmarg/personal-management-system">Github README. Justified text. Subheadings have borders that wrap the justified text neatly. Great use of borders.</a></li>
+                    <li><a href="https://www.welcometothejungle.co/en/articles/kempf-interview-vlc-videolan">Great sticky menubar at the top. Hover on desktop for animations. Good custom font. Click the play button for an animated transition to video. </a></li>
+                    <li><a href="https://acoup.blog/2019/10/18/collections-the-battlefield-after-the-battle/">Minimalist color scheme. Great sub-heading and heading font (Google Web Font: Fondamento). Use inspect element to remove banner image at the top.</a></li>
+                    <li><a href="https://dougblack.io/words/a-good-vimrc.html">Good blog design. Black and White. Code samples.</a></li>
+                    <li><a href="https://chomsky.info/01072017/">Chomsky.info - Blog layout. Good way to go home.</a></li>
+                    <li><a href="https://mochi.cards/">Click on the video. Good site and concept.</a></li>
+                    <li><a href="https://12factor.net/processes">Typography, Black and White, Serif Font</a></li>
+                    <li><a href="http://brownpoliticalreview.org/2020/03/bpr-interviews-paul-graham/">Desktop: Minimal, elegant header</a></li>
+                    <li><a href="https://www.ryanprior.com/posts/svelte-is-unappealing/">Desktop: Nice footer</a></li>
+                    <li><a href="https://mathisonian.github.io/idyll/nonlinear-sliders/">Desktop: Minimalistic</a></li>
+                    <li><a href="https://www.newstatesman.com/culture/books/2020/05/infected-ideas">Show / hide image functionality</a></li>
+                    <li><a href="https://www.artnews.com/art-news/news/locked-room-experiment-art-education-1202687843/">Display of “Related Articles”</a></li>
+                    <li><a href="https://www.roadandtrack.com/new-cars/car-technology/a32612802/entry-ignition-two-stroke-engine-design-explained/">Layout and Typography</a></li>
+                    <li><a href="https://mebassett.info/ai-useless-for-business">Minimal</a></li>
+                    <li><a href="https://nadialim.com/recipe/chicken-saagwala/">First cooking website I've seen with exceptional layout and typography</a></li>
+                    <li><a href="http://seanmcb.com/">Great way to style fonts and give a unique look to text</a></li>
+                    <li><a href="https://www.smashingmagazine.com/2012/04/drop-caps-historical-use-and-current-best-practices/"><span class="resource">Resource</span> Edge cases and accesibility tips on using dropcaps</a></li>
+                    <li><a href="http://artequalswork.com/posts/adventures-in-dynamic-subsetting/">Layout</a></li>
+                    <li><a href="http://artequalswork.com/posts/adventures-in-dynamic-subsetting/"><span class="resource">Resource</span> Layout & Fonts</a></li>
+                    <li><a href="https://www.buzzfeednews.com/article/venessawong/grubhub-phone-order-call-fee-coronavirus">Clean news layout. Trending news articles are displayed unobtrusively. Dotted border gives the site a sense of presence.</a></li>
+                    <li><a href="https://www.internalpointers.com/post/build-binary-deb-package-practical-guide">Amazing dark theme. Menu bar has a great shadow.</a></li>
+                    <li><a href="https://matthewstrom.com/writing/variable-fonts/">Nice bold font (typography) for subheadings. Compact tables.</a></li>
+
+
+                </ol>
+            </div>
+
+        </article>
     </body>
 
 
