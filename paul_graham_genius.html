@@ -15,11 +15,14 @@
     .menu, .menu a { color: black; }
     .menu a { text-decoration: none; }
     .menu a:hover { text-decoration: underline; }
-    @media all and (min-width:800px) { .menu { font-size: 20px; } }
     .density_option { padding: 8px; border-radius: 8px; }
     .density_option:hover { background: var(--gray_200); cursor: pointer; }
     .density_option.density_selection { color: white; background: var(--gray_800); }
 
+    .menu { font-size: 2.5vw; }
+    @media all and (max-width: 640px) { .menu { font-size: 16px; } }
+    @media all and (min-width: 800px) { .menu { font-size: 20px; } }
+    .tnum { font-feature-settings: "lnum", "tnum"; }
     </style>
 </head>
 

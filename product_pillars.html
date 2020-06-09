@@ -3,6 +3,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Product Pillars</title>
 <style>
+
+/* Doesn’t work for IE 11 */
 :root {
     --primary-color: lightseagreen;
     --secondary-color: goldenrod;
@@ -10,7 +12,6 @@
 body {
     line-height: 1.65;
     font-family: sans-serif;
-    padding: 0 1em;
     max-width: 60em;
     margin: auto;
 }
@@ -26,7 +27,11 @@ h1 {
     border-bottom: solid 1.5px;
     padding-bottom: .5em;
 }
-main > p:first-of-type:first-letter {
+*,
+*:before,
+*:after {
+}
+.dropcaps {
     float: left;
     font-size: 54px;
     line-height: 1;
@@ -36,12 +41,20 @@ main > p:first-of-type:first-letter {
     border: solid 2px;
 }
 
+/* .dropcaps:before { */
+/*   margin-bottom: -0.175em; */
+/* } */
+/* .dropcaps:after { */
+/*   margin-top: -0.05em; */
+/* } */
+
 #menubar {
     position: sticky;
     top: 0;
     background-color: white;
     text-align: center;
     padding: .5em;
+    user-select: none;
     
 }
 #menubar * {
@@ -56,14 +69,14 @@ main > p:first-of-type:first-letter {
 
 a:hover,
 h1,
-main> p:first-of-type:first-letter {
+.dropcaps {
     border-color: var(--secondary-color);
 }
 
 #addressbar a.even,
 #menubar a.even,
 #addressbar, #addressbar *,
-main > p:first-of-type:first-letter,
+.dropcaps,
 h1,
 a:hover {
     color: var(--primary-color);
@@ -73,19 +86,75 @@ a:hover {
     cursor: pointer;
 }
 
-body.light #menubar,
+body {
+    padding: 3em;
+}
+
+
 body.light {
+    background: #efebeb;
+}
+body.light > #content {
+    box-shadow: 0px 0px 20px 0px #aeaeae;
+    box-shadow: 4px 4px 8px 4px #aeaeae;
+    box-shadow: 0px 0px 5px 0px #aeaeae;
+
+    box-shadow: inset 0px -3px 5px 0px #878787;
+    box-shadow: inset 0px -3px 5px 0px #878787, 1px 1px 4px 0px #777;
+    box-shadow: inset 0px -3px 5px 0px #878787, 0px 0px 5px 0px #aeaeae;
+    box-shadow: inset 0px -3px 5px 0px #878787, 0px 0px 5px 0px #aeaeae;
+}
+
+body.sepia {
+    background: #ffe8ca;
+}
+body.sepia > #content {
+    box-shadow: 0 0 8px 2px #777;
+    box-shadow: inset 0px -3px 5px 0px #878787, 0 0 8px 0px #c7bf9f;
+    /* box-shadow: inset 0px -3px 5px 0px #878787, 20px 20px 20px 0px #c7bf9f; */
+    /* box-shadow: inset 0px -3px 5px 0px #878787, 20px 20px 50px 0px #c7bf9f; */
+}
+
+body.dark {
+    background: rgb(82, 86, 89);
+}
+body.dark > #content {
+    box-shadow: 8px 8px 32px 0px #444;
+    box-shadow: inset 0px 3px 5px 0px #777, 8px 8px 32px 0px #444;
+    /* box-shadow: inset 0px 3px 5px 0px #777, 20px 20px 20px 0px #444; */
+    /* box-shadow: inset 0px 3px 5px 0px #777, 20px 20px 50px 0px #444; */
+}
+#content {
+    padding: 2em;
+    border-radius: 6px;
+}
+
+@media screen and (max-width: 900px) {
+    body {
+        padding: 0;
+    }
+    #content {
+        padding: 0 1em;
+        border-radius: 0px;
+    }
+    body.light > #content, body.sepia > #content, body.dark > #content {
+        box-shadow: none;
+    }
+}
+
+body.light #menubar,
+body.light > #content {
     background: white;
     color: black;
 }
 
 body.sepia #menubar,
-body.sepia {
+body.sepia > #content {
     background: cornsilk;
     color: black;
 }
 body.dark #menubar,
-body.dark {
+body.dark > #content {
     background: #444;
     color: #eaeaea
 }
@@ -101,6 +170,27 @@ body.sepia a {
 
 body.dark a {
     color: #24cbe6;
+}
+
+
+body.wide {
+    padding: 0;
+}
+body.wide > #content {
+    padding: 0 1em;
+    border-radius: 0px;
+}
+body.wide.light {
+    background: white;
+}
+body.wide.sepia {
+    background: cornsilk;
+}
+body.wide.dark {
+    background: #444;
+}
+body.wide > #content {
+    box-shadow: none;
 }
 </style>
 <script>
@@ -144,7 +234,26 @@ body.dark a {
             }
 
         }
+
     }
+
+    function toggle_reader_mode(elem) {
+        if (document.body.classList.contains("wide")) {
+            document.body.classList.remove("wide");
+            elem.innerText = "reader: on";
+        } else if (!document.body.classList.contains("wide")) {
+            document.body.classList.add("wide");
+            elem.innerText = "reader: off";
+        }
+
+    }
+    function load_reader_mode() {
+        var a = document.querySelector("#reader_anchor");
+        toggle_reader_mode(a);
+        toggle_reader_mode(a);
+    }
+    
+    window.addEventListener("load", load_reader_mode);
     window.addEventListener("load", initialize_theme);
  </script>
     </head>
@@ -153,9 +262,9 @@ body.dark a {
         <div id="content">
 
             <div id="menubar">
-                <a class="odd" href="index.html">branding.com</a>
+                <a class="odd" href="index.html">index</a>
                 <a class="even" href="wikipedia.html">kaizen</a>
-                <a class="odd" href="https://twitter.com">twitter</a>
+                <a id="reader_anchor" class="odd" onclick="toggle_reader_mode(this)"></a>
                 <a id="theme_anchor" class="even" onclick="cycle_theme(this)">sepia</a>
             </div>
 
@@ -163,7 +272,7 @@ body.dark a {
                 <h1>Product Pillars</h1>
                  <nav id="addressbar">
                     <a class="odd" href="index.html">home</a> / 
-                    <a class="even" href="essays.html">writing</a> / 
+                    <a class="even" href="essays.html">essays</a> / 
                     <a class="odd" href="#">product pillars</a>
                 </nav>
             </header>
@@ -171,11 +280,11 @@ body.dark a {
             <main>
 
             <p>
-                When you are in the flow of designing a website, it is easy to gradually make small decisions that go
-                against the overall design goal you have for the site. These small mistakes add up to make a product
-                completely orthogonal to what you had originally intended. Breaking out of this specific form of tunnel
-                vision doesn't always happen. To help avoid ending up in such a situation, we follow <strong>product
-                pillars</strong>.
+                <span class="dropcaps">W</span>hen you are in the flow of designing a website, it is easy to gradually
+                make small decisions that go against the overall design goal you have for the site. These small mistakes
+                add up to make a product completely orthogonal to what you had originally intended. Breaking out of this
+                specific form of tunnel vision doesn't always happen. To help avoid ending up in such a situation, we
+                follow <strong>product pillars</strong>.
             </p>
 
             <p>

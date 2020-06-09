@@ -1,0 +1,39 @@
+body { padding: 1em; margin: auto; }
+
+body { font-family: "Fairplay Text A";  line-height: 1.4; background: white; }
+body { font-size: 3vw; }
+@media all and (min-width:800px) { body { font-size: 24px; } }
+@media all and (max-width:600px) { body { font-size: 18px; } }
+
+p { margin-bottom: 1em; }
+
+h1 { text-align: center; text-transform: uppercase; letter-spacing: 0.10em; font-family: "Lora webfont"; }
+h3 { margin: 1.5em; }
+
+ul { list-style-type: none; padding-left: 3em; }
+ol { padding-left: 3em; }
+li { padding-top: .4em; padding-bottom: .4em; }
+
+code, pre { font-family: "Triplicate T3", "Consolas", monospace; font-size: 1em; font-weight: bold; }
+pre { padding-left: 2em; }
+code { background: #eee; color: black; font-size: 0.9em; padding: 4px; border-radius: 4px;}
+code:hover    { cursor: pointer; user-select: none; }
+
+nav { font-family: "Confluence C3"; text-transform: uppercase; letter-spacing: 0.12em; color: #ddd; text-align: right; }
+
+nav a { text-decoration: none; color: inherit; }
+nav a:hover { color: black; font-weight: bold; }
+nav:hover { background: #fff4f4; color: #aaa; }
+nav { font-size: 26.4px; }
+@media screen and (max-width:600px) { nav { font-size: 4.4vw;  } }
+
+.auth { color: #ccc; text-align: center; font-family: "Confluence C3"; text-transform: uppercase; letter-spacing: 0.10em; }
+
+.hidden_help  { display: none; }
+.display_help { display: block; }
+
+pre.vimCodeElement span { color: inherit; font-weight: bold; }
+pre.vimCodeElement a { color: inherit; }
+pre.vimCodeElement { background: #444; color: #eeeeee; box-shadow: none; border: none; font-family: "Triplicate T4", "Consolas", monospace; border-radius: 0px; padding: 1em; font-weight: normal; line-height: 1.5; }
+body { max-width: 65ch; } pre.vimCodeElement { font-size: 16px; } 
+@media all and (max-width: 890px) { pre.vimCodeElement { font-size: 1.8vw; } }
