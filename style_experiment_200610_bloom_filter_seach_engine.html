@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta name="generator" content="HTML Tidy for HTML5 for Windows version 5.6.0">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0" name="viewport">
+    <link rel="stylesheet" href="fonts/fairplay/fairplay.css" type="text/css">
+    <title>Writing a full-text search engine using Bloom filters - Stavros’ Stuff</title>
+    <!-- <script src="../Typography/Tool/load.js"></script> -->
+<style>
+html { font-family: "Equity Text A", "Fairplay Text A"; line-height: 1.35; }
+a, a:visited { color: #36c; }
+body { max-width: 40rem; margin: auto; padding-left: 1rem; padding-right: 1rem; }
+code { font-size: 0.75rem; }
+p { margin-bottom: 1rem; }
+h1, h1 + p { max-width: 50%; margin-left: auto; margin-right: auto; }
+h1 { font-size: 1.5rem; }
+h1 + p { font-size: 0.83rem; }
+/* h2, h3 { font-family: "Roboto Condensed"; text-transform: uppercase; letter-spacing: 0.08em; } */
+ul, ol { padding-left: 0.9rem; }
+ul li, ol li { padding-left: 2rem; }
+
+html { font-size: 3vw;}
+@media all and (min-width:800px) { html { font-size: 24px; } }
+@media all and (max-width:600px) { html { font-size: 18px; } }
+
+
+/* pre { padding: 0rem 2rem; } pre { font-size: 1.5vw; } */
+pre { padding: 0rem 0rem; font-size: 0.67rem; overflow-x: scroll; }
+@media all and (min-width:1024px) { pre { padding: 1rem 2rem; font-size: 0.67rem; overflow-x: unset; } }
+@media all and (max-width:600px)  { pre { padding: 0rem 0rem; font-size: 0.67rem; overflow-x: scroll; } }
+
+</style>
+</head>
+<body>
+
+
+    <h1>Writing a full-text search engine using Bloom filters</h1>
+    <p>Search engines and Bloom filters: A match made in heaven?</p>
+    <p>Dec 7, 2013</p>
+    <article>
+        <p>A few minutes ago I came across <a href="https://news.ycombinator.com/item?id=6867102">a Hacker News post</a> that detailed a method of adding search to your static site. As you probably know, adding search to a static site is a bit tricky, because you can’t just send the query to a server and have the server process it and return the results. If you want full-text search, you have to implement something like an <a href="http://en.wikipedia.org/wiki/Inverted_index">inverted index</a>.</p>
+        <h4>How an inverted index works</h4>
+        <p>An inverted index is a data structure that basically maps every word in every document to the ID of the document it can be found in. For example, such an index might look like <code>{"python": [1, 3, 6], "raspberry": [3, 7, 19]}</code>. To find the documents that mention both “python” and “raspberry”, you look those terms up in the index and find the common document IDs (in our example, that is only document with ID 3).</p>
+        <p>However, when you have very long documents with varied words, this can grow a lot. It’s a hefty data structure, and, when you want to implement a client-side search engine, every byte you transmit counts.</p>
+        <h4>Client-side search engine caveats</h4>
+        <p>The problem with client-side search engines is that you (obviously) have to do all the searching on the client, so you have to transmit all available information there. What static site generators do is generate every required file when generating your site, then making those available for the client to download. Usually, search-engine plugins limit themselves to tags and titles, to cut down on the amount of information that needs to be transmitted. How do we reduce the size? Easy, use a<!-- break --> Bloom filter!</p>
+        <h4>Bloom filters to the rescue</h4>
+        <p>A <a href="http://en.wikipedia.org/wiki/Bloom_filter">Bloom filter</a> is a very interesting data structure that can store elements in a fixed number of bits and tell you whether it’s seen those elements before when you query it. It sounds great for our use case, but let’s see if it will live up to the challenge.</p>
+        <p>A simple way to implement a full-text search engine that uses Bloom filters is the following:</p>
+        <ul>
+            <li>Create one filter per document and add all the words in that document in the filter.</li>
+            <li>Serialize the (fixed-size) filter in some sort of string and send it to the client.</li>
+            <li>When the client needs to search, iterate through all the filters, looking for ones that match all the terms, and return the document names.</li>
+            <li>Profit!</li>
+        </ul>
+        <p>Next, we’ll implement this very quickly in my favorite language, Python, using <a href="https://github.com/jaybaird/python-bloomfilter">pybloom</a>.</p>
+        <h4>A quick implementation</h4>
+        <p>To start with, let’s read some posts from this blog and create a list of all the words in each one:</p>
+
+        <pre>from pybloom import BloomFilter
+import os
+import re
+
+# Read all my posts.
+posts = {post_name: open(POST_DIR + post_name).read() for post_name in os.listdir(POST_DIR)}
+# Create a dictionary of {"post name": "lowercase word set"}.
+split_posts = {name: set(re.split("\W+", contents.lower())) for name, contents in posts.items()}
+        </pre>
+
+        <p>At this point, we have a dictionary of posts and a normalized set of words in each. We could do more things, like stemming, removing common words (a, the, etc), but we’re going for naive, so let’s just create the filters for now:</p>
+
+        <pre>filters = {}
+for name, words in split_posts.items():
+    filters[name] = BloomFilter(capacity=len(words), error_rate=0.1)
+    for word in words:
+        filters[name].add(word)
+        </pre>
+
+        <p>You can see above that the capacity of each filter is exactly the number of words in each post, to cut down on the number of bits needed to represent it. The error rate is tweakable, and it is the probability of a false positive. The lower the probability, the more accurate the filter, but the longer it becomes.</p>
+        <p>Now that we have all the filters ready, we can transmit them to the client using whatever serialization method we like. Let’s write a very simple search algorithm to find posts based on some search terms:</p>
+
+        <pre>def search(search_string):
+    search_terms = re.split("\W+", search_string)
+    return [name for name, filter in filters.items() if all(term in filter for term in search_terms)]
+        </pre>
+
+        <p>All <code>search()</code> does is iterate through all the filters and return the ones that match every given term. Let’s try it out:</p>
+
+        <pre>&gt;&gt;&gt; search("android raspberry")
+['2013-06-19 - how-remote-control-rf-devices-raspberry-pi.md',
+ '2013-06-24 - writing-my-first-android-app-control-your-raspberr.md']
+        </pre>
+
+        <p>Judging by the titles, it found all the relevant posts, and without any false positives! Not bad at all, for a few minutes’ work! Let’s see what the average size of the filter is:</p>
+
+        <pre>&gt;&gt;&gt; sum(len(filter.bitarray.tobytes()) for filter in filters.values()) / len(filters)
+298
+        </pre>
+
+        <p>298 bytes per post strikes me as a pretty reasonable size for something like this. We could decrease this further, if we didn’t mind more false positives, but, given the search results above, I think it’s pretty good for such a naive approach. For comparison, this paragraph is also 298 bytes long.</p>
+        <h4>An alternate approach</h4>
+        <p>Another approach would be to use a single filter and concatenate post IDs with the search words (e.g “3:term”) and search for that. Unfortunately, that results in a filter that is exactly the same size as the sum of the small ones, and has more computational complexity because you have to hash N times (where N is the number of posts) rather than just once.</p>
+        <h4>Strengths and weaknesses of this approach</h4>
+        <p>Using a Bloom filter has a few advantages that make it suitable for use in static sites:</p>
+        <ul>
+            <li>The space it takes up is proportional to the number of pages, rather than the number of words, so it takes up roughly the same space for a very long page as for a very short one (this isn’t exactly true because we size the filters depending on the number of words, but it’s much more compact than an inverted index).</li>
+            <li>Search complexity is proportional to the number of pages, rather than to their length. This doesn’t matter much when you have, at most, a few thousand pages, but it’s still good if you only have a few long ones.</li>
+            <li>Since Bloom filters are probabilistic, this method may produce false positives, but it will not produce false negatives, which is what we want for a search engine (we don’t mind a few irrelevant pages in the results, but we do mind if relevant ones are missing).</li>
+        </ul>
+        <p>Naturally, it also has weaknesses, which include:</p>
+        <ul>
+            <li>You can’t weight pages by relevance, since you don’t know how many times a word appears in a page, all you know is whether it appears or not. You may or may not care about this.</li>
+            <li>You need to implement a Bloom filter algorithm on the client side. This will probably not be much longer than the inverted index search algorithm, but it’s still probably a bit more complicated.</li>
+        </ul>
+        <p>Of course, the full-text index will still be large and probably not practical to load on every page view, even when using this approach, but this method may be suitable for using in a dedicated “search” page in your static site.</p>
+        <p>I’m not actually advocating using this method on your static site, but, hey, it made for a fun hour of Saturday night hacking. Now, it’s time to go out for drinks. If you’re in Thessaloniki and want to join me, drop me an email or <a href="https://twitter.com/intent/user?screen_name=Stavros">get me on Twitter</a>.</p>
+    </article>
+    <!-- container -->
+    <!-- footer -->
+    <!-- inside wrap -->
+    <!-- wrapper -->
+</body>
+</html>
