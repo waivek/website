@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width,initial-scale=1.0" name="viewport">
     <link rel="stylesheet" href="fonts/fairplay/fairplay.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <title>Writing a full-text search engine using Bloom filters - Stavros’ Stuff</title>
     <!-- <script src="../Typography/Tool/load.js"></script> -->
 <style>
@@ -13,12 +14,16 @@ a, a:visited { color: #36c; }
 body { max-width: 40rem; margin: auto; padding-left: 1rem; padding-right: 1rem; }
 code { font-size: 0.75rem; }
 p { margin-bottom: 1rem; }
-h1, h1 + p { max-width: 50%; margin-left: auto; margin-right: auto; }
-h1 { font-size: 1.5rem; }
-h1 + p { font-size: 0.83rem; }
-/* h2, h3 { font-family: "Roboto Condensed"; text-transform: uppercase; letter-spacing: 0.08em; } */
-ul, ol { padding-left: 0.9rem; }
-ul li, ol li { padding-left: 2rem; }
+
+header { max-width: 500px; margin-left: auto; margin-right: auto; }
+h1 { margin-left: auto; margin-right: auto; }
+.tagline { font-family: "Roboto Condensed"; font-size: 0.83rem; }
+
+/* 600 - 1.6rem = 28.8px or 4.8vw;
+   900 - 1.8rem = 43.2px or 4.8vw; */
+h1 { font-size: 4.8vw; }
+@media all and (max-width:600px) { h1 { font-size: 1.6rem; } }
+@media all and (min-width:900px) { h1 { font-size: 1.8rem; } }
 
 html { font-size: 3vw;}
 @media all and (min-width:800px) { html { font-size: 24px; } }
@@ -30,13 +35,23 @@ pre { padding: 0rem 0rem; font-size: 0.67rem; overflow-x: scroll; }
 @media all and (min-width:1024px) { pre { padding: 1rem 2rem; font-size: 0.67rem; overflow-x: unset; } }
 @media all and (max-width:600px)  { pre { padding: 0rem 0rem; font-size: 0.67rem; overflow-x: scroll; } }
 
+ul, ol { padding-left: 0.9rem; }
+ul { list-style-type: square; }
+ul li, ol li { padding-left: 2rem; }
+@media all and (max-width:600px) { ol li, ul li { padding-left: 0.5rem; } }
+
+
+
+/* h1 { background: #eafdffc7; padding: 4px 20px; color: #383d65; border-radius: 8px; box-shadow: 2px 2px 3px 0px #bcbcbc, inset -2px -2px 3px 0px #dededed9, -1px -1px 3px #dededea1; } */
 </style>
 </head>
 <body>
 
 
-    <h1>Writing a full-text search engine using Bloom filters</h1>
-    <p>Search engines and Bloom filters: A match made in heaven?</p>
+    <header>
+        <h1>Writing a full-text search engine using Bloom filters</h1>
+        <p class="tagline">Search engines and Bloom filters: A match made in heaven?</p>
+    </header>
     <p>Dec 7, 2013</p>
     <article>
         <p>A few minutes ago I came across <a href="https://news.ycombinator.com/item?id=6867102">a Hacker News post</a> that detailed a method of adding search to your static site. As you probably know, adding search to a static site is a bit tricky, because you can’t just send the query to a server and have the server process it and return the results. If you want full-text search, you have to implement something like an <a href="http://en.wikipedia.org/wiki/Inverted_index">inverted index</a>.</p>
@@ -48,12 +63,12 @@ pre { padding: 0rem 0rem; font-size: 0.67rem; overflow-x: scroll; }
         <h4>Bloom filters to the rescue</h4>
         <p>A <a href="http://en.wikipedia.org/wiki/Bloom_filter">Bloom filter</a> is a very interesting data structure that can store elements in a fixed number of bits and tell you whether it’s seen those elements before when you query it. It sounds great for our use case, but let’s see if it will live up to the challenge.</p>
         <p>A simple way to implement a full-text search engine that uses Bloom filters is the following:</p>
-        <ul>
+        <ol>
             <li>Create one filter per document and add all the words in that document in the filter.</li>
             <li>Serialize the (fixed-size) filter in some sort of string and send it to the client.</li>
             <li>When the client needs to search, iterate through all the filters, looking for ones that match all the terms, and return the document names.</li>
             <li>Profit!</li>
-        </ul>
+        </ol>
         <p>Next, we’ll implement this very quickly in my favorite language, Python, using <a href="https://github.com/jaybaird/python-bloomfilter">pybloom</a>.</p>
         <h4>A quick implementation</h4>
         <p>To start with, let’s read some posts from this blog and create a list of all the words in each one:</p>
