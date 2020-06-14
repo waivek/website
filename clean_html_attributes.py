@@ -63,9 +63,6 @@ def test_stdin_print_variations_on_soup(soup):
     print(soup.encode("utf-8").decode("utf-8"))
     print("---------- print(str(soup).encode(\"utf-8\").decode(\"utf-8\")) ----------------")
     print(str(soup).encode("utf-8").decode("utf-8"))
-    # print("---------- sys.stdout.buffer.write(str(soup).encode(\"utf-8\")) ----------------")
-    # sys.stdout.buffer.write(str(soup).encode("utf-8"))
-    # sys.stdout.flush()
 
     print("AFTER RECONFIGURATION")
     sys.stdout.reconfigure(encoding='utf-8')
@@ -77,18 +74,9 @@ def test_stdin_print_variations_on_soup(soup):
     print(soup.encode("utf-8").decode("utf-8"))
     print("---------- print(str(soup).encode(\"utf-8\").decode(\"utf-8\")) ----------------")
     print(str(soup).encode("utf-8").decode("utf-8"))
-    # print("---------- sys.stdout.buffer.write(str(soup).encode(\"utf-8\")) ----------------")
-    # sys.stdout.buffer.write(str(soup).encode("utf-8"))
-    # sys.stdout.flush()
-
-
-        
 
 file_contents = read_pipe_or_file()
 soup = BeautifulSoup(file_contents, "html.parser")
-
-sys.exit(1)
-
 for child in soup.body.descendants:
     if type(child) != bs4.element.Tag:
         continue
@@ -100,7 +88,3 @@ for child in soup.body.descendants:
         del child[attr]
 
 print(soup.encode("utf-8").decode("utf-8"))
-
-# html_string = str(soup.prettify()).split("\n") 
-# for line in html_string:
-#     print(line)

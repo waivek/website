@@ -5,17 +5,19 @@
     <meta charset="utf-8">
     <meta content="width=device-width,initial-scale=1.0" name="viewport">
     <link rel="stylesheet" href="fonts/fairplay/fairplay.css" type="text/css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&amp;display=swap" rel="stylesheet">
     <title>Writing a full-text search engine using Bloom filters - Stavros’ Stuff</title>
     <!-- <script src="../Typography/Tool/load.js"></script> -->
 <style>
 html { font-family: "Equity Text A", "Fairplay Text A"; line-height: 1.35; }
 a, a:visited { color: #36c; }
-body { max-width: 40rem; margin: auto; padding-left: 1rem; padding-right: 1rem; }
+body { margin: auto; }
+
+
 code { font-size: 0.75rem; }
 p { margin-bottom: 1rem; }
 
-header { max-width: 500px; margin-left: auto; margin-right: auto; }
+header { max-width: 40ch; margin-left: auto; margin-right: auto; }
 h1 { margin-left: auto; margin-right: auto; }
 .tagline { font-family: "Roboto Condensed"; font-size: 0.83rem; }
 
@@ -30,16 +32,36 @@ html { font-size: 3vw;}
 @media all and (max-width:600px) { html { font-size: 18px; } }
 
 
-/* pre { padding: 0rem 2rem; } pre { font-size: 1.5vw; } */
-pre { padding: 0rem 0rem; font-size: 0.67rem; overflow-x: scroll; }
-@media all and (min-width:1024px) { pre { padding: 1rem 2rem; font-size: 0.67rem; overflow-x: unset; } }
-@media all and (max-width:600px)  { pre { padding: 0rem 0rem; font-size: 0.67rem; overflow-x: scroll; } }
+/* LAYOUT RED */
+/* body { padding-left: 0; padding-right: 0; } */
+/* p, h4, ul, ol { max-width: 40rem; margin-left: auto; margin-right: auto;  } */
+/* p, h4 { padding-left: 1rem; padding-right: 1rem; } */
+/* .wrap_level_2 { border-top-style: solid; border-bottom-style: solid; border-width: 1.2px; border-color: #f1d0d0; background: #fff0f0ab; color: #b31919; } */
+/* .wrap_level_1 { max-width: 40rem; margin-left: auto; margin-right: auto; } */
+/* pre { font-size: 0.67rem; overflow-x: hidden; } */
+/* @media all and (max-width:600px)  { pre { padding-left: 1rem; padding-right: 1rem; } } */
+
+/* LAYOUT BLACK */
+body { max-width: 40rem; padding-left: 1rem; padding-right: 1rem; }
+p, h4, ul, ol { max-width: initial; }
+.wrap_level_2 { border: none; background: none; color: inherit; }
+.wrap_level_1 { max-width: iniital; }
+pre { font-size: 0.67rem; }
+pre { padding: 0rem 2rem; overflow-x: scroll; }
+@media all and (min-width:1024px) { pre { padding: 1rem 2rem; overflow-x: unset; } }
+@media all and (max-width:800px)  { pre { padding: 0rem 0rem; overflow-x: scroll; } }
+@media all and (max-width:600px)  { pre { padding: 0rem 0rem; overflow-x: scroll; } }
+
 
 ul, ol { padding-left: 0.9rem; }
 ul { list-style-type: square; }
 ul li, ol li { padding-left: 2rem; }
 @media all and (max-width:600px) { ol li, ul li { padding-left: 0.5rem; } }
 
+p, li { text-align: justify; }
+@media all and (max-width:600px) { p, li { text-align: left; } }
+
+h4 { font-family: "Vollkorn"; text-transform: uppercase; letter-spacing: 0.05rem; font-weight: 600; }
 
 
 /* h1 { background: #eafdffc7; padding: 4px 20px; color: #383d65; border-radius: 8px; box-shadow: 2px 2px 3px 0px #bcbcbc, inset -2px -2px 3px 0px #dededed9, -1px -1px 3px #dededea1; } */
@@ -73,45 +95,40 @@ ul li, ol li { padding-left: 2rem; }
         <h4>A quick implementation</h4>
         <p>To start with, let’s read some posts from this blog and create a list of all the words in each one:</p>
 
-        <pre>from pybloom import BloomFilter
+        <div class="wrap_level_2"><div class="wrap_level_1"><pre>from pybloom import BloomFilter
 import os
 import re
 
 # Read all my posts.
 posts = {post_name: open(POST_DIR + post_name).read() for post_name in os.listdir(POST_DIR)}
 # Create a dictionary of {"post name": "lowercase word set"}.
-split_posts = {name: set(re.split("\W+", contents.lower())) for name, contents in posts.items()}
-        </pre>
+split_posts = {name: set(re.split("\W+", contents.lower())) for name, contents in posts.items()}</pre></div></div>
 
         <p>At this point, we have a dictionary of posts and a normalized set of words in each. We could do more things, like stemming, removing common words (a, the, etc), but we’re going for naive, so let’s just create the filters for now:</p>
 
-        <pre>filters = {}
+        <div class="wrap_level_2"><div class="wrap_level_1"><pre>filters = {}
 for name, words in split_posts.items():
     filters[name] = BloomFilter(capacity=len(words), error_rate=0.1)
     for word in words:
-        filters[name].add(word)
-        </pre>
+        filters[name].add(word)</pre></div></div>
 
         <p>You can see above that the capacity of each filter is exactly the number of words in each post, to cut down on the number of bits needed to represent it. The error rate is tweakable, and it is the probability of a false positive. The lower the probability, the more accurate the filter, but the longer it becomes.</p>
         <p>Now that we have all the filters ready, we can transmit them to the client using whatever serialization method we like. Let’s write a very simple search algorithm to find posts based on some search terms:</p>
 
-        <pre>def search(search_string):
+        <div class="wrap_level_2"><div class="wrap_level_1"><pre>def search(search_string):
     search_terms = re.split("\W+", search_string)
-    return [name for name, filter in filters.items() if all(term in filter for term in search_terms)]
-        </pre>
+    return [name for name, filter in filters.items() if all(term in filter for term in search_terms)]</pre></div></div>
 
         <p>All <code>search()</code> does is iterate through all the filters and return the ones that match every given term. Let’s try it out:</p>
 
-        <pre>&gt;&gt;&gt; search("android raspberry")
+        <div class="wrap_level_2"><div class="wrap_level_1"><pre>&gt;&gt;&gt; search("android raspberry")
 ['2013-06-19 - how-remote-control-rf-devices-raspberry-pi.md',
- '2013-06-24 - writing-my-first-android-app-control-your-raspberr.md']
-        </pre>
+ '2013-06-24 - writing-my-first-android-app-control-your-raspberr.md']</pre></div></div>
 
         <p>Judging by the titles, it found all the relevant posts, and without any false positives! Not bad at all, for a few minutes’ work! Let’s see what the average size of the filter is:</p>
 
-        <pre>&gt;&gt;&gt; sum(len(filter.bitarray.tobytes()) for filter in filters.values()) / len(filters)
-298
-        </pre>
+        <div class="wrap_level_2"><div class="wrap_level_1"><pre>&gt;&gt;&gt; sum(len(filter.bitarray.tobytes()) for filter in filters.values()) / len(filters)
+298</pre></div></div>
 
         <p>298 bytes per post strikes me as a pretty reasonable size for something like this. We could decrease this further, if we didn’t mind more false positives, but, given the search results above, I think it’s pretty good for such a naive approach. For comparison, this paragraph is also 298 bytes long.</p>
         <h4>An alternate approach</h4>
