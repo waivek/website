@@ -1,0 +1,32 @@
+
+html { font-family: "Equity Text A", "Fairplay Text A"; text-align: justify; }
+html { 
+    line-height: 1.2; /* for text that only has large paragraphs (example: the_holy_men_of_india.html) */
+    line-height: 1.35; 
+} 
+body { 
+    max-width: 60em; 
+    margin-left: auto; 
+    margin-right: auto; 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+}
+a, a:visited { color: #36c; }
+
+ul { list-style-type: square; }
+ul, ol { padding-left: 0.9rem; }
+ul li, ol li { padding-left: 2rem; }
+
+h2 { 
+    font-family: "Vollkorn"; 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em; 
+    font-weight: 600; 
+    margin-top: 2rem; 
+    margin-bottom: 1rem; 
+    border-bottom: solid 2.4px black; 
+
+    /* padding-bottom: 1rem; */
+    padding-bottom: 0.5rem; 
+    text-align: left; 
+}
