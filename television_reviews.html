@@ -6,168 +6,51 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="fonts/Lora/lora.css" type="text/css">
     <title>Reviews</title>
+
 <style>
 
-main {
-    display: flex;
-}
-article {
-    flex: 1;
-}
-aside {
-    width: 20em;
-    font-size: 0.9rem;
-    background: cornsilk;
-    background: #f9eec4;
-    border-top-right-radius: 6px;
-}
-aside ul {
-    list-style-type: none;
-    padding: 0;
-}
-aside a {
-    text-decoration: none;
-    display: block;
-    padding: 0.5em 2em;
-    border-top: solid 1px #f9eec4;
-    border-bottom: solid 1px #f9eec4;
-    color: #b9ae80;
-}
-aside a:hover {
-    border-color: #b9ae80;
-    background: cornsilk;
-    color: black;
-}
-a {
-    overflow-wrap: break-word;
-}
+body { margin: 0; background: cornsilk; }
+body { font-family: "Equity Text A";  line-height: 1.4; }
+body { font-size: 3vw; }
+@media all and (min-width:800px) { body { font-size: 24px; } }
+@media all and (max-width:600px) { body { font-size: 18px; } }
 
-@font-face {
-    font-family: "Roboto webfont";
-    src: url("fonts/Roboto.ttf") format("truetype");
-}
+.episode_info, .review { padding-left: 1em; padding-right: 1em; }
+h1, h2 { text-transform: uppercase; font-family: Lora; letter-spacing: 0.12em; text-align: center; }
+h2 { background: #b9ae80; color: white; margin: 0; padding: 0.75em; }
+h1 { margin: 0; padding: 0.67em 0; }
+.episode_info { background: #f9eec4; color: #b9ae80; padding: 1em; box-shadow: 2px 2px 4px 0px #c2b583; }
+.episode { border-bottom: solid 1.5px #b9ae80; margin-top: 0; }
+.review_date { float: right; }
 
-h1 {
-    text-align: center;
-}
-h2 {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 0.75em;
-    background: #b9ae80;
-    color: white;
-    border: solid 1.5px #b9ae80;
-    border-bottom-width: 0px;
-    border-top-left-radius: 6px;
-}
-h1, h2, h3, h4 {
-    font-family: "Lora webfont";
-    /* text-transform: uppercase; */
-}
+blockquote { font-size: 0.95em; line-height: 1.4; padding: 0 3em; margin: 0; }
+cite { display: none; display: block; font-style: normal; font-size: 0.75em; border-top: solid 1px; padding-top: 0.5em; }
+a { overflow-wrap: break-word; }
+a { color: black; }
 
-body {
-    line-height: 1.65;
-    font-family: "Roboto webfont", sans-serif;
-
-    /* line-height: 1.5; */
-    /* font-family: "Merriweather", serif; */
+@media screen and (min-width: 960px) {
+    .review { max-width: 40em; margin: auto; }
+    .episode_info { display: inline-block; float: right; margin-left: 1em; margin-right: 1em;  border-radius: 6px; box-shadow: 2px 2px 4px 0px #c2b583, inset -4px -4px 4px 0px #d7c997; }
+    .review_date { display: block; float: none; }
+    blockquote { padding: 0 5em; } 
 }
-#content {
-    max-width: 60em;
-    max-width: 1120px;
-    margin: auto;
-    padding: .5em;
-}
-.episode_info {
-    color: #aaa;
-    float: right;
-    color: #b9ae80;
-    background: #f9eec4;
-    padding: 0.5em;
-    display: inline-block;
-    border-radius: 6px;
-}
-
-.episode {
-    background: cornsilk;
-    color: black;
-    margin: 0;
-    padding: 1em;
-    border: solid 1.5px #b9ae80;
-
-}
-.episode + .episode {
-    border-top-width: 0px;
-}
-blockquote {
-    font-size: 0.95em;
-    line-height: 1.4;
-    padding: 0 5em;
-    margin: 0;
-}
-cite {
-    display: none;
-    display: block;
-    font-style: normal;
-    font-size: .75em;
-    border-top: solid 1px;
-    padding-top: 0.5em;
-}
-a {
-    color: black;
-}
-
-@media screen and (max-width: 960px) {
-    body {
-        padding: 0;
-        margin: 0;
-    }
-    #content {
-        margin: 0;
-        padding: 0;
-    }
-    .episode, h2 {
-        border-left: none;
-        border-right: none;
-        border-radius: 0;
-    }
-    main {
-        display: block;
-    }
-    blockquote {
-        padding: 0 3em;
-    }
-    aside {
-        display: block;
-        width: 100%;
-    }
-    aside ul {
-        margin: 0;
-    }
-
-}
-
-
 </style>
-<script>
 
+<script>
 </script>
     </head>
     <body>
         <div id="content">
             <h1>Reviews</h1>
-
             <main>
                 <article class="series">
-
-
                     <h2>Attack on Titan </h2>
-
+                    <!-- 3x18 {{{ -->
                     <div class="episode">
 
                         <div class="episode_info">
                             <span class="season_number">3</span>x<span class="episode_number">18</span>: <span class="episode_name">The Day</span>
-                            <br />
+
                             <span class="review_date">2019-06-20</span>
                         </div>
 
@@ -201,12 +84,13 @@ a {
 
                         </div>
                     </div>
-
+                    <!-- }}} -->
+                    <!-- 3x19 {{{ -->
                     <div class="episode">
 
                         <div class="episode_info">
                             <span class="season_number">3</span>x<span class="episode_number">19</span>: <span class="episode_name">Attack Titan</span>
-                            <br />
+
                             <span class="review_date">2019-06-24</span>
                         </div>
 
@@ -277,16 +161,150 @@ a {
                         </div>
 
                     </div>
+                    <!-- }}} -->
                 </article>
-                <aside>
-                    <ul>
-                        <li><a href="product_pillars.html">Product Pillars</a></li>
-                        <li><a href="../style/ch2.html">Elements of Style Chapter 2</a></li>
-                        <li><a href="scrolling_toc.html">Scrolling Table of Contents</a></li>
-                        <li><a href="wikipedia.html">Kaizen</a></li>
-                        <li><a href="last_modified.html">Last Modified</a></li>
-                    </ul>
-                </aside>
+                <article class="series">
+                    <h2>Stranger Things</h2>
+                    <div class="episode">
+                        <div class="episode_info">
+                            <span class="season_number">3</span>x<span class="episode_number">2</span>: <span class="episode_name">The Mall Rats</span>
+
+                            <span class="review_date">2019-07-10</span>
+                        </div>
+
+                        <div class="review">
+
+                            <p>
+                            The volume of the background music is used as a vehicle to convey the mood. For triump
+                            or big reveals, the music’s volume reaches a crescendo, then reduces as the scene
+                            continues.
+                            </p>
+
+                            <p>
+                            When Hopper successfully scares Will away from Eleven, his happiness is contagious. The
+                            musical choice (“You don’t mess around with Jim”) and his uncharacteristic clapping made
+                            me feel what he felt.
+                            </p>
+
+
+                            <p>
+                            Dustin’s reunion with Steve has fun music. It seems like typical background music but
+                            when they meet, the increased volume with the goofy music encourages a goofy, happy
+                            feeling.
+                            </p>
+
+                            <p>
+                            Mrs. Wheeler tries to speak with Billy. The music playing is eery, but Billy’s face is
+                            hidden from the viewer. When his face is shown, we see it covered in sweat. This conveys
+                            something is wrong without dialogue.
+                            </p>
+
+                            <ul>
+                                <li>Eleven and ginger and teenage girl problems.</li>
+                                <li>Language translation and believable plot device.</li>
+                                <li>Direction and transitions.</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="episode">
+                        <div class="episode_info">
+                            <span class="season_number">3</span>x<span class="episode_number">5</span>: <span class="episode_name">The Flayed</span>
+                            <br />
+                            <span class="review_date">2019-07-11</span>
+                        </div>
+                    
+                        <div class="review">
+
+                            <h3>Music</h3>
+                            <p>Nice music when Robin hear’s the Russian’s through the wall and says “We’ve got company.”</p>
+
+                            <h3>Editing & Cinematography</h3>
+                            <li>Restrained and approrpriate use of Edgar Wright style transitions.</li>
+                            <li>Zoom out transition from elevator to zooming car.</li>
+
+                            <h3>Comedy</h3>
+                            <li>Mike shouting at his Mom.</li>
+                            <li>Music turning off to give way for comedy.</li>
+                            <li>Marvel style comedy but more appropriate. “What’s a good scream?”</li>
+                            <li>Mrs. Byer’s pretending to be a criminal.</li>
+                            <li>Mike calling the candy machine a piece of shit.</li>
+
+                            <li>Steve and Dustin speaking in half-sentences.</li>
+                            <li>Steve’s fight and signature hand-switch.</li>
+                            <li>Zoom out with a slight distortion when going through the glass.</li>
+                            <li>Lucas teaching Mike about olive branches in relationships.</li>
+                            <li>Mike’s apology to El.</li>
+
+                        </div>
+                    </div>
+
+                    <div class="episode">
+                        <div class="episode_info">
+                            <span class="season_number">3</span>x<span class="episode_number">6</span>: <span class="episode_name">E Pluribus Unum</span>
+                            <div class="review_date">2019-07-11</div>
+                        </div>
+                    
+                        <div class="review">
+                            
+                            <h3>Cinematography</h3>
+                            <p>
+                                El looks up and then into the camera with a determined look. She’s getting into business
+                                mode. 
+                            </p>
+
+                            
+                            <h3>Editing</h3>
+
+                            <li>Jonathan bangs on the door to get to Nancy, then cut to the kids banging on the elevator button.</li>
+                            <li>Looney tunes music that becomes cartoonishly angry when the Russian scientist is testing hopper’s patience.</li>
+                            <li>Volume rise when the Russian is deciding on whether to escape or not.</li>
+                            
+                            <p>
+                                The entire Eleven vs. Mindflayer Lite scene was brutal. El swinging it and her
+                                forcefulness in both action and expression gave each cut a breathtaking weight.
+                            </p>
+
+                            <h3>Comedy</h3>
+
+                            <li>Lucas wondering whether brain damage is an actual thing.</li>
+                        </div>
+                    </div>
+                    
+                    <div class="episode">
+                        <div class="episode_info">
+                            <span class="season_number">3</span>x<span class="episode_number">8</span>: <span class="episode_name">Episode Name</span>
+                            <div class="review_date">2019-07-12</div>
+                        </div>
+                    
+                        <div class="review">
+                            Loved the scene with Billy and Eleven. The emotion’s felt earned. Loved the connection
+                            between them and how tenderly Eleven held Billy’s cheek. Billy standing up in super-hero
+                            fashion to the Mind Flayer was amazing.
+
+                            Stranger Things:
+                                Growing up
+                                Moving on
+                                Friends and laughter
+                                Great music
+                                Great editing
+                                Great transitions
+                                Childlik wonder
+                        </div>
+                    </div>
+                </article>
+                <article class="series">
+                    <h2>The Boys - Season 1</h2>
+                    <div class="episode">
+                        <div class="episode_info">August, 2019</div>
+                        <div class="review">
+                            <p>Hughie is similar to Izuku Midoriya from <em>Boku no Hero Academia</em>. He starts off as a weak-will person who “has no fight”, according to his father. By the end of the season, he saves Mother’s Milk and Frenchie with a plan, while Butcher is consumed by vengeance for Homelander. He also holds life sacred. In the finale, A-Train has a heart attack. Hughie saves him, even though A-Train killed his girlfriend.</p>
+                            <p>Homelander was the highlight of the series. His oedipus complex slowly shows itself and is at the centre of the show. He was raised by lab scientists and views Madelyn as his maternal authority but also lusts after her. He is competent, and single-handedly uncovers Hughie and co. and burns their identities, forcing them to go on the run. He is completely callous about human life. He is similar to Killmonger from <em>Jessica Jones</em>, in how out of touch he is with reality and how he can’t have a human connection with anybody. He referst to normal humans as “mud people”, because they don’t have superpowers.</p>
+                            <p>Butcher’s character arc was well-done. His motivations are only revealed half-way through the season but make his actions seem understandable. Homelander raping his wife is his driving force and reason for seeking vengeance.</p>
+                            <p>Butcher and Homelander’s story arcs converging was excellent writing. Butcher’s wish becomes a Monkeys Paw. Homelander gets what he always wanted, a family and Butcher is hit with the knowledge that his wife is alive and has fathered a child of Homelander, which is a reality far worse than the one Butcher had believed he was in. Butcher’s hate for superheroes is stoked as the love of his life has fathered a super child</p>
+                        </div>
+                    </div>
+                </article>
             </main>
 
         </div>

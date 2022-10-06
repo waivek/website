@@ -2,7 +2,7 @@
 <html>
     <head>
     
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>Local Layout</title>
 <style>
     body {
@@ -22,33 +22,37 @@
         font-family: "Concourse T4";
     }
     a {
-        border: solid 1px;
-        box-shadow: 2px 2px;
+        background-color: bisque;
+        box-shadow: inset -3px -3px 2px 0px #b19a80,  0px 2px 4px 0px #444;
+        border-radius: 6px;
         margin: 4px;
         padding: .5em;
         text-transform: lowercase;
         display: inline-block;
+        transition: 0.1s;
     }
     a:hover {
         background-color: lightsalmon;
+        box-shadow: inset -3px -3px 2px 0px #ff733d, 0px 2px 4px 0px #000000;
         transition: 0.1s;
     }
     h2 {
         font-family: "Concourse C4";
         text-transform: uppercase;
         padding: 1em;
-        border: 1px solid black;
-        box-shadow: 2px 2px;
         background-color: lightsalmon;
+        box-shadow: inset -4px -2px 5px 0px #cc6e48
+                        , 8px 6px 7px 0px #e3bc8e;
+        border-radius: 6px;
     }
     #toc {
         text-align: center;
     }
     #toc a {
         background-color: brown;
+        box-shadow: inset -3px -3px 2px 0px brown,  0px 2px 4px 0px #444;
         color: white;
         border:none;
-        box-shadow: none;
     }
 </style>
 <script>

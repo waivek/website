@@ -22,7 +22,7 @@ selected_filenames = [ filename for filename in filenames if re.match(r"(\w+)\.(
 total_selected_filenames = len(selected_filenames)
 padding_length = len(str(total_selected_filenames))
 for i, filename in enumerate(selected_filenames, start=1):
-    status_message = "[%s/%s] %s" % (str(i).rjust(padding_length), total_selected_filenames, filename)
+    status_message = "[%s/%s] %s" % (str(i).rjust(padding_length), total_selected_filenames)
     print(status_message)
     m = re.match(r"(\w+)\.(\d)00(italic)?\.ttf", filename)
     font_name_with_underscores, font_weight, font_style = m.groups()

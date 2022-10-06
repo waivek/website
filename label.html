@@ -3,45 +3,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <style>
-#content {
-    max-width: 40em;
-    margin: auto;
-}
-.rectangle {
-    background-color: mediumaquamarine;
-    margin-top: 2em;
-    min-height: 300px;
-}
-.label {
-    margin: 0;
-    background-color: brown;
-    color: white;
-    font-family: "Concourse C4";
-    font-size: 24px;
-    display: inline-block;  
-    text-orientation: upright;
-    writing-mode: vertical-rl;
-    position: relative;
-    left: 10%;
-}
-.label, .rectangle {
-    border: solid 2px black;
-    box-shadow: 4px 4px;
-}
-.label {
-    box-shadow: none;
-}
-.label {
-    border-top: 0;
-}
-.content {
-    font-family: "Concourse C4";
-    text-align: center;
-    font-size: 1.25em;
-    padding: 0 8em;
-    position: relative;
-    top: -80px;
-}
+#content { max-width: 40em; margin: auto; }
+/* .rectangle { background-color: mediumaquamarine; margin-top: 2em; min-height: 300px; } */
+/* .label { margin: 0; background-color: brown; color: white; font-family: "Concourse C4"; font-size: 24px; display: inline-block;  text-orientation: upright; writing-mode: vertical-rl; position: relative; left: 10%; } */
+/* .label, .rectangle { border: solid 2px black; box-shadow: 4px 4px; } */
+/* .label { box-shadow: none; } */
+/* .label { border-top: 0; } */
+/* .content { font-family: "Concourse C4"; text-align: center; font-size: 1.25em; padding: 0 8em; position: relative; top: -80px; } */
+
+.label { border: solid 2px black; text-orientation: upright; writing-mode: vertical-rl; height: 50%; }
+.content { border: solid 2px red; height: 60%; align-self: center; flex-basis: 40%; }
+.rectangle { border: solid 2px lightgreen; display: flex; justify-content: center; height: 200px; }
 
 </style>
 <script>

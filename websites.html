@@ -8,61 +8,335 @@
         <link rel="stylesheet" href="fonts/fairplay/fairplay.css" type="text/css">
         <link rel="stylesheet" href="fonts/confluence/confluence.css" type="text/css">
 
-    <script>
-        function initialize() {
-            var anchors = document.querySelectorAll("a");
-            for (var i = 0; i < anchors.length; i++) {
-                var anchor = anchors[i];
-                anchor.target = "_blank";
+
+        <script>
+            function initialize() {
+                var anchors = document.querySelectorAll("a");
+                for (var i = 0; i < anchors.length; i++) {
+                    var anchor = anchors[i];
+                    anchor.target = "_blank";
+                }
             }
-        }
-        window.addEventListener("load", initialize);
-    </script>
+            // window.addEventListener("load", initialize);
+        </script>
 <style>
 
 body { font-family: "Fairplay Text A"; line-height: 1.4; }
 body { font-size: 3vw; }
+
+html { 
+    --primary_background: #351818;
+    --primary_color: #d1d1d1;
+    --secondary_background: #643d3d;
+    --secondary_color: #d1d1d1;
+    --divider_color: #7a5252;
+}
+
+body { color: var(--primary_color); }
+.body_background { background: var(--primary_background); }
+
+.exceptional { background: var(--secondary_background); color: var(--secondary_color); }
+
+.exceptional dt a, .exceptional dt a:visited { color: inherit; }
+.exceptional dd a, .exceptional dd a:visited { color: inherit; }
+.exceptional dt a:hover { background: var(--secondary_color); color: var(--secondary_background); }
+.good dt a { display: inline-block; }
+.good a:hover { background: var(--primary_color); color: var(--primary_background); }
+.good dd a { text-decoration: underline; }
+.good dd a:hover { text-decoration: none; }
+
+a { color: var(--primary_color); }
+
+.body { position: relative; }
+.body_background { 
+    height: 100%; 
+    width: 100%; 
+    position: fixed; 
+    left: 0; 
+    top: 0; 
+    z-index: -2; 
+}
 @media all and (min-width:800px) { body { font-size: 24px; } }
-@media all and (max-width:600px) { body { font-size: 18px; } }
+@media all and (max-width:600px) { body { font-size: 16px; } }
 p { margin-bottom: 1em; }
 
 body { margin: 0; }
 section {  max-width: 35em; padding: 1em 1em 2em 1em; margin: auto; }
-h1 { letter-spacing: 0.12em; text-align: center; text-transform: uppercase; padding: 0.5em; font-size: 2em; }
 
 dt { font-weight: bold; padding: 0.5em; margin-top: 1em; margin-bottom: 1em; }
-.exceptional { background: cornsilk; border-top: solid; border-bottom: solid; border-width: 5px; border-color: #f5e6a9; }
-.exceptional dt { text-transform: none; letter-spacing: 0.08em; }
+.exceptional { border-top: solid; border-bottom: solid; border-width: 5px; border-color: var(--divider_color); }
+.exceptional dt { text-transform: none; }
 
-.incomplete { background: #ffdde2; padding: 1em ; border-top: solid 5px #ffc8d0;}
-.incomplete a { color: #577ac2; }
-.incomplete ol { margin-bottom: 0; color: #ff7185; }
-.incomplete li { margin: 0 1em 1em 1em; }
-
-a, a:visited { color: #36c; text-decoration : none; }
+a, a:visited { text-decoration : none; }
 a:hover { text-decoration: underline; }
 dt a { padding: 0.3em; margin-left: -0.3em; }
-dt a:hover { background: #36c; color: white; border-radius: 4px; text-decoration: none; }
+dt a:hover { border-radius: 4px; text-decoration: none; }
 
-.exceptional a, .exceptional a:visited { color: brown; }
-.exceptional dt a:hover { background: brown; color: white; }
-
+/* <div.incomplete> */
+.incomplete { padding: 1em ; border-top: solid 5px;}
+.incomplete ol { margin-bottom: 0; }
+.incomplete li { margin: 0 1em 1em 1em; }
 
 @media all and (min-width:800px) { .incomplete ol { columns: 3; }  .incomplete a { overflow-wrap: break-word; } }
 
+.incomplete {
+    --background : #0b302e;
+    --foreground : white;
+    --link       : #B2EBF2;
+    --marker     : #15bcb3;
+    --divider    : #184d59;
+}
+.incomplete { background: var(--background); color: var(--foreground); }
+.incomplete a { color: var(--link); }
+.incomplete ol { color: var(--marker); }
+.incomplete { border-top-color: var(--marker); }
+/* </div.incomplete> */
+
+
 span.resource { text-transform: uppercase; font-variant: small-caps;  font-family: "Confluence C3"; letter-spacing: 0.05em; font-weight: bold; }
+</style>
+
+<style>
+
+
+header { color: #f3d897; --b: 1px; --a: -1px; border-radius: 66px; box-shadow: var(--a) var(--b) 3px 0px #422f00, inset var(--a) var(--b) 3px 0px #d1a847;
+         width: fit-content; margin: auto; background: linear-gradient(-30deg, #6b4b00, #33280d); text-align: center; }
+/* @media all and (max-width: 600px) { header { border-radius: 0; width: 100%; } } */
+
+h1 { text-align: center; text-transform: uppercase; margin: 0; font-family: "Concourse C7"; }
+
+
+
+.incomplete a { word-break: break-all; }
+
+
+.recents { font-family: "Concourse T3"; max-width: 30%; padding: 1em; --d: 34; --deg: calc(var(--d)*10); 
+           background: hsl(var(--deg) 100% 15%); box-shadow: inset -1px 1px 3px 0px hsl(var(--deg) 100% 85%); height: fit-content; border-radius: 8px; }
+.recent_item { line-height: 1.1; }
+.recent_item + .recent_item { margin-top: 8px; }
+.recents a { color: #9fedff; font-size: 0.8em; }
+@media all and (max-width: 600px) { 
+    .recents a { font-size: 16px; } 
+    .recents { max-width: 100%; }
+}
+.recents a:hover { background: none; text-decoration: underline; }
+.recent_item a:last-child { padding-left: 8px; }
+
+
+
+.recent_header { margin: 0rem; font-size: 1.4em; }
+
+
+
+
+
+
+.study_items { display: grid; grid-template-columns: 1fr 1fr; font-family: "Roboto"; font-size: 16px; }
+@media all and (max-width: 600px) { .study_items { grid-template-columns: 1fr; } }
+
+.study_item {
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 500px;
+    --foreground: hsl(205deg 100% 98%);
+    width: fit-content;
+    position: relative;
+    color: var(--foreground);
+    text-shadow: 1px -1px 4px black;
+    --d: 19;
+    --deg: calc(var(--d)*10);
+    background: hsl(var(--deg) 100% 15%);
+    box-shadow: inset -1px 1px 3px 0px hsl(var(--deg) 100% 80%);
+}
+/* #framework7 { grid-column: 1/3; width: auto; } */
+
+
+.study_item::after { content: "study"; position: absolute; top: 0px; right: 0; margin: 10px; padding: 6px; font-size: 0.8em; font-family: "Concourse C8"; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 4px; background: #61c7cb54; color: #388d90; box-shadow: 1px 1px 3px 0px #74a5a6; text-shadow: none; background: hsl(0deg 0% 0%); box-shadow: inset -1px 1px 2px 0px; }
+
+
+
+.study_item a.title { font-size: 1.2em; }
+
+
+.study_item  a.title, .study_item a.big_link { font-family: "Concourse C8"; letter-spacing: 0.10em; text-transform: uppercase; color: var(--foreground); }
+.study_item > ul { list-style-type: lower-roman; font-family: "Concourse T6"; letter-spacing: 0.05em; }
+.study_item li { line-height: 1.0; }
+.study_item li + li { padding-top: 4px; }
+.study_item > div { display: flex; flex-direction: row; justify-content: flex-start; gap: 1rem; font-family: "Concourse C8"; text-transform: uppercase; 
+                    letter-spacing: 0.05em; }
+
+
+/* </study_item> */
+
+#dense_ui .small_link { color: hsl(166deg 100% 78%); }
+
+#rfs::after { color: red; }
+#apple_hci::after { color: lightgreen; }
+#glyphs_fyi::after { color: hsl(42deg 100% 81%); }
+#dense_ui::after { color: cyan; }
+
+/* OBSOLETE div.background {{{ */
+#glyphs_fyi > .background { --color: rgb(163 86 86); --color_2: rgb(172 112 125 / 47%); }
+#dense_ui > .background { --color: hsl(200deg 51% 52%); --color_2: hsl(198deg 34% 23%); }
+.background { --spacing: 13px; /* --color: rgb(163 86 86); */; /* --color_2: rgb(172 112 125 / 47%); */; --color: #333; --color_2: #999; background-color: #000000; opacity: 0.90; border-radius: inherit;; height: 100%; width: 100%; position: absolute; left: 0; top: 0;; z-index: -1;; --size_x: calc(var(--spacing) * 2); --size_y: calc(var(--spacing) * 7 / 4 * 2); --position_x: calc(var(--spacing)); --position_y: calc(var(--spacing) * 7 / 4); background-image: linear-gradient(30deg, var(--color) 12%, transparent 12.5%, transparent 87%, var(--color) 87.5%, var(--color)),; linear-gradient(150deg, var(--color) 12%, transparent 12.5%, transparent 87%, var(--color) 87.5%, var(--color)),; linear-gradient(30deg, var(--color) 12%, transparent 12.5%, transparent 87%, var(--color) 87.5%, var(--color)),; linear-gradient(150deg, var(--color) 12%, transparent 12.5%, transparent 87%, var(--color) 87.5%, var(--color)),; linear-gradient(60deg, var(--color_2) 25%, transparent 25.5%, transparent 75%, var(--color_2) 75%, var(--color_2)),; linear-gradient(60deg, var(--color_2) 25%, transparent 25.5%, transparent 75%, var(--color_2) 75%, var(--color_2)); background-size: var(--size_x) var(--size_y); /* background-position: 0 0, 0 0, var(--position_x) var(--position_y), var(--position_x) var(--position_y), 0 0, var(--position_x) var(--position_y); */; background-color: #ee5522; background-image: url("./images/websites/orange_squares_2.svg"); background-size: auto auto; }
+/* }}} */
+@media all and (max-width: 600px) { dd       { margin-left: 2em; } }
+@media all and (max-width: 600px) { dt, p { margin-top: 0.5em; margin-bottom: 0.5em; } }
+@media all and (max-width: 600px) { h1 { margin-top: 0rem; margin-bottom: 0rem; } }
+
+
+
+/* 360, 411, 414, 540 */
+html { --v: 16px; }
+
+@media all and (max-width: 769px) { html { --v: 13px; } }
+@media all and (max-width: 426px) { html { --v: 10px; } }
+@media all and (max-width: 376px) { html { --v: 10px; } }
+@media all and (max-width: 321px) { html { --v: 7px; } }
+
+
+
+h1 { letter-spacing: 0.12em; padding: 0.5em 1em; font-size: 1.6em; }
+@media all and (max-width: 769px) { h1 { font-size: 1.4em; } }
+@media all and (max-width: 426px) { h1 { font-size: 1.4em; } }
+@media all and (max-width: 376px) { h1 { font-size: 1.4em; } }
+@media all and (max-width: 321px) { h1 { font-size: 1.4em; } }
+
+
+
+
+body { margin-top: calc(4 * var(--v)); }
+header { margin-bottom: calc(4 * var(--v)); }
+.recent_header { margin-bottom: calc(1 * var(--v)); }
+.recents a { margin-bottom: calc(0.75 * var(--v)); }
+@media all and (max-width: 321px) { .recents a { margin-bottom: var(--v); } }
+.study_item > ul { padding-left: calc(2 * var(--v)); }
+.study_item li { padding-left: var(--v); }
+
+
+
+
+
+.topbar, .topbar > .study_items { gap: 1.0rem; }
+.topbar { margin: 0 1rem 2rem 1rem; }
+.topbar { display: flex; flex-direction: row; }
+@media all and (max-width: 600px) { .topbar { display: flex; flex-direction: column; } }
+@media all and (max-width: 600px) { .study_item::after { display: none; } }
 
 </style>
 
     </head>
     <body>
+        <div class="body_background"></div>
         <article>
 
-            <h1>Great Websites</h1>
+            <header>
+                <h1>Great Websites</h1>
+            </header>
 
+            <div class="topbar">
+                <div class="study_items">
+
+                    <div class="study_item">
+                        <a class="title" href="devutils.app">DevUtils</a>
+                    </div>
+
+                    <div class="study_item">
+                        <a class="title" href="https://stackoverflow.design/">StackOverflow - Design System Stacks</a>
+                    </div>
+
+
+                    <div class="study_item">
+                        <a class="title" href="https://utopia.fyi/">Utopia - Fluid Typography</a>
+                    </div>
+
+                    <div class="study_item" id="framework7">
+                        <a class="title" href="https://framework7.io/">Framework7 - Polished iOS level components for web.</a>
+                        <ul>
+                            <li>Use this as the standard for making custom UI components. Incredible transitions.</li>
+                            <li>Do not use this framework as you have to be able to reason about your code. Whatever you like should be studied. Understand the edge cases of implementing a specific component. Even this has certain glitches e.g., in the "Dialog" component, clicking on the "Dialog" hides the scrollbar and is disorienting for the user. The header labels also get hidden partially. This is <em>not</em> acceptable when you have standards and is the reason you want to implement the component yourself from scratch.</li>
+                            <li>Go through the code for the component that you want. Annotate it. Understand the edge cases. Then implement it.</li>
+                            <li>"Floating Action Button Morph" - Pressing the floating plus turns it into a docked footer bar.</li>
+                            <li>"List View" - Look at the transition on the toggle buttons. Appears from the center. Utilizes scale() function and ::before pseudo-element.</li>
+                            <li>"Panels / Side Panels" - Allows you to have a panel that covers the content or a panel that shifts the content.</li>
+                            <li>"Photo Browser" - Carousel that shows up with correct animation. Great transition on 'Page' browser with dark theme.</li>
+                            <li>"Picker" - Delightful way to take user input. Relies on touch swipes.</li>
+                            <li>"Popover" - Navigation tooltips with correct animations.</li>
+                            <li>"Stepper" - Dynamic stepper increments number as you hold down the plus button. The longer you hold the button for the faster the increment happens.</li>
+                            <li>"Swipeout (Swipt to delete)" - Completely broken.</li>
+                            <li>"Swiper Slider" - Showcase of all the possibilites that you can have with a full-featured slider. Very powerful.</li>
+                            <li>"Toolbar &amp; Tabbar" - Button at top-right to toggle anchor position of tabbar b/w bottom and top.</li>
+                            <li>"Page Transitions" - <b>FUCKING INSANE TRANSITIONS. GAMECHANGER.</b></li>
+                        </ul>
+                    </div>
+
+                    <div class="study_item">
+                        <a class="title" href="https://tympanus.net/codrops/">Codrops</a>
+                        <ul>
+                            <li>
+                                S-tier resource.  There is so much here that I should go through each link and learn as much as possible.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="study_item" id="rfs">
+                        <a class="title" href="https://github.com/twbs/rfs">Responsive Font Sizes</a>
+                        <ul>
+                            <li>
+                                If we're talking about responsiveness, I'm a
+                                fan of libraries like this that will set big
+                                text to scale with vw math. This keeps things
+                                from being too big and gross on mobile while
+                                also not requiring you to handle each case
+                                manually with media queries.
+                                — <a href="https://old.reddit.com/r/webdev/comments/l12a07/why_use_ems_for_things_like_paddingmargin/gjyf50n/">reddit</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="study_item" id="apple_hci">
+                        <a class="title" href="https://developer.apple.com/design/human-interface-guidelines/">Apple - Human Interface Guidelines</a>
+                    </div>
+                    <div class="study_item" id="glyphs_fyi">
+                        <a class="title" href="https://glyphs.fyi/dir?i=exclamationCircle">Polished SVG Icon’s Directory</a>
+                        <ul>
+                            <li>Scrolling on middle column, scrolls category column <em>proportionally</em></li>
+                            <li>Sorting enabled via discrete icon</li>
+                            <li>Filter by categories using a dropdown</li>
+                            <li>Live update on right column as you hover over icon variations in middle column.</li>
+                            <li>Draggable textbox like Unity for SVG Size.</li>
+                            <li>Clicking on each SVG results in an animation</li>
+                        </ul>
+                        <div>
+                            <a class="big_link" href="https://old.reddit.com/r/webdev/comments/jcp5fz/from_figma_to_web_components_an_open_source/g92qu8z/">permalink</a>
+                            <a class="big_link" href="https://github.com/gorango/glyphs">github</a>
+                        </div>
+                    </div>
+
+                    <div class="study_item" id="dense_ui">
+                        <a class="title" href="https://colly.com/v4/">Dense desktop UI</a>
+                        <ul>
+                            <li>@colly is ridiculously good at what I’ve been labelling to myself as “overworld design” on the web. Limited hierarchy, jump in and explore from any point.</li>
+                            <li>“this sort of design pays much more respect to the user than modern web design” — <a class="small_link" href="https://twitter.com/jordanmoore/status/1256519887574401024">twitter</a></li>
+                            <li>“"Filtering with their eyes" - that’s exactly it. I personally believe (generally speaking) that modern web design is too dumbed down and that it doesn’t give users the chance to do that filtering and to make more decisions for themselves.” — <a class="small_link" href="https://twitter.com/jordanmoore/status/1256539639697018881">twitter</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+                
             <div class="exceptional">
                 <section>
                     <dl>
+
+                        <dt><a href="https://distill.pub/2020/communicating-with-interactive-articles/">distill.pub - Communicating with Interactive Articles</a></dt>
+                        <dd>
+                        <p>Read the entirety of the article, with notes &amp; spaced repetition. Will help you condense hundreds of hours of experimental learning.</p>
+                        <p><a href="https://distill.pub/2020/communicating-with-interactive-articles/#details-math">Slider to change the detail level on an equation</a></p>
+                        <p><a href="https://distill.pub/2020/communicating-with-interactive-articles/#details-text">Slider to change the contents of a pragraph</a></p>
+                        </dd>
+
                         <dt><a href="https://practicaltypography.com/">Practical Typography</a></dt>
                         <dd>The Bible.</dd>
 
@@ -74,7 +348,6 @@ span.resource { text-transform: uppercase; font-variant: small-caps;  font-famil
                         <p>Responsive site designed with colors by someone who has clear understanding of visual style.</p>
                         <p><span class="resource">Resource</span> <a href="https://eev.ee/media/2020-02-css/thumbnail-grids.html">List of examples for the state of the art in HTML thumbnail grids over time</a>
                         </dd>
-
 
                         <dt><a href="https://www.ft.com/">Financial Times</a></dt>
                         <dd>Journalism website which makes proper use of desktop space.</dd>
@@ -110,19 +383,17 @@ span.resource { text-transform: uppercase; font-variant: small-caps;  font-famil
 
                         <dt><a href="https://saaslandingpage.com/">The best SaaS landing page examples</a></dt>
                         <dd><span class="resource">Resource</span> Collection of great SaaS landing and feature pages.</dd>
+
                     </dl>
 
                 </section>
             </div>
 
-            <hr/>
-
-
             <section class="good">
                 <dl>
                     <dt><a href="http://site.macleans.ca/longform/alzheimers/">Macleans</a></dt>
                     <dd>
-                    A bare bones website that integrates media seamlessly. Scroll towards the end to get the feeling that you're
+                    A bare bones website that integrates media seamlessly. Scroll towards the end to get the feeling that you’re
                     reading a research paper. 
                     </dd>
 
@@ -151,10 +422,10 @@ span.resource { text-transform: uppercase; font-variant: small-caps;  font-famil
                     <a href="https://beautifulracket.com/appendix/why-racket-why-lisp.html">Click here to see beautiful tooltips. </a>
                     </dd>
 
-                    <dt><a href="https://alejandromp.com" >Alejandro Martinez's Blog</a></dt>        
+                    <dt><a href="https://alejandromp.com" >Alejandro Martinez’s Blog</a></dt>        
                     <dd>
                     Tags are displayed really well - 
-                    <a href="https://alejandromp.com/blog/2018/01/27/jonathan-blow-libraries-discussion-jai/">Jonathan Blow's libraries discussion</a>. 
+                    <a href="https://alejandromp.com/blog/2018/01/27/jonathan-blow-libraries-discussion-jai/">Jonathan Blow’s libraries discussion</a>. 
                     If you hover over a link, the linked page is prefetched. This makes navigation almost instantaneous.
                     </dd>
 
@@ -162,10 +433,10 @@ span.resource { text-transform: uppercase; font-variant: small-caps;  font-famil
                     <a href="https://joeclark.org/book/sashay/serialization/home.html" >Building Accessible Websites</a>
                     </dt>        
                     <dd>
-                    Wide webpage with lot's of good advice
+                    Wide webpage with lot’s of good advice
                     </dd>
 
-                    <dt><a href="https://kyleschaeffer.com/development/css-font-size-em-vs-px-vs-pt-vs/" >Kyle Schaeffer's Blog</a></dt>        
+                    <dt><a href="https://kyleschaeffer.com/development/css-font-size-em-vs-px-vs-pt-vs/" >Kyle Schaeffer’s Blog</a></dt>        
                     <dd>
                     Uses one font for header and body. Subsets it from TypeKit. Avoids F.O.U.T.
                     </dd>
@@ -175,7 +446,7 @@ span.resource { text-transform: uppercase; font-variant: small-caps;  font-famil
                     The best designed blog, period. The rotation on the images gives it a collage-ey feel. The dark theme UI is
                     brilliant. Menubars are seamless.  Tags are displayed beautifully. Go to any 
                     <a href="https://heronebag.com/blog/choosing-genuine-connection-in-a-disconnected-life/">blog post</a> 
-                    to see elegant design.  Also check out the author's <a href="https://vickylai.com/">personal web page</a>.
+                    to see elegant design.  Also check out the author’s <a href="https://vickylai.com/">personal web page</a>.
                     </dd>
 
                     <dt><a href="https://javascript.info" >JavaScript.Info</a></dt>        
@@ -193,7 +464,7 @@ span.resource { text-transform: uppercase; font-variant: small-caps;  font-famil
 
                     <dt><a href="https://newleftreview.org/II/113/richard-stallman-talking-to-the-mailman">Talking to the mailman</a></dt>        
                     <dd>
-                    Super simple website. Let's you download a PDF that has been typeset well.
+                    Super simple website. Let’s you download a PDF that has been typeset well.
                     </dd>
 
                     <dt><a href="https://www.chris-granger.com/2016/07/21/two-years-of-eve/">Two years of Eve - Chris Granger Blog</a></dt>        
@@ -360,8 +631,358 @@ span.resource { text-transform: uppercase; font-variant: small-caps;  font-famil
                     <p>Transformed text can be styled using CSS</p>
                     </dd>
 
+                    <dt><a href="https://seesparkbox.com/foundry/feature_flags_continuous_deployment">andymatuschak’s blog - Playful design, background images</a></dt>
+                    <dd>
+                    <p>Background images on sidebar articles aren’t obnoxious</p>
+                    <p>Sidebar and main article are clearly designed with a lot of thought</p>
+                    </dd>
 
+                    <dt><a href="https://seesparkbox.com/foundry/feature_flags_continuous_deployment">Clean block layout</a></dt>
+                    <dd>
+                    <p>Love how the sidebar sits on top of the code sample when you scroll down.</p>
+                    </dd>
+
+                    <dt><a href="https://worksinprogress.co/issue/the-rise-and-fall-of-the-american-rd-lab/">Blog layout with good date, author position</a></dt>
+                    <dd>
+                    <p>Great “related articles” ui at the bottom of the page in the form of cards</p>
+                    </dd>
+
+                    <dt><a href="https://grtcalculator.com/">golden ratio typography calculator</a></dt>
+                    <dd>
+                    <p><span class="resource">Resource</span> calculate different line heights for different screen sizes</p>
+                    </dd>
+                    <dt><a href="https://sci-hub.tw/alexandra">scihub author’s personal blog</a></dt>
+                    <dd>
+                    <p>Scroll to the “articles” section to see a great non-symmetric grid to display articles with summaries on desktop</p>
+                    <p><a href="https://sci-hub.tw/https://doi.org/10.1093/zoolinnean/zlaa061">beautiful pdf with a sidebar that makes for a pleasant reading experience</a> (inline-pdf)</p>
+                    </dd>
+
+                    <dt><a href="https://minimaxir.com/portfolio/">Portfolio website with tabbed layout and nice animations</a></dt>
+                    <dd>
+                    <p>Click on different tabs to see great animations</p>
+                    </dd>
+
+                    <dt><a href="https://reflexio.debec.eu/principles-for-better-design">Blue gold layout with white diagrams</a></dt>
+                    <dd>
+                    Click on credit to see a re-creation of leonardo da vinci’s diagrams
+                    </dd>
+
+                    <dt><a href="https://utcc.utoronto.ca/~cks/space/blog/tech/IM2000NotGoodIdea">Minimal blog layout</a></dt>
+                    <dd>
+                    Great nav bar and use of system font. Date is also displayed unobtrusively
+                    </dd>
+
+                    <dt><a href="https://julian.digital/2020/09/04/a-meta-layer-for-notes/">monospaced body font that is very readable on desktop</a></dt>
+                    <dd>
+                    <p>study the text to understand why it is so easy to read on desktop</p>
+                    <p>asides and blockquotes are done inline in desktop and are very readable</p>
+                    <p>images are cropped and displayed unobtrusively</p>
+                    </dd>
+
+                    <dt><a href="https://www.nationalgeographic.com/history/2020/09/hong-kong-mourns-way-life-china-cracks-down-dissent/">National Georgraphic - Beautiful way to layout pictures in desktop</a></dt>
+                    <dd>
+                    Pictures take full advantage of desktop space. Captions look beautiful.
+                    </dd>
+
+                    <dt><a href="https://www.nytimes.com/interactive/2020/us/elections/election-states-biden-trump.html">nytimes - Interactive graphic that get’s the animation balance just right</a></dt>
+                    <dd>
+                    Immediately obvious what is happening. Clicking on each state gives a history of that states historical leanings.
+                    </dd>
+
+                    <dt><a href="https://blog.datawrapper.de/beautifulcolors/">Beautiful inline colors - using HTML elements to enhance the subject matter</a></dt>
+                    <dd>
+                    <p><span class="resource">Resource</span> How to select colors in an accessible, aestehtic way.</p>
+                    <p><span class="resource">Resource</span> From HN comments: <a href="https://rentafounder.com/generating-colour-palettes-for-charts/">Generating color palettes for charts</a></p>
+                    <p><span class="resource">Resource</span> From the link: <a href="https://multimedia.scmp.com/culture/article/SCMP-printed-graphics-memory/">Full page infographics</a> (South China Morning Post)</p>
+                    <p><span class="resource">Resource</span> From the link: <a href="https://infographics.economist.com/2019/AChristmasGiftForYou/AYearInGraphicDetail.pdf">Full page infographics</a> (The Economist)</p>
+                    </dd>
+
+                    <dt><a href="https://keycombiner.com/collections/vim/winlinux/">keybcombiner - Table of shortcuts</a></dt>
+                    <dd>
+                    Example of filterable table with the following functionality: 
+                    <ul>
+                        <li>Category Filter</li>
+                        <li>Search Filter</li>
+                        <li>Arbitrary Selection and Grouping</li>
+                        <li>Paginated tables</li>
+                        <li>Search by column value</li>
+                    </ul>
+                    </dd>
+
+                    <dt><a href="https://davidhume.org/texts/emp/dt">David Hume Texts - Font that looks good justified on large font size with narrow width</a></dt>
+                    <dd>
+                    Font used is “IM Fell English”, look at heading and subheading typography as well.
+                    </dd>
+
+                    <dt><a href="https://gerireid.com/forms.html">Geri Reid - Forms best practices</a></dt>
+                    <dd>
+                    <p><span class="resource">Resource</span> Guidelines with reasoning for forms, buttons, radio buttons and more. Follow the citation’s for explanations into the thought proccesses behind why certain guidelines are the way they are. The citation’s themselves are high quality and <strong>resources</strong> in their own right.</p>
+                    </dd>
+
+
+                    <dt><a href="https://designsystem.gov.au/components/table/">gov.au design system - Tables &amp; other components</a></dt>
+                    <dd>
+                    <p><span class="resource">Resource</span> Sidebar on the left has accessible components that are well-designed.</p>
+                    <p>Components such as breadcrumbs, navigation bars, animations</p>
+                    <p>At the bottom, I like the two-column layout of “Related Components” &amp; “Feedback”, with the thick borders below the headers.</p>
+                    </dd>
+
+                    <dt><a href="https://search.data.gov.au/">Amazing search engine & ui</a></dt>
+                    <dd>
+                    <p><span class="resource">Resource</span> Great filters. Accidentally applied filters are easy to close. </p>
+                    <p>Information is conveyed in verbal and non-verbal ways e.g., Filter by organization.</p>
+                    </dd>
+
+                    <dt><a href="https://www.bbcelite.com/">Source Code Commentary of “Elite”</a></dt>
+                    <dd>
+                    <p>Three themes, good structure and layout for code.</p>
+                    <p>Very good use of html elements.</p>
+                    <p>Quality of writing itself is also very high and clear.</p>
+                    </dd>
+
+                    <dt><a href="https://www.pressreader.com/australia/edge/20171012/282930975584257">Newspaper layout in browser</a></dt>
+                    <dd>
+                    <p>Very readable, column layout.</p>
+                    <p>Great UX, scrolling mousewheel enables horizontal animations</p>
+                    </dd>
+
+                    <dt><a href="https://jekyllrb.com/news/">Skeumorphic design</a></dt>
+                    <dd>
+                    <p>Ribbons on left</p>
+                    <p>Hover over the links in the nav bar at the top</p>
+                    </dd>
+
+                    <dt><a href="https://www.artofchording.com/layout/bottom-row.html">Ultra performant book in HTML form</a></dt>
+                    <dd>
+                    Load’s bulk of resources upfront. Clicking on each link is instant.
+                    </dd>
+
+                    <dt><a href="https://www.magicpattern.design/tools/css-backgrounds">CSS Background Pattern Generator</a></dt>
+                    <dd>
+                    <p><span class="resource">Resource</span> Use this in cards.</p>
+                    </dd>
                 </dl>
+
+                <dt><a href="https://kk.org/thetechnium/">Cool Split Grids</a></dt>
+                <dd>
+                Site has lot of personality. Uses split grids like I do with first column being right-aligned and second column left-aligned.
+                </dd>
+
+                <dt><a href="https://2019.stateofcss.com/">Icons with easy way to see implemenation</a></dt>
+                <dd>
+                <p>Hovering over an image transforms the image to give overlays and wireframes of the icons used. Great UI.</p>
+                </dd>
+
+                <dt><a href="https://2019.stateofcss.com/">stateofcss.com - grid display, interactive graphs, useful animations</a></dt>
+                <dd>
+                <p>study how the grid display works seamlessly</p>
+                <p>you can toggle the graph modes and it has custom animations</p>
+                <p>seems to be a single-page-application</p>
+                </dd>
+
+                <dt><a href="https://orcutt.net/weblog/2018/03/17/my-prodigiously-convoluted-yet-miraculously-productive-low-tech-writing-process-part-2-with-a-few-modest-writing-secrets/">Low-tech writing</a></dt>
+                <dd>
+                <p>Hovering over title image hides date. Hovering over captioned images hides captioned. Would work well with mediumzoom to further enhance images.</p>
+                </dd>
+
+                <dt><a href="https://projects.fivethirtyeight.com/2020-election-forecast/">fivethirtyeight - election forecasts 2020</a></dt>
+                <dd>
+                    <ol>
+                        <li>consistent graphic palette – of dull gray, red and blue – gives the site an identifying personality</li>
+                        <li>interactable data on mobile &amp; desktop</li>
+                        <li>graphic at the top gives summary through images by visualizing multiple outcomes close to each other in map format</li>
+                        <li>language is very precise. using terms like “favored”, “clearly favored” to be more subtle yet precise</li>
+                        <li>“winding path to victory” section is a snake graph that can be clicked on and zoomed in</li>
+                    </ol>
+                </dd>
+                <dt><a href="https://jezenthomas.com/how-i-write-elm-applications/">blog - jezenthomas</a></dt>
+                <dd>
+                <p>mostly black &amp; white</p>
+                </dd>
+
+                <dt><a href="https://telegram.org/blog">Telgram Recent News</a></dt>
+                <dd>
+                <p><a href="https://telegram.org/blog/voice-chats">Voice Chats Done Right</a> (telegram.org)</p>
+                <ol>
+                    <li>Custom header illustration that isn’t obnoxious in size</li>
+                    <li>High quality animations of new examples</li>
+                    <li>High quality animation on header that conveys the new feature visually</li>
+                    <li>Clean typography elements: blockquotes, recent news sidebar, headings &amp; subheadings</li>
+                </ol>
+                </dd>
+
+                <dt><a href="https://old.reddit.com/r/webdev/comments/kko3sc/showoff_saturday_generative_splodges_using/">Irregular blobs with pleasing background-fills</a></dt>
+                <dd>
+                <span class="resource">Resource</span> The background fills can be animated as well.
+                </dd>
+
+                <dt><a href="https://dusted.codes/equal-pay-for-equal-work">Beautiful dark theme. Header and tagline are the standouts.</a></dt>
+                <dd>
+                Hovering over the header highlights the inline image and  the tagline. 
+                </dd>
+
+                <dt><a href="https://datatables.net/">Datatables.net - Floating window straddling a discrete background change</a></dt>
+                <dd>
+                Good looking pattern that makes an immediate impression. The rounded rectangle has a box-shadow that makes it look floating. The background blue → white gives the floating div a paperlike feeling.
+                </dd>
+                <dt><a href="https://www.ianvisits.co.uk/blog/2021/01/21/over-700000-paintings-from-the-rijksmuseum-online-copyright-free/">Clean image zoom implementation (ianvisits.co.uk)</a></dt>
+                <dd>
+                    Rest of the website has good functionality. The menu at the
+                    top has a dropdown on hover feature. All the relevant
+                    information is densely packed at tht middle third of the
+                    screen. High contrast elements are used. 
+                </dd>
+                <dt><a href="https://www.aleksandrhovhannisyan.com/blog/svg-tutorial-how-to-code-svg-icons-by-hand/">Polished dark mode (aleksandrhovhannisyan.com)</a></dt>
+                <dd>
+                    Clever icon for activation the dark mode. When you toggle
+                    between dark and light mode, the SVG icons in the article
+                    also change in color. The code samples also have big “Copy”
+                    buttons. The scrollbar on the left responds to the dark mode
+                    and has custom styling. If you go to the <a href="https://www.aleksandrhovhannisyan.com/blog/">/blog</a>
+                    link, there are 4 tags, sensible chosen. This prevents the
+                    user from getting overwhelmed. The UI of the tags is also
+                    good, except the page reloads when you select a tag. 
+                </dd>
+                <dt><a href="https://www.jwz.org/blog/">Information dense grid layout on blog (jwz.org)</a></dt>
+                <dd>
+                    On the right, in desktop, you can see the entire contents of
+                    "Recent Posts", "Archives" and a “Calendar”. Line height is
+                    set to 1.0 and color is used for Differentiating items.
+                    Color is also used to mark the days on the calendar on which
+                    an article was posted. A very high contrast colorscheme of
+                    blue, green and black is used to ensure that each element
+                    doesn’t blend into the other.
+                </dd>
+
+                <dt><a href="https://costplusdrugs.com/">Bright blue vector landing page with seamless transition of sticky menu on scroll (costplusdrugs.com)</a></dt>
+                <dd>
+                    The sticky menu at the top is colored to blend in with the
+                    hero image, both are lightblue. The buttons on the sticky
+                    menu use darker shades of blue to complement the hero image.
+                    When you scroll, the central logo in the sticky menu scales
+                    with a nice animation.
+                </dd>
+
+                <dt><a href="https://www.mankier.com/1/rg">Polished dark mode utilizing for html man pages (mankier.com)</a></dt>
+                <dd>
+                    The shades of green, red and blue that are used are selected
+                    with care and work well with the dark gray background. When
+                    you scroll, the table-of-contents scrolls accordingly.
+                    Clicking on a #item jumps there with a fading background
+                    color transition that I haven’t seen anywhere else. Press
+                    ‘s’ to search.
+                </dd>
+
+
+                <dt><a href="https://doodad.dev/pattern-generator/">Best pattern generator. Good UI, export and controls.</a></dt>
+                <dd>
+                    The color-picker has a really playful UI. Click on the
+                    “shuffle” button to get a overview of the different patterns
+                    the tool is capable of. Dark and light mode toggles are also
+                    present.  Thoughtful export options for fast iteration.
+                </dd>
+
+                <dt><a href="https://www.cnbc.com/2020/05/04/apple-ceo-tim-cook-recommends-reading-abraham-lincoln-during-covid-19.html">Hoizontal recent articles bar</a></dt>
+                <dd>
+                    Uses an SVG as a background-image that is repeated and
+                    rotated 45deg. The curly lines and shade of turquoise along
+                    with the black top border work very well together. Font used
+                    is Averta. Scroll to the bottom to see a really good footer
+                    with squiggly lines.
+                </dd>
+
+                <dt><a href="https://tenbit.co/blog/my-approach-to-writing-maintainable-css/">An approach to writing maintainable CSS</a></dt>
+                <dd>
+                    <span class="resource">Resource</span> Good set of rules,
+                    several of which match my own experience writing CSS.
+                    Discourages cascading (<code>div &gt; span</code>),
+                    discourages using the “<code>!important</code>” keyword. By
+                    not generalzing, you make your CSS easy to replace. Article
+                    is a compelling case for adopting B.E.M. naming conventions.
+                    Uses SASS to show how to build mobile-specific comopnents.
+                </dd>
+
+                <dt><a href="https://suade.org/dev/12-requests-per-second-with-python/">Really good readability (suade.org)</a></dt>
+                <dd>
+                    Dark blue background with white grid-lines is reallly good
+                    for readable text. Overall, everything has a clean look,
+                    with good spacing and layout. Structure of the article is
+                    also well done. Each section ends with a single “Key
+                    Takeaways” line, summarizing the section.
+                </dd>
+
+                <dt><a href="https://smolcss.dev/#">smolcss - Real layouts solved with modern CSS</a></dt>
+                <dd>
+                    <span class="resource">Resource</span> Site itself is
+                    designed well. You can use "clamp" function in padding if
+                    the clamped value is a percentage. Read-through slowly.
+                </dd>
+
+                <dt><a href="https://learnui.design/tools/gradient-generator.html">learnui - In-depth gradient generator</a></dt>
+                <dd>
+                    <span class="resource">Resource</span> Tool at the top on
+                    generating pleasant gradients. Followed by text on what goes
+                    on behind the tool and general principles to follow when
+                    making gradients. Other useful links:
+                    <ul>
+                        <li><a href="https://learnui.design/tools/data-color-picker.html">Data Color Picker</a></li>
+                        <li><a href="https://learnui.design/">UI course</a></li>
+                        <li><a href="https://learnui.design/courses/learn-ux-design.html">UX course</a></li>
+                    </ul>
+                </dd>
+
+                <dt><a href="https://www.lifewire.com/how-youtube-s-watch-on-button-could-change-video-embeds-5112993">lifewire - Best design I have seen on a content aggregator</a></dt>
+                <dd>
+                    Hovering over the author creates a popup with the bio. Email
+                    and print icons are really unique and have a funky orange
+                    yellow palette. There is a fact-checker for the article! The
+                    nav at the top has a distinct arrow, a super stylized “→”.
+                    Unobtrusive sidebar which is actually the articles
+                    categorized by topics. The alignment between the sidebar,
+                    article body and header is non-standard but works really
+                    well.  The start of the article has a “Key Takeaways”
+                    portion with three bullet points. Subheading font is
+                    distinct and fits the brand of the website. Superb URL’s,
+                    it’s just domain/hyphenated-article-1234. 
+                </dd>
+
+                <dt><a href="https://moores.samaltman.com/">moorse.samaltman.com - blog that makes good use of parallax</a></dt>
+                <dd>
+                    At the top there is a sticky header that is interactive with
+                    the mouse. Drag your mouse along the header to trace a path.
+                    As you scroll down, there are five sections, each with a
+                    backround image on a lower z-index. Each section has a small
+                    parallax effect with it’s background image on scroll.
+                </dd>
+
+                <dt><a href="https://umaar.com/dev-tips/">umaar.com - Advanced Chrome DevTools features</a></dt>
+                <dd>
+                    Over 200 tips related to Chrome DevTools. Each tip has a
+                    textual explanation and an animated GIF. More tips on the
+                    following <a href="https://news.ycombinator.com/item?id=26779800">HN thread</a>.
+                </dd>
+
+                <dt><a href="https://typesense.org/blog/the-unreasonable-effectiveness-of-just-showing-up-everyday/">Scrollbar (typesense.org)</a></dt>
+                <dd>
+                    Apple-like scrollbar with good spacing and border-radius.
+                </dd>
+
+                <dt><a href="https://simonhearne.com/2021/layout-shifts-webfonts/">Layout Shfit with WebFonts (simonhearne.com)</a></dt>
+                <dd>
+                    Load the website in incognito mode. It loads incredibly fast
+                    despite using external fonts.  There is also no Flash of
+                    Unstyled Text (FLOUT). Even when I serve fonts locally, I
+                    don’t get the level of fidelity displayed in this page. Summary:
+                    <ol>
+                        <li>Don’t serve bold versions, let Chrome render.</li>
+                        <li>Don’t serve weights, use variable fonts.</li>
+                        <li>Use SVG’s instead of icon fonts. (disagree)</li>
+                    </ol>
+                    Rest of the site is unique. Comments are twitter replies to author but styled with
+                    CSS of the website. The <a href="https://simonhearne.com/">homepage</a> tells you 
+                    how many of these comments are there per page. Whole thing is static.
+                </dd>
+
 
                 <!-- SNIPPET NAME: website_item -->
 
@@ -381,7 +1002,7 @@ span.resource { text-transform: uppercase; font-variant: small-caps;  font-famil
                     <li><a href="https://www.sylvaindurand.org/">Sort by category - Sort by date </a></li>
                     <li><a href="https://www.readthesequences.com">Site designed using Butterick as an inspiration</a></li>
                     <li><a href="https://a16z.com/2019/07/16/substack/">Clean black and white website. Resizing the browser window has an animation from max to small</a></li>
-                    <li><a href="https://overreacted.io/algebraic-effects-for-the-rest-of-us/">Algebraic Effects: Code samples have relevant lines highlighted.  Written well. Duplicates code sample multiple times. Assumes you're just scrolling down and helps you avoid scrolling up.</a></li>
+                    <li><a href="https://overreacted.io/algebraic-effects-for-the-rest-of-us/">Algebraic Effects: Code samples have relevant lines highlighted.  Written well. Duplicates code sample multiple times. Assumes you’re just scrolling down and helps you avoid scrolling up.</a></li>
                     <li><a href="https://speak.sh/posts/quiet-hacker-news">Clean blog layout</a></li>
                     <li><a href="https://colah.github.io/posts/2015-09-Visual-Information/">Good print typesetting. Magic is in this file: https://colah.github.io/css/default.css</a></li>
                     <li><a href="https://internetingishard.com/html-and-css/">Well-designed site. SVG’s look beautiful. Has a scrolling TOC. Lot’s of beautiful, custom diagrams.</a></li>
@@ -408,7 +1029,7 @@ span.resource { text-transform: uppercase; font-variant: small-caps;  font-famil
                     <li><a href="https://www.artnews.com/art-news/news/locked-room-experiment-art-education-1202687843/">Display of “Related Articles”</a></li>
                     <li><a href="https://www.roadandtrack.com/new-cars/car-technology/a32612802/entry-ignition-two-stroke-engine-design-explained/">Layout and Typography</a></li>
                     <li><a href="https://mebassett.info/ai-useless-for-business">Minimal</a></li>
-                    <li><a href="https://nadialim.com/recipe/chicken-saagwala/">First cooking website I've seen with exceptional layout and typography</a></li>
+                    <li><a href="https://nadialim.com/recipe/chicken-saagwala/">First cooking website I’ve seen with exceptional layout and typography</a></li>
                     <li><a href="http://seanmcb.com/">Great way to style fonts and give a unique look to text</a></li>
                     <li><a href="https://www.smashingmagazine.com/2012/04/drop-caps-historical-use-and-current-best-practices/"><span class="resource">Resource</span> Edge cases and accesibility tips on using dropcaps</a></li>
                     <li><a href="http://artequalswork.com/posts/adventures-in-dynamic-subsetting/">Layout</a></li>
@@ -420,9 +1041,41 @@ span.resource { text-transform: uppercase; font-variant: small-caps;  font-famil
                     <li><a href="https://www.typography.com/blog"><span class="resource">Resource</span> Scroll down to each article to see different styles. Notice the text-shadow in some of the headings.</a></li>
                     <li><a href="https://microkerneldude.wordpress.com/2020/06/09/sel4-is-verified-on-risc-v/">Great way to display tags.</a></li>
                     <li><a href="https://ia.net/topics/the-web-is-all-about-typography-period"><span class="resource">Resource</span> Typography book reccomendations at the bottom</a></li>
-
                 </ol>
             </div>
         </article>
+        <script src="lib/jquery/jquery-3.5.1.js"></script>
+        <script>
+            function add_latest_div () {
+                var topbar = document.querySelector(".topbar");
+                var recents = document.createElement("div");
+                recents.classList.add("recents");
+                var recent_header = document.createElement("h3");
+                recent_header.classList.add("recent_header");
+                recent_header.innerText = "Recent Additions";
+                var good_as = Array.from(document.querySelectorAll(".good dt a"));
+                good_as = good_as.slice(-5).reverse();
+
+                recents.appendChild(recent_header);
+                for (var i = 0; i < good_as.length; i++) {
+                    var good_a = good_as[i];
+                    var recent_item = $(`
+<div class="recent_item">
+    <a href="#from_bottom_${i}">#</a>
+</div>
+`).get(0);
+                    var anchor = good_a.cloneNode(1);
+                    $(recent_item).prepend(anchor);
+                    recents.appendChild(recent_item);
+
+
+                    good_a.setAttribute("id", `from_bottom_${i}`);
+                }
+                topbar.appendChild(recents);
+                topbar.insertBefore(recents, topbar.firstChild);
+            }
+            add_latest_div();
+        </script>
+    
     </body>
 </html>

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>The Bus Ticket Theory of Genius</title>
     <link rel="stylesheet" href="css/blog.css" type="text/css">
-    <!-- <script src="../Typography/Tool/load.js"></script> -->
     <style>
     html { --gray_900 : #212934; --gray_800 : #404B5A; --gray_700 : #6E7A8A; --gray_600 : #929FB1; --gray_500 : #AEBECD; --gray_400 : #CCD4DB; --gray_300 : #D5DDE5; --gray_200 : #E7ECF1; --gray_100 : #F8F9FA;--red_900: #8D1010; --red_800: #AE0D0D; --red_700: #C60000; --red_600: #C91A1A; --red_500: #E90000; --red_400: #FF3A3A; --red_300: #F06565; --red_200: #FD9898; --red_100: #FFDBDB; }
     body { text-align: justify; }
@@ -23,6 +22,17 @@
     @media all and (max-width: 640px) { .menu { font-size: 16px; } }
     @media all and (min-width: 800px) { .menu { font-size: 20px; } }
     .tnum { font-feature-settings: "lnum", "tnum"; }
+    /*
+       h1 font - size;
+       320px   - 1.2rem - 21.6px ≈ 6.6vw;
+       360px   - 1.4rem - 25.2px;
+       375px   - 1.5rem - 27.0px;
+       411px   - 1.6rem - 28.8px;
+
+       768px   - 2.5rem - 57.6px;
+       1024px  - 2.7rem - 64.8px;
+    */
+    @media all and (max-width: 600px) { h1 { font-size: 6.6vw; } }
     </style>
 </head>
 
@@ -497,5 +507,6 @@
     </div>
 
     </body>
+    <script src="../Typography/Tool/load.js"></script>
 </html>
 

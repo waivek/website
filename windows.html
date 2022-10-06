@@ -7,12 +7,10 @@
         <title>Windows Fixes</title>
 
 <style>
-
-html { font-size: 21px; line-height: 1.5; font-family: "Vollkorn", serif; }
-body { background: #fafafa; }
-#content { margin: auto; max-width: 50em; }
+html { font-family: "Equity Text A"; }
+body { padding-left: 1rem; padding-right: 1rem; max-width: 60rem; margin-left: auto; margin-right: auto; }
 a, a:visited { color: #36c; }
-
+h3 { font-family: "Vollkorn"; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 </style>
 
 <script>
@@ -23,7 +21,8 @@ a, a:visited { color: #36c; }
 
     <body>
         <div id="content">
-            <h2>Fixing the pop noise when resuming audio via headphones</h2>
+            <h1>Windows</h1>
+            <h3>Fixing the pop noise when resuming audio via headphones</h3>
             <p>
                 If we have a media file and pause it, sometimes the powersaving feature in windows will put the
                 soundcard to sleep. Upon resuming the file, the soundcard wakes up and there is a pop sound that is
@@ -31,7 +30,7 @@ a, a:visited { color: #36c; }
             </p>
             <p><a href="https://forums.lenovo.com/t5/Windows-8-1-8-7-Vista-and-XP/Win-7-Fixing-the-sound-card-power-save-speaker-click-on-the-n100/td-p/158176">https://forums.lenovo.com/t5/Windows-8-1-8-7-Vista-and-XP/Win-7-Fixing-the-sound-card-power-save-speaker-click-on-the-n100/td-p/158176</a></p>
 
-            <h2>Making RipGrep work on Gvim</h2>
+            <h3>Making RipGrep work on Gvim</h3>
             <p>
                 When we assign <code>grepprg</code> to <code>rg</code>, it is fast when executed directly from the CLI, but
                 slow when run from inside GVIM. This is due to Windows Defender’s “Real-time protection” feature. If we

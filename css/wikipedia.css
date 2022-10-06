@@ -1,20 +1,19 @@
 @font-face {
     font-family: "New Face";
-    src:    url("../fonts/Lora-Regular.woff2") format("woff2");
+    src: url("../fonts/Lora/Lora-Regular.woff2") format("woff2");
     font-weight: normal;
 }
 
-body {
-    margin-top: 0;
-}
+body { margin-top: 0; }
 #content {
     max-width: 993px;
-    font-family: "Arial";
+    font-family: sans-serif;
     line-height: 1.65;
     margin: 0 auto;
 }
 h1, h2 {
-    font-family:"New Face";
+    font-family: "Lora webfont";
+    /* font-family: "New Face"; */
     padding-bottom: 6px;
     border-bottom: solid 1px #eee;
 }
@@ -43,7 +42,7 @@ ul {
     display: none;
 }
 #path {
-    font-family: "Lora";
+    font-family: "Lora webfont";
     color: #ccc;
 }
 #path a {
@@ -57,7 +56,7 @@ ul {
 
 #menubar {
     padding: 0.5em 0;
-    font-family: "Arial";
+    font-family: "Lora webfont";
     position: sticky;
     top: 0em;
     text-align: center;

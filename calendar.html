@@ -4,13 +4,10 @@
     
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Calendar</title>
+    <link rel="stylesheet" href="fonts/Lato/lato.css" type="text/css">
 <style>
-@font-face {
-    font-family: "Modified Lato";
-    src: url(fonts/Lato.ttf);
-}
 body {
-    font-family: "Modified Lato", sans-serif;
+    font-family: "Lato webfont";
 }
 #content {
     max-width: 60em;
@@ -68,14 +65,14 @@ h2 {
     padding: 1em 0;
     color: #aac;
     text-align: center;
-    font-weight: normal;
+    font-weight: 400;
 }
 @media screen and (max-width: 700px) {
     #calendar_grid {
         grid-auto-flow: column;
         grid-template-rows: repeat(7, 1fr) ;
         grid-template-columns: repeat(5, 1fr);
-        grid-gap: 0px;
+        grid-gap: 0px 8px;
     }
     .calendar_day {
         box-shadow: none;
