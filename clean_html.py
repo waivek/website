@@ -103,7 +103,7 @@ if __name__ == "__main__":
     stdout = subprocess.run(tidy_command, input=file_contents_binary, capture_output=True).stdout
 
     soup = BeautifulSoup(stdout.decode("utf-8"), "html.parser")
-    # soup = clean_soup(soup)
+    soup = clean_soup(soup)
     soup_binary = soup.prettify(formatter="html").encode("utf-8")
 
 # PIPE
