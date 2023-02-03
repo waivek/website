@@ -1,10 +1,11 @@
 import sys
+
+
 import subprocess
 from bs4 import BeautifulSoup, Comment
 import bs4
 
 
-from html_helper_functions import read_pipe_or_file
 
 # Encoding Print Alternatives {{{
 def print_string_as_bytes(string):
@@ -99,19 +100,19 @@ if __name__ == "__main__":
 
 
 # PIPE
-    tidy_command = "tidy -indent --indent-spaces 4 -quiet --show-errors 0 --wrap-attributes no --wrap 0"
-    stdout = subprocess.run(tidy_command, input=file_contents_binary, capture_output=True).stdout
+    # tidy_command = "tidy -indent --indent-spaces 4 -quiet --show-errors 0 --wrap-attributes no --wrap 0"
+    # stdout = subprocess.run(tidy_command, input=file_contents_binary, capture_output=True).stdout
 
-    soup = BeautifulSoup(stdout.decode("utf-8"), "html.parser")
-    soup = clean_soup(soup)
-    soup_binary = soup.prettify(formatter="html").encode("utf-8")
+    # soup = BeautifulSoup(stdout.decode("utf-8"), "html.parser")
+    # soup = clean_soup(soup)
+    # soup_binary = soup.prettify(formatter="html").encode("utf-8")
 
-# PIPE
-    stdout = subprocess.run(tidy_command, input=soup_binary, capture_output=True).stdout
+# PI# PE
+    # stdout = subprocess.run(tidy_command, input=soup_binary, capture_output=True).stdout
 
-# PRINT
-    sys.stdout.buffer.write(stdout)
-    sys.stdout.flush()
+# PR# INT
+    # sys.stdout.buffer.write(stdout)
+    # sys.stdout.flush()
 
 # sys.stdout.reconfigure(encoding='utf-8')
 # print(soup)                                        # OPTION 1
