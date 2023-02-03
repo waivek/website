@@ -6,8 +6,10 @@
         <title>Pride</title>
         <link rel="stylesheet" type="text/css" href="css/list.css" />
         <style>
-            .linkid { background: #ddd; padding: 0 4px; border-radius: 4px; font-family: "Concourse T3"; font-size: 0.9rem; }
-
+            .linkid { background: #ddd; padding: 0 4px; border-radius: 4px; font-family: "Concourse T3"; font-size: 0.9rem; letter-spacing: 0.05em; }
+            .linkid:hover { text-decoration: none; background: orange; color: white; }
+            .twocol { display: grid; grid-template-columns: 1fr 1fr; text-align: justify; grid-gap: 16px; }
+            .twocol > div { border-bottom: solid 1px black; }
         </style>
     </head>
     <body>
@@ -51,7 +53,8 @@
             <main>
                 <h4 class="heading">Pride</h4>
                 <p><a class="linkid" href="https://news.ycombinator.com/item?id=33659852">hn/33659852</a><span>What is the mosts impactful thing you’ve built?</span></p>
-                <div>
+                <div class="twocol">
+                    <div>
                         I guess my most impactful project was a microprocessor-based weather station
                         for siting wind energy systems and fruit frost prediction in the early 1980s.
                         Turned out that one of my stations, being used by a frost predictor, was across
@@ -59,12 +62,84 @@
                         face down in the water. The frost predictor faxed temperature profiles for the
                         previous several hours to the hospital, where doctors determined the child
                         could be revived. She was.
-                </div>
-                <div>
-                    <p>
+                    </div>
+                    <div>
+                        <p>
+                        During a centralisation of public school local servers to a data centre, I
+                        created a consolidated library enquiry system. It served over 2,000 libraries,
+                        had 330 million titles, and had about a million users. It was efficient enough
+                        to run off my laptop, if need be.
+                        </p>
+                        <p>
+                        AFAIK it was one of the top five biggest library systems in the world at the
+                        time.
+                        </p>
+                        <p>
+                        I was asked to add some features that would have been too difficult in the old
+                        distributed system. Things like reading competitions, recommended reading lists
+                        by age, etc…
+                        </p>
+                        <p>
+                        I watched the effect of these changes — which took me mere days of effort to
+                        implement — and the combined result was that students read about a million
+                        additional books they would not have otherwise.
+                        </p>
+                        <p>
+                        I’ve had a far greater effect on the literacy of our state than any educator by
+                        orders of magnitude and hardly anyone in the department of education even knows
+                        my name!
+                        </p>
+                        <p>
+                        This was the project that made realise how huge the effort-to-effect ratio that
+                        can be when computers are involved…
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                        Impactful?
+                        </p>
+                        <p>
+                        Designed and deployed credit card readers used in gas pumps back in 1979. (Sold
+                        to Gasboy)
+                        </p>
+                        <p>
+                        Wrote a fine tuner to allow communication between satellites (precursor to
+                        TDRSS days). Still used to this day.
+                        </p>
+                        <p>
+                        Failover of IP in ATM switches (VVRP, PXE, secondary DHCP, secondary DNS,
+                        secondary LDAP, secondary NFS). While not invented here, it is still used today
+                        as this is a Common setup to this day.
+                        </p>
+                        <p>
+                        Printer drivers for big, big high-speed Xerox printers on BSD. Still used to
+                        this day by big, big high-speed printers.
+                        </p>
+                        <p>
+                        Also, early IDS products (pre-Snort) at line-speed. Sold to Netscreen.
+                        </p>
+                        <p>
+                        Easy zero-setup of DSL modem before some BellCore decided to complicate things
+                        (thus exploding their field deployment budgets; Southwestern Bell/Qwest enjoyed
+                        our profitable zero-setup). Sold to Siemens.
+                        </p>
+                        <p>
+                        1Gps IDS/IPS before selling it to 3Com/Hewlett-Packard Packard.
+                        </p>
+                        <p>
+                        Now, I'm dabbling in a few startups (JavaScript HIDS, Silent Connections,
+                        replacing the systemd-temp).
+                        </p>
+                                                                                                                                                                        <p>
+                                                                                                                                                                        Impact? It is more about personal pride but its impacts are still being felt
+                                                                                                                                                                        today.
+                                                                                                                                                                        </p>
+                    </div>
+                    <div>
+                        <p>
                         First job out of college, I was at a consulting firm doing software development
                         for DHS (Homeland Security). I got a lot of flack from my friends and family
-                        for "working for the devil", but the work was actually objectively good for
+                        for “working for the devil”, but the work was actually objectively good for
                         society - basically there was a big data problem where when an immigrant trying
                         to illegally cross into the US was apprehended, and if they were sick, their
                         custody would be transferred from US Customs and Border Protection (CBP) to
@@ -72,33 +147,25 @@
                         was zero data transparency between these two orgs, so when that transfer
                         happened it usually caused families to be separated (Sick dad, healthy mom and
                         child, sick dad gets brought in for care and never finds his family again).
-                        Since HHS and CBP don't have data communication and everything is siloed, the
-                        handoff was really poor and they often wouldn't find each other for months
+                        Since HHS and CBP don’t have data communication and everything is siloed, the
+                        handoff was really poor and they often wouldn’t find each other for months
                         afterwards.
-                    </p>
-                    <p>
+                        </p>
+                        <p>
                         There was a lot of talk about this in the news, and although the software I was
-                        working on didn't entirely fix the problem, it allowed the agencies to
-                        communicate better. Their data wasn't siloed, and families got separated for
+                        working on didn’t entirely fix the problem, it allowed the agencies to
+                        communicate better. Their data wasn’t siloed, and families got separated for
                         only a few days rather than (sometimes) permanently.
-                    </p>
-                    <p>
+                        </p>
+                        <p>
                         I really miss that job. The pay was atrocious and zero WLB, but everyone agreed
                         it was an important problem to solve, and I think the tool we had built really
                         was helping.
-                    </p>
+                        </p>
+                    </div>
+                    
                 </div>
             </main>
         </div>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-

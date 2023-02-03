@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Keyboard</title>
+        <style type="text/tailwindcss">
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+            @layer components {
+                .caps { @apply uppercase tracking-widest font-bold; }
+            }
+        </style>
+        <script src="https://cdn.tailwindcss.com?plugins=line-clamp"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    fontFamily: {
+                        t2: [ "Concourse T2" ],
+                        t3: [ "Concourse T3" ],
+                        t4: [ "Concourse T4" ],
+                        t6: [ "Concourse T6" ],
+                        t7: [ "Concourse T7" ],
+                        t8: [ "Concourse T8" ],
+
+                        c2: [ "Concourse T2" ],
+                        c3: [ "Concourse T3" ],
+                        c4: [ "Concourse T4" ],
+                        c6: [ "Concourse T6" ],
+                        c7: [ "Concourse T7" ],
+                        c8: [ "Concourse T8" ],
+                    },
+                },
+            }
+        </script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <link rel="stylesheet" href="../template_webdev/fonts/Concourse.css" />
+    </head>
+    <body>
+        <main class="p-2 border border-2 border-blue-400 font-t3">
+            <div class="grid grid-cols-2">
+                <span>CTRL-LEFT</span>
+                <span>Backward Word</span>
+
+                <span>CTRL-RIGHT</span>
+                <span>Forward Word</span>
+
+                <span>CTRL-SHIFT-LEFT</span>
+                <span>Backward Select Word</span>
+
+                <span>CTRL-SHIFT-RIGHT</span>
+                <span>Forward Select Word</span>
+
+                <span>CTRL-BACKSPACE</span>
+                <span>Delete Word Backward</span>
+
+                <span>CTRL-E</span>
+                <span>End of Line</span>
+
+                <span>CTRL-A</span>
+                <span>Beginning of Line</span>
+
+                <span>CTRL-B</span>
+                <span>Beginning of Line</span>
+
+                <span>CTRL-U</span>
+                <span>Delete from cursor to HOME</span>
+
+            </div>
+        </main>
+        <script>
+            const { createApp } = Vue
+            createApp({
+                data() {
+                    return {
+                        items: [ 'CDN - Tailwind', 'CDN - Vue.js', 'Concourse.css' ]
+                    }
+                },
+                mounted () {
+                }
+            }).mount('main')
+        </script>
+    </body>
+</html>
+
