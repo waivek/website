@@ -9,7 +9,8 @@
             @tailwind components;
             @tailwind utilities;
             @layer components {
-                .caps { @apply uppercase tracking-widest font-bold; }
+                .caps { @apply uppercase tracking-widest font-c8; }
+                h1 { @apply caps; }
             }
         </style>
         <script src="https://cdn.tailwindcss.com?plugins=line-clamp"></script>
@@ -39,6 +40,15 @@
     </head>
     <body>
         <main class="p-2 border border-2 border-blue-400 font-t3">
+            <h1>Shells</h1>
+            <div class="flex gap-2">
+                <span>cmd.exe</span>
+                <span>wsl.exe</span>
+                <span>wt.exe</span>
+                <span>python</span>
+                <span>sqlite</span>
+            </div>
+            <h1>Commands</h1>
             <div class="grid grid-cols-2">
                 <span>CTRL-LEFT</span>
                 <span>Backward Word</span>
@@ -55,18 +65,29 @@
                 <span>CTRL-BACKSPACE</span>
                 <span>Delete Word Backward</span>
 
+                <span>CTRL-W</span>
+                <span>Delete Word Backward</span>
+
                 <span>CTRL-E</span>
-                <span>End of Line</span>
+                <span>END</span>
 
                 <span>CTRL-A</span>
-                <span>Beginning of Line</span>
+                <span>HOME</span>
 
-                <span>CTRL-B</span>
-                <span>Beginning of Line</span>
+                <span>CTRL-B (vim)</span>
+                <span>HOME</span>
 
                 <span>CTRL-U</span>
                 <span>Delete from cursor to HOME</span>
 
+                <span>CTRL-K</span>
+                <span>Delete from cursor to END</span>
+
+                <span>CTRL-L</span>
+                <span>Clear Screen</span>
+
+                <span>CTRL-D</span>
+                <span>logout / exit</span>
             </div>
         </main>
         <script>
