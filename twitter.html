@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Twitter</title>
+        <style type="text/tailwindcss">
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+            @layer components {
+            }
+        </style>
+        <script src="https://cdn.tailwindcss.com?plugins=line-clamp"></script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <link rel="stylesheet" href="../template_webdev/fonts/Concourse.css" />
+        <style>
+main { font-family: "Concourse T3"; }
+h1 { font-family: "Concourse C6"; }
+        </style>
+    </head>
+    <body>
+        <main class="flex items-center justify-center h-screen">
+            <div class="shadow-md rounded overflow-clip">
+                <h1 class="uppercase tracking-widest px-4 pb-1 pt-2 border-t border-t-gray-100 border-t-2">{{ title }}</h1>
+                <div v-for="D in dictionaries">
+                    <a :href="twitter_url(D)" class="cursor-pointer px-4 py-0.5 group hover:bg-gray-50 flex gap-2 justify-between items-center border-x border-x-2 border-x-transparent hover:border-l-blue-500">
+                        <div class="flex flex-col">
+                            <span class="text-gray-400 text-xs italic group-hover:text-blue-600 group-hover:font-bold">@{{ D.handle }}</span>
+                            <span class="group-hover:font-bold group-hover:underline underline-offset-2">{{ D.name }}</span>
+                        </div>
+                        <span v-html='twitter_svg'></span>
+                    </a>
+                </div>
+            </div>
+        </main>
+        <script>
+            const { createApp } = Vue
+            createApp({
+                data() {
+                    return {
+                        title: 'Twitter',
+                        dictionaries: [
+                            { "name": "Jonathan Blow",    "handle": "jonathan_blow" },
+                            { "name": "John Carmack",     "handle": "id_aa_carmack" },
+                            { "name": "Pieter Levels",    "handle": "levelsio"      },
+                            { "name": "Tony Dinh"    ,    "handle": "tdinh_me"      },
+                            { "name": "Adam Wathan"  ,    "handle": "adamwathan"    },
+                            { "name": "Rasmus Andersson", "handle": "rsms"          },
+                            { "name": "Steve Schoger",    "handle": "steveschoger"  },
+                            { "name": "Nikita Bier",      "handle": "nikitabier"    },
+                        ],
+                        twitter_svg: '<svg class="fill-gray-200 group-hover:fill-blue-500" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="24px" height="24px"><path d="M42,12.429c-1.323,0.586-2.746,0.977-4.247,1.162c1.526-0.906,2.7-2.351,3.251-4.058c-1.428,0.837-3.01,1.452-4.693,1.776C34.967,9.884,33.05,9,30.926,9c-4.08,0-7.387,3.278-7.387,7.32c0,0.572,0.067,1.129,0.193,1.67c-6.138-0.308-11.582-3.226-15.224-7.654c-0.64,1.082-1,2.349-1,3.686c0,2.541,1.301,4.778,3.285,6.096c-1.211-0.037-2.351-0.374-3.349-0.914c0,0.022,0,0.055,0,0.086c0,3.551,2.547,6.508,5.923,7.181c-0.617,0.169-1.269,0.263-1.941,0.263c-0.477,0-0.942-0.054-1.392-0.135c0.94,2.902,3.667,5.023,6.898,5.086c-2.528,1.96-5.712,3.134-9.174,3.134c-0.598,0-1.183-0.034-1.761-0.104C9.268,36.786,13.152,38,17.321,38c13.585,0,21.017-11.156,21.017-20.834c0-0.317-0.01-0.633-0.025-0.945C39.763,15.197,41.013,13.905,42,12.429"/></svg>',
+
+                    }
+                },
+                methods: {
+                    twitter_url (D) {
+                        return "https://mobile.twitter.com/" + D.handle;
+                    }
+                }
+            }).mount('main')
+        </script>
+    </body>
+</html>
+

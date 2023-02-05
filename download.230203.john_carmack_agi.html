@@ -5,26 +5,38 @@
     <meta content="width=device-width,initial-scale=1.0" name="viewport">
     <title>John Carmack AGI</title>
     <style>
-        html { }
+        html { --box_shadow_color: black; }
         h1, h2, h3, h4, h5, h6, body, p, hr, pre, header { margin: 0; padding: 0; }
         a { text-decoration: none; }
-        a, a:visited { color: black; border-bottom: dotted 1px black; box-shadow: inset 0   0   0 0 black; }
-        a:hover      { color: white; border-bottom: dotted 1px white; box-shadow: inset 0 -20px 0 0 black; }
-        a, a:hover { transition-property: box-shadow,color,border-bottom-color; transition-duration: 0.1s; transition-timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96); /* */ } 
+        a, a:visited { color: black; border-bottom: dotted 1px black; box-shadow: inset 0   0   0 0 var(--box_shadow_color); }
+        a:hover      { color: white; border-bottom: dotted 1px white; box-shadow: inset 0 -1.166667em 0 0 var(--box_shadow_color); }
+        a, a:hover { transition-property: box-shadow,color,border-bottom-color; transition-duration: 0.1s; transition-timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96); } 
         a:hover    { transition-delay: 0.08s; }
         a          { transition-delay: 0s;    }
 
-        main { font-size: 24px; max-width: 900px; margin: 0 auto; font-family: "Equity Text A"; line-height: 1.35; text-align: justify; }
+        main { font-size: 24px; max-width: 900px; margin: 0 auto; font-family: "Vollkorn"; line-height: 1.4; text-align: justify; }
         blockquote { font-weight: bold; }
+        h1 { font-size: 48px; font-family: "Vollkorn"; text-transform: uppercase; letter-spacing: 0.05em; text-align: center; }
+        h2 { font-size: 1em; font-family: "Vollkorn"; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; line-height: 1.3; }
+        img { max-width: 852px; border: solid 2px black; padding: 24px; background: black; display: none; }
+        main { display: flex; flex-direction: column; gap: 1em; padding: 2em 1em; }
+        .biblio { text-align: center; font-family: "Equity Text A"; font-feature-settings: 'tnum'; display: flex; flex-direction: column; color: #888; }
+        .biblio { --box_shadow_color: #888; }
+        .biblio a { color: inherit; }
+        .biblio a:hover { color: white; }
+
+
 
     </style>
 </head>
 <body>
     <main>
-        <h2>Exclusive Q&amp;A: John Carmack’s ‘Different Path’ to Artificial General Intelligence</h2>
-        <h3>The iconic Dallas game developer, rocket engineer, and VR visionary has pivoted to an audacious new challenge: developing artificial general intelligence—a form of AI that goes beyond mimicking human intelligence to understanding things and solving problems. Carmack sees a 60% chance of achieving initial success in AGI by 2030. Here’s how, and why, he’s working independently to make it happen.</h3>
-        by <a href="https://dallasinnovates.com/author/glenn-hunter/">Glenn Hunter</a> • Feb 2, 2023 <img src="https://s24806.pcdn.co/wp-content/uploads/2023/02/JohnCarmack_AI-coverart_970.jpg">
-        <p><strong>North Texas’ resident tech genius, John Carmack, is taking aim now at his most ambitious target: solving the world’s biggest computer-science problem by developing artificial general intelligence. That’s a form of AI whose machines can understand, learn, and perform any intellectual task that humans can do.</strong></p>
+        <h1>John Carmack’s <br>‘Different Path’ to AGI</h1>
+        <div class="biblio">
+            <span><a href="https://dallasinnovates.com/author/glenn-hunter/">Glenn Hunter</a> </span>
+            <span class="date">Feb 2, 2023</span> 
+        </div>
+        <img src="https://s24806.pcdn.co/wp-content/uploads/2023/02/JohnCarmack_AI-coverart_970.jpg">
         <p>Inside his multimillion-dollar manse on Highland Park’s Beverly Drive, Carmack, 52, is <a href="https://dallasinnovates.com/carmacks-quest-artificial-general-intelligence/">working to achieve AGI</a> through his startup <a href="https://dallasinnovates.com/legendary-dallas-innovator-john-carmack-raises-20m-for-artificial-general-intelligence-startup-keen-technologies/">Keen Technologies</a> , which raised $20 million in a financing round in August from investors including Austin-based Capital Factory.</p>
         <p>This is the “fourth major phase” of his career, Carmack says, following stints in computers and pioneering video games with Mesquite’s id Software (founded in 1991), suborbital space rocketry at Mesquite-based Armadillo Aerospace (2000-2013), and virtual reality with Oculus VR, which Facebook (now Meta) acquired for $2 billion in 2014. Carmack stepped away from Oculus’ CTO role in late 2019 to become consulting CTO for the VR venture, proclaiming his intention to focus on AGI. He <a href="https://dallasinnovates.com/legendary-dallas-innovator-john-carmack-raises-20m-for-artificial-general-intelligence-startup-keen-technologies/">left Meta in December</a> to concentrate full-time on Keen.</p>
         <p>We sat down with the tech icon during a rare break in his work to conduct the following exclusive interview—a frank conversation that took Dallas Innovates weeks to arrange. The Q&amp;A has been edited for length and clarity.</p>
@@ -38,7 +50,6 @@
         <h2>What compelled your interest in the topic in the first place?</h2>
         <p>We’re in the midst of a scientific revolution right now, because 10 years ago, there was not the sense that AI was working. We’ve had these AI ‘winters’—a couple of them over the decades, in fact. It’s funny, because virtual reality also went through this: It had almost been a bad word because it had crashed so bad in the 1990s, people didn’t even want to talk about it.</p>
         <p>And artificial intelligence had a couple of those cycles where hype spins up, money flows in, it underperforms, and then it crashes, and nobody wants to talk about it. But this last decade was different, and people who don’t notice how different it is this time aren’t paying attention, because the number of absolutely astounding things that have happened in the last decade with machine learning is really profound.</p><img src="https://s24806.pcdn.co/wp-content/uploads/2023/02/JohnCarmack_MNS2771-bookshelf-970.jpg">
-        <p id="caption-attachment-231915">[Photo of John Carmack by Michael Samples]</p>
         <p>That was the thing that really pushed me toward saying, ‘All right, it’s probably time to take a serious look at this.’ And it was interesting for me, because I had a technical bystander’s understanding of machine learning and AI, where I had read some of the seminal books even in my teenage years, and I knew about symbolic AI and all those types of things. So, my brain knew a little bit about these things, but I wasn’t following what was going on because I was busy with my work with the games, the aerospace, and the virtual reality.</p>
         <p>You get to that point where you recognize, ‘Okay, I think there’s probably something here I need to sort out—what is hype versus what is the reality?’ So I did what I usually do: All of my real abilities have always come from understanding things fundamentally, at the very deepest levels, where there are insights that you only get from knowing how things happen from the very bottom.</p>
         <p>So, about four years ago, I went on one of my week-long retreats, where I just take a computer and a stack of reference materials and I spend a week kind of reimplementing the fundamentals of the industry. And getting to the point where it’s like, ‘All right, I understand this well enough to have a serious conversation with a researcher about it.’ And I was pretty excited about getting to that level of understanding.</p>
@@ -47,9 +58,8 @@
         </blockquote>
         <p>Then after that, Sam Altman of OpenAI invited me to a conference—the Y Combinator’s YC 120—and, while historically I never go to these types of things (because of my hermit tendencies), this time I decided to attend. It turned out it was really orchestrated by Sam to jump me for a job pitch, because he had Greg Brockman and Ilya Sutskever of OpenAI come and try to get me to go to OpenAI. I was pretty flattered by that, because I was not a machine learning expert by any means. I was a well-known systems engineer on a lot of this stuff, but I only had this basic baseline knowledge [of AI]. So, the idea that they were the leaders in the field, and they thought I was worth trying to get there, that really planted the seed to make me think about the importance of everything that’s going on and what role I could play in it.</p>
         <p>So I asked Ilya, their chief scientist, for a reading list. This is my path, my way of doing things: give me a stack of all the stuff I need to know to actually be relevant in this space. And he gave me a list of like 40 research papers and said, ‘If you really learn all of these, you’ll know 90% of what matters today.’ And I did. I plowed through all those things and it all started sorting out in my head.</p><img src="https://s24806.pcdn.co/wp-content/uploads/2023/02/JohnCarmack_MNS2722-VR-970.jpg">
-        <p>John Carmack in his VR room. [Photo: Michael Samples]</p>
         <h2>You were still with Meta at this time working on virtual reality, right?</h2>
-        <p>Yes, and I was having some real issues at Meta with large-scale strategic directi ons. I’m sure you’ve seen some of the headlines about how much money they’re spending, and I thought large fractions were really poorly spent. I was having some challenges there, and I was at the end of my five-year buyout contract from when Oculus was acquired. That was when I decided, ‘Okay, I’m going to get more serious about this artificial general intelligence work.’</p>
+        <p>Yes, and I was having some real issues at Meta with large-scale strategic directions. I’m sure you’ve seen some of the headlines about how much money they’re spending, and I thought large fractions were really poorly spent. I was having some challenges there, and I was at the end of my five-year buyout contract from when Oculus was acquired. That was when I decided, ‘Okay, I’m going to get more serious about this artificial general intelligence work.’</p>
         <p>All the things that I’d done before—in games, rockets, virtual reality—I was aiming for something that wasn’t there yet, but I had a clear line of sight. It’s different for AGI, though, because nobody knows how to do it. It’s not a simple matter of engineering. But there are all these tantalizing clues given what happened in this last decade—it’s like a handful of relatively simple ideas. They’re not these extreme black-magic mathematical wizardries—a lot of them are relatively simple techniques that make perfect sense to me now that I understand them. And it feels like we are a half-dozen more insights away from having the equivalent of our biological agents.</p>
         <p>I made an estimate three or four years ago that I think there’s a 50-50 chance that we’ll have clear signs of life in 2030 of artificial general intelligence. That doesn’t necessarily mean a huge economic impact for anything yet, but just that we have a being that’s running on computers that most people recognize as intelligent and conscious and sort of on the same level of what we humans are doing. And after three years of hardcore research on all this, I haven’t changed my prediction. In fact, I probably even slightly bumped it up to maybe a 60% chance in 2030. And if you go up to, say, 2050, I’ve got it at like a 95% chance.</p>
         <h2>Many are predicting stupendous, earth-shattering things will result from this, right?</h2>
@@ -61,7 +71,6 @@
         <h2>Why is it so important to achieve a system that performs tasks that humans can do? What’s wrong with humans doing human tasks?</h2>
         <p>Well, you can tie that into a lot of questions, like, ‘Is human population a good thing?’ ‘Is immigration a good thing, where we seem to have been able to take advantage of new sources of humanity that are willing to engage in economic activities and be directed by the markets?’</p>
         <p>The world is a hugely better place with our 8 billion people than it was when there were 50 million people kind of like living in caves and whatever. So, I am confident that the sum total of value and progress in humanity will accelerate extraordinarily with welcoming artificial beings into our community of working on things. I think there will be enormous value created from all that.</p><img src="https://s24806.pcdn.co/wp-content/uploads/2023/02/JohnCarmack_MNS2737-970.jpg">
-        <p id="caption-attachment-231914">[Photo of John Carmack by Michael Samples]</p>
         <h2>So, how do you see the particular route that will get to achieving AGI?</h2>
         <p>There’s a path that leads from today’s virtual assistants—your Siris, Alexas, and Google Assistants—to being more and more helpful, taking over more and more tasks. But those are fairly brittle, specialized imple mentations of things—various knowledge representations, voice synthesis, voice understanding—and that’s probably not the path to a general intelligence that’s flexible for a whole bunch of purposes. They have thousands of programmers, literally, working right now on adding capabilities to those assistants, and there is near-term value in that. The programming work that’s done to stitch those things together is going to be throw-away programming. But that path doesn’t lead to the general agent that can learn any task that a human can.</p>
         <p>The things dealing with perception—like understanding someone’s voice, and even synthesizing voices naturally—those were the things that computers did not do well at all 10 or 15 years ago. The joke in the ‘90s was that you had a computer that could beat the world chess champion handily, but a computer couldn’t do things that a 2-year-old could do: It couldn’t tell a cat from a dog. There was no computer product in the world that could do the simple trivial perception things. Because, it turned out, that’s what our brain actually does: It’s much more about perception and pattern matching. And it was sort of the sophistry of the people then to think instead that it’s about these philosophical symbol manipulation things. And that led AI astray, really, for decades.</p>
