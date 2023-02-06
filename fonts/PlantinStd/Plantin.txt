@@ -1,0 +1,23 @@
+{{{
+Plantin Pro:
+    Plantin Pro 300.Light
+    Plantin Pro 300.Light Italic
+    Plantin Pro 400
+    Plantin Pro 400.Italic
+    Plantin Pro 600.Semibold
+    Plantin Pro 600.Semibold Italic
+    Plantin Pro 700.Bold
+    Plantin Pro 700.Bold Italic
+    Plantin Pro Condensed 700.Bold
+}}}
+
+Plantin Std:
+    1. Plantin Std 300.Light
+    2. Plantin Std 300.Light Italic
+    3. Plantin Std 400
+    4. Plantin Std 400.Italic
+    5. Plantin Std 600.Semibold
+    6. Plantin Std 600.Semibold Italic
+    7. Plantin Std 700.Bold
+    8. Plantin Std 700.Bold Italic
+    9. Plantin Std Condensed 700.Bold

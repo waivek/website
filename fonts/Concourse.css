@@ -1,0 +1,36 @@
+@font-face { font-family: "Concourse C2" ; src: url("Concourse/concourse_c2_regular.woff") format("woff")     ; font-weight:normal ; }
+@font-face { font-family: "Concourse C2" ; src: url("Concourse/concourse_c2_bold.woff") format("woff")        ; font-weight:bold   ; }
+
+@font-face { font-family: "Concourse C3" ; src: url("Concourse/concourse_c3_regular.woff") format("woff")     ; font-weight:normal ; }
+@font-face { font-family: "Concourse C3" ; src: url("Concourse/concourse_c3_bold.woff") format("woff")        ; font-weight:bold   ; }
+
+@font-face { font-family: "Concourse C4" ; src: url("Concourse/concourse_c4_regular.woff") format("woff")     ; font-weight:normal ; }
+@font-face { font-family: "Concourse C4" ; src: url("Concourse/concourse_c4_bold.woff") format("woff")        ; font-weight:bold   ; }
+
+@font-face { font-family: "Concourse C6" ; src: url("Concourse/concourse_c6_regular.woff") format("woff")     ; font-weight:normal ; }
+@font-face { font-family: "Concourse C7" ; src: url("Concourse/concourse_c7_regular.woff") format("woff")     ; font-weight:normal ; }
+@font-face { font-family: "Concourse C8" ; src: url("Concourse/concourse_c8_regular.woff") format("woff")     ; font-weight:normal ; }
+
+@font-face { font-family: "Concourse T2" ; src: url("Concourse/concourse_t2_regular.woff") format("woff")     ; font-weight:normal ; }
+@font-face { font-family: "Concourse T2" ; src: url("Concourse/concourse_t2_italic.woff") format("woff")      ; font-weight:normal ; font-style:italic ; }
+@font-face { font-family: "Concourse T2" ; src: url("Concourse/concourse_t2_bold.woff") format("woff")        ; font-weight:bold   ; }
+@font-face { font-family: "Concourse T2" ; src: url("Concourse/concourse_t2_bold_italic.woff") format("woff") ; font-weight:bold   ; font-style:italic ; }
+
+@font-face { font-family: "Concourse T3" ; src: url("Concourse/concourse_t3_regular.woff") format("woff")     ; font-weight:normal ; }
+@font-face { font-family: "Concourse T3" ; src: url("Concourse/concourse_t3_italic.woff") format("woff")      ; font-weight:normal ; font-style:italic ; }
+@font-face { font-family: "Concourse T3" ; src: url("Concourse/concourse_t3_bold.woff") format("woff")        ; font-weight:bold   ; }
+@font-face { font-family: "Concourse T3" ; src: url("Concourse/concourse_t3_bold_italic.woff") format("woff") ; font-weight:bold   ; font-style:italic ; }
+
+@font-face { font-family: "Concourse T4" ; src: url("Concourse/concourse_t4_regular.woff") format("woff")     ; font-weight:normal ; }
+@font-face { font-family: "Concourse T4" ; src: url("Concourse/concourse_t4_italic.woff") format("woff")      ; font-weight:normal ; font-style:italic ; }
+@font-face { font-family: "Concourse T4" ; src: url("Concourse/concourse_t4_bold.woff") format("woff")        ; font-weight:bold   ; }
+@font-face { font-family: "Concourse T4" ; src: url("Concourse/concourse_t4_bold_italic.woff") format("woff") ; font-weight:bold   ; font-style:italic ; }
+
+@font-face { font-family: "Concourse T6" ; src: url("Concourse/concourse_t6_regular.woff") format("woff")     ; font-weight:normal ; }
+@font-face { font-family: "Concourse T6" ; src: url("Concourse/concourse_t6_italic.woff") format("woff")      ; font-weight:normal ; font-style:italic ; }
+
+@font-face { font-family: "Concourse T7" ; src: url("Concourse/concourse_t7_regular.woff") format("woff")     ; font-weight:normal ; }
+@font-face { font-family: "Concourse T7" ; src: url("Concourse/concourse_t7_italic.woff") format("woff")      ; font-weight:normal ; font-style:italic ; }
+
+@font-face { font-family: "Concourse T8" ; src: url("Concourse/concourse_t8_regular.woff") format("woff")     ; font-weight:normal ; }
+@font-face { font-family: "Concourse T8" ; src: url("Concourse/concourse_t8_italic.woff") format("woff")      ; font-weight:normal ; font-style:italic ; }

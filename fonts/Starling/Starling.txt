@@ -1,0 +1,10 @@
+Starling 350.Book  
+Starling 350.Book Italic  
+Starling 400.Regular  
+Starling 400.Italic  
+Starling 700.Bold  
+Starling 700.Bold Italic  
+Starling 900.Black  
+Starling 900.Black Italic  
+Starling 950.Ultra  
+Starling 950.Ultra Italic  

@@ -1,0 +1,5 @@
+@font-face { font-family: 'Karla webfont'; font-weight: 400; font-style: normal; src: url('Karla-Regular.woff2') format('woff2'), url('Karla-Regular.woff') format('woff'), url('Karla-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Karla webfont'; font-weight: 400; font-style: italic; src: url('Karla-Italic.woff2') format('woff2'), url('Karla-Italic.woff') format('woff'), url('Karla-Italic.ttf') format('truetype'); }
+@font-face { font-family: 'Karla webfont'; font-weight: 700; font-style: normal; src: url('Karla-Bold.woff2') format('woff2'), url('Karla-Bold.woff') format('woff'), url('Karla-Bold.ttf') format('truetype'); }
+@font-face { font-family: 'Karla webfont'; font-weight: 700; font-style: italic; src: url('Karla-BoldItalic.woff2') format('woff2'), url('Karla-BoldItalic.woff') format('woff'), url('Karla-BoldItalic.ttf') format('truetype'); }
+

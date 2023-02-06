@@ -1,0 +1,27 @@
+# Get `token` parameter from the XHR requests on the Adobe website:
+# https://fonts.adobe.com/fonts/freight-text
+
+https://use.typekit.net/pf/tk/lstb/n3/m?token=UWiewzNGqfaXgl50sfTX597VqiNVO%2BVsJvzyIM5SabTjZinSwqaidRKypEX3LMfHdBUibNmD%2BPCRx%2F5yCXr4NA%3D%3D
+  out=FreightText Pro-Light.otf
+https://use.typekit.net/pf/tk/lstb/i3/m?token=UWiewzNGqfaXgl50sfTX597VqiNVO%2BVsJvzyIM5SabTjZinSwqaidRKypEX3LMfHdBUibNmD%2BPCRx%2F5yCXr4NA%3D%3D
+  out=FreightText Pro-LightItalic.otf
+https://use.typekit.net/pf/tk/lstb/n4/m?token=UWiewzNGqfaXgl50sfTX597VqiNVO%2BVsJvzyIM5SabTjZinSwqaidRKypEX3LMfHdBUibNmD%2BPCRx%2F5yCXr4NA%3D%3D
+  out=FreightText Pro-Book.otf
+https://use.typekit.net/pf/tk/lstb/i4/m?token=UWiewzNGqfaXgl50sfTX597VqiNVO%2BVsJvzyIM5SabTjZinSwqaidRKypEX3LMfHdBUibNmD%2BPCRx%2F5yCXr4NA%3D%3D
+  out=FreightText Pro-BookItalic.otf
+https://use.typekit.net/pf/tk/lstb/n5/m?token=UWiewzNGqfaXgl50sfTX597VqiNVO%2BVsJvzyIM5SabTjZinSwqaidRKypEX3LMfHdBUibNmD%2BPCRx%2F5yCXr4NA%3D%3D
+  out=FreightText Pro-Medium.otf
+https://use.typekit.net/pf/tk/lstb/i5/m?token=UWiewzNGqfaXgl50sfTX597VqiNVO%2BVsJvzyIM5SabTjZinSwqaidRKypEX3LMfHdBUibNmD%2BPCRx%2F5yCXr4NA%3D%3D
+  out=FreightText Pro-MediumItalic.otf
+https://use.typekit.net/pf/tk/lstb/n6/m?token=UWiewzNGqfaXgl50sfTX597VqiNVO%2BVsJvzyIM5SabTjZinSwqaidRKypEX3LMfHdBUibNmD%2BPCRx%2F5yCXr4NA%3D%3D
+  out=FreightText Pro-Semibold.otf
+https://use.typekit.net/pf/tk/lstb/i6/m?token=UWiewzNGqfaXgl50sfTX597VqiNVO%2BVsJvzyIM5SabTjZinSwqaidRKypEX3LMfHdBUibNmD%2BPCRx%2F5yCXr4NA%3D%3D
+  out=FreightText Pro-SemiboldItalic.otf
+https://use.typekit.net/pf/tk/lstb/n7/m?token=UWiewzNGqfaXgl50sfTX597VqiNVO%2BVsJvzyIM5SabTjZinSwqaidRKypEX3LMfHdBUibNmD%2BPCRx%2F5yCXr4NA%3D%3D
+  out=FreightText Pro-Bold.otf
+https://use.typekit.net/pf/tk/lstb/i7/m?token=UWiewzNGqfaXgl50sfTX597VqiNVO%2BVsJvzyIM5SabTjZinSwqaidRKypEX3LMfHdBUibNmD%2BPCRx%2F5yCXr4NA%3D%3D
+  out=FreightText Pro-BoldItalic.otf
+https://use.typekit.net/pf/tk/lstb/n9/m?token=UWiewzNGqfaXgl50sfTX597VqiNVO%2BVsJvzyIM5SabTjZinSwqaidRKypEX3LMfHdBUibNmD%2BPCRx%2F5yCXr4NA%3D%3D
+  out=FreightText Pro-Black.otf
+https://use.typekit.net/pf/tk/lstb/i9/m?token=UWiewzNGqfaXgl50sfTX597VqiNVO%2BVsJvzyIM5SabTjZinSwqaidRKypEX3LMfHdBUibNmD%2BPCRx%2F5yCXr4NA%3D%3D
+  out=FreightText Pro-BlackItalic.otf
