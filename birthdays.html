@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Birthdays</title>
+        <style type="text/tailwindcss">
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+            @layer components {
+                .caps { @apply uppercase tracking-widest font-bold; }
+            }
+        </style>
+        <script src="https://cdn.tailwindcss.com?plugins=line-clamp"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    fontFamily: {
+                        t2: [ "Concourse T2" ],
+                        t3: [ "Concourse T3" ],
+                        t4: [ "Concourse T4" ],
+                        t6: [ "Concourse T6" ],
+                        t7: [ "Concourse T7" ],
+                        t8: [ "Concourse T8" ],
+
+                        c2: [ "Concourse T2" ],
+                        c3: [ "Concourse T3" ],
+                        c4: [ "Concourse T4" ],
+                        c6: [ "Concourse T6" ],
+                        c7: [ "Concourse T7" ],
+                        c8: [ "Concourse T8" ],
+                    },
+                },
+            }
+        </script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <link rel="stylesheet" href="../template_webdev/fonts/Concourse.css" />
+    </head>
+    <body>
+        <main class="p-2 border border-2 border-blue-400 font-t3 h-screen bg-slate-700 text-slate-200">
+            <div class="flex flex-wrap gap-2">
+                <div v-for="D of birthday_dictionaries" class="font-c4 flex flex-col gap-2 shadow rounded p-2 items-center bg-slate-600 border border-2 border-slate-500">
+                    <span>{{ D.name }}</span>
+                    <span class="text-xl">{{ get_age(D.birthdate) }}</span>
+                    <span>{{ D.birthdate }}</span>
+                    <span>in {{ days_to_next_birthday(D.birthdate) }}</span>
+                </div>
+            </div>
+        </main>
+        <script>
+            const { createApp } = Vue
+            createApp({
+                data() {
+                    return {
+                        birthday_dictionaries: [
+                            { "name": "Dipannita Burman", "birthdate": "12 Jan 1966" },
+                            { "name": "Kshitij Burman", "birthdate": "12 June 1998" },
+                            { "name": "Medhavi Bose", "birthdate": "30 June 1997" },
+                            { "name": "Sachin Burman", "birthdate": "23 May 1965" }
+                        ],
+                    }
+                },
+                methods: {
+                    get_age(birthdate) {
+                      const birth = new Date(birthdate);
+                      const now = new Date();
+                      const diff = now.getTime() - birth.getTime();
+                      const ageDate = new Date(diff);
+                      return Math.abs(ageDate.getUTCFullYear() - 1970);
+                    },
+                    days_to_next_birthday(birthdate) {
+                        const now = new Date();
+                        const birth = new Date(birthdate);
+                        birth.setFullYear(now.getFullYear());
+                        if (birth.getTime() < now.getTime()) {
+                            birth.setFullYear(now.getFullYear() + 1);
+                        }
+                        const diff = birth.getTime() - now.getTime();
+                        const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+                        if (days > 30) {
+                            const months = Math.floor(days / 30);
+                            const remainingDays = days % 30;
+                            return `${months} month${months > 1 ? 's' : ''} (${days} days)`;
+                        } else if (days > 7) {
+                            const weeks = Math.floor(days / 7);
+                            const remainingDays = days % 7;
+                            return `${weeks} week${weeks > 1 ? 's' : ''} (${days} days)`;
+                        } else if (days > 1) {
+                            return `${days} days`;
+                        } else {
+                            return `${days} day`;
+                        }
+                    }
+                },
+                mounted () {
+                }
+            }).mount('main')
+        </script>
+    </body>
+</html>
+
