@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Tailwind</title>
+        <style type="text/tailwindcss">
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+            @layer components {
+                .caps { @apply uppercase tracking-widest font-bold; }
+            }
+        </style>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    fontFamily: {
+                        t2: [ "Concourse T2" ],
+                        t3: [ "Concourse T3" ],
+                        t4: [ "Concourse T4" ],
+                        t6: [ "Concourse T6" ],
+                        t7: [ "Concourse T7" ],
+                        t8: [ "Concourse T8" ],
+
+                        c2: [ "Concourse T2" ],
+                        c3: [ "Concourse T3" ],
+                        c4: [ "Concourse T4" ],
+                        c6: [ "Concourse T6" ],
+                        c7: [ "Concourse T7" ],
+                        c8: [ "Concourse T8" ],
+                    },
+                },
+            }
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+        <link rel="stylesheet" href="fonts/Concourse.css" />
+    </head>
+    <body>
+        <main class="p-2 border border-2 border-blue-400 font-t3">
+            <div class="caps font-c4">
+                <div>{{ formattedTime }}</div>
+                <div>{{ staticTime }}</div>
+            </div>
+        </main>
+        <script>
+            const { createApp } = Vue
+            createApp({
+                data() {
+                    return {
+                        now: new Date()
+                    }
+                },
+                methods: {
+                    hhmmss(date) {
+                        const hours = date.getHours().toString().padStart(2, '0');
+                        const minutes = date.getMinutes().toString().padStart(2, '0');
+                        const seconds = date.getSeconds().toString().padStart(2, '0');
+                        return `${hours}:${minutes}:${seconds}`;
+                    }
+                },
+                computed: {
+                    formattedTime() {
+                        return this.hhmmss(this.now);
+                    },
+                    staticTime() {
+                        return this.hhmmss(new Date());
+                    }
+                },
+                mounted() {
+                    setInterval(() => { this.now = new Date(); }, 1000)
+                }
+            }).mount('main')
+        </script>
+    </body>
+</html>
+

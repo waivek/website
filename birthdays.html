@@ -10,9 +10,10 @@
             @tailwind utilities;
             @layer components {
                 .caps { @apply uppercase tracking-widest font-bold; }
+                .text-custom { font-size: 24px !important; }
             }
         </style>
-        <script src="https://cdn.tailwindcss.com?plugins=line-clamp"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {
                 theme: {
@@ -34,17 +35,41 @@
                 },
             }
         </script>
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <link rel="stylesheet" href="../template_webdev/fonts/Concourse.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,-25" />
+        <link rel="stylesheet" href="fonts/Concourse.css" />
     </head>
     <body>
-        <main class="p-2 border border-2 border-blue-400 font-t3 h-screen bg-slate-700 text-slate-200">
-            <div class="flex flex-wrap gap-2">
-                <div v-for="D of birthday_dictionaries" class="font-c4 flex flex-col gap-2 shadow rounded p-2 items-center bg-slate-600 border border-2 border-slate-500">
-                    <span>{{ D.name }}</span>
-                    <span class="text-xl">{{ get_age(D.birthdate) }}</span>
-                    <span>{{ D.birthdate }}</span>
-                    <span>in {{ days_to_next_birthday(D.birthdate) }}</span>
+        <main class="p-2 font-t3 h-screen bg-slate-700 text-slate-200">
+            <!--
+            <div class="px-2 py-1 bg-slate-600 w-max rounded border border-slate-500 text-slate-400">
+                <div>Visibility Change Count: {{ visibility_change_counter }}</div>
+                <div>Current Time: {{ new Date().getHours().toString().padStart(2, '0') + ':' + new Date().getMinutes().toString().padStart(2, '0') + ':' + new Date().getSeconds().toString().padStart(2, '0') }}</div>
+            </div>
+            -->
+            <div class="flex flex-col h-full justify-evenly items-center">
+                <div class="flex flex-wrap gap-4">
+                    <div v-for="D of birthday_dictionaries_sorted" class="font-c4 flex flex-col gap-4 rounded p-2 items-center bg-slate-600 border border-slate-500">
+                        <span class="caps bg-slate-700 px-2 rounded border border-slate-500 px-4 py-2 shadow shadow-slate-700">{{ D.name }}</span>
+                        <div class="bg-slate-500 border border-slate-400 p-2 rounded text-slate-100 ">
+                            <span class="text-xl">{{ get_age(D.birthdate) }}</span>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-2 leading-none">
+                                <span class="material-symbols-rounded text-custom">calendar_month</span>
+                                <span :title="D.birthdate">{{ get_day_and_month(D.birthdate) }}</span>
+                            </div>
+                            <div class="flex items-center gap-2 leading-none">
+                                <span class="material-symbols-rounded text-custom">cake</span>
+                                <span>{{ days_to_next_birthday(D.birthdate) }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="caps bg-slate-600 text-slate-200 border border-slate-500 rounded p-8 flex flex-col gap-4 items-center">
+                    <span>Today is</span>
+                    <span class="text-9xl tracking-widest">{{ get_day_and_month_name(Date.now()) }}</span>
+                    <span class="text-4xl">{{ new Date().getFullYear() }}</span>
                 </div>
             </div>
         </main>
@@ -52,22 +77,89 @@
             const { createApp } = Vue
             createApp({
                 data() {
+
+                    function getMothersDay() {
+                        // second sunday of may
+                        var year = new Date().getFullYear();
+                        var date = new Date(year, 4, 7);
+                        date.setDate(7 + (7 - date.getDay()));
+                        if (date > new Date()) {
+                            return date;
+                        }
+                        var date = new Date(year+1, 4, 7);
+                        date.setDate(7 + (7 - date.getDay()));
+                        return date;
+                    }
+                    function getFathersDay(year) {
+                        // third sunday of june
+                        var year = new Date().getFullYear();
+                        var date = new Date(year, 5, 7);
+                        date.setDate(14 + (7 - date.getDay()));
+                        if (date > new Date()) {
+                            return date;
+                        }
+                        var date = new Date(year+1, 5, 7);
+                        date.setDate(14 + (7 - date.getDay()));
+                        return date;
+
+                    }
+                    const mothers_day_date = getMothersDay(2023);
+                    const mothers_day_string = mothers_day_date.toLocaleString('default', { month: 'short' }) + ' ' + mothers_day_date.getDate() + ' ' + mothers_day_date.getFullYear();
+                    const fathers_day_date = getFathersDay(2023);
+                    const fathers_day_string = fathers_day_date.toLocaleString('default', { month: 'short' }) + ' ' + fathers_day_date.getDate() + ' ' + fathers_day_date.getFullYear();
                     return {
+                        visibility_change_counter: 0,
                         birthday_dictionaries: [
                             { "name": "Dipannita Burman", "birthdate": "12 Jan 1966" },
                             { "name": "Kshitij Burman", "birthdate": "12 June 1998" },
                             { "name": "Medhavi Bose", "birthdate": "30 June 1997" },
-                            { "name": "Sachin Burman", "birthdate": "23 May 1965" }
+                            { "name": "Sachin Burman", "birthdate": "23 May 1965" },
+                            { "name": "Lee & Xoya", "birthdate": "17 May 2010" },
+                            { "name": "Mother’s Day", "birthdate": mothers_day_string },
+                            { "name": "Father’s Day", "birthdate": fathers_day_string }
                         ],
                     }
                 },
+                computed: {
+                    birthday_dictionaries_sorted () {
+                        return this.birthday_dictionaries.sort((a, b) => {
+                            const a_days = this.days_to_next_birthday_int(a.birthdate);
+                            const b_days = this.days_to_next_birthday_int(b.birthdate);
+                            return a_days - b_days;
+                        });
+                    }
+                },
                 methods: {
+                    get_day_and_month_name (birthdate) {
+                        const birth = new Date(birthdate);
+                        const month = birth.toLocaleString('default', { month: 'long' });
+                        const day = birth.getDate();
+                        return `${day} ${month}`;
+                    },
+                    get_day_and_month (birthdate) {
+                        const birth = new Date(birthdate);
+                        const month = birth.getMonth() + 1;
+                        const month_short_name = birth.toLocaleString('default', { month: 'short' });
+                        const day = birth.getDate();
+                        return `${day} ${month_short_name}`;
+                    },
                     get_age(birthdate) {
                       const birth = new Date(birthdate);
                       const now = new Date();
                       const diff = now.getTime() - birth.getTime();
                       const ageDate = new Date(diff);
                       return Math.abs(ageDate.getUTCFullYear() - 1970);
+                    },
+                    days_to_next_birthday_int (birthdate) {
+                        const now = new Date();
+                        const birth = new Date(birthdate);
+                        birth.setFullYear(now.getFullYear());
+                        if (birth.getTime() < now.getTime()) {
+                            birth.setFullYear(now.getFullYear() + 1);
+                        }
+                        const diff = birth.getTime() - now.getTime();
+                        const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+                        return days;
                     },
                     days_to_next_birthday(birthdate) {
                         const now = new Date();
@@ -81,11 +173,11 @@
                         if (days > 30) {
                             const months = Math.floor(days / 30);
                             const remainingDays = days % 30;
-                            return `${months} month${months > 1 ? 's' : ''} (${days} days)`;
+                            return `${months} month${months > 1 ? 's' : ''}`;
                         } else if (days > 7) {
                             const weeks = Math.floor(days / 7);
                             const remainingDays = days % 7;
-                            return `${weeks} week${weeks > 1 ? 's' : ''} (${days} days)`;
+                            return `${weeks} week${weeks > 1 ? 's' : ''}`;
                         } else if (days > 1) {
                             return `${days} days`;
                         } else {
@@ -94,6 +186,13 @@
                     }
                 },
                 mounted () {
+                    let currentDay = new Date().getDate();
+                    setInterval(() => {
+                        if (new Date().getDate() !== this.currentDay) {
+                            currentDay = new Date().getDate();
+                            this.$forceUpdate();
+                        }
+                    }, 1000);
                 }
             }).mount('main')
         </script>
