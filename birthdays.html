@@ -49,9 +49,10 @@
             -->
             <div class="flex flex-col h-full justify-evenly items-center">
                 <div class="flex flex-wrap gap-4">
-                    <div v-for="D of birthday_dictionaries_sorted" class="font-c4 flex flex-col gap-4 rounded p-2 items-center bg-slate-600 border border-slate-500">
-                        <span class="caps bg-slate-700 px-2 rounded border border-slate-500 px-4 py-2 shadow shadow-slate-700">{{ D.name }}</span>
-                        <div class="bg-slate-500 border border-slate-400 p-2 rounded text-slate-100 ">
+                    <div v-for="D of birthday_dictionaries_sorted" :class="['font-c4 flex flex-col gap-4 rounded p-2 items-center bg-slate-600 border border-slate-500', { 'bg-amber-600 border border-amber-500' : this.is_today(D.birthdate) } ]">
+                        <span :class="[ 'caps bg-slate-700 px-2 rounded border border-slate-500 px-4 py-2 shadow shadow-slate-700', { 'bg-amber-700 border-amber-500 shadow-slate-700': this.is_today(D.birthdate) } ]">{{ D.name }}</span>
+                        <div :class="[ 'border p-2 rounded', { 'bg-amber-500 border-amber-400 text-amber-100': this.is_today(D.birthdate),
+                                                                                                             'bg-slate-500 border-slate-400 text-slate-100': !this.is_today(D.birthdate)  } ]">
                             <span class="text-xl">{{ get_age(D.birthdate) }}</span>
                         </div>
                         <div class="flex flex-col gap-2">
@@ -157,6 +158,9 @@
                         if (birth.getTime() < now.getTime()) {
                             birth.setFullYear(now.getFullYear() + 1);
                         }
+                        if (this.is_today(birth)) {
+                            return 0;
+                        }
                         const diff = birth.getTime() - now.getTime();
                         const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
                         return days;
@@ -167,6 +171,9 @@
                         birth.setFullYear(now.getFullYear());
                         if (birth.getTime() < now.getTime()) {
                             birth.setFullYear(now.getFullYear() + 1);
+                        }
+                        if (this.is_today(birth)) {
+                            return 'Today';
                         }
                         const diff = birth.getTime() - now.getTime();
                         const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
@@ -183,7 +190,12 @@
                         } else {
                             return `${days} day`;
                         }
-                    }
+                    },
+                    is_today (birthdate) {
+                        const birth = new Date(birthdate);
+                        const now = new Date();
+                        return birth.getDate() === now.getDate() && birth.getMonth() === now.getMonth();
+                    },
                 },
                 mounted () {
                     let currentDay = new Date().getDate();
